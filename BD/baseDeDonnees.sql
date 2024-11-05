@@ -71,3 +71,12 @@ CREATE TABLE Maison (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
 );
 
+CREATE TABLE Messagerie (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_personne INTEGER NOT NULL,
+    id_personne_destinataire INTEGER NOT NULL,
+    message TEXT NOT NULL,
+    date DATE NOT NULL,
+    FOREIGN KEY (id_personne) REFERENCES Personne(id),
+    FOREIGN KEY (id_personne_destinataire) REFERENCES Personne(id)
+);
