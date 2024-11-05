@@ -44,6 +44,24 @@ CREATE TABLE Adresse (
     code_postal INTEGER NOT NULL,
     ville TEXT NOT NULL,
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
+); 
+
+CREATE TABLE Maison (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_logement INTEGER NOT NULL,
+    nb_etages INTEGER NOT NULL,
+    a_jardin BOOLEAN NOT NULL,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+);
+
+CREATE TABLE Appartement (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_logement INTEGER NOT NULL,
+    etage INTEGER NOT NULL,
+    a_ascenseur BOOLEAN NOT NULL, 
+    a_balcon BOOLEAN NOT NULL,
+    a_concierge BOOLEAN NOT NULL,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
 Update Logement FOREIGN KEY (adresse) REFERENCES Adresse(id);
