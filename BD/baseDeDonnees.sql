@@ -57,15 +57,7 @@ CREATE TABLE Maison (
     nb_etages INT NOT NULL,
     a_jardin BOOLEAN NOT NULL,
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
-); 
-
-CREATE TABLE Maison (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_logement INTEGER NOT NULL,
-    nb_etages INTEGER NOT NULL,
-    a_jardin BOOLEAN NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
-); 
+);
 
 CREATE TABLE Maison (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -75,89 +67,7 @@ CREATE TABLE Maison (
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
-CREATE TABLE Appartement (
+CREATE TABLE Maison (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_logement INTEGER NOT NULL,
-    etage INTEGER NOT NULL,
-    a_ascenseur BOOLEAN NOT NULL, 
-    a_balcon BOOLEAN NOT NULL,
-    a_concierge BOOLEAN NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
-CREATE TABLE Appartement (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_logement INTEGER NOT NULL,
-    etage INTEGER NOT NULL,
-    a_ascenseur BOOLEAN NOT NULL, 
-    a_balcon BOOLEAN NOT NULL,
-    a_concierge BOOLEAN NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
-);
-
-CREATE TABLE Appartement (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    id_logement INT NOT NULL,
-    etage INT NOT NULL,
-    a_ascenseur BOOLEAN NOT NULL, 
-    a_balcon BOOLEAN NOT NULL,
-    a_concierge BOOLEAN NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
-);
-
-CREATE TABLE Avis (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    id_logement INT NOT NULL,
-    note INT NOT NULL,
-    commentaire TEXT NOT NULL,
-    creer_a DATE NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
-);
-
-CREATE TABLE Annonce (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    id_logement INT NOT NULL,
-    creer_a DATE NOT NULL,
-    loueur INT NOT NULL,
-    a_colocation BOOLEAN NOT NULL,
-    disponibilite DATE NOT NULL,
-    nb_personnes INT NOT NULL,
-    statut ENUM('disponible', 'reservé', 'loué') NOT NULL,
-    info_complementaire TEXT NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id),
-    FOREIGN KEY (loueur) REFERENCES Personne(id)
-);
-
-CREATE TABLE Favoris_Signalement (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    id_personne INT NOT NULL,
-    id_logement INT NOT NULL,
-    creer_a DATE NOT NULL,
-    statut ENUM('favoris', 'signalement') NOT NULL,
-    commentaire TEXT NOT NULL,
-    FOREIGN KEY (id_personne) REFERENCES Personne(id),
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
-);
-
-CREATE TABLE Candidature (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    id_personne INT NOT NULL,
-    id_annonce INT NOT NULL,
-    creer_a DATE NOT NULL,
-    statut ENUM('accepté', 'refusé', 'en_attente') NOT NULL,
-    FOREIGN KEY (id_personne) REFERENCES Personne(id),
-    FOREIGN KEY (id_annonce) REFERENCES Annonce(id)
-);
-
-CREATE TABLE Garent (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    id_personne INT NOT NULL,
-    id_logement INT NOT NULL,
-    montant INT NOT NULL,
-    lien_affiliation ENUM('Parents', 'Amis', 'Proche', 'Autre') NOT NULL,
-    creer_a DATE NOT NULL,
-    FOREIGN KEY (id_personne) REFERENCES Personne(id),
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
-);
-
-ALTER TABLE Logement ADD CONSTRAINT fk_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id);
