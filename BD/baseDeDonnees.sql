@@ -64,4 +64,12 @@ CREATE TABLE Appartement (
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
+CREATE TABLE Avis (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_logement INTEGER NOT NULL,
+    note INTEGER NOT NULL,
+    commentaire TEXT NOT NULL,
+    date DATE NOT NULL,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+);
 Update Logement FOREIGN KEY (adresse) REFERENCES Adresse(id);
