@@ -14,7 +14,7 @@ CREATE TABLE Messagerie (
     id_personne INTEGER NOT NULL,
     id_personne_destinataire INTEGER NOT NULL,
     message TEXT NOT NULL,
-    date DATE NOT NULL,
+    creer_a DATE NOT NULL,
     FOREIGN KEY (id_personne) REFERENCES Personne(id),
     FOREIGN KEY (id_personne_destinataire) REFERENCES Personne(id)
 );
@@ -26,7 +26,7 @@ CREATE TABLE Logement (
     proprietaire INTEGER NOT NULL,
     loyer INTEGER NOT NULL,
     charges INTEGER NOT NULL,
-    date DATE NOT NULL,
+    creer_a DATE NOT NULL,
     adresse INTEGER NOT NULL,
     est_meuble BOOLEAN NOT NULL,
     a_WIFI BOOLEAN NOT NULL,
@@ -69,7 +69,22 @@ CREATE TABLE Avis (
     id_logement INTEGER NOT NULL,
     note INTEGER NOT NULL,
     commentaire TEXT NOT NULL,
-    date DATE NOT NULL,
+    creer_a DATE NOT NULL,
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
+
+CREATE TABLE Annonce (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_logement INTEGER NOT NULL,
+    creer_a DATE NOT NULL,
+    loueur INTEGER NOT NULL,
+    a_colocation BOOLEAN NOT NULL,
+    disponibilite DATE NOT NULL,
+    nb_personnes INTEGER NOT NULL,
+    statut Enum('disponible', 'reservé', 'loué') NOT NULL,
+    info_complementaire TEXT NOT NULL,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+    FOREIGN KEY (loueur) REFERENCES Personne(id)
+);
+
 Update Logement FOREIGN KEY (adresse) REFERENCES Adresse(id);
