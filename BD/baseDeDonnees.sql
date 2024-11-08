@@ -10,7 +10,7 @@ CREATE TABLE Personne (
     nom VARCHAR(255) NOT NULL,
     prénom VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
-    actif BOOLEAN NOT NULL,
+    actif BOOLEAN NOT NULL default(0),
     telephone VARCHAR(255) NOT NULL UNIQUE,
     mdp VARCHAR(255) NOT NULL
 );
