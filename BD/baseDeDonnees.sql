@@ -1,3 +1,10 @@
+CREATE DATABASE IF NOT EXISTS Aidappart;
+USE Aidappart;
+
+CREATE USER 'default_user'@'localhost' IDENTIFIED BY 'AidappartNova';
+GRANT ALL PRIVILEGES ON Aidappart.* TO 'default_user'@'localhost';
+FLUSH PRIVILEGES;
+
 CREATE TABLE Personne (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nom TEXT NOT NULL,
@@ -121,4 +128,5 @@ CREATE TABLE Garent (
     FOREIGN KEY (id_personne) REFERENCES Personne(id),
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
+
 Update Logement FOREIGN KEY (adresse) REFERENCES Adresse(id);
