@@ -110,4 +110,15 @@ CREATE TABLE Candidature (
     FOREIGN KEY (id_personne) REFERENCES Personne(id),
     FOREIGN KEY (id_annonce) REFERENCES Annonce(id)
 );
+
+CREATE TABLE Garent (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_personne INTEGER NOT NULL,
+    id_logement INTEGER NOT NULL,
+    montant INTEGER NOT NULL,
+    lien_affiliation enum('Parents', 'Amis', 'Proche', 'Autre') NOT NULL,
+    creer_a DATE NOT NULL,
+    FOREIGN KEY (id_personne) REFERENCES Personne(id),
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+);
 Update Logement FOREIGN KEY (adresse) REFERENCES Adresse(id);
