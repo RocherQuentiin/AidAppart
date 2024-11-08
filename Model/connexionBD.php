@@ -1,17 +1,13 @@
 <?php
-$servername = "localhost";
-$username = "default_user";
-$password = "AidappartNova";
-$dbname = "Aidappart";
+require_once 'config.php';
 
-// Creation de la connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+class ConnexionBD {
+    protected $pdo;
 
-// Verification de la connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    public function __construct() {
+        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8";
+        $this->pdo = new PDO($dsn, DB_USER, DB_PASS);
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
 }
-echo "Connected successfully";
-
-$conn->close();
 ?>
