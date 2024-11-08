@@ -1,25 +1,24 @@
 CREATE DATABASE IF NOT EXISTS Aidappart;
 USE Aidappart;
 
-CREATE USER 'default_user'@'localhost' IDENTIFIED BY 'AidappartNova';
-GRANT ALL PRIVILEGES ON Aidappart.* TO 'default_user'@'localhost';
-FLUSH PRIVILEGES;
+-- CREATE USER 'default_user'@'localhost' IDENTIFIED BY 'AidappartNova';
+-- GRANT ALL PRIVILEGES ON Aidappart.* TO 'default_user'@'localhost';
+-- FLUSH PRIVILEGES;
 
 CREATE TABLE Personne (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nom TEXT NOT NULL,
-    prénom TEXT NOT NULL,
-    email TEXT NOT NULL UNIQUE,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(255) NOT NULL,
+    prénom VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     actif BOOLEAN NOT NULL,
-    telephone TEXT NOT NULL UNIQUE,
-    mdp TEXT NOT NULL hash
-    docs file,
+    telephone VARCHAR(255) NOT NULL UNIQUE,
+    mdp VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Messagerie (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_personne INTEGER NOT NULL,
-    id_personne_destinataire INTEGER NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_personne INT NOT NULL,
+    id_personne_destinataire INT NOT NULL,
     message TEXT NOT NULL,
     creer_a DATE NOT NULL,
     FOREIGN KEY (id_personne) REFERENCES Personne(id),
@@ -27,44 +26,43 @@ CREATE TABLE Messagerie (
 );
 
 CREATE TABLE Logement (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    type TEXT NOT NULL,
-    surface INTEGER NOT NULL,
-    proprietaire INTEGER NOT NULL,
-    loyer INTEGER NOT NULL,
-    charges INTEGER NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    type VARCHAR(255) NOT NULL,
+    surface INT NOT NULL,
+    proprietaire INT NOT NULL,
+    loyer INT NOT NULL,
+    charges INT NOT NULL,
     creer_a DATE NOT NULL,
-    adresse INTEGER NOT NULL,
+    adresse INT NOT NULL,
     est_meuble BOOLEAN NOT NULL,
     a_WIFI BOOLEAN NOT NULL,
     est_accessible_PMR BOOLEAN NOT NULL,
-    nb_pieces INTEGER NOT NULL,
+    nb_pieces INT NOT NULL,
     a_parking BOOLEAN NOT NULL,
     description TEXT NOT NULL,
     FOREIGN KEY (proprietaire) REFERENCES Personne(id)
 );
 
 CREATE TABLE Adresse (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    numero INTEGER NOT NULL,
-    rue TEXT NOT NULL,
-    code_postal INTEGER NOT NULL,
-    ville TEXT NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
-); 
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    numero INT NOT NULL,
+    rue VARCHAR(255) NOT NULL,
+    code_postal INT NOT NULL,
+    ville VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE Maison (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_logement INTEGER NOT NULL,
-    nb_etages INTEGER NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_logement INT NOT NULL,
+    nb_etages INT NOT NULL,
     a_jardin BOOLEAN NOT NULL,
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
 CREATE TABLE Appartement (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_logement INTEGER NOT NULL,
-    etage INTEGER NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_logement INT NOT NULL,
+    etage INT NOT NULL,
     a_ascenseur BOOLEAN NOT NULL, 
     a_balcon BOOLEAN NOT NULL,
     a_concierge BOOLEAN NOT NULL,
@@ -72,61 +70,58 @@ CREATE TABLE Appartement (
 );
 
 CREATE TABLE Avis (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_logement INTEGER NOT NULL,
-    note INTEGER NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_logement INT NOT NULL,
+    note INT NOT NULL,
     commentaire TEXT NOT NULL,
     creer_a DATE NOT NULL,
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
 CREATE TABLE Annonce (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_logement INTEGER NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_logement INT NOT NULL,
     creer_a DATE NOT NULL,
-    loueur INTEGER NOT NULL,
+    loueur INT NOT NULL,
     a_colocation BOOLEAN NOT NULL,
     disponibilite DATE NOT NULL,
-    nb_personnes INTEGER NOT NULL,
-    statut Enum('disponible', 'reservé', 'loué') NOT NULL,
+    nb_personnes INT NOT NULL,
+    statut ENUM('disponible', 'reservé', 'loué') NOT NULL,
     info_complementaire TEXT NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+    FOREIGN KEY (id_logement) REFERENCES Logement(id),
     FOREIGN KEY (loueur) REFERENCES Personne(id)
 );
 
 CREATE TABLE Favoris_Signalement (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_personne INTEGER NOT NULL,
-    id_logement INTEGER NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_personne INT NOT NULL,
+    id_logement INT NOT NULL,
     creer_a DATE NOT NULL,
-    statut Enum('favoris', 'signalement') NOT NULL,
+    statut ENUM('favoris', 'signalement') NOT NULL,
     commentaire TEXT NOT NULL,
     FOREIGN KEY (id_personne) REFERENCES Personne(id),
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
 CREATE TABLE Candidature (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_personne INTEGER NOT NULL,
-    id_annonce INTEGER NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_personne INT NOT NULL,
+    id_annonce INT NOT NULL,
     creer_a DATE NOT NULL,
-    CNI file,
-    bulletin_salaire file,
-    certificat_de_scolarite file,
-    statut Enum('accepté', 'refusé', 'en_attente') NOT NULL,
+    statut ENUM('accepté', 'refusé', 'en_attente') NOT NULL,
     FOREIGN KEY (id_personne) REFERENCES Personne(id),
     FOREIGN KEY (id_annonce) REFERENCES Annonce(id)
 );
 
 CREATE TABLE Garent (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_personne INTEGER NOT NULL,
-    id_logement INTEGER NOT NULL,
-    montant INTEGER NOT NULL,
-    lien_affiliation enum('Parents', 'Amis', 'Proche', 'Autre') NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_personne INT NOT NULL,
+    id_logement INT NOT NULL,
+    montant INT NOT NULL,
+    lien_affiliation ENUM('Parents', 'Amis', 'Proche', 'Autre') NOT NULL,
     creer_a DATE NOT NULL,
     FOREIGN KEY (id_personne) REFERENCES Personne(id),
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
-Update Logement FOREIGN KEY (adresse) REFERENCES Adresse(id);
+ALTER TABLE Logement ADD CONSTRAINT fk_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id);
