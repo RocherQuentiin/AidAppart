@@ -87,4 +87,15 @@ CREATE TABLE Annonce (
     FOREIGN KEY (loueur) REFERENCES Personne(id)
 );
 
+CREATE TABLE Favoris_Signalement (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_personne INTEGER NOT NULL,
+    id_logement INTEGER NOT NULL,
+    creer_a DATE NOT NULL,
+    statut Enum('favoris', 'signalement') NOT NULL,
+    commentaire TEXT NOT NULL,
+    FOREIGN KEY (id_personne) REFERENCES Personne(id),
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+);
+
 Update Logement FOREIGN KEY (adresse) REFERENCES Adresse(id);
