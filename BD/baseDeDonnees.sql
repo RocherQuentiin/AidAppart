@@ -98,4 +98,16 @@ CREATE TABLE Favoris_Signalement (
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
+CREATE TABLE Candidature (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_personne INTEGER NOT NULL,
+    id_annonce INTEGER NOT NULL,
+    creer_a DATE NOT NULL,
+    CNI file,
+    bulletin_salaire file,
+    certificat_de_scolarite file,
+    statut Enum('accepté', 'refusé', 'en_attente') NOT NULL,
+    FOREIGN KEY (id_personne) REFERENCES Personne(id),
+    FOREIGN KEY (id_annonce) REFERENCES Annonce(id)
+);
 Update Logement FOREIGN KEY (adresse) REFERENCES Adresse(id);
