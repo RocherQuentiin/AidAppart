@@ -9,7 +9,7 @@
 -- 4. Messagerie
 -- 5. Maison
 -- 6. Appartement
--- 7. Avis
+-- 7. Aviscss
 -- 8. Annonce
 -- 9. Favoris_Signalement
 -- 10. Candidature
@@ -17,7 +17,7 @@
 
 INSERT INTO Personne (nom, prénom, email, actif, telephone, mdp) VALUES
 ('Dupont', 'Jean', 'jean.dupont@example.com', 1, '0600000001', 'password1'),
-('Martin', 'Marie', 'marie.martin@example.com', 1, '0600000002', 'password2'),
+('Fathi', 'Marie', 'marie.martin@example.com', 1, '0600000002', 'password2'),
 ('Bernard', 'Pierre', 'pierre.bernard@example.com', 1, '0600000003', 'password3'),
 ('Dubois', 'Luc', 'luc.dubois@example.com', 1, '0600000004', 'password4'),
 ('Thomas', 'Julie', 'julie.thomas@example.com', 1, '0600000005', 'password5'),
