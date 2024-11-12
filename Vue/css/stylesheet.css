@@ -1,0 +1,114 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.navbar{
+    display: flex;
+    padding-top: 2%;
+    padding-bottom: 5%;
+    height: 100px;
+    .navbar-nav {
+        width: 50%; 
+        justify-content: space-between; 
+    }
+    ul {
+        list-style: none;
+        text-decoration: none;
+    }
+    .globe{
+        width: 50px;
+        height: 50px;
+    }
+
+   li a{ 
+        text-decoration: none;
+        font-size: large;
+        color: #23435c;
+        font-weight: bolder;
+        text-transform: uppercase;
+    }
+
+    img{
+        width: 300px;
+        height: 100px;
+    }
+        
+    .btn button {
+        border-radius: 35px;
+        padding: 8% 10% 8% 10%;
+        font-size: large;
+        color: #23435c;
+        font-weight: bolder;
+        text-transform: uppercase;
+        white-space: nowrap;
+        border: 3px solid #ABC959;
+        background-color: white;
+    }
+  
+}
+
+.footer{
+    margin-top: 5%;
+    background-color: #1e3b52;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+   
+    .logement{
+        padding-left: 70px;
+    }
+    .logement, .etudiant, .aPropos{
+        padding-top: 60px;
+        padding-bottom: 40px;
+        padding-left: 5%;
+        list-style: none;
+            
+        li{
+            padding-bottom: 3%;
+        }
+        
+        .titre{
+            text-decoration: none;
+            font-size: x-large;
+            font-weight: 600;
+            display: flex;
+            margin-bottom: 5%;
+        }
+    }
+    
+    .partDroite{
+        display: flex;
+        margin-bottom: 0;
+        justify-content: space-between;
+        .logo{
+            background-color: rgba(255, 255, 255, 0.3);
+            margin-top: 0;
+            padding: 30px;
+            padding-top: 40px;
+        }
+
+        li{
+            list-style: none;
+            padding-bottom: 3%;
+        }
+        img{
+            width: 185px;
+            height: 55px;
+            margin-bottom: 5%;
+        }
+        .reseaux{
+            justify-content: space-between;
+        
+            img{
+                width: 30px;
+                height: 30px;
+                margin-bottom: 5%;
+            }
+        }
+    }
+}
+
+
+
