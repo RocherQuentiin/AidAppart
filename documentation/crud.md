@@ -1,7 +1,7 @@
-# Documentation de la classe Crud
+# Documentation de la classe Model
 
 ## Description
-La classe `Crud` fournit des opérations CRUD (Create, Read, Update, Delete) pour interagir avec une base de données MySQL. Elle utilise PDO pour se connecter à la base de données et exécuter des requêtes SQL.
+La classe `Model` fournit des opérations CRUD (Create, Read, Update, Delete) pour interagir avec une base de données MySQL. Elle utilise PDO pour se connecter à la base de données et exécuter des requêtes SQL.
 
 ## Propriétés
 - `protected $pdo` : Instance de PDO utilisée pour la connexion à la base de données.
