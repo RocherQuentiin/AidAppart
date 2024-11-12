@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-class Crud{
+class Model{
     protected $pdo;
 
     public function __construct() {
