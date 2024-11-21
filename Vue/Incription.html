@@ -7,8 +7,9 @@
     <link href="Incription.css" rel="stylesheet">
 </head>
 <body>
-    <div id="centre">
-        <h1>Je me connecte</h1>
+
+    <div class="centre">
+        <h1>JE ME CONNECTE</h1>
         <div class="input-group">
             <i class="fas fa-envelope"></i>
             <input type="email" placeholder="Votre adresse mail" required>
@@ -21,20 +22,21 @@
         <a href="inscription.html" class="link">Première connexion ? Je crée un compte AidAppart</a>
         <button class="btn">Me Connecter</button>
     </div>
-        <script>
-            function togglePassword() {
-                const passwordInput = document.getElementById('password');
-                const eyeIcon = document.querySelector('.eye-icon');
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                    eyeIcon.classList.remove('fa-eye');
-                    eyeIcon.classList.add('fa-eye-slash');
-                } else {
-                    passwordInput.type = 'password';
-                    eyeIcon.classList.remove('fa-eye-slash');
-                    eyeIcon.classList.add('fa-eye');
-                }
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.querySelector('.eye-icon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
             }
-        </script>
+        }
+    </script>
 </body>
 </html>
