@@ -12,32 +12,26 @@ body {
 }
 
 .centre {
-    padding: 5%;
-    border-radius: 2%;
-    box-shadow: 0 2% 4% rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 30%;
     text-align: center;
-    z-index: 0; /* Assure que le centre ne chevauche pas les bandeaux */
 }
 
 h1 {
-    margin-bottom: 5%;
+    margin-bottom: 20px;
     color: #23435c; /* Texte bleu */
+    text-align: center
 }
 
 .input-group {
-    margin-bottom: 5%;
+    margin-bottom: 20px; /* Espacement entre les champs */
     position: relative;
 }
 
 .input-group input {
     width: 100%;
-    padding: 2%;
-    padding-left: 10%;
+    padding: 12px 40px; /* Plus d'espace intérieur */
     border: none; /* Suppression des contours */
-    border-radius: 1rem; /* Coins arrondis */
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Ombre douce */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
     font-size: 1rem;
     outline: none; /* Suppression du contour bleu au focus */
 }
@@ -45,7 +39,7 @@ h1 {
 .input-group i {
     position: absolute;
     top: 50%;
-    left: 3%;
+    left: 12px;
     transform: translateY(-50%);
     color: #aaa;
 }
@@ -53,13 +47,13 @@ h1 {
 .eye-icon {
     position: absolute;
     top: 50%;
-    right: 3%;
+    right: 12px;
     transform: translateY(-50%);
     cursor: pointer;
 }
 
 .link {
-    margin-top: 2%;
+    margin-top: 10px;
     display: block;
     font-size: 0.9rem;
     color: #23435c; /* Lien en bleu */
@@ -71,14 +65,15 @@ h1 {
 }
 
 .btn {
-    background-color: darkgreen;
-    color: #23435c;
-    padding: 2%;
+    background-color: #8ca74a;
+    color: #23435c; /* Couleur bleu pour le texte */
+    padding: 15px; /* Plus d'espace intérieur */
     border: none;
-    border-radius: 1%;
+    border-radius: 10px; /* Coins arrondis */
     cursor: pointer;
     width: 100%;
     font-size: 1rem;
+    margin-top: 20px; /* Espacement supérieur pour le bouton */
 }
 
 .btn:hover {

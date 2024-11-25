@@ -10,17 +10,19 @@
 
     <div class="centre">
         <h1>JE ME CONNECTE</h1>
-        <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Votre adresse mail" required>
-        </div>
-        <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Votre mot de passe" id="password" required>
-            <i class="eye-icon fas fa-eye" onclick="togglePassword()"></i>
-        </div>
-        <a href="inscription.html" class="link">Première connexion ? Je crée un compte AidAppart</a>
-        <button class="btn">Me Connecter</button>
+        <form action="connexion_traitement.php" method="POST">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Votre adresse mail" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Votre mot de passe" id="password" required>
+                <i class="eye-icon fas fa-eye" onclick="togglePassword()"></i>
+            </div>
+            <a href="inscription.html" class="link">Première connexion ? Je crée un compte AidAppart</a>
+            <button class="btn" type="submit">Me Connecter</button>
+        </form>
     </div>
 
     <script>
