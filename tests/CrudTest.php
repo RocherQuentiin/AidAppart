@@ -2,48 +2,48 @@
 use PHPUnit\Framework\TestCase;
 
 require_once 'config.php';
-require_once 'Model.php';
+require_once 'Crud.php';
 
-class ModelTest extends TestCase {
-    protected $model;
+class CrudTest extends TestCase {
+    protected $crud;
 
     protected function setUp(): void {
-        $this->model = new model();
+        $this->crud = new Crud();
     }
 
     public function testSelectAllFromTable() {
-        $result = $this->model->selectAllFromTable('Personne');
+        $result = $this->crud->selectAllFromTable('Personne');
         $this->assertIsArray($result);
         $this->assertCount(20, $result);
     }
 
     public function testDeleteById() {
-        $this->model->deleteById('Personne', 1);
-        $result = $this->model->selectAllFromTable('Personne');
+        $this->crud->deleteById('Personne', 1);
+        $result = $this->crud->selectAllFromTable('Personne');
         $this->assertCount(19, $result);
     }
 
     public function testInsertPersonne() {
-        $result = $this->model->insertPersonne('Test', 'User', 'test.user@example.com', 1, '0600000021', 'password21');
+        $result = $this->crud->insertPersonne('Test', 'User', 'test.user@example.com', 1, '0600000021', 'password21');
         $this->assertTrue($result);
 
-        $personnes = $this->model->selectAllFromTable('Personne');
+        $personnes = $this->crud->selectAllFromTable('Personne');
         $this->assertCount(21, $personnes);
     }
 
     public function testInsertLogement() {
-        $result = $this->model->insertLogement('Appartement', 70, 1, 1500, 150, '2023-01-16', 1, true, true, true, 3, true, 'Appartement de test');
+        $result = $this->crud->insertLogement('Appartement', 70, 1, 1500, 150, '2023-01-16', 1, true, true, true, 3, true, 'Appartement de test');
         $this->assertTrue($result);
 
-        $logements = $this->model->selectAllFromTable('Logement');
+        $logements = $this->crud->selectAllFromTable('Logement');
         $this->assertCount(16, $logements);
     }
 
     public function testInsertAnnonce() {
-        $result = $this->model->insertAnnonce(1, '2023-01-16', 1, true, '2023-09-01', 2, 'disponible', 'Annonce de test');
+        $result = $this->crud->insertAnnonce(1, '2023-01-16', 1, true, '2023-09-01', 2, 'disponible', 'Annonce de test');
         $this->assertTrue($result);
 
-        $annonces = $this->model->selectAllFromTable('Annonce');
+        $annonces = $this->crud->selectAllFromTable('Annonce');
         $this->assertCount(8, $annonces);
     }
 }
