@@ -10,9 +10,9 @@
         * Connexion à la base de données avec les informations de connexion définies dans config.php
         */
 
-                 $this->db = new PDO('mysql:host=localhost;dbname=Aidappart', 'root', '');
-                 $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                 $this->db->query("SET NAMES 'utf8'");
+        $this->db = new PDO('mysql:host=localhost;dbname=Aidappart', 'root', '');
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->db->query("SET NAMES 'utf8'");
         /*
         echo DB_HOST;
         echo DB_NAME;
