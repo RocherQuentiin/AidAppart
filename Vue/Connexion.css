@@ -1,3 +1,4 @@
+/* Styles globaux */
 body {
     font-family: Arial, sans-serif;
     background-color: #a9ca59; /* Fond vert */
@@ -18,7 +19,6 @@ body {
 h1 {
     margin-bottom: 20px;
     color: #23435c; /* Texte bleu */
-    text-align: center
 }
 
 .input-group {
@@ -47,11 +47,11 @@ h1 {
 .eye-icon {
     position: absolute;
     top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
+    right: 20px;
     cursor: pointer;
 }
 
+/* Lien */
 .link {
     margin-top: 10px;
     display: block;
@@ -65,7 +65,7 @@ h1 {
 }
 
 .btn {
-    background-color: #8ca74a;
+    background-color: #8ca74a; /* Couleur verte */
     color: #23435c; /* Couleur bleu pour le texte */
     padding: 15px; /* Plus d'espace intérieur */
     border: none;
