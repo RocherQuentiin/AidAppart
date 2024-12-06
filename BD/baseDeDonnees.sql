@@ -1,8 +1,8 @@
-CREATE DATABASE IF NOT EXISTS Aidappart;
-USE Aidappart;
+CREATE DATABASE IF NOT EXISTS x6d2hJqFPK_aidappart;
+USE x6d2hJqFPK_aidappart;
 
 CREATE USER 'default_user'@'localhost' IDENTIFIED BY 'AidappartNova';
-GRANT ALL PRIVILEGES ON Aidappart.* TO 'default_user'@'localhost';
+GRANT ALL PRIVILEGES ON x6d2hJqFPK_aidappart.* TO 'default_user'@'localhost';
 FLUSH PRIVILEGES;
 
 CREATE TABLE Personne (
