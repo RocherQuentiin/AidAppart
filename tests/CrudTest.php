@@ -1,8 +1,8 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require_once 'config.php';
-require_once 'Model.php';
+require_once '/Utils/config.php';
+require_once '/Models/Model.php';
 
 class ModelTest extends TestCase {
     protected $model;

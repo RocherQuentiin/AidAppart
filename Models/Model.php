@@ -1,26 +1,42 @@
 <?php
-require_once 'config.php';
+//require_once 'config.php';
 
-class Model{
-    protected $pdo;
+ class Model {
+     private $db;
+     private static $instance = null;
 
-    public function __construct() {
+     private function __construct() {
         /*
         * Connexion à la base de données avec les informations de connexion définies dans config.php
         */
+
+        $this->db = new PDO('mysql:host=localhost;dbname=Aidappart', 'root', '');
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->db->query("SET NAMES 'utf8'");
+        /*
+        echo DB_HOST;
+        echo DB_NAME;
         $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8";
-        $this->pdo = new PDO($dsn, DB_USER, DB_PASS);
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo $dsn;
+        $this->db = new db($dsn, DB_USER, DB_PASS);
+        $this->db->setAttribute(db::ATTR_ERRMODE, db::ERRMODE_EXCEPTION);*/
     }
-    
+
+     public static function getModel() {
+         if (self::$instance === null) {
+             self::$instance = new self();
+         }
+         return self::$instance;
+     }
+
     public function selectAllFromTable($table) {
         /*
         * Sélectionner toutes les entrées de la table spécifiée
         * @param string $table - Nom de la table
         * @return array - Tableau contenant toutes les entrées de la table
         */
-        $stmt = $this->pdo->query("SELECT * FROM " . $table);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->db->query("SELECT * FROM " . $table);
+        return $stmt->fetchAll(db::FETCH_ASSOC);
     }
 
     public function deleteById($table, $id) {
@@ -31,10 +47,10 @@ class Model{
         */
         try{
             $sql = "DELETE FROM $table WHERE id = :id";
-            $stmt = $this->pdo->prepare($sql);
+            $stmt = $this->db->prepare($sql);
             $stmt->execute(['id' => $id]);
         } catch (PDOException $e) {
-            echo "Erreur PDO : " . $e->getMessage();
+            echo "Erreur db : " . $e->getMessage();
         } catch (Exception $e) {
             echo "Erreur : " . $e->getMessage();
         }
@@ -53,7 +69,7 @@ class Model{
             */
             try {
                 $sql = "INSERT INTO Personne (nom, prénom, email, actif, telephone, mdp) VALUES (:nom, :prenom, :email, :actif, :telephone, :mdp)";
-                $stmt = $this->pdo->prepare($sql);
+                $stmt = $this->db->prepare($sql);
                 return $stmt->execute([
                     'nom' => $nom,
                     'prenom' => $prenom,
@@ -63,7 +79,7 @@ class Model{
                     'mdp' => $mdp
                 ]);
             } catch (PDOException $e) {
-                echo "Erreur PDO : " . $e->getMessage();
+                echo "Erreur db : " . $e->getMessage();
                 return false;
             } catch (Exception $e) {
                 echo "Erreur : " . $e->getMessage();
@@ -92,7 +108,7 @@ class Model{
             */
             try {
             $sql = "INSERT INTO Logement (type, surface, proprietaire, loyer, charges, creer_a, adresse, est_meuble, a_WIFI, est_accessible_PMR, nb_pieces, a_parking, description) VALUES (:type, :surface, :proprietaire, :loyer, :charges, :creer_a, :adresse, :est_meuble, :a_WIFI, :est_accessible_PMR, :nb_pieces, :a_parking, :description)";
-            $stmt = $this->pdo->prepare($sql);
+            $stmt = $this->db->prepare($sql);
             return $stmt->execute([
                 'type' => $type,
                 'surface' => $surface,
@@ -109,7 +125,7 @@ class Model{
                 'description' => $description
             ]);
             } catch (PDOException $e) {
-                echo "Erreur PDO : " . $e->getMessage();
+                echo "Erreur db : " . $e->getMessage();
                 return false;
             } catch (Exception $e) {
                 echo "Erreur : " . $e->getMessage();
@@ -132,7 +148,7 @@ class Model{
             */
             try {
             $sql = "INSERT INTO Annonce (id_logement, creer_a, loueur, a_colocation, disponibilite, nb_personnes, statut, info_complementaire) VALUES (:id_logement, :creer_a, :loueur, :a_colocation, :disponibilite, :nb_personnes, :statut, :info_complementaire)";
-            $stmt = $this->pdo->prepare($sql);
+            $stmt = $this->db->prepare($sql);
             return $stmt->execute([
                 'id_logement' => $id_logement,
                 'creer_a' => $creer_a,
@@ -144,7 +160,7 @@ class Model{
                 'info_complementaire' => $info_complementaire
             ]);
             } catch (PDOException $e) {
-                echo "Erreur PDO: " . $e->getMessage();
+                echo "Erreur db: " . $e->getMessage();
                 return false;
             } catch (Exception $e) {
                 echo "Erreur : " . $e->getMessage();

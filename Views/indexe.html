@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css"/>
     <title>Test PHP Script</title>
     <script>
         function testPHP() {
@@ -15,11 +16,15 @@
             };
             xhr.send();
         }
+
     </script>
 </head>
 <body>
+    <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+    </br>
+    <a>Marie</a>
     <h1>Test PHP Script</h1>
-    <button onclick="testPHP()">Run PHP Script</button>
+    <button onclick="testPHP()">RECHERCHER UN LOGEMENT</button>
     <div id="result"></div>
     <a href="/Vue/Layout/pagelogement.php">Page Logement</a>
     <a href="/Vue/Layout/pagelogement.html">Page Logement 2</a>
