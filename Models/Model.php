@@ -1,16 +1,17 @@
 <?php
-//require_once 'config.php';
+require_once 'Utils/config.php';
 
- class Model {
-     private $db;
-     private static $instance = null;
+class Model {
+    private $db;
+    private static $instance = null;
 
-     private function __construct() {
+    private function __construct() {
         /*
         * Connexion à la base de données avec les informations de connexion définies dans config.php
         */
+        global $servername, $username, $password, $dbname;
 
-        $this->db = new PDO('mysql:host=localhost;dbname=Aidappart', 'root', '');
+        $this->db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->db->query("SET NAMES 'utf8'");
         /*
@@ -22,12 +23,12 @@
         $this->db->setAttribute(db::ATTR_ERRMODE, db::ERRMODE_EXCEPTION);*/
     }
 
-     public static function getModel() {
-         if (self::$instance === null) {
-             self::$instance = new self();
-         }
-         return self::$instance;
-     }
+    public static function getModel() {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
 
     public function selectAllFromTable($table) {
         /*
@@ -36,7 +37,7 @@
         * @return array - Tableau contenant toutes les entrées de la table
         */
         $stmt = $this->db->query("SELECT * FROM " . $table);
-        return $stmt->fetchAll(db::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function deleteById($table, $id) {
@@ -68,6 +69,7 @@
             * @return bool - Retourne true en cas de succès, false en cas d'échec
             */
             try {
+                $hashedMdp = password_hash($mdp, PASSWORD_DEFAULT);
                 $sql = "INSERT INTO Personne (nom, prénom, email, actif, telephone, mdp) VALUES (:nom, :prenom, :email, :actif, :telephone, :mdp)";
                 $stmt = $this->db->prepare($sql);
                 return $stmt->execute([
@@ -76,7 +78,7 @@
                     'email' => $email,
                     'actif' => $actif,
                     'telephone' => $telephone,
-                    'mdp' => $mdp
+                    'mdp' => $hashedMdp
                 ]);
             } catch (PDOException $e) {
                 echo "Erreur db : " . $e->getMessage();

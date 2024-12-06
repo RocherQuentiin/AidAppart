@@ -8,7 +8,7 @@ require_once "Models/Model.php";
 require_once "Controllers/Controller.php";
 
 //Liste des contrôleurs -- A RENSEIGNER
-$controllers = ["inscription"];
+$controllers = ["inscription","pagelogement"];
 //Nom du contrôleur par défaut-- A RENSEIGNER
 $controller_default = "inscription";
 
