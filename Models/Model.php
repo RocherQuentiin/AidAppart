@@ -10,7 +10,7 @@ class Model {
         * Connexion à la base de données avec les informations de connexion définies dans config.php
         */
 
-        $this->db = new PDO('mysql:host=localhost;dbname=aidappart', 'root', '');
+        $this->db = new PDO('mysql:host=herogu.garageisep.com;dbname=x6d2hJqFPK_aidappart', 'LwHl46l0Fo_aidappart', 'lDQO6mrToNamFYoi');
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->db->query("SET NAMES 'utf8'");
         /*
