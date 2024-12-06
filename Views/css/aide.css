@@ -1,0 +1,61 @@
+body {
+    font-family: inter, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background :  linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background :  #ffffff ;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #23435C;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.eligibility {
+    padding: 20px;
+    text-align: center;
+}
+
+.eligibility h1 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.options button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 1px solid #d4e8d4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    background-color:  linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
