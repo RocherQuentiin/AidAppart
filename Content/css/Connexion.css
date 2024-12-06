@@ -53,15 +53,11 @@ h1 {
 /* Icône de l'œil à droite */
 .eye-icon {
     position: absolute;
-    font-size: 1%;
     top: 50%;
-    right: -20%; /* Position correcte à droite */
+    right: -90%; /* Positionnée à droite */
     transform: translateY(-50%);
     cursor: pointer;
     color: #aaa;
-    font-size: 16px; /* Taille de l'icône ajustée */
-    z-index: 1; /* S'assurer qu'elle reste visible au-dessus du champ */
-    pointer-events: auto; /* S'assurer qu'elle reste cliquable */
 }
 
 /* Lien centré */

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,8 +20,8 @@
             <input type="password" placeholder="Votre mot de passe" id="password" required>
             <i class="eye-icon fas fa-eye" onclick="togglePassword()"></i>
         </div>
-        <a href="inscription.html" class="link">Première connexion ? Je crée un compte AidAppart</a>
-        <a href="mot_de_passe_oublie.html" class="link">Mot de passe oublié ?</a>
+        <a href="inscription.php" class="link">Première connexion ? Je crée un compte AidAppart</a>
+        <a href="mot_de_passe_oublie.php" class="link">Mot de passe oublié ?</a>
         
         <button class="btn">Me Connecter</button>
     </div>
@@ -43,4 +42,3 @@
         }
     </script>
 </body>
-</html>
