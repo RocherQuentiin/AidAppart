@@ -1,5 +1,5 @@
 <?php
-require_once '../../Model/Model.php';
+require_once '../../Models/Model.php';
 
 $model = new Model();
 $logements = $model->selectAllFromTable('Logement');
