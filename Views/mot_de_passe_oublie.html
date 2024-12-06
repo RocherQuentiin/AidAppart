@@ -16,7 +16,7 @@
             <input type="email" placeholder="Votre adresse mail" required>
         </div>
         <button class="btn">Réinitialiser mon mot de passe</button>
-        <a href="connexion.html" class="link">Retour à la connexion</a>
+        <a href="connexion.php" class="link">Retour à la connexion</a>
     </div>
 
 </body>
