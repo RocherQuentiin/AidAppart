@@ -16,6 +16,7 @@
             <button>Rechercher</button>
         </div>
     </div>
+    <div class="row">
     <div class="filters">
         <h2>Filtres</h2>
         <ul>
@@ -29,7 +30,6 @@
     <div class="listings">
     <?php foreach ($logements as $logement): ?>
         <div class="listing">
-            <h2>Logement ID: <?php echo $logement['id']; ?></h2>
             <p>Type: <?php echo $logement['type']; ?></p>
             <p>Surface: <?php echo $logement['surface']; ?> m²</p>
             <p>Propriétaire ID: <?php echo $logement['proprietaire']; ?></p>
@@ -46,6 +46,7 @@
         </div>
         <hr>
     <?php endforeach; ?>
+    </div>
     </div>
 </body>
 </html>
