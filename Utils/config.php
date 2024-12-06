@@ -1,8 +1,18 @@
 <?php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'Aidappart');
-define('DB_USER', 'default_user');
-define('DB_PASS', 'AidappartNova');
+// Configuration de la base de données
+$environment = (getenv('SERVER_NAME') == 'localhost') ? 'local' : 'production';
+if ( $environment == "local") {
+    $servername = 'localhost';
+    $username = 'default_user';
+    $password = 'AidappartNova';
+    $dbname = 'aidappart';
+} else {
+    $servername = getenv("MYSQL_HOST");
+    $username = getenv("MYSQL_USER");
+    $password = getenv("MYSQL_PASSWORD");
+    $dbname = getenv("MYSQL_DATABASE");
+}
+
 global $TABLES;
 $TABLES = [
     'PERSONNE' => 'Personne',
