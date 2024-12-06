@@ -1,11 +1,11 @@
 <?php
 //require_once 'config.php';
 
- class Model {
-     private $db;
-     private static $instance = null;
+class Model {
+    private $db;
+    private static $instance = null;
 
-     private function __construct() {
+    private function __construct() {
         /*
         * Connexion à la base de données avec les informations de connexion définies dans config.php
         */
@@ -22,12 +22,12 @@
         $this->db->setAttribute(db::ATTR_ERRMODE, db::ERRMODE_EXCEPTION);*/
     }
 
-     public static function getModel() {
-         if (self::$instance === null) {
-             self::$instance = new self();
-         }
-         return self::$instance;
-     }
+    public static function getModel() {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
 
     public function selectAllFromTable($table) {
         /*
