@@ -1,9 +1,9 @@
 CREATE DATABASE IF NOT EXISTS Aidappart;
 USE Aidappart;
 
--- CREATE USER 'default_user'@'localhost' IDENTIFIED BY 'AidappartNova';
--- GRANT ALL PRIVILEGES ON Aidappart.* TO 'default_user'@'localhost';
--- FLUSH PRIVILEGES;
+CREATE USER 'default_user'@'localhost' IDENTIFIED BY 'AidappartNova';
+GRANT ALL PRIVILEGES ON Aidappart.* TO 'default_user'@'localhost';
+FLUSH PRIVILEGES;
 
 CREATE TABLE Personne (
     id INT PRIMARY KEY AUTO_INCREMENT,
