@@ -13,7 +13,7 @@
         <h1>JE ME CONNECTE</h1>
         <div class="input-group">
             <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Votre adresse mail" required>
+            <input type="email" placeholder="Votre adresse email" required>
         </div>
         <div class="input-group">
             <i class="fas fa-lock"></i>
