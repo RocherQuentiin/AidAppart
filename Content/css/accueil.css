@@ -1,0 +1,157 @@
+/* CSS pour la page Logement Étudiant */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.part1 {
+    width: 100%;
+    height: 300px;
+    background-image: url('../Images/fond.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 20px;
+    padding-left: 5%;
+}
+
+.part1 h1 {
+    color: white;
+    font-size: 3em;
+}
+
+.part1 button {
+    background-color: #a9ca59;
+    color: #23435c;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 17px 25px;
+    border-radius: 30px;
+    font-size: larger;
+    border: none;
+    cursor: pointer;
+}
+
+.part2 .row{
+    background-color: #d6e6af;
+    padding: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.part2 .element {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 calc(25% - 20px);
+    max-width: calc(25% - 20px);
+    box-sizing: border-box;
+}
+
+.part2 img {
+    width: 50px;
+    height: 50px;
+}
+
+.part2 h3 {
+    margin-left: 20px;
+    color: #23435c;
+    text-transform: uppercase;
+    font-size: large;
+}
+
+.part3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+    align-items: center;
+}
+
+.part3 h1 {
+    color: #23435c;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.part3 .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.part3 .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 200px;
+    text-align: center;
+}
+
+.part3 .box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.part3 .box h3 {
+    color: #23435c;
+    font-weight: 600;
+    font-size: medium;
+    margin: 10px 0;
+}
+
+.part3 button {
+    background-color: #a9ca59;
+    color: #23435c;
+    text-transform: uppercase;
+    font-weight: bolder;
+    padding: 17px 25px;
+    border-radius: 30px;
+    font-size: larger;
+    border: none;
+    cursor: pointer;
+    margin: 3%;
+}
+
+
+.part4 .row {
+    display: flex; /* Affiche les éléments en ligne */
+    flex-wrap: nowrap; /* Empêche les éléments de se déplacer à la ligne suivante */
+    gap: 20px; /* Espace entre les éléments */
+}
+.part4 .box {
+    display: flex;
+    flex-direction: row;
+    padding: 3%;
+    background-color: #eff6ff;
+    border-radius: 5%;
+}
+
+.part4 img{
+    width: 30px;
+    height: 30px;
+    align-self: left;
+}
+.part4 h1{
+    font-size: large;
+    display: flex;
+    flex-wrap: nowrap;
+    font-weight: bolder;
+    text-align: center;
+    margin-left: 7px;
+    color: #23435c;
+}
+.part4 p{
+    margin-top: 20%;
+    text-align: left;
+    color: #23435c;
+}
