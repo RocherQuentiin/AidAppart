@@ -1,6 +1,7 @@
+/* Styles globaux */
 body {
     font-family: Arial, sans-serif;
-    background-color: #a9ca59; /* Fond vert */
+    background: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%); /* Fond vert */
     color: #23435c; /* Police bleue */
     margin: 0;
     padding: 0;
@@ -11,55 +12,58 @@ body {
     align-items: center;
 }
 
+/* Contenu centré */
 .centre {
-    padding: 5%;
-    border-radius: 2%;
-    box-shadow: 0 2% 4% rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 30%;
     text-align: center;
-    z-index: 0; /* Assure que le centre ne chevauche pas les bandeaux */
 }
 
+/* Titre */
 h1 {
-    margin-bottom: 5%;
+    text-align: center;
     color: #23435c; /* Texte bleu */
 }
 
+/* Groupes de champs */
 .input-group {
-    margin-bottom: 5%;
+    margin-bottom: 20px; /* Espacement entre les champs */
     position: relative;
 }
 
+/* Champs de saisie */
 .input-group input {
-    width: 100%;
-    padding: 2%;
-    padding-left: 10%;
+    text-align: left;
+    width: 80%;
+    padding: 12px 40px; /* Plus d'espace intérieur */
     border: none; /* Suppression des contours */
-    border-radius: 1rem; /* Coins arrondis */
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Ombre douce */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
     font-size: 1rem;
     outline: none; /* Suppression du contour bleu au focus */
 }
 
+/* Icône dans les champs */
 .input-group i {
     position: absolute;
     top: 50%;
-    left: 3%;
+    left: 4%;
     transform: translateY(-50%);
     color: #aaa;
 }
 
+/* Icône de l'œil à droite */
 .eye-icon {
     position: absolute;
     top: 50%;
-    right: 3%;
+    right: -90%; /* Positionnée à droite */
     transform: translateY(-50%);
     cursor: pointer;
+    color: #aaa;
 }
 
+/* Lien centré */
 .link {
-    margin-top: 2%;
+    text-align: center;
+    margin-top: 10px;
     display: block;
     font-size: 0.9rem;
     color: #23435c; /* Lien en bleu */
@@ -70,15 +74,18 @@ h1 {
     text-decoration: underline;
 }
 
+/* Bouton */
 .btn {
-    background-color: darkgreen;
-    color: #23435c;
-    padding: 2%;
+    background-color: #8ca74a; /* Couleur verte */
+    color: #23435c; /* Couleur bleu pour le texte */
+    font-weight: bold; /* Texte en gras */
+    padding: 15px; /* Plus d'espace intérieur */
     border: none;
-    border-radius: 1%;
+    border-radius: 10px; /* Coins arrondis */
     cursor: pointer;
     width: 100%;
     font-size: 1rem;
+    margin-top: 20px; /* Espacement supérieur pour le bouton */
 }
 
 .btn:hover {
