@@ -10,7 +10,7 @@ class Model {
         * Connexion à la base de données avec les informations de connexion définies dans config.php
         */
 
-        $this->db = new PDO('mysql:host=localhost;dbname=Aidappart', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;dbname=aidappart', 'root', '');
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->db->query("SET NAMES 'utf8'");
         /*
@@ -36,7 +36,7 @@ class Model {
         * @return array - Tableau contenant toutes les entrées de la table
         */
         $stmt = $this->db->query("SELECT * FROM " . $table);
-        return $stmt->fetchAll(db::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function deleteById($table, $id) {
@@ -68,6 +68,7 @@ class Model {
             * @return bool - Retourne true en cas de succès, false en cas d'échec
             */
             try {
+                $hashedMdp = password_hash($mdp, PASSWORD_DEFAULT);
                 $sql = "INSERT INTO Personne (nom, prénom, email, actif, telephone, mdp) VALUES (:nom, :prenom, :email, :actif, :telephone, :mdp)";
                 $stmt = $this->db->prepare($sql);
                 return $stmt->execute([
@@ -76,7 +77,7 @@ class Model {
                     'email' => $email,
                     'actif' => $actif,
                     'telephone' => $telephone,
-                    'mdp' => $mdp
+                    'mdp' => $hashedMdp
                 ]);
             } catch (PDOException $e) {
                 echo "Erreur db : " . $e->getMessage();
