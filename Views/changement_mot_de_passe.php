@@ -22,7 +22,7 @@
             <i class="eye-icon fas fa-eye" onclick="togglePassword('confirm-password')"></i>
         </div>
         <button class="btn">Sauvegarder</button>
-        <a href="connexion.html" class="link">Retour à la connexion</a>
+        <a href="connexion.php" class="link">Retour à la connexion</a>
     </div>
 
     <script>
