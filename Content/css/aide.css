@@ -1,61 +1,156 @@
+/* Style général */
 body {
-    font-family: inter, sans-serif;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background :  linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
-}
-
-header {
+    background-color: #dfe8c7;
+    color: #23435C; /* Couleur globale pour tout le texte */
+  }
+  
+  header {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background :  #ffffff ;
-}
-
-.logo {
-    font-size: 1.5rem;
+  }
+  
+  header .logo {
+    font-size: 24px;
     font-weight: bold;
-    color: #23435C;
-}
-
-nav a {
-    margin: 0 10px;
+  }
+  
+  header nav a {
+    color: white;
     text-decoration: none;
-    color: #333;
+    margin-left: 15px;
+  }
+  
+  header nav a.active {
+    text-decoration: underline;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  /* Applique à tous les textes à l'intérieur du formulaire */
+#eligibility-form label, 
+#eligibility-form button {
+  font-weight: bold; /* Texte en gras */
+  color: #23435C; /* Couleur bleue */
 }
 
-.eligibility {
-    padding: 20px;
-    text-align: center;
+/* Applique spécifiquement au texte des boutons */
+#eligibility-form .options button {
+  font-weight: bold; /* Texte en gras */
+  color: #23435C; /* Couleur bleue */
+}
+
+/* Les titres des colonnes */
+h3 {
+  font-weight: bold; /* Texte en gras */
+  color: #23435C; /* Couleur bleue */
 }
 
 .eligibility h1 {
-    margin-bottom: 20px;
-}
-
-.form-group {
+    text-align: center; /* Centre le texte horizontalement */
+    color: #23435C; /* Couleur bleue */
+    font-weight: bold; /* Texte en gras */
+  }
+  
+  
+  /* Formulaire */
+  form {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-}
-
-.options button {
-    margin: 5px;
-    padding: 10px 15px;
-    background-color: #fff;
-    border: 1px solid #d4e8d4;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.submit-btn {
-    background-color:  linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
-    color: #fff;
-    padding: 10px 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .form-group {
+    flex: 1; /* Chaque groupe prend un espace égal */
+    min-width: 180px; /* Largeur minimale pour s'adapter */
+    text-align: left;
+  }
+   
+  .form-group label {
+    display: block;
+    text-align: center; /* Centre le texte horizontalement */
+    font-size: 18px; /* Augmente légèrement la taille du texte */
+    font-weight: bold; /* Met en gras pour les rendre plus visibles */
+    margin-bottom: 10px; /* Ajoute un espace entre le titre et les options */
+    color: #23435C; /* Assure que la couleur correspond au reste du design */
+  }
+  
+      
+  
+  .options {
+    display: flex;
+    flex-direction: column; /* Liste les boutons verticalement */
+    gap: 10px;
+  }
+  
+  .options button {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 2px solid white; /* Contour blanc */
+    background-color: transparent; /* Fond transparent */
+    color: #23435C; /* Couleur du texte */
+    border-radius: 12px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .options button:hover {
+    background-color: white; /* Fond blanc au survol */
+    color: #23435C; /* Texte bleu */
+  }
+  
+  
+  .submit-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
+  }
+  
+  .submit-btn:hover {
+    background-color: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .footer-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  
+  footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  footer ul li {
+    margin-bottom: 5px;
+  }
+  
