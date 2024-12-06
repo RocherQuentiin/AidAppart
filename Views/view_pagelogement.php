@@ -1,23 +1,34 @@
-<?php
-require_once '../../Models/Model.php';
-
-$model = new Model();
-$logements = $model->selectAllFromTable('Logement');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/pagelogement.css"/>
-
+    <link rel="stylesheet" href="Content/css/pagelogement.css">
+    <link rel="stylesheet" href="Content/css/index.css">
     <title>Liste des Logements</title>
 </head>
 <body>
+    <div class="search-selection">
+        <h1>Rechercher un Logement</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Type de logement">
+            <input type="text" placeholder="Surface">
+            <input type="text" placeholder="Loyer max">
+            <button>Rechercher</button>
+        </div>
+    </div>
+    <div class="filters">
+        <h2>Filtres</h2>
+        <ul>
+            <li><input type="checkbox"> Meublé</li>
+            <li><input type="checkbox"> WiFi</li>
+            <li><input type="checkbox"> Accessible PMR</li>
+            <li><input type="checkbox"> Parking</li>
+        </ul>
+    </div>
     <h1>Liste des Logements</h1>
+    <div class="listings">
     <?php foreach ($logements as $logement): ?>
-        <div>
+        <div class="listing">
             <h2>Logement ID: <?php echo $logement['id']; ?></h2>
             <p>Type: <?php echo $logement['type']; ?></p>
             <p>Surface: <?php echo $logement['surface']; ?> m²</p>
@@ -35,5 +46,6 @@ $logements = $model->selectAllFromTable('Logement');
         </div>
         <hr>
     <?php endforeach; ?>
+    </div>
 </body>
 </html>
