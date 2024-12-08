@@ -26,22 +26,21 @@
             <li><input type="checkbox"> Parking</li>
         </ul>
     </div>
-    <h1>Liste des Logements</h1>
     <div class="listings">
     <?php foreach ($logements as $logement): ?>
         <div class="listing">
+            <img src="/AidAppart/Views/Images/logement.png" alt="Image du logement">
             <p>Type: <?php echo $logement['type']; ?></p>
-            <p>Surface: <?php echo $logement['surface']; ?> m²</p>
             <p>Propriétaire ID: <?php echo $logement['proprietaire']; ?></p>
             <p>Loyer: <?php echo $logement['loyer']; ?> €</p>
             <p>Charges: <?php echo $logement['charges']; ?> €</p>
             <p>Date de création: <?php echo $logement['creer_a']; ?></p>
             <p>Adresse ID: <?php echo $logement['adresse']; ?></p>
-            <p>Meublé: <?php echo $logement['est_meuble'] ? 'Oui' : 'Non'; ?></p>
-            <p>WiFi: <?php echo $logement['a_WIFI'] ? 'Oui' : 'Non'; ?></p>
-            <p>Accessible PMR: <?php echo $logement['est_accessible_PMR'] ? 'Oui' : 'Non'; ?></p>
+            <p>Meublé: <input type="checkbox" disabled <?php echo $logement['est_meuble'] ? 'checked' : ''; ?>></p>
+            <p>WiFi: <input type="checkbox" disabled <?php echo $logement['a_WIFI'] ? 'checked' : ''; ?>></p>
+            <p>Accessible PMR: <input type="checkbox" disabled <?php echo $logement['est_accessible_PMR'] ? 'checked' : ''; ?>></p>
             <p>Nombre de pièces: <?php echo $logement['nb_pieces']; ?></p>
-            <p>Parking: <?php echo $logement['a_parking'] ? 'Oui' : 'Non'; ?></p>
+            <p>Parking: <input type="checkbox" disabled <?php echo $logement['a_parking'] ? 'checked' : ''; ?>></p>
             <p>Description: <?php echo $logement['description']; ?></p>
         </div>
         <hr>
