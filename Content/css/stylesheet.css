@@ -85,22 +85,22 @@ body {
     .navbar-toggle {
         display: block;
     }
-.navbar-menu {
-display:none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%; /* S'affiche juste en dessous de la navbar */
-    left: 0;
-    width: 100%;
-    background-color: #f9f9f9; /* Fond du menu déroulant */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Léger effet d'ombre */
-    padding: 10px 0;
-    border-radius: 5px;
-}
+    .navbar-menu {
+        display:none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* S'affiche juste en dessous de la navbar */
+        left: 0;
+        width: 100%;
+        background-color: #f9f9f9; /* Fond du menu déroulant */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Léger effet d'ombre */
+        padding: 10px 0;
+        border-radius: 5px;
+    }
 
-.navbar-menu.active {
-    display: flex; /* Affiche le menu lorsqu'il est actif */
-}
+    .navbar-menu.active {
+        display: flex; /* Affiche le menu lorsqu'il est actif */
+    }
 
 
     .navbar-links {
@@ -116,96 +116,3 @@ display:none;
         justify-content: start;
     }
 }
-
-/*
-
-.navbar{
-    .navbar-nav {
-        width: 50%;
-        justify-content: space-between;
-    }
-    ul {
-        list-style: none;
-        text-decoration: none;
-    }
-    .globe{
-        width: 50px;
-        height: 50px;
-    }
-
-   li a{
-    }
-
-    img{
-        width: 300px;
-        height: 100px;
-    }
-}
-
-
-
-
-.footer{
-    margin-top: 5%;
-    background-color: #1e3b52;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0;
-
-    .logement{
-        padding-left: 70px;
-    }
-    .logement, .etudiant, .aPropos{
-        padding-top: 60px;
-        padding-bottom: 40px;
-        padding-left: 5%;
-        list-style: none;
-
-        li{
-            padding-bottom: 3%;
-        }
-
-        .titre{
-            text-decoration: none;
-            font-size: x-large;
-            font-weight: 600;
-            display: flex;
-            margin-bottom: 5%;
-        }
-    }
-
-    .partDroite{
-        display: flex;
-        margin-bottom: 0;
-        justify-content: space-between;
-        .logo{
-            background-color: rgba(255, 255, 255, 0.3);
-            margin-top: 0;
-            padding: 30px;
-            padding-top: 40px;
-        }
-
-        li{
-            list-style: none;
-            padding-bottom: 3%;
-        }
-        img{
-            width: 185px;
-            height: 55px;
-            margin-bottom: 5%;
-        }
-        .reseaux{
-            justify-content: space-between;
-
-            img{
-                width: 30px;
-                height: 30px;
-                margin-bottom: 5%;
-            }
-        }
-    }
-}*/
-
-
-
