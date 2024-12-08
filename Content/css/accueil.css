@@ -12,11 +12,11 @@ body {
     color: white;
     padding: 100px 20px;
     padding-left: 5%;
-}
 
-.part1 h1 {
-    color: white;
-    font-size: 3em;
+    h1 {
+        color: white;
+        font-size: 3em;
+    }
 }
 
 .part1 button {
