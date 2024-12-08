@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -5,7 +6,7 @@ body {
 
 .part1 {
     height: 400px;
-    background-image: url('fond.jpg');
+    background-image: url('../Images/Accueil/fond.jpg');
     background-size: cover;
     background-position: center;
     color: white;
