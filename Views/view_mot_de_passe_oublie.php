@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mot de Passe Oublié</title>
-
-    <link href="../Content/css/Connexion.css" rel="stylesheet">
-    <link href="../Content/css/index.css" rel="stylesheet">
-
+    <link href="../Content/css/connexion.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Content/css/index.css"/>
 </head>
 <body>
-
     <div class="centre">
         <h1>Mot de passe oublié ?</h1>
+
+        <!-- Groupe de champs email -->
         <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Votre adresse mail" required>
+            <img src="../Content/images/email.png" alt="Email Icon" class="icon">
+            <input type="email" placeholder="Votre adresse email" required>
         </div>
-        <button class="btn">Réinitialiser mon mot de passe</button>
+
+        <!-- Bouton pour réinitialiser le mot de passe -->
+        <button class="button">Réinitialiser mon mot de passe</button>
+
+        <!-- Lien retour à la connexion -->
         <a href="view_connexion.php" class="link">Retour à la connexion</a>
     </div>
-
 </body>
 </html>
