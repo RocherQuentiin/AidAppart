@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mot de Passe Oublié</title>
-    <link href="../content/css/Connexion.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="../Content/css/Connexion.css" rel="stylesheet">
+    <link href="../Content/css/index.css" rel="stylesheet">
+
 </head>
 <body>
 

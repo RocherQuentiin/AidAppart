@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changement de Mot de Passe</title>
-    <link href="../content/css/Connexion.css" rel="stylesheet">
+
+
+    <link href="../Content/css/index.css" rel="stylesheet">
+    <link href="../Content/css/Connexion.css" rel="stylesheet">
+
 </head>
 <body>
 

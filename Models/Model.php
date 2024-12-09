@@ -1,5 +1,5 @@
 <?php
-//require_once 'config.php';
+require_once 'Utils/config.php';
 
 class Model {
     private $db;
@@ -9,8 +9,9 @@ class Model {
         /*
         * Connexion à la base de données avec les informations de connexion définies dans config.php
         */
+        global $servername, $username, $password, $dbname;
 
-        $this->db = new PDO('mysql:host=localhost;dbname=Aidappart', 'root', '');
+        $this->db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->db->query("SET NAMES 'utf8'");
         /*
