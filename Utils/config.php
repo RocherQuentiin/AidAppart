@@ -1,6 +1,7 @@
 <?php
 // Configuration de la base de données
 $environment = (getenv('SERVER_NAME') == 'localhost') ? 'local' : 'production';
+var_dump($environment);
 if ( $environment == "local") {
     $servername = 'localhost';
     $username = 'default_user';
