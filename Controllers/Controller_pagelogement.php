@@ -8,8 +8,7 @@ class Controller_pagelogement extends Controller {
         $model = Model::getModel();
         $logements = $model->selectAllFromTable('Logement');
         $types = $model->selectDistinctFromTable('Logement', 'type');
-        var_dump($types);
-        $nbPieces = $model->selectDistinctFromTable('Logement', 'nb_pieces');
+        $nbPieces = $model->selectDistinctFromTable('Logement', 'nb_pieces', 'nb_pieces');
         $minMaxSurface = $model->selectMinMaxFromTable('Logement', 'surface');
         $minMaxLoyer = $model->selectMinMaxFromTable('Logement', 'loyer');
         $minMaxCharges = $model->selectMinMaxFromTable('Logement', 'charges');

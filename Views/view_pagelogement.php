@@ -22,11 +22,9 @@
     <h3>Nombre de pièces</h3>
     <select>
         <option value="">Tous</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5+</option>
+        <?php foreach ($nbPieces as $piece): ?>
+            <option value="<?php echo $piece['nb_pieces']; ?>"><?php echo $piece['nb_pieces']; ?></option>
+        <?php endforeach; ?>
     </select>
     <h3>Type de logement</h3>
     <select>

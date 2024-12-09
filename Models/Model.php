@@ -170,14 +170,18 @@ class Model {
             }
         }
 
-        public function selectDistinctFromTable($table, $column) {
+        public function selectDistinctFromTable($table, $column, $order_by=null) {
             /*
             * Sélectionner des valeurs distinctes d'une colonne spécifiée dans une table spécifiée
             * @param string $table - Nom de la table
             * @param string $column - Nom de la colonne
             * @return array - Tableau contenant les valeurs distinctes de la colonne
             */
-            $stmt = $this->db->query("SELECT DISTINCT $column FROM $table");
+            if ($order_by) {
+                $stmt = $this->db->query("SELECT DISTINCT $column FROM $table ORDER BY $order_by");
+            } else {
+                $stmt = $this->db->query("SELECT DISTINCT $column FROM $table");
+            }
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
