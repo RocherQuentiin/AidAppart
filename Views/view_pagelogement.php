@@ -18,13 +18,7 @@
     </div>
     <div class="row">
     <div class="filters">
-        <h2>Filtres</h2>
-        <ul>
-            <li><input type="checkbox"> Meublé</li>
-            <li><input type="checkbox"> WiFi</li>
-            <li><input type="checkbox"> Accessible PMR</li>
-            <li><input type="checkbox"> Parking</li>
-        </ul>
+    <h2>Filtres</h2>
     <h3>Nombre de pièces</h3>
     <select>
         <option value="">Tous</option>
@@ -50,6 +44,12 @@
     <h3>Charges</h3>
     <input type="number" placeholder="Min (€)">
     <input type="number" placeholder="Max (€)">
+    <ul>
+        <li><input type="checkbox"> Meublé</li>
+        <li><input type="checkbox"> WiFi</li>
+        <li><input type="checkbox"> Accessible PMR</li>
+        <li><input type="checkbox"> Parking</li>
+    </ul>
     </div>
     <div class="listings">
     <?php foreach ($logements as $logement): ?>
@@ -68,7 +68,6 @@
             <p>Parking: <input type="checkbox" disabled <?php echo $logement['a_parking'] ? 'checked' : ''; ?>></p>
             <p>Description: <?php echo $logement['description']; ?></p>
         </div>
-        <hr>
     <?php endforeach; ?>
     </div>
     </div>
