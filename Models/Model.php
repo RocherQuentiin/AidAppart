@@ -169,5 +169,31 @@ class Model {
                 return false;
             }
         }
+
+        public function selectDistinctFromTable($table, $column, $order_by=null) {
+            /*
+            * Sélectionner des valeurs distinctes d'une colonne spécifiée dans une table spécifiée
+            * @param string $table - Nom de la table
+            * @param string $column - Nom de la colonne
+            * @return array - Tableau contenant les valeurs distinctes de la colonne
+            */
+            if ($order_by) {
+                $stmt = $this->db->query("SELECT DISTINCT $column FROM $table ORDER BY $order_by");
+            } else {
+                $stmt = $this->db->query("SELECT DISTINCT $column FROM $table");
+            }
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function selectMinMaxFromTable($table, $column) {
+            /*
+            * Sélectionner les valeurs minimales et maximales d'une colonne spécifiée dans une table spécifiée
+            * @param string $table - Nom de la table
+            * @param string $column - Nom de la colonne
+            * @return array - Tableau contenant les valeurs minimales et maximales de la colonne
+            */
+            $stmt = $this->db->query("SELECT MIN($column) as min, MAX($column) as max FROM $table");
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
 }
 ?>

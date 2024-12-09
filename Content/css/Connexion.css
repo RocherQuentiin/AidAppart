@@ -1,0 +1,97 @@
+/* Styles globaux */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%); /* Fond vert */
+    color: #23435c; /* Police bleue */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Pour gérer le positionnement des éléments */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenu centré */
+.centre {
+    text-align: center;
+}
+
+/* Titre */
+h1 {
+    text-align: center;
+    color: #23435c; /* Texte bleu */
+}
+
+/* Groupes de champs */
+.input-group {
+    margin-bottom: 20px; /* Espacement entre les champs */
+    position: relative;
+}
+
+/* Champs de saisie */
+.input-group input {
+    text-align: left;
+    width: 100%;
+    padding: 12px 40px; /* Plus d'espace intérieur */
+    border: none; /* Suppression des contours */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    font-size: 1rem;
+    outline: none; /* Suppression du contour bleu au focus */
+}
+
+/* Icône dans les champs */
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 4%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+/* Icône de l'œil à droite */
+.eye-icon {
+    position: absolute;
+    font-size: 1%;
+    top: 50%;
+    right: -20%; /* Position correcte à droite */
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    font-size: 16px; /* Taille de l'icône ajustée */
+    z-index: 1; /* S'assurer qu'elle reste visible au-dessus du champ */
+    pointer-events: auto; /* S'assurer qu'elle reste cliquable */
+}
+
+/* Lien centré */
+.link {
+    text-align: center;
+    margin-top: 10px;
+    display: block;
+    font-size: 0.9rem;
+    color: #23435c; /* Lien en bleu */
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Bouton */
+.btn {
+    background-color: #A9CA59; /* Couleur verte */
+    color: #23435c; /* Couleur bleu pour le texte */
+    font-weight: bold; /* Texte en gras */
+    padding: 15px; /* Plus d'espace intérieur */
+    border: none;
+    border-radius: 10px; /* Coins arrondis */
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 20px; /* Espacement supérieur pour le bouton */
+}
+
+.btn:hover {
+    background-color: #8ca74a; /* Vert plus foncé */
+}
