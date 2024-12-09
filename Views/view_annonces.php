@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apartment Listing</title>
-  <link rel="stylesheet" href="../Content/css/css_annonce.css">
+  <link rel="stylesheet" href="Content/css/css_annonce.css">
 </head>
 <body>
 
@@ -13,10 +13,10 @@
   <div class="container">
     <!-- Image Gallery -->
     <div class="image-gallery">
-      <img src="../Content/Images/room.jpg" alt="Room view">
-      <img src="../Content/Images/pool.jpg" alt="Pool view">
-      <img src="../Content/Images/lounge.jpg" alt="Lounge area">
-      <img src="../Content/Images/rooftop.jpg" alt="Rooftop area">
+      <img src="Content/Images/room.jpg" alt="Room view">
+      <img src="Content/Images/pool.jpg" alt="Pool view">
+      <img src="Content/Images/lounge.jpg" alt="Lounge area">
+      <img src="Content/Images/rooftop.jpg" alt="Rooftop area">
       <button id="show-more" class="show-more">+ Show More</button>
     </div>
 
