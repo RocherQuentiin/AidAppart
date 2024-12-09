@@ -45,8 +45,8 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     gap: 10px;
-    max-width: 1600px;
-    margin: 10px auto;
+    max-width: 100%;
+    margin: 10px;
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
     box-sizing: border-box;
   }
@@ -100,16 +100,14 @@ body {
   
   
   .show-more {
-    grid-column: span 2;
+    grid-column: 1 / span 2;
     padding: 12px;
     background-color: #a9ca59;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    text-align: center;
     font-size: 16px;
-    margin-top: 10px;
     transition: background-color 0.3s ease;
   }
   
@@ -127,10 +125,10 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    width: 400px; /* Set a max-width for the details box */
+    width: 380px; /* Set a max-width for the details box */
     margin-left: 20px; /* Adds spacing between gallery and details */
     box-sizing: border-box;
-    height: 700px;
+    height: 500px;
   }
   
   .details h2 {
@@ -157,15 +155,53 @@ body {
     background-color: #91b54b;
   }
   
+  .details-info {
+    position: absolute;
+    top: 80%;
+    left: 70%;
+    flex: 1; /* Take 1 part of the available space */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    width: 380px; /* Set a max-width for the details box */
+    margin-left: 20px; /* Adds spacing between gallery and details */
+    box-sizing: border-box;
+    height: 500px;
+  }
+  
+  .details-info h2 {
+    color: #a9ca59;
+  }
+  
+  .details-info p {
+    margin: 10px 0;
+  }
+  
+  .details-info button {
+    background-color: #a9ca59;
+    color: #23435c;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .details-info button:hover {
+    background-color: #91b54b;
+  }
   
   /* Section Styling */
   .description, .contact, .location {
-    margin: 20px auto;
+    margin: 20px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
+    max-width: 63%;
   }
   
   .description h2, .contact h2, .location h2 {
