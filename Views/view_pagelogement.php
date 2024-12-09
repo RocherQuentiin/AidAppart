@@ -54,10 +54,10 @@
         <div class="listing">
             <img src="/AidAppart/Content/Images/logement.png" alt="Image du logement">
             <p>Type: <?php echo $logement['type']; ?></p>
-            <p>Propriétaire ID: <?php echo $logement['proprietaire']; ?></p>
+            <!-- <p>Propriétaire ID: <?php echo $logement['proprietaire']; ?></p> -->
             <p>Loyer: <?php echo $logement['loyer']; ?> €</p>
             <p>Charges: <?php echo $logement['charges']; ?> €</p>
-            <p>Date de création: <?php echo $logement['creer_a']; ?></p>
+            <!-- <p>Date de création: <?php echo $logement['creer_a']; ?></p> -->
             <p>Adresse ID: <?php echo $logement['adresse']; ?></p>
             <p>Meublé: <input type="checkbox" disabled <?php echo $logement['est_meuble'] ? 'checked' : ''; ?>></p>
             <p>WiFi: <input type="checkbox" disabled <?php echo $logement['a_WIFI'] ? 'checked' : ''; ?>></p>
