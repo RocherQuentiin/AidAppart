@@ -4,24 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apartment Listing</title>
-  <link rel="stylesheet" href="css_annonce.css">
+  <link rel="stylesheet" href="Content/css/css_annonce.css">
 </head>
 <body>
-  <!-- Header Section -->
-  <header>
-    <h1>Appart'City Toulouse Aéroport Cornebarrieu</h1>
-    <button class="menu-button">Menu</button>
-  </header>
 
 
   <!-- Main Container -->
   <div class="container">
     <!-- Image Gallery -->
     <div class="image-gallery">
-      <img src="../Content/Images/room.jpg" alt="Room view">
-      <img src="../Content/Images/pool.jpg" alt="Pool view">
-      <img src="../Content/Images/lounge.jpg" alt="Lounge area">
-      <img src="../Content/Images/rooftop.jpg" alt="Rooftop area">
+      <img src="Content/Images/room.jpg" alt="Room view">
+      <img src="Content/Images/pool.jpg" alt="Pool view">
+      <img src="Content/Images/lounge.jpg" alt="Lounge area">
+      <img src="Content/Images/rooftop.jpg" alt="Rooftop area">
       <button id="show-more" class="show-more">+ Show More</button>
     </div>
 
@@ -120,9 +115,5 @@
     <button class="carousel-arrow right" id="next">&gt;</button>
     <button class="close-modal" id="close-modal">Close</button>
   </div>
-
-  <footer>
-    <p>&copy; AIdAppart</p>
-  </footer>
 
   

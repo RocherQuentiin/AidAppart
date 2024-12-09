@@ -59,11 +59,47 @@ CREATE TABLE Maison (
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
+CREATE TABLE Maison (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_logement INTEGER NOT NULL,
+    nb_etages INTEGER NOT NULL,
+    a_jardin BOOLEAN NOT NULL,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+);
+
+CREATE TABLE Maison (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_logement INTEGER NOT NULL,
+    nb_etages INTEGER NOT NULL,
+    a_jardin BOOLEAN NOT NULL,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+);
+
+CREATE TABLE Appartement (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_logement INTEGER NOT NULL,
+    etage INTEGER NOT NULL,
+    a_ascenseur BOOLEAN NOT NULL,
+    a_balcon BOOLEAN NOT NULL,
+    a_concierge BOOLEAN NOT NULL,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+);
+
+CREATE TABLE Appartement (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_logement INTEGER NOT NULL,
+    etage INTEGER NOT NULL,
+    a_ascenseur BOOLEAN NOT NULL,
+    a_balcon BOOLEAN NOT NULL,
+    a_concierge BOOLEAN NOT NULL,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+);
+
 CREATE TABLE Appartement (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_logement INT NOT NULL,
     etage INT NOT NULL,
-    a_ascenseur BOOLEAN NOT NULL, 
+    a_ascenseur BOOLEAN NOT NULL,
     a_balcon BOOLEAN NOT NULL,
     a_concierge BOOLEAN NOT NULL,
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
