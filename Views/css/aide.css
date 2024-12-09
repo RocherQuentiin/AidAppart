@@ -7,29 +7,6 @@ body {
     color: #23435C; /* Couleur globale pour tout le texte */
   }
   
-  header {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  header .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  header nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 15px;
-  }
-  
-  header nav a.active {
-    text-decoration: underline;
-  }
   
   main {
     padding: 20px;
@@ -127,32 +104,4 @@ h3 {
     background-color: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);;
   }
   
-  /* Footer */
-  footer {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .footer-columns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-  }
-  
-  footer h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  footer ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  footer ul li {
-    margin-bottom: 5px;
-  }
-  
+ 
