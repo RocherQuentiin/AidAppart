@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 20px;
+    margin-left: calc(15%);
 }
 
 .listing{
@@ -26,7 +27,8 @@
 }
 
 .filters{
-    max-width: calc(10% - 20px);
+    max-width: calc(25%);
+    position: fixed;
     margin-top: 20px;
     background-color: lightblue;
     padding: 10px;
@@ -42,5 +44,11 @@ input{
 }
 
 .listing input{
-    margin: 0;
+    width: 5% !important;
+    height: 5% !important;
+}
+
+.filters input{
+    width: 10% !important;
+    height: 10% !important;
 }
