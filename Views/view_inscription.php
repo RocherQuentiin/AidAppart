@@ -1,22 +1,73 @@
-<form id="signup-form" action="?controller=inscription&action=sinscrire" method="post">
-    <h2>S'inscrire</h2>
-    <label for="prenom">Prénom :</label>
-    <input type="text" id="prenom" name="prenom" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
+    <link rel="stylesheet" type="text/css" href="Content/css/index.css"/>
+</head>
+<body>
+<h1>
+    Inscription
+</h1>
+<form action="/pageinscription.html" method="post">
+    <div class="dropdown">
+        <button class="dropdown-btn">Statue <span class="arrow">▼</span></button>
+        <ul class="dropdown-menu">
+            <li>Option 1</li>
+            <li>Option 2</li>
+            <li>Option 3</li>
+        </ul>
+    </div>
+    <br><br>
+    <input type="text" id="nom" name="nom" placeholder="Nom">
+    <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+    <br><br>
+    <div class="form-section">
+        <label for="pays-code"></label>
+        <div class="phone-input-container" id="phone-input-container">
+            <select id="pays-code" name="pays-code" class="country-code-select">
+                <option value="+33">+33</option>
+                <option value="+1">+1</option>
+                <option value="+44">+44</option>
+                <option value="+49">+49</option>
+                <option value="+91">+91</option>
+                <option value="+81">+81</option>
+                <option value="+86">+86</option>
+                <option value="+61">+61</option>
+                <option value="+34">+34</option>
+            </select>
+            <div class="separator"></div><!-- Séparateur -->
+            <input type="tel" id="phone" name="phone" class="phone-number-input" placeholder="Numéro de téléphone">
+        </div>
+    </div>
+    <br>
+    <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant">
+    <br><br>
+    <i class = "fas fa-envelope"></i>
+    <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe">
+    <i class="eye-icon fas fa-eye" onclick="togglePassword()"></i>
+    <br><br>
+    <input type="password" id="mdp_confirmation" name="mdp_confirmation" placeholder="Confirmation">
+    <br><br>
 
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" required>
+    <label>
+        <div class="Donnee">
+            <input type="checkbox" id="accorddonnees" name="accorddonnees" required><p>En m'inscrivant, j'accepte que AidAppart recueille et traite mes données personnelles</p>
+        </div>
+    </label>
+    <label>
+        <br>
+        <div class="Condition">
+            <input type="checkbox" id="accordCGU" name="accordCDU" required><p>J’accepte sans réserve les Conditions Générales d’Utilisation des services AidAppart</p>
+        </div>
+    </label>
+    <br>
+    <div class="button-container">
+        <button type="submit">Je m'inscris</button>
+    </div>
 
-    <label for="actif">Actif :</label>
-    <input type="text" id="actif" name="actif" required>
-
-    <label for="telephone">Téléphone :</label>
-    <input type="text" id="telephone" name="telephone" required>
-
-    <label for="email">E-mail :</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="mdp">Mot de passe :</label>
-    <input type="password" id="mdp" name="mdp" required>
-
-    <button type="submit">S'inscrire</button>
 </form>
+</body>
+</html>
