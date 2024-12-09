@@ -1,15 +1,12 @@
-/* CSS pour la page Logement Étudiant */
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    line-height: 1.6;
 }
 
 .part1 {
-    width: 100%;
-    height: 300px;
-    background-image: url('../Images/fond.jpg');
+    height: 400px;
+    background-image: url('../Images/Accueil/fond.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -66,39 +63,43 @@ body {
 .part3 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     padding: 30px;
-    text-align: center;
-    align-items: center;
+    width: 100%;
 }
 
 .part3 h1 {
+    text-align: center;
     color: #23435c;
     font-size: 2.2rem;
     font-weight: 600;
+    padding: 1%;
 }
 
 .part3 .row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    justify-content: space-between;
+    padding: 0% 10%;
     gap: 20px;
 }
 
 .part3 .box {
     display: flex;
+    flex: 1 1 calc(23% - 10px);
     flex-direction: column;
     align-items: center;
-    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 200px;
     text-align: center;
+    max-width: 261px;
+    height: 163px;
+    border-radius: 20px;
 }
 
 .part3 .box img {
     width: 100%;
-    height: auto;
+    height: 130px;
     object-fit: cover;
 }
 
@@ -113,45 +114,86 @@ body {
     background-color: #a9ca59;
     color: #23435c;
     text-transform: uppercase;
-    font-weight: bolder;
+    font-weight: 900;
     padding: 17px 25px;
     border-radius: 30px;
     font-size: larger;
     border: none;
     cursor: pointer;
     margin: 3%;
+    align-self: center;
+    padding: 1% 2%;
 }
 
 
-.part4 .row {
-    display: flex; /* Affiche les éléments en ligne */
-    flex-wrap: nowrap; /* Empêche les éléments de se déplacer à la ligne suivante */
-    gap: 20px; /* Espace entre les éléments */
-}
-.part4 .box {
-    display: flex;
-    flex-direction: row;
-    padding: 3%;
-    background-color: #eff6ff;
-    border-radius: 5%;
+.part4{
+    .box-container {
+        display: flex;
+        flex-wrap: wrap; /* Permet le retour à la ligne sur petits écrans */
+        gap: 10px; /* Réduit l'espacement entre les boxes */
+        justify-content: center; /* Centre les boxes ensemble */
+        justify-content: space-around;
+    }
+
+    /* Style des boxes */
+    .box {
+        flex: 1 1 calc(23% - 10px); /* Largeur ajustée à 23% pour réduire l'espace entre */
+        border: 1px solid #ddd;
+        padding: 15px;
+        background-color: #DFEFFC;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        text-align: left;
+        padding: 1%;
+        max-width: 285px;
+        height: 356px;
+    }
+
+    /* Contenu des headers */
+    .box-header {
+        display: flex;
+        align-items: flex-start; /* Aligne l'image avec le texte */
+        gap: 8px; /* Réduit l'espace entre l'image et le texte */
+        padding-left: 15px;
+        padding-top: 2%;
+        width: 100%;
+    }
+
+    /* Image */
+    .box img {
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    /* Titre */
+    .box h3 {
+        margin: 0;
+        font-size: 16px; /* Légèrement réduit pour optimiser l'espace */
+        color: #23435c;
+        text-align: center;
+        align-self:center;
+        letter-spacing: 0.05em;
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    /* Texte descriptif */
+    .box p {
+        padding: 15% 5%;
+        color: #23435c;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+    }
 }
 
-.part4 img{
-    width: 30px;
-    height: 30px;
-    align-self: left;
-}
-.part4 h1{
-    font-size: large;
-    display: flex;
-    flex-wrap: nowrap;
-    font-weight: bolder;
-    text-align: center;
-    margin-left: 7px;
-    color: #23435c;
-}
-.part4 p{
-    margin-top: 20%;
-    text-align: left;
-    color: #23435c;
+
+@media (max-width: 768px) {
+    .part2 .row {
+        display: flex;
+        flex-direction: column;
+    }
 }

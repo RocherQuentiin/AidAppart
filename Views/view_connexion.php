@@ -20,7 +20,7 @@
             <input type="password" placeholder="Votre mot de passe" id="password" required>
             <i class="eye-icon fas fa-eye" onclick="togglePassword()"></i>
         </div>
-        <a href="view_inscription.php" class="link">Première connexion ? Je crée un compte AidAppart</a>
+        <a href="?controller=inscription&action=inscriptionController" class="link">Première connexion ? Je crée un compte AidAppart</a>
         <a href="view_mot_de_passe_oublie.php" class="link">Mot de passe oublié ?</a>
         
         <button class="btn">Me Connecter</button>
