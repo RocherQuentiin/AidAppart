@@ -1,13 +1,3 @@
-:root { 
-    --primary-color: #0066cc;
-    --secondary-color: #005bb5;
-    --blue: #23435C;
-    --green: #A9CA59;
-    --bleu-claire: #DFEFFC;
-    --degrader-vert: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
-    --degrader-gris: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 23.5%, rgba(2, 0, 0, 0) 100%);
-}
-
 body {
     font-family: 'Arial', sans-serif;
     background: var(--degrader-vert);
@@ -25,16 +15,6 @@ body {
     text-align: center;
     width: 90%;
     max-width: 480px;
-}
-
-/* Titre */
-h1 {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.7rem; /* Taille relative */
-    letter-spacing: 0.05em;
-    margin-bottom: 10%; /* Ajout d'espace en dessous */
 }
 
 /* Groupes de champs */
@@ -106,27 +86,6 @@ h1 {
 
 .link:hover {
     text-decoration: underline;
-}
-
-/* Bouton */
-button {
-    margin-top: 3%;
-    box-sizing: border-box;
-    padding: 4% 5%;
-    background: var(--green);
-    color: var(--blue);
-    border: 0.3em solid #ABC959;
-    border-radius: 2em;
-    font-style: normal;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    background-color: var(--blue);
-    color: var(--green);
 }
 
 /* Responsiveness pour petits écrans */
