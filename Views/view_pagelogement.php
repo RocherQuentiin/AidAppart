@@ -25,11 +25,36 @@
             <li><input type="checkbox"> Accessible PMR</li>
             <li><input type="checkbox"> Parking</li>
         </ul>
+    <h3>Nombre de pièces</h3>
+    <select>
+        <option value="">Tous</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5+</option>
+    </select>
+    <h3>Type de logement</h3>
+    <select>
+        <option value="">Tous</option>
+        <option value="studio">Studio</option>
+        <option value="appartement">Appartement</option>
+        <option value="maison">Maison</option>
+    </select>
+    <h3>Surface</h3>
+    <input type="number" placeholder="Min (m²)">
+    <input type="number" placeholder="Max (m²)">
+    <h3>Loyer</h3>
+    <input type="number" placeholder="Min (€)">
+    <input type="number" placeholder="Max (€)">
+    <h3>Charges</h3>
+    <input type="number" placeholder="Min (€)">
+    <input type="number" placeholder="Max (€)">
     </div>
     <div class="listings">
     <?php foreach ($logements as $logement): ?>
         <div class="listing">
-            <img src="/AidAppart/Views/Images/logement.png" alt="Image du logement">
+            <img src="/AidAppart/Content/Images/logement.png" alt="Image du logement">
             <p>Type: <?php echo $logement['type']; ?></p>
             <p>Propriétaire ID: <?php echo $logement['proprietaire']; ?></p>
             <p>Loyer: <?php echo $logement['loyer']; ?> €</p>
