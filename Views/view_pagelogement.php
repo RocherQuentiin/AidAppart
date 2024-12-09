@@ -31,19 +31,19 @@
     <h3>Type de logement</h3>
     <select>
         <option value="">Tous</option>
-        <option value="studio">Studio</option>
-        <option value="appartement">Appartement</option>
-        <option value="maison">Maison</option>
+        <?php foreach ($types as $type): ?>
+            <option value="<?php echo $type; ?>"><?php echo $type["type"]; ?></option>
+        <?php endforeach; ?>
     </select>
     <h3>Surface</h3>
-    <input type="number" placeholder="Min (m²)">
-    <input type="number" placeholder="Max (m²)">
+    <input type="number" placeholder="<?php echo $minMaxSurface['min'] . ' ( m²)'; ?> " min="<?php echo $minMaxSurface['min']; ?>">
+    <input type="number" placeholder="<?php echo $minMaxSurface['max'] . ' ( m²)'; ?> " max="<?php echo $minMaxSurface['max']; ?>">
     <h3>Loyer</h3>
-    <input type="number" placeholder="Min (€)">
-    <input type="number" placeholder="Max (€)">
+    <input type="number" placeholder="<?php echo $minMaxLoyer['min'] . ' (€)'; ?>" max="<?php echo $minMaxLoyer['max']; ?>">
+    <input type="number" placeholder="<?php echo $minMaxLoyer['max'] . ' (€)'; ?>" min="<?php echo $minMaxLoyer['max']; ?>" >
     <h3>Charges</h3>
-    <input type="number" placeholder="Min (€)">
-    <input type="number" placeholder="Max (€)">
+    <input type="number" placeholder="<?php echo $minMaxCharges['min'] . ' (€)'; ?>" max="<?php echo $minMaxCharges['max']; ?>">
+    <input type="number" placeholder="<?php echo $minMaxCharges['max'] . ' (€)'; ?>" min="<?php echo $minMaxCharges['max']; ?>" >
     <ul>
         <li><input type="checkbox"> Meublé</li>
         <li><input type="checkbox"> WiFi</li>
