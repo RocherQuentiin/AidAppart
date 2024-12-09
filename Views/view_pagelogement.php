@@ -52,7 +52,7 @@
     <div class="listings">
     <?php foreach ($logements as $logement): ?>
         <div class="listing">
-            <img src="/AidAppart/Content/Images/logement.png" alt="Image du logement">
+            <img src="../Content/Images/logement.png" alt="Image du logement">
             <p>Type: <?php echo $logement['type']; ?></p>
             <!-- <p>Propriétaire ID: <?php echo $logement['proprietaire']; ?></p> -->
             <p>Loyer: <?php echo $logement['loyer']; ?> €</p>
