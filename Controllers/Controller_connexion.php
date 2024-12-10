@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 require_once __DIR__ . '/model_connexion.php'; // Inclut le modèle
 
 // Initialisation d'un message pour informer l'utilisateur
@@ -29,3 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+=======
+
+class Controller_connexion extends Controller {
+    public function action_default() {
+        $this->action_connexion();
+    }
+
+    public function action_connexion() {
+        $data = ["erreur" => false];
+        $this->render("connexion", $data);
+    }
+}
+
+?>
+>>>>>>> remotes/origin/pre_main
