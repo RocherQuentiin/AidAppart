@@ -195,5 +195,38 @@ class Model {
             $stmt = $this->db->query("SELECT MIN($column) as min, MAX($column) as max FROM $table");
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
+
+        public function selectFieldsFromTable($table, $fields, $conditions = []) {
+            /*
+            * Sélectionner des champs spécifiques d'une table spécifiée avec des conditions optionnelles
+            * @param string $table - Nom de la table
+            * @param array $fields - Tableau des champs à sélectionner
+            * @param array $conditions - Tableau des conditions (facultatif)
+            * @return array - Tableau contenant les résultats de la sélection
+            */
+            $fieldsList = implode(", ", $fields);
+            echo $fieldsList;
+            $sql = "SELECT $fieldsList FROM $table";
+
+            if (!empty($conditions)) {
+                $conditionsList = [];
+                foreach ($conditions as $key => $value) {
+                    $conditionsList[] = "$key = :$key";
+                }
+                $sql .= " WHERE " . implode(" AND ", $conditionsList);
+            }
+
+            try {
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute($conditions);
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                echo "Erreur db : " . $e->getMessage();
+                return false;
+            } catch (Exception $e) {
+                echo "Erreur : " . $e->getMessage();
+                return false;
+            }
+        }
 }
 ?>
