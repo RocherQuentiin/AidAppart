@@ -1,76 +1,86 @@
-/* Styles globaux */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%); /* Fond vert */
-    color: #23435c; /* Police bleue */
+    font-family: 'Arial', sans-serif;
+    background: var(--degrader-vert);
+    color: var(--blue);
     margin: 0;
     padding: 0;
-    height: 100vh; /* Pour gérer le positionnement des éléments */
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-/* Contenu centré */
+/* Conteneur principal */
 .centre {
     text-align: center;
-}
-
-/* Titre */
-h1 {
-    text-align: center;
-    color: #23435c; /* Texte bleu */
+    width: 90%;
+    max-width: 480px;
 }
 
 /* Groupes de champs */
 .input-group {
-    margin-bottom: 20px; /* Espacement entre les champs */
+    margin-top: 2%;
     position: relative;
+    margin-bottom: 4%; /* Espacement relatif */
 }
 
 /* Champs de saisie */
 .input-group input {
-    text-align: left;
     width: 100%;
-    padding: 12px 40px; /* Plus d'espace intérieur */
-    border: none; /* Suppression des contours */
-    border-radius: 10px; /* Coins arrondis */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    padding: 4% 15%; /* Espace intérieur en % */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0.5em 0.8em rgba(0, 0, 0, 0.1);
     font-size: 1rem;
-    outline: none; /* Suppression du contour bleu au focus */
+    outline: none;
 }
 
-/* Icône dans les champs */
-.input-group i {
+/* Icône du cadenas */
+.input-group .icon-lock {
+    width: 8%; /* Taille en fonction de la largeur du conteneur */
+    height: auto;
     position: absolute;
     top: 50%;
-    left: 4%;
+    left: 3%; /* Espacement intérieur en % */
     transform: translateY(-50%);
-    color: #aaa;
+    pointer-events: none;
 }
 
-/* Icône de l'œil à droite */
-.eye-icon {
+/* Texte des placeholders */
+.input-group input::placeholder {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Icônes dans les champs */
+.input-group .icon {
     position: absolute;
-    font-size: 1%;
     top: 50%;
-    right: -20%; /* Position correcte à droite */
+    left: 3%;
     transform: translateY(-50%);
+    width: 6%; /* Taille relative */
+    height: auto;
+    pointer-events: none;
+}
+
+/* Icône de l'œil */
+.input-group .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translateY(-50%);
+    width: 6%;
+    height: auto;
     cursor: pointer;
-    color: #aaa;
-    font-size: 16px; /* Taille de l'icône ajustée */
-    z-index: 1; /* S'assurer qu'elle reste visible au-dessus du champ */
-    pointer-events: auto; /* S'assurer qu'elle reste cliquable */
+    z-index: 1;
 }
 
-/* Lien centré */
+/* Lien */
 .link {
-    text-align: center;
-    margin-top: 10px;
     display: block;
+    margin-top: 2%;
     font-size: 0.9rem;
-    color: #23435c; /* Lien en bleu */
+    color: var(--blue);
     text-decoration: none;
 }
 
@@ -78,20 +88,19 @@ h1 {
     text-decoration: underline;
 }
 
-/* Bouton */
-.btn {
-    background-color: #A9CA59; /* Couleur verte */
-    color: #23435c; /* Couleur bleu pour le texte */
-    font-weight: bold; /* Texte en gras */
-    padding: 15px; /* Plus d'espace intérieur */
-    border: none;
-    border-radius: 10px; /* Coins arrondis */
-    cursor: pointer;
-    width: 100%;
-    font-size: 1rem;
-    margin-top: 20px; /* Espacement supérieur pour le bouton */
-}
-
-.btn:hover {
-    background-color: #8ca74a; /* Vert plus foncé */
+/* Responsiveness pour petits écrans */
+@media (max-width: 768px) {
+    .centre {
+        width: 95%;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    input-group input {
+        font-size: 0.9rem;
+    }
+    button {
+        font-size: 1rem;
+        padding: 3% 4%;
+    }
 }
