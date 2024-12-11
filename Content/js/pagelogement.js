@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     searchButton.addEventListener('click', handleSearch);
     filters.forEach(filter => filter.addEventListener('change', handleFilterChange));
+    handleFilterChange(); // lance une recherche par défaut
 });
 
 function handleSearch() {
@@ -26,7 +27,7 @@ function handleSearch() {
     })
     .then(response => response.json())
     .then(data => {
-        // Update the listings dynamically
+        // met a jour la liste dynamiquement
         updateListings(data);
     })
     .catch(error => {
@@ -49,11 +50,26 @@ function handleFilterChange() {
         accessiblePMR: document.getElementById('accessible-pmr').checked,
         parking: document.getElementById('parking').checked
     };
+    fetch('http://localhost/Aidappart/?controller=pagelogement&action=search', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(filters)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // met a jour la liste dynamiquement
+        updateListings(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 function updateListings(data) {
     const listingsContainer = document.querySelector('.listings');
-    listingsContainer.innerHTML = ''; // Clear existing listings
+    listingsContainer.innerHTML = ''; // vide la liste actuelle
     if (data.length === 0) {
         alert('Aucun logement trouvé');    
         return;
