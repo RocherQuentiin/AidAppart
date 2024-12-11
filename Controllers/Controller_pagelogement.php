@@ -23,5 +23,13 @@ class Controller_pagelogement extends Controller {
         ];
         $this->render("pagelogement", $data);
     }
+
+    public function action_search() {
+        $model = Model::getModel();
+        $criteria = json_decode(file_get_contents('php://input'), true);
+
+        $logements = $model->searchLogements($criteria);
+        echo json_encode($logements);
+    }
 }
 ?>
