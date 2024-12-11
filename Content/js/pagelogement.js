@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.querySelector('.search-bar button');
     const filters = document.querySelectorAll('.filters input, .filters select');
@@ -12,8 +11,27 @@ function handleSearch() {
     const surface = document.querySelector('.search-bar input[placeholder="Surface"]').value;
     const loyerMax = document.querySelector('.search-bar input[placeholder="Loyer max"]').value;
     
-    // Implement search logic here
-    console.log(`Searching for: Type=${type}, Surface=${surface}, Loyer Max=${loyerMax}`);
+    const searchParams = {
+        type: type,
+        surface: surface,
+        loyerMax: loyerMax
+    };
+
+    fetch('http://localhost/Aidappart/?controller=pagelogement&action=search', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(searchParams)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update the listings dynamically
+        updateListings(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 function handleFilterChange() {
@@ -31,6 +49,28 @@ function handleFilterChange() {
         accessiblePMR: document.getElementById('accessible-pmr').checked,
         parking: document.getElementById('parking').checked
     };
-    console.log('Filters:', filters);
-    console.log("stringify", JSON.stringify(filters));
+}
+
+function updateListings(data) {
+    const listingsContainer = document.querySelector('.listings');
+    listingsContainer.innerHTML = ''; // Clear existing listings
+
+    data.forEach(logement => {
+        const listing = document.createElement('div');
+        listing.classList.add('listing');
+        listing.innerHTML = `
+            <img src="Content/Images/logement.png" alt="Image du logement">
+            <p>Type: ${logement.type}</p>
+            <p>Loyer: ${logement.loyer} €</p>
+            <p>Charges: ${logement.charges} €</p>
+            <p>Adresse ID: ${logement.adresse}</p>
+            <p>Meublé: <input type="checkbox" disabled ${logement.est_meuble ? 'checked' : ''}></p>
+            <p>WiFi: <input type="checkbox" disabled ${logement.a_WIFI ? 'checked' : ''}></p>
+            <p>Accessible PMR: <input type="checkbox" disabled ${logement.est_accessible_PMR ? 'checked' : ''}></p>
+            <p>Nombre de pièces: ${logement.nb_pieces}</p>
+            <p>Parking: <input type="checkbox" disabled ${logement.a_parking ? 'checked' : ''}></p>
+            <p>Description: ${logement.description}</p>
+        `;
+        listingsContainer.appendChild(listing);
+    });
 }

@@ -228,5 +228,34 @@ class Model {
                 return false;
             }
         }
+
+        public function searchLogements($criteria) {
+            // Implémentez la logique de recherche ici en utilisant les critères
+            // Exemple:
+            $query = "SELECT * FROM Logement WHERE 1=1";
+            if (!empty($criteria['type'])) {
+                $query .= " AND type = :type";
+            }
+            if (!empty($criteria['surface'])) {
+                $query .= " AND surface >= :surface";
+            }
+            if (!empty($criteria['loyerMax'])) {
+                $query .= " AND loyer <= :loyerMax";
+            }
+            // Ajoutez d'autres critères selon vos besoins
+        
+            $stmt = $this->db->prepare($query);
+            if (!empty($criteria['type'])) {
+                $stmt->bindValue(':type', $criteria['type']);
+            }
+            if (!empty($criteria['surface'])) {
+                $stmt->bindValue(':surface', $criteria['surface']);
+            }
+            if (!empty($criteria['loyerMax'])) {
+                $stmt->bindValue(':loyerMax', $criteria['loyerMax']);
+            }
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 }
 ?>
