@@ -242,6 +242,9 @@ class Model {
             if (!empty($criteria['loyerMax'])) {
                 $query .= " AND loyer <= :loyerMax";
             }
+            if (!empty($criteria['loyerMin'])) {
+                $query .= " AND loyer >= :loyerMin";
+            }
             // Ajoutez d'autres critères selon vos besoins
         
             $stmt = $this->db->prepare($query);
@@ -253,6 +256,9 @@ class Model {
             }
             if (!empty($criteria['loyerMax'])) {
                 $stmt->bindValue(':loyerMax', $criteria['loyerMax']);
+            }
+            if (!empty($criteria['loyerMin'])) {
+                $stmt->bindValue(':loyerMin', $criteria['loyerMin']);
             }
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
