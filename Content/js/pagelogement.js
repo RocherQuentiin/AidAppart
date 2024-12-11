@@ -18,7 +18,7 @@ function handleSearch() {
         loyerMax: loyerMax
     };
 
-    fetch('http://localhost/Aidappart/?controller=pagelogement&action=search', {
+    fetch('?controller=pagelogement&action=search', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ function handleFilterChange() {
         accessiblePMR: document.getElementById('accessible-pmr').checked,
         parking: document.getElementById('parking').checked
     };
-    fetch('http://localhost/Aidappart/?controller=pagelogement&action=search', {
+    fetch('?controller=pagelogement&action=search', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
