@@ -78,7 +78,7 @@ function updateListings(data) {
         const listing = document.createElement('div');
         listing.classList.add('listing');
         listing.innerHTML = `
-            <img src="Content/Images/logement.png" alt="Image du logement">
+            <img src="Content/Images/Proprio_${logement.proprietaire}/Logement_${logement.id}/image_vitrine.png" alt="Image du logement">
             <p>Type: ${logement.type}</p>
             <p>Loyer: ${logement.loyer} €</p>
             <p>Charges: ${logement.charges} €</p>
@@ -91,5 +91,5 @@ function updateListings(data) {
             <p>Description: ${logement.description}</p>
         `;
         listingsContainer.appendChild(listing);
-    });
+    });  
 }
