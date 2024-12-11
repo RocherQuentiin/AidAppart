@@ -6,8 +6,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 20px;
-    margin-left: calc(15%);
+    margin-top: 2%;
+    margin-left: 2%;
 }
 
 .listing{
