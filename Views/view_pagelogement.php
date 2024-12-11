@@ -10,7 +10,7 @@
 <body>
     <?php include 'Layout/view_header.html'; ?>
     <div class="search-selection">
-        <h1>Rechercher un Logement</h1>
+        <h1>Trouver un logement étudiant à $Ville </h1>
         <div class="search-bar">
             <input type="text" placeholder="Type de logement">
             <input type="text" placeholder="Surface">
