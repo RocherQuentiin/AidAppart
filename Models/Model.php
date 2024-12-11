@@ -230,8 +230,6 @@ class Model {
         }
 
         public function searchLogements($criteria) {
-            // Implémentez la logique de recherche ici en utilisant les critères
-            // Exemple:
             $query = "SELECT * FROM Logement WHERE 1=1";
             if (!empty($criteria['type'])) {
                 $query .= " AND type = :type";
@@ -245,7 +243,9 @@ class Model {
             if (!empty($criteria['loyerMin'])) {
                 $query .= " AND loyer >= :loyerMin";
             }
-            // Ajoutez d'autres critères selon vos besoins
+            if (!empty($criteria['nbPieces'])) {
+                $query .= " AND nb_pieces = :nbPieces";
+            }
         
             $stmt = $this->db->prepare($query);
             if (!empty($criteria['type'])) {
@@ -259,6 +259,9 @@ class Model {
             }
             if (!empty($criteria['loyerMin'])) {
                 $stmt->bindValue(':loyerMin', $criteria['loyerMin']);
+            }
+            if (!empty($criteria['nbPieces'])) {
+                $stmt->bindValue(':nbPieces', $criteria['nbPieces']);
             }
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
