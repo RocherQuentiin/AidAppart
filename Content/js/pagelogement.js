@@ -54,7 +54,10 @@ function handleFilterChange() {
 function updateListings(data) {
     const listingsContainer = document.querySelector('.listings');
     listingsContainer.innerHTML = ''; // Clear existing listings
-
+    if (data.length === 0) {
+        alert('Aucun logement trouvé');    
+        return;
+    }
     data.forEach(logement => {
         const listing = document.createElement('div');
         listing.classList.add('listing');
