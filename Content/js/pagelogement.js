@@ -83,11 +83,11 @@ function updateListings(data) {
             <p>Loyer: ${logement.loyer} €</p>
             <p>Charges: ${logement.charges} €</p>
             <p>Adresse ID: ${logement.adresse}</p>
-            <p>Meublé: <input type="checkbox" disabled ${logement.est_meuble ? 'checked' : ''}></p>
-            <p>WiFi: <input type="checkbox" disabled ${logement.a_WIFI ? 'checked' : ''}></p>
-            <p>Accessible PMR: <input type="checkbox" disabled ${logement.est_accessible_PMR ? 'checked' : ''}></p>
+             ${logement.est_meuble ? '<p>Meublé</p>' : ''}
+            ${logement.a_WIFI ? '<p>WiFi</p> ' : ''}
+            ${logement.est_accessible_PMR ? '<p>Accessible PMR</p>' : ''}
             <p>Nombre de pièces: ${logement.nb_pieces}</p>
-            <p>Parking: <input type="checkbox" disabled ${logement.a_parking ? 'checked' : ''}></p>
+            ${logement.a_parking ? '<p>Parking</p>' : ''}
             <p>Description: ${logement.description}</p>
         `;
         listingsContainer.appendChild(listing);
