@@ -45,30 +45,13 @@
             <input type="number" id="charges-min" placeholder="<?php echo $minMaxCharges['min'] . ' (€)'; ?>" max="<?php echo $minMaxCharges['max']; ?>">
             <input type="number" id="charges-max" placeholder="<?php echo $minMaxCharges['max'] . ' (€)'; ?>" min="<?php echo $minMaxCharges['max']; ?>">
             <ul>
-                <li><input type="checkbox" id="meuble"> Meublé</li>
-                <li><input type="checkbox" id="wifi"> WiFi</li>
+                <li><input type="checkbox" id="meuble" checked> Meublé</li>
+                <li><input type="checkbox" id="wifi" checked> WiFi</li>
                 <li><input type="checkbox" id="accessible-pmr"> Accessible PMR</li>
-                <li><input type="checkbox" id="parking"> Parking</li>
+                <li><input type="checkbox" id="parking" checked> Parking</li>
             </ul>
         </div>
         <div class="listings">
-            <?php foreach ($logements as $logement): ?>
-                <div class="listing">
-                    <img src="Content/Images/logement.png" alt="Image du logement">
-                    <p>Type: <?php echo $logement['type']; ?></p>
-                    <!-- <p>Propriétaire ID: <?php echo $logement['proprietaire']; ?></p> -->
-                    <p>Loyer: <?php echo $logement['loyer']; ?> €</p>
-                    <p>Charges: <?php echo $logement['charges']; ?> €</p>
-                    <!-- <p>Date de création: <?php echo $logement['creer_a']; ?></p> -->
-                    <p>Adresse ID: <?php echo $logement['adresse']; ?></p>
-                    <p>Meublé: <input type="checkbox" disabled <?php echo $logement['est_meuble'] ? 'checked' : ''; ?>></p>
-                    <p>WiFi: <input type="checkbox" disabled <?php echo $logement['a_WIFI'] ? 'checked' : ''; ?>></p>
-                    <p>Accessible PMR: <input type="checkbox" disabled <?php echo $logement['est_accessible_PMR'] ? 'checked' : ''; ?>></p>
-                    <p>Nombre de pièces: <?php echo $logement['nb_pieces']; ?></p>
-                    <p>Parking: <input type="checkbox" disabled <?php echo $logement['a_parking'] ? 'checked' : ''; ?>></p>
-                    <p>Description: <?php echo $logement['description']; ?></p>
-                </div>
-            <?php endforeach; ?>
         </div>
     </div>
 
