@@ -246,6 +246,12 @@ class Model {
             if (!empty($criteria['nbPieces'])) {
                 $query .= " AND nb_pieces = :nbPieces";
             }
+            if (!empty($criteria['surfaceMin'])) {
+                $query .= " AND surface >= :surfaceMin";
+            }
+            if (!empty($criteria['surfaceMax'])) {
+                $query .= " AND surface <= :surfaceMax";
+            }
         
             $stmt = $this->db->prepare($query);
             if (!empty($criteria['type'])) {
@@ -262,6 +268,12 @@ class Model {
             }
             if (!empty($criteria['nbPieces'])) {
                 $stmt->bindValue(':nbPieces', $criteria['nbPieces']);
+            }
+            if (!empty($criteria['surfaceMin'])) {
+                $stmt->bindValue(':surfaceMin', $criteria['surfaceMin']);
+            }
+            if (!empty($criteria['surfaceMax'])) {
+                $stmt->bindValue(':surfaceMax', $criteria['surfaceMax']);
             }
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
