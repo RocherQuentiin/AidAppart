@@ -195,5 +195,112 @@ class Model {
             $stmt = $this->db->query("SELECT MIN($column) as min, MAX($column) as max FROM $table");
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
+
+        public function selectFieldsFromTable($table, $fields, $conditions = []) {
+            /*
+            * Sélectionner des champs spécifiques d'une table spécifiée avec des conditions optionnelles
+            * @param string $table - Nom de la table
+            * @param array $fields - Tableau des champs à sélectionner
+            * @param array $conditions - Tableau des conditions (facultatif)
+            * @return array - Tableau contenant les résultats de la sélection
+            */
+            $fieldsList = implode(", ", $fields);
+            echo $fieldsList;
+            $sql = "SELECT $fieldsList FROM $table";
+
+            if (!empty($conditions)) {
+                $conditionsList = [];
+                foreach ($conditions as $key => $value) {
+                    $conditionsList[] = "$key = :$key";
+                }
+                $sql .= " WHERE " . implode(" AND ", $conditionsList);
+            }
+
+            try {
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute($conditions);
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                echo "Erreur db : " . $e->getMessage();
+                return false;
+            } catch (Exception $e) {
+                echo "Erreur : " . $e->getMessage();
+                return false;
+            }
+        }
+
+        public function searchLogements($criteria) {
+            $query = "SELECT * FROM Logement WHERE 1=1"; // 1=1 pour éviter les erreurs de syntaxe si aucune condition n'est ajoutée
+            if (!empty($criteria['type'])) {
+                $query .= " AND type = :type";
+            }
+            if (!empty($criteria['surface'])) {
+                $query .= " AND surface >= :surface";
+            }
+            if (!empty($criteria['loyerMax'])) {
+                $query .= " AND loyer <= :loyerMax";
+            }
+            if (!empty($criteria['loyerMin'])) {
+                $query .= " AND loyer >= :loyerMin";
+            }
+            if (!empty($criteria['nbPieces'])) {
+                $query .= " AND nb_pieces = :nbPieces";
+            }
+            if (!empty($criteria['surfaceMin'])) {
+                $query .= " AND surface >= :surfaceMin";
+            }
+            if (!empty($criteria['surfaceMax'])) {
+                $query .= " AND surface <= :surfaceMax";
+            }
+            if (!empty($criteria['wifi'])) {
+                $query .= " AND a_wifi = :wifi";
+            }
+            if (!empty($criteria['meuble'])) {
+                $query .= " AND est_meuble = :meuble";
+            }
+            if (!empty($criteria['accessiblePMR'])) {
+                $query .= " AND est_accessible_PMR  = :accessiblePMR";
+            }
+            if (!empty($criteria['parking'])) {
+                $query .= " AND a_parking = :parking";
+            }
+        
+            $stmt = $this->db->prepare($query);
+            if (!empty($criteria['type'])) {
+                $stmt->bindValue(':type', $criteria['type']);
+            }
+            if (!empty($criteria['surface'])) {
+                $stmt->bindValue(':surface', $criteria['surface']);
+            }
+            if (!empty($criteria['loyerMax'])) {
+                $stmt->bindValue(':loyerMax', $criteria['loyerMax']);
+            }
+            if (!empty($criteria['loyerMin'])) {
+                $stmt->bindValue(':loyerMin', $criteria['loyerMin']);
+            }
+            if (!empty($criteria['nbPieces'])) {
+                $stmt->bindValue(':nbPieces', $criteria['nbPieces']);
+            }
+            if (!empty($criteria['surfaceMin'])) {
+                $stmt->bindValue(':surfaceMin', $criteria['surfaceMin']);
+            }
+            if (!empty($criteria['surfaceMax'])) {
+                $stmt->bindValue(':surfaceMax', $criteria['surfaceMax']);
+            }
+            if (!empty($criteria['wifi'])) {
+                $stmt->bindValue(':wifi', $criteria['wifi'] == '1' ? 1 : 0);
+            }
+            if (!empty($criteria['meuble'])) {
+                $stmt->bindValue(':meuble', $criteria['meuble'] == '1' ? 1 : 0);
+            }
+            if (!empty($criteria['accessiblePMR'])) {
+                $stmt->bindValue(':accessiblePMR', $criteria['accessiblePMR'] == '1' ? 1 : 0);
+            }
+            if (!empty($criteria['parking'])) {
+                $stmt->bindValue(':parking', $criteria['parking'] == '1' ? 1 : 0);
+            }
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 }
 ?>
