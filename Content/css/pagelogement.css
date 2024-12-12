@@ -72,3 +72,22 @@ ul > li{
     color: white;
     background-color: var(--blue);
 }
+@media (max-width: 768px) {
+    .listings {
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .listing {
+        width: 100%;
+    }
+
+    .filters {
+        max-width: 100%;
+        margin-top: 10px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}
