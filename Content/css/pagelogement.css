@@ -91,3 +91,24 @@ ul > li{
         flex-direction: column;
     }
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .listings {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-right: 1%;   
+        margin-left: 1%;
+    }
+
+    .listing {
+        width: 45%;
+    }
+
+    .filters {
+        max-width: 45%;
+        margin-top: 15px;
+    }
+
+    .row {
+        flex-direction: row;
+    }
+}
