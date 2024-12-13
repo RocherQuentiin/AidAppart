@@ -14,7 +14,7 @@
 <form action="/pageinscription.html" method="post">
     <div class="dropdown">
         <button class="dropdown-btn" id="dropdownBtn">
-            Status <span class="arrow">▼</span>
+            Status <span class="arrow"></span>
         </button>
         <ul class="dropdown-menu" id="dropdownMenu">
             <li data-value="Option 1">Option 1</li>
