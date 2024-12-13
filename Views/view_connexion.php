@@ -11,41 +11,34 @@
  
     <div class="centre">
         <h1>JE ME CONNECTE</h1>
-
-        <!-- Groupe de champs email -->
         <div class="input-group">
-            <img src="../Content/images/email.png" alt="Email Icon" class="icon">
+            <i class="fas fa-envelope"></i>
             <input type="email" placeholder="Votre adresse email" required>
         </div>
-
-        <!-- Groupe de champs mot de passe -->
         <div class="input-group">
-            <img src="../Content/images/cadenas.png" alt="Lock Icon" class="icon">
+            <i class="fas fa-lock"></i>
             <input type="password" placeholder="Votre mot de passe" id="password" required>
-            <img src="../Content/images/eye_icon.png" alt="Eye Icon" class="eye-icon" id="eye-toggle" onclick="togglePassword()">
+            <i class="eye-icon fas fa-eye" onclick="togglePassword()"></i>
         </div>
-
-        <!-- Liens -->
-        <a href="view_inscription.php" class="link">Première connexion ? Je crée un compte AidAppart</a>
+        <a href="?controller=inscription&action=inscriptionController" class="link">Première connexion ? Je crée un compte AidAppart</a>
         <a href="view_mot_de_passe_oublie.php" class="link">Mot de passe oublié ?</a>
-
-        <!-- Bouton -->
-        <button class="button">Me Connecter</button>
+        
+        <button class="btn">Me Connecter</button>
     </div>
 
-    <!-- Script pour basculer la visibilité du mot de passe -->
     <script>
         function togglePassword() {
             const passwordInput = document.getElementById('password');
-            const eyeIcon = document.getElementById('eye-toggle');
+            const eyeIcon = document.querySelector('.eye-icon');
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                eyeIcon.src = "../Content/images/eye_closed_icon.png"; // Change to eye closed
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
             } else {
                 passwordInput.type = 'password';
-                eyeIcon.src = "../Content/images/eye_icon.png"; // Change back to eye open
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
             }
         }
     </script>
 </body>
-</html>
