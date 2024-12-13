@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-=======
 
 class Controller_connexion extends Controller {
     public function action_default() {
