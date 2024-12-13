@@ -1,4 +1,4 @@
-/* Centrage du contenu du body */
+
 
 body {
     font-family: sans-serif;
@@ -6,7 +6,6 @@ body {
     height: 100vh; /* Pour gérer le positionnement des éléments */
     display: flex;
     flex-direction: column;
-
     align-items: center;
 }
 h1 {
@@ -36,6 +35,14 @@ form {
     height: 20px;
     border: none;
 
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.5px;
+    /* identical to box height, or 0% */
+    letter-spacing: 0.05em;
+    color: rgba(0, 0, 0, 0.50);
+
     display: flex; /* Utilisation de Flexbox pour aligner le contenu */
     justify-content: space-between; /* Espace le contenu horizontalement entre les bords */
     align-items: center; /* Centre verticalement le contenu du bouton */
@@ -59,7 +66,7 @@ form {
     position: absolute; /* Positionne le menu de manière absolue par rapport au conteneur parent */
     background-color: #fff; /* Couleur de fond du menu déroulant */
     border-radius: 10px; /* Arrondit les coins du menu */
-    box-shadow: 0px 4px 4px 0px #00000040; /* Ombre douce autour du menu */
+    box-shadow: 0 4px 4px 0 #00000040; /* Ombre douce autour du menu */
     margin-top: 1px; /* Décalage vers le bas pour séparer le menu du bouton */
     padding: 10px 0; /* Espacement vertical dans le menu */
     width: 100%; /* Prend la largeur du conteneur parent (le bouton) */
@@ -83,25 +90,39 @@ form {
 }
 
 
+
+
+
+
 /* Telephone */
+
 /* Conteneur principal */
 .phone-input-container {
     display: flex;
     align-items: center;
 
     background-color: #fff; /* Fond blanc */
-    border: none;
+    border: 2px solid transparent; /* Bordure fine, transparente par défaut */
     border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px #00000040;
+    box-shadow: 0 4px 4px 0 #00000040;
+
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.5px;
+    /* identical to box height, or 0% */
+    letter-spacing: 0.05em;
+    color: rgba(0, 0, 0, 0.50);
 
     width: 400px;
-    transition: border-color 0.2s; /* Animation au focus */
+    transition: border-color 0.2s; /* Ajoute une transition pour un effet fluide */
 }
 
-/* Effet au focus */
+/* Effet au focus avec une apparence de bordure bleue */
 .phone-input-container:focus-within {
-    border-color: #0078d4; /* Bordure bleu clair */
+    border-color: #55a9e9; /* Change la couleur de la bordure */
 }
+
 
 /* Menu déroulant (select) */
 .country-code-select {
@@ -110,7 +131,7 @@ form {
     background-color: transparent;
     font-size: 12px; /* Ajuste la taille du texte à l'intérieur */
     width: 50px;
-    padding: 0px 0px 0px 15px;
+    padding: 0 0 0 15px;
     appearance: none;
     text-align: center;
     box-shadow: none !important; /* Supprime toute ombre */
@@ -122,22 +143,37 @@ form {
     content: '';
     display: inline-block; /* Assure que la ligne soit visible */
     width: 2px; /* Largeur de la ligne */
-    height: 44px; /* Hauteur de la ligne (ajustable) */
+    height: 40px; /* Hauteur de la ligne (ajustable) */
     background-color: #070606; /* Couleur de la ligne */
-    margin: 0px 6px; /* Ajoute de l'espace autour de la ligne */
+    margin: 0 6px; /* Ajoute de l'espace autour de la ligne */
 }
 
 /* Champ de saisie téléphone */
+/* Champ de saisie téléphone (normal, sans focus) */
 .phone-number-input {
     border: none;
     outline: none;
-    padding: 6px 0px;
-    font-family: Arial, sans-serif;
-    color: #000; /* Texte noir */
+    padding: 6px 0;
+    font-style: normal;
+    font-weight: normal; /* Par défaut, poids normal */
+    font-size: 14px; /* Taille de police par défaut plus petite */
+    line-height: normal;
+    color: rgba(0, 0, 0, 0.50); /* Couleur de texte par défaut */
     box-shadow: none !important; /* Supprime toute ombre */
     flex-grow: 1; /* Permet au champ de saisie de prendre l'espace restant */
-    padding-right: 75px; /* Ajoute un léger espace à gauche */
+    padding-right: 75px; /* Ajoute un léger espace à droite */
 }
+
+/* Quand l'utilisateur commence à taper (focus) */
+.phone-number-input:focus {
+    font-style: normal;
+    color: rgb(0, 0, 0); /* Reste la même couleur */
+}
+
+
+
+
+
 
 #nom,
 #prenom {
@@ -146,9 +182,8 @@ form {
     height: 20px;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
-    border: none;
     border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px #00000040;
+    box-shadow: 0 4px 4px 0 #00000040;
 }
 
 
@@ -162,7 +197,7 @@ select{
     height: 20px;
     border: none;
     border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px #00000040;
+    box-shadow: 0 4px 4px 0 #00000040;
 }
 
 .Donnee, .Condition {
@@ -171,14 +206,10 @@ select{
 }
 
 p {
-    margin: 0;
-    margin-left: -45%; /* Supprime toute marge autour du paragraphe */
-    padding: 0; /* Également supprime tout padding interne */
-    line-height: 1; /* Réduit l'espacement entre les lignes de texte */
+    margin: 0 50% 0 -33%; /* Définit les marges */
 }
 
 .button-container {
     display: flex; /* Utilisation de Flexbox si nécessaire */
-    margin-left: 25%;
-    margin-top: 20px; /* Espace au-dessus du conteneur */
+    margin-left: 15%;
 }
