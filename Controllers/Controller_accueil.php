@@ -6,7 +6,11 @@ class Controller_accueil extends Controller {
     }
 
     public function action_accueil() {
-        $data = ["erreur" => false];
+        $model = Model::getModel();
+        $logements = $model->selectAllFromTable('Logement');
+        $data = [
+                    "logements" => $logements,
+                ];
         $this->render("accueil", $data);
     }
 }

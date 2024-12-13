@@ -16,6 +16,8 @@ require_once('Layout/view_header.php');?>
     <!-- Section fonctionnalités -->
     <div class="part2">
         <div class="row">
+            <select id="type-logement" >
+                <option value="">Tous</option>
             <div class="element">
                 <img src="Content/Images/Accueil/globe.png" alt="Image 1">
                 <h3>Disponible en plusieurs langues</h3>
@@ -35,14 +37,14 @@ require_once('Layout/view_header.php');?>
         </div>
     </div>
 
-    <!-- Section types de logement -->
     <div class="part3">
         <h1>Choisis le type de logement qui te convient !</h1>
-        <div class="row">
-            <div class="box">
+                <div class="row">
                 <img src="Content/Images/Accueil/appart.jpeg" alt="Appartement">
-                <h3>Appartement</h3>
-            </div>
+                    <div class="box">
+                <? foreach ($logements as $logement): ?>
+                    <h3><?php echo $logement['type']; ?>"><?php echo $logement["type"]; ?></h3>
+                <? endforeach; ?>
             <div class="box">
                 <img src="Content/Images/Accueil/residence.jpeg" alt="Résidence">
                 <h3>Résidence</h3>
@@ -120,8 +122,7 @@ require_once('Layout/view_header.php');?>
             </div>
         </div>
     </div>
-</body>
-</html>
+
 <?php
 require_once('Layout/footer.html');
 ?>
