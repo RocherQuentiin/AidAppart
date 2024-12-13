@@ -7,16 +7,16 @@
   <link rel="stylesheet" href="Content/css/css_annonce.css">
 </head>
 <body>
-
+    <?php include 'Layout/view_header.html'; ?>
 
   <!-- Main Container -->
   <div class="container">
     <!-- Image Gallery -->
     <div class="image-gallery">
-      <img src="Content/Images/room.jpg" alt="Room view">
-      <img src="Content/Images/pool.jpg" alt="Pool view">
-      <img src="Content/Images/lounge.jpg" alt="Lounge area">
-      <img src="Content/Images/rooftop.jpg" alt="Rooftop area">
+      <img src="Content/Images/Annonce/room.jpg" alt="Room view">
+      <img src="Content/Images/Annonce/pool.jpg" alt="Pool view">
+      <img src="Content/Images/Annonce/lounge.jpg" alt="Lounge area">
+      <img src="Content/Images/Annonce/rooftop.jpg" alt="Rooftop area">
       <button id="show-more" class="show-more">+ Show More</button>
     </div>
 
@@ -115,5 +115,8 @@
     <button class="carousel-arrow right" id="next">&gt;</button>
     <button class="close-modal" id="close-modal">Close</button>
   </div>
+  <?php include 'Layout/footer.html'; ?>
+</body>
+</html>
 
   
