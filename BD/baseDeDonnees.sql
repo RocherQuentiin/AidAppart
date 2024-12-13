@@ -128,3 +128,4 @@ CREATE TABLE Garent (
 );
 
 ALTER TABLE Logement ADD CONSTRAINT fk_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id);
+ALTER TABLE Favoris_Signalement MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
