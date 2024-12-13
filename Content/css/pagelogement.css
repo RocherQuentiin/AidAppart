@@ -40,7 +40,6 @@
 }
 
 .filters input{
-    width: 50% !important;
     padding: 5px;
     margin-bottom: 10px;
 }
@@ -58,9 +57,10 @@
 
 .filters input[type="checkbox"]{
     width: 10% !important;
+    height: 10% !important;
 }
 
-ul > li{
+li{
     display: flex;
     align-items: center;
     list-style-type: none;
