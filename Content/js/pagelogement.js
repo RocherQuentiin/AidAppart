@@ -89,7 +89,40 @@ function updateListings(data) {
             <p>Nombre de pièces: ${logement.nb_pieces}</p>
             ${logement.a_parking ? '<p>Parking</p>' : ''}
             <p>Description: ${logement.description}</p>
+            <button title="signaler" class="report-button" onclick="reportLogement(${logement.id})">
+                <img src="Content/Images/report.jpg" alt="Signaler">
+            </button>
         `;
         listingsContainer.appendChild(listing);
-    });  
+    });   
+}
+
+function reportLogement(logementId) {
+    const commentaire = prompt('Veuillez entrer un commentaire pour le signalement:');
+    // TODO : verifier que l'utiisateur est connecté
+    if (commentaire) {
+        const reportData = {
+            id_logement: logementId,
+            commentaire: commentaire
+        };
+
+        fetch('?controller=pagelogement&action=report', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reportData)
+        })
+        .then(data => {
+            if (data.ok) {
+                alert('Logement signalé avec succès.');
+            } else {
+                alert('Erreur lors du signalement du logement.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Erreur lors du signalement du logement.');
+        });
+    }
 }

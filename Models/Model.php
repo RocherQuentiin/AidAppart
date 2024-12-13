@@ -302,5 +302,31 @@ class Model {
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function insertSignalement($id_personne, $id_logement, $commentaire) {
+            /*
+            * Insérer un nouveau signalement dans la table Favoris_Signalement
+            * @param int $id_personne - ID de la personne
+            * @param int $id_logement - ID du logement
+            * @param string $commentaire - Commentaire du signalement
+            * @return bool - Retourne true en cas de succès, false en cas d'échec
+            */
+            try {
+                $sql = "INSERT INTO Favoris_Signalement (id_personne, id_logement, statut, commentaire) VALUES (:id_personne, :id_logement, :statut, :commentaire)";
+                $stmt = $this->db->prepare($sql);
+                return $stmt->execute([
+                    'id_personne' => $id_personne,
+                    'id_logement' => $id_logement,
+                    'statut' => 'signalement',
+                    'commentaire' => $commentaire
+                ]);
+            } catch (PDOException $e) {
+                echo "Erreur db: " . $e->getMessage();
+                return false;
+            } catch (Exception $e) {
+                echo "Erreur : " . $e->getMessage();
+                return false;
+            }
+        }
 }
 ?>
