@@ -26,7 +26,7 @@
         </div>
 
         <!-- Liens -->
-        <a href="view_inscription.php" class="link">Première connexion ? Je crée un compte AidAppart</a>
+        <a href="Views/view_inscription.php" class="link">Première connexion ? Je crée un compte AidAppart</a>
         <a href="view_mot_de_passe_oublie.php" class="link">Mot de passe oublié ?</a>
 
         <!-- Bouton -->

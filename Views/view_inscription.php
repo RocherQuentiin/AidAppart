@@ -79,9 +79,9 @@
     <br>
     <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant">
     <br><br>
-    <i class = "fas fa-envelope"></i>
+    <i class = "envelope"></i>
     <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe">
-    <i class="eye-icon fas fa-eye" onclick="togglePassword()"></i>
+    <i class="eye-icon" onclick="togglePassword()"></i>
     <br><br>
     <input type="password" id="mdp_confirmation" name="mdp_confirmation" placeholder="Confirmation">
     <br><br>
