@@ -1,20 +1,22 @@
 .row{
     display: flex;
+    margin-top: 0%;
+    align-items: flex-start;
 }
 
 .listings{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 20px;
-    margin-left: calc(15%);
+    margin-top: 2%;
+    margin-left: 2%;
 }
 
 .listing{
     width: 30%;
     margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -30,7 +32,6 @@
 .filters{
     max-width: calc(40%);
     /* position: fixed; */
-    margin-top: 20px;
     background-color: lightblue;
     padding: 10px;
     border: 1px solid #ccc;
@@ -38,8 +39,8 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-input{
-    width: 100%;
+.filters input{
+    width: 50% !important;
     padding: 5px;
     margin-bottom: 10px;
 }
@@ -51,6 +52,7 @@ input{
 }
 
 .filters input[type="number"]{
+    max-width: 50% !important;
     width: auto !important;
 }
 
@@ -62,4 +64,69 @@ ul > li{
     display: flex;
     align-items: center;
     list-style-type: none;
+}
+
+.search-selection{
+    color: white;
+    background-color: var(--blue);
+    > h1 {
+        margin-top: 0px;
+        padding-bottom: 5%;
+        color: white;
+        text-align: center;
+    };
+}
+.search-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    > input{
+        white-space: nowrap;
+        width: 50%;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+}
+
+@media (max-width: 768px) {
+    .listings {
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .listing {
+        width: 100%;
+    }
+
+    .filters {
+        max-width: 100%;
+        margin-top: 10px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .listings {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-right: 1%;   
+        margin-left: 1%;
+    }
+
+    .listing {
+        width: 45%;
+    }
+
+    .filters {
+        max-width: 45%;
+        margin-top: 15px;
+    }
+
+    .row {
+        flex-direction: row;
+    }
 }
