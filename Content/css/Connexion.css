@@ -1,27 +1,31 @@
 body {
-    font-family: 'Arial', sans-serif;
     background: var(--degrader-vert);
     color: var(--blue);
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0; /* Supprime les marges par défaut */
+    font-family: Arial, sans-serif;
 }
 
 /* Conteneur principal */
 .centre {
-    text-align: center;
-    width: 90%;
-    max-width: 480px;
+    display: flex;
+    flex-direction: column; /* Aligne les enfants verticalement */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Largeur adaptable */
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
 }
 
 /* Groupes de champs */
 .input-group {
-    margin-top: 2%;
+    width: 33%; /* Largeur par défaut pour les grands écrans */
+    margin-top: 1.2%; /* Espacement entre les groupes */
     position: relative;
-    margin-bottom: 4%; /* Espacement relatif */
 }
 
 /* Champs de saisie */
@@ -29,7 +33,7 @@ body {
     width: 100%;
     padding: 4% 15%; /* Espace intérieur en % */
     border: none;
-    border-radius: 10px;
+
     box-shadow: 0 0.5em 0.8em rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     outline: none;
@@ -37,7 +41,7 @@ body {
 
 /* Icône du cadenas */
 .input-group .icon-lock {
-    width: 8%; /* Taille en fonction de la largeur du conteneur */
+    width: 10%; /* Taille en fonction de la largeur du conteneur */
     height: auto;
     position: absolute;
     top: 50%;
@@ -58,7 +62,7 @@ body {
     top: 50%;
     left: 3%;
     transform: translateY(-50%);
-    width: 6%; /* Taille relative */
+    width: 7%; /* Taille relative */
     height: auto;
     pointer-events: none;
 }
@@ -78,14 +82,42 @@ body {
 /* Lien */
 .link {
     display: block;
-    margin-top: 2%;
-    font-size: 0.9rem;
+    margin-top: 1%;
     color: var(--blue);
     text-decoration: none;
+}
+.button {
+    margin-top: 1%;
 }
 
 .link:hover {
     text-decoration: underline;
+}
+
+/* Responsiveness pour écrans moyens */
+@media (max-width: 992px) {
+    .input-group {
+        width: 50%; /* Ajuste la largeur */
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .link {
+        font-size: 0.8rem;
+    }
+}
+
+/* Responsiveness pour écrans moyens */
+@media (max-width: 992px) {
+    .input-group {
+        width: 50%;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .link {
+        font-size: 0.8rem;
+    }
 }
 
 /* Responsiveness pour petits écrans */
@@ -93,14 +125,48 @@ body {
     .centre {
         width: 95%;
     }
-    h1 {
-        font-size: 1.5rem;
+    .input-group {
+        width: 80%;
     }
-    input-group input {
-        font-size: 0.9rem;
+    .input-group input {
+        padding: 3% 12%;
+        font-size: 0.85rem; /* Réduction de la taille du texte */
+    }
+    .input-group .icon {
+        width: 5%; /* Réduction des icônes */
+    }
+    .input-group .eye-icon {
+        width: 5%; /* Réduction des icônes */
     }
     button {
-        font-size: 1rem;
-        padding: 3% 4%;
+        font-size: 0.9rem;
+        padding: 2% 3%;
+    }
+    h1 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Responsiveness pour très petits écrans */
+@media (max-width: 480px) {
+    .input-group {
+        width: 95%;
+    }
+    .input-group input {
+        padding: 2% 8%; /* Réduction des marges intérieures */
+        font-size: 0.8rem;
+    }
+    .input-group .icon {
+        width: 4%; /* Taille plus petite des icônes */
+    }
+    .input-group .eye-icon {
+        width: 4%;
+    }
+    .link {
+        font-size: 0.7rem;
+    }
+    button {
+        font-size: 0.8rem;
+        padding: 2% 3%;
     }
 }

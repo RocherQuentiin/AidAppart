@@ -35,6 +35,5 @@ class Controller_connexion extends Controller {
         } else {
             $message = "Veuillez remplir tous les champs.";
     }
-}
-
+}}}
 ?>
