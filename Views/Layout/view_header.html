@@ -13,7 +13,7 @@
 <nav class="navbar">
     <div class="navbar-container">
         <!-- Logo -->
-        <a href="#" class="navbar-logo"><img src="Content/Images/AidAppart%20PNG.png" alt="Logo"></a>
+        <a href="?controller=accueil&action=accueilController" class="navbar-logo"><img src="Content/Images/AidAppart%20PNG.png" alt="Logo"></a>
 
         <!-- Toggle Button -->
         <button class="navbar-toggle" id="navbarToggle" aria-label="Menu">
