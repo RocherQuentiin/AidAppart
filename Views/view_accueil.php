@@ -40,65 +40,25 @@ require_once('Layout/view_header.html') ?>
         <h1>Choisis le type de logement qui te convient !</h1>
         <div class="row">
             <?php foreach ($logements as $logement): ?>
-            <div class=box>
-                <h3><?php echo $logement["type"]; ?></h3>
-            </div>
-            <?php endforeach;?>
+                <div class="box">
+                    <img src="<?php echo 'Content/Images/Accueil/' . $logement['type'] . '.jpeg'; ?>" alt="<?php echo htmlspecialchars($logement['type']); ?>">
+                    <h3><?php echo htmlspecialchars($logement["type"]); ?></h3>
+                </div>
+            <?php endforeach; ?>
+
         </div>
-        <!--  <div class="box">
-                <img src="Content/Images/Accueil/appart.jpeg" alt="Appartement">
-                <h3>Appartement</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/residence.jpeg" alt="Résidence">
-                <h3>Résidence</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/studio.jpg" alt="Studio">
-                <h3>Studio</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/colocation.jpg" alt="Colocation">
-                <h3>Colocation</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/chambre.jpeg" alt="Chambre">
-                <h3>Chambre</h3>
-            </div>
-        </div> -->
         <h1>Choisis ta ville !</h1>
         <div class="row">
             <?php foreach ($villes as $ville): ?>
                 <div class=box>
+                    <img src="<?php echo 'Content/Images/Accueil/' . $ville['ville'] . '.jpeg'; ?>" alt="<?php echo htmlspecialchars($ville['ville']); ?>">
                     <h3><?php echo $ville['ville']; ?></h3>
                 </div>
             <?php endforeach;?>
         </div>
 
-    </div>
-           <!-- <div class="box">
-                <img src="Content/Images/Accueil/paris.jpeg" alt="Paris">
-                <h3>Paris</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/lyon.jpeg" alt="Lyon">
-                <h3>Lyon</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/lille.jpg" alt="Lille">
-                <h3>Lille</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/marseille.jpeg" alt="Marseille">
-                <h3>Marseille</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/toulouse.jpg" alt="Toulouse">
-                <h3>Toulouse</h3>
-            </div>
-        </div>
         <button>Lancer la recherche</button>
-    </div> -->
+    </div>
 
     <!-- Section atouts -->
     <div class="part4">
