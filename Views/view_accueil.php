@@ -39,7 +39,13 @@ require_once('Layout/view_header.html') ?>
     <div class="part3">
         <h1>Choisis le type de logement qui te convient !</h1>
         <div class="row">
-            <div class="box">
+            <?php foreach ($logements as $logement): ?>
+            <div class=box>
+                <h3><?php echo $logement["type"]; ?></h3>
+            </div>
+            <?php endforeach;?>
+        </div>
+        <!--  <div class="box">
                 <img src="Content/Images/Accueil/appart.jpeg" alt="Appartement">
                 <h3>Appartement</h3>
             </div>
@@ -59,10 +65,18 @@ require_once('Layout/view_header.html') ?>
                 <img src="Content/Images/Accueil/chambre.jpeg" alt="Chambre">
                 <h3>Chambre</h3>
             </div>
-        </div>
+        </div> -->
         <h1>Choisis ta ville !</h1>
         <div class="row">
-            <div class="box">
+            <?php foreach ($villes as $ville): ?>
+                <div class=box>
+                    <h3><?php echo $ville['ville']; ?></h3>
+                </div>
+            <?php endforeach;?>
+        </div>
+
+    </div>
+           <!-- <div class="box">
                 <img src="Content/Images/Accueil/paris.jpeg" alt="Paris">
                 <h3>Paris</h3>
             </div>
@@ -84,7 +98,7 @@ require_once('Layout/view_header.html') ?>
             </div>
         </div>
         <button>Lancer la recherche</button>
-    </div>
+    </div> -->
 
     <!-- Section atouts -->
     <div class="part4">

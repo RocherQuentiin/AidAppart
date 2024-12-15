@@ -6,9 +6,18 @@ class Controller_accueil extends Controller {
     }
 
     public function action_accueil() {
-        $data = ["erreur" => false];
+        $model = Model::getModel();
+        $logements = $model->selectDistinctFromTable('Logement', 'type');
+        $villes = $model->selectDistinctFromTable('Adresse', 'ville');
+
+        $data = [
+            "logements" => $logements,
+            "villes" => $villes,
+        ];
         $this->render("accueil", $data);
+
     }
 }
+
 
 ?>
