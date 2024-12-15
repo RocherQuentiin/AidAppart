@@ -62,7 +62,7 @@ body {
     justify-content: end;
     img{
         min-height: 45px;
-        width: auto; /* Par exemple, une largeur plus grande */
+        width: auto;
 
     }
 }
