@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mot de Passe Oublié</title>
-    <link href="Content/css/Connexion.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Mot de passe oublié</title>
+
+    <?php require_once('Layout/view_header.html') ?>
+    
+    <link href="Content/css/connexion.css" rel="stylesheet">
+    <link rel="stylesheet" href="Content/css/index.css"/>
+    <script src="Content/js/oeil_mot_de_passe.js" defer></script>
 </head>
 <body>
 
@@ -45,22 +49,7 @@
         <button class="btn">Sauvegarder</button>
         <a href="connexion.php" class="link">Retour à la connexion</a>
     </div>
-
-    <script>
-        function togglePassword(id) {
-            const passwordInput = document.getElementById(id);
-            const eyeIcon = passwordInput.nextElementSibling;
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                eyeIcon.classList.remove('fa-eye');
-                eyeIcon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                eyeIcon.classList.remove('fa-eye-slash');
-                eyeIcon.classList.add('fa-eye');
-            }
-        }
-    </script>
+    
 </body>
 </html>
 

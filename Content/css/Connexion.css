@@ -13,25 +13,18 @@ body {
     align-items: center;
     width: 100%; /* Largeur adaptable */
 }
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
-}
 
 /* Groupes de champs */
 .input-group {
-    width: 33%; /* Largeur par défaut pour les grands écrans */
-    margin-top: 1.2%; /* Espacement entre les groupes */
+    width: 80%; /* Largeur par défaut pour les grands écrans */
+    margin-bottom: 4%; /* Espacement entre les groupes */
     position: relative;
 }
 
 /* Champs de saisie */
 .input-group input {
     width: 100%;
-    padding: 4% 15%; /* Espace intérieur en % */
+    padding: 1% 15%; /* Espace intérieur en % */
     border: none;
 
     box-shadow: 0 0.5em 0.8em rgba(0, 0, 0, 0.1);
@@ -71,7 +64,7 @@ form {
 .input-group .eye-icon {
     position: absolute;
     top: 50%;
-    right: 3%;
+    right: -20%;
     transform: translateY(-50%);
     width: 6%;
     height: auto;
@@ -87,86 +80,9 @@ form {
     text-decoration: none;
 }
 .button {
-    margin-top: 1%;
+    margin-top: 2%;
 }
 
 .link:hover {
     text-decoration: underline;
-}
-
-/* Responsiveness pour écrans moyens */
-@media (max-width: 992px) {
-    .input-group {
-        width: 50%; /* Ajuste la largeur */
-    }
-    h1 {
-        font-size: 1.8rem;
-    }
-    .link {
-        font-size: 0.8rem;
-    }
-}
-
-/* Responsiveness pour écrans moyens */
-@media (max-width: 992px) {
-    .input-group {
-        width: 50%;
-    }
-    h1 {
-        font-size: 1.8rem;
-    }
-    .link {
-        font-size: 0.8rem;
-    }
-}
-
-/* Responsiveness pour petits écrans */
-@media (max-width: 768px) {
-    .centre {
-        width: 95%;
-    }
-    .input-group {
-        width: 80%;
-    }
-    .input-group input {
-        padding: 3% 12%;
-        font-size: 0.85rem; /* Réduction de la taille du texte */
-    }
-    .input-group .icon {
-        width: 5%; /* Réduction des icônes */
-    }
-    .input-group .eye-icon {
-        width: 5%; /* Réduction des icônes */
-    }
-    button {
-        font-size: 0.9rem;
-        padding: 2% 3%;
-    }
-    h1 {
-        font-size: 1.4rem;
-    }
-}
-
-/* Responsiveness pour très petits écrans */
-@media (max-width: 480px) {
-    .input-group {
-        width: 95%;
-    }
-    .input-group input {
-        padding: 2% 8%; /* Réduction des marges intérieures */
-        font-size: 0.8rem;
-    }
-    .input-group .icon {
-        width: 4%; /* Taille plus petite des icônes */
-    }
-    .input-group .eye-icon {
-        width: 4%;
-    }
-    .link {
-        font-size: 0.7rem;
-    }
-    button {
-        font-size: 0.8rem;
-        padding: 2% 3%;
-    }
 }

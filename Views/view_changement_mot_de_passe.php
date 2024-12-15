@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Changement de Mot de Passe</title>
-    <link href="../Content/css/connexion.css" rel="stylesheet">
-    <link rel="stylesheet" href="../Content/css/index.css"/>
+    <title>Changement de mot de passe</title>
+
+    <?php require_once('Layout/view_header.html') ?>
+    
+    <link href="Content/css/connexion.css" rel="stylesheet">
+    <link rel="stylesheet" href="Content/css/index.css"/>
 </head>
 <body>
     <div class="centre">
