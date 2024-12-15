@@ -45,7 +45,6 @@ a:hover {
 }
 
 button{
-    /* Rectangle 3 */
     box-sizing: border-box;
     padding: 25px;
     background: var(--green);
