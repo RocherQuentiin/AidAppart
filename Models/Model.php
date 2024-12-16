@@ -302,5 +302,43 @@ class Model {
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-}
+
+        public function email_exist($email) {
+            /*
+            * Vérifie si un email existe dans la table Personne
+            * @param string $email - L'email à vérifier
+            * @return mixed - Retourne l'ID de l'utilisateur si l'email existe, sinon false
+            */
+            try {
+                // Préparer la requête SQL
+                $stmt = $this->db->prepare("SELECT id FROM Personne WHERE email = :email");
+                
+                // Lier le paramètre email
+                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+                
+                // Exécuter la requête
+                $stmt->execute();
+                
+                // Récupérer le résultat
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+                // Si un utilisateur est trouvé, retourner son ID
+                if ($user) {
+                    return $user['id'];
+                }
+        
+                // Si l'email n'existe pas
+                return false;
+        
+            } catch (PDOException $e) {
+                // Gérer l'exception en cas d'erreur de la base de données
+                echo "Erreur db : " . $e->getMessage();
+                return false;
+            } catch (Exception $e) {
+                // Gérer l'exception générique
+                echo "Erreur : " . $e->getMessage();
+                return false;
+            }
+        }
+    }
 ?>
