@@ -35,16 +35,14 @@ class Controller_inscription extends Controller {
             
             // Validation des champs obligatoires
             if (empty($nom) || empty($prenom) || empty($telephone) || empty($email) || empty($mdp)) {
-                echo "Tous les champs sont obligatoires.";
-                $data = ["erreur" => true];
+                $data = ["message" => "Tous les champs sont obligatoires."];
                 $this->render("inscription", $data);
                 exit;
             }
 
             // Vérification de l'email
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo "L'adresse email est invalide.";
-                $data = ["erreur" => true];
+                $data = ["message" => "L'adresse email est invalide."];
                 $this->render("inscription", $data);
                 exit;
             }
@@ -52,8 +50,7 @@ class Controller_inscription extends Controller {
             // Vérification de l'existence d'un utilisateur
             $UtilisateurExistant = $model->doublon($email, $telephone);
             if ($UtilisateurExistant) {
-                echo "Email ou téléphone déjà existant.";
-                $data = ["erreur" => true];
+                $data = ["message" => "Email ou téléphone déjà existant."];
                 $this->render("inscription", $data);
                 exit;
             }
@@ -62,7 +59,7 @@ class Controller_inscription extends Controller {
             $reussie = $model->insertPersonne($nom, $prenom, $email, $actif, $telephone, $mdp);
             if ($reussie) {
                 echo "Inscription réussie !";
-                $data = ["erreur" => false];
+                $data = ["message" => null];
                 $this->render("accueil", $data);
             } else {
                 echo "Erreur lors de l'inscription.";

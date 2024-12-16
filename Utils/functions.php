@@ -10,9 +10,10 @@ function e($message){
     return htmlspecialchars($message, ENT_QUOTES);
 }
 
-function AfficheAlerte(?string $message) {
-    
-    if(!is_null($message) && !empty($message)) {
-        return "<p><strong><i> Alerte : {$message}</i></strong></p>";
+function afficherPopup($message) {
+    if (isset($message) && !empty($message)) {
+        echo '<script type="text/javascript">';
+        echo 'alert("' . addslashes($message) . '");die();';
+        echo '</script>';
     }
 }

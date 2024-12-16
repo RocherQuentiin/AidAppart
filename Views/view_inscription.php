@@ -1,16 +1,4 @@
 
-<!--
-<//?php if (isset($message) && !empty($message)): ?>
-    <script type="text/javascript">
-            // Affichage du pop-up avec alert()
-            alert("<//?php echo addslashes($message); ?>");
-    </script>
-<//?php endif; ?>
--->
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -125,3 +113,12 @@
 </form>
 </body>
 </html>
+
+
+
+<?php 
+    if (isset($message)) {
+        afficherPopup($message);
+        die();
+    } 
+?>
