@@ -63,8 +63,6 @@
       Appart'City vous propose
       des studios tout équipés : espace cuisine avec frigo, plaques, micro-onde, cafetière/bouilloire et lave-vaisselle, ;TV, wifi, bureau et salle-de-bain privative.
       
-      
-      
       Retrouvez également sur place des prestations hôtelières et services qui vous faciliteront la
       vie : petit-déjeuner, laverie, parking, piscine etc.
       
