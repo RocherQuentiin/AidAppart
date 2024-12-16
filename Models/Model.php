@@ -302,5 +302,28 @@ class Model {
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function getUserRole($userId) {
+            /*
+            * Récupérer le rôle d'un utilisateur
+            * @param int $userId - ID de l'utilisateur
+            * @return string - Nom du rôle de l'utilisateur
+            */
+            try {
+                $sql = "SELECT Role.nom FROM Personne_Role 
+                        JOIN Role ON Personne_Role.id_role = Role.id 
+                        WHERE Personne_Role.id_personne = :userId";
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute(['userId' => $userId]);
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $result ? $result['nom'] : null;
+            } catch (PDOException $e) {
+                echo "Erreur db : " . $e->getMessage();
+                return false;
+            } catch (Exception $e) {
+                echo "Erreur : " . $e->getMessage();
+                return false;
+            }
+        }
 }
 ?>

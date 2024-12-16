@@ -135,8 +135,8 @@ CREATE TABLE Role (
 
 INSERT INTO Role (nom, description) VALUES
 ('Admin', 'Administrateur du système'),
-('Propriétaire', 'Propriétaire d\'un ou plusieurs logement'),
-('Locataire', 'Locataire d\'un logement'),
+('Propriétaire', 'Propriétaire d\"un ou plusieurs logement'),
+('Etudiant', 'Recherche un logement'),
 ('Visiteur', 'Visiteur du site');
 
 CREATE TABLE Personne_Role (
