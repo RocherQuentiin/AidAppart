@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Controller_annonces extends Controller {
     public function action_default() {
         $this->action_annonces();
@@ -10,5 +12,7 @@ class Controller_annonces extends Controller {
         $this->render("annonces", $data);
     }
 }
+
+
 
 ?>

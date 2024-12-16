@@ -31,6 +31,7 @@
       <p>Logements meublés de <strong>19m² à 19m²</strong></p>
       <p>Éligible aux aides (APL, ALS): <strong>Oui</strong></p>
       <p>Services inclus: <strong>Oui</strong></p>
+      
       <button>Voir les chambres</button>
     </aside>
   </div>
