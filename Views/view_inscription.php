@@ -25,7 +25,7 @@
 <h1>
     Inscription
 </h1>
-<form action="http://localhost:8000/index.php?controller=inscription&action=sinscrire" method="POST">
+<form action="?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
         <button class="dropdown-btn" id="dropdownBtn">
             Status <span class="arrow"></span>
