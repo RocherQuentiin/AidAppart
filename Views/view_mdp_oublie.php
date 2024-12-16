@@ -16,14 +16,12 @@
 <div class="centre">
         <h1>Mot de passe oublié</h1>
 
-        <form action="Controllers/controller_mdp_oublie.php" method="POST">
+        <form action="?controller=mdp_oublie&action=reset_mdp" method="POST">
             <!-- Groupe de champs email -->
             <div class="input-group">
                 <img src="Content/images/email.png" alt="Email Icon" class="icon">
                 <input type="email" name="email" placeholder="Renseignez votre adresse mail" required>
             </div>
-
-
             <!-- Liens -->
             <div class="links">
                 <a href="?controller=inscription&action=inscriptionController" class="link">Première connexion ? Je crée un compte AidAppart</a>
