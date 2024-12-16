@@ -1,12 +1,12 @@
 
-
-<?php if (isset($message) && !empty($message)): ?>
+<!--
+<//?php if (isset($message) && !empty($message)): ?>
     <script type="text/javascript">
             // Affichage du pop-up avec alert()
-            alert("<?php echo addslashes($message); ?>");
+            alert("<//?php echo addslashes($message); ?>");
     </script>
-<?php endif; ?>
-
+<//?php endif; ?>
+-->
 
 
 
@@ -18,13 +18,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-<!--     <link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
-         <link rel="stylesheet" type="text/css" href="Content/css/index.css"/> -->
+    <!--<link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
+    <link rel="stylesheet" type="text/css" href="Content/css/index.css"/>-->
 </head>
 <body>
 <h1>
     Inscription
 </h1>
+
 <form action="?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
         <button class="dropdown-btn" id="dropdownBtn">

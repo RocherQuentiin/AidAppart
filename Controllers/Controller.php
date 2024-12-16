@@ -29,7 +29,7 @@ abstract class Controller
      * Affiche la vue
      * @param string $vue nom de la vue
      * @param array $data tableau contenant les données à passer à la vue
-     * @return aucun
+     * @return 
      */
     protected function render($vue, $data = [])
     {
@@ -53,7 +53,7 @@ abstract class Controller
     /**
      * Méthode affichant une page d'erreur
      * @param string $message Message d'erreur à afficher
-     * @return aucun
+     * @return 
      */
     protected function action_error($message = '')
     {

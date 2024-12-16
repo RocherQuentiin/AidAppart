@@ -305,7 +305,7 @@ class Model {
     public function doublon($email, $telephone) {
         $stmt = $this->db->prepare("SELECT * FROM Personne WHERE email = :email OR telephone = :telephone");
         $stmt->execute([":email" => $email, ":telephone"=> $telephone]);
-        return $stmt->rowCount()>0;
+        return $stmt->rowCount() > 0;
     }
 }
 ?>
