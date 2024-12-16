@@ -9,20 +9,23 @@
 
 
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
-    <link rel="stylesheet" type="text/css" href="Content/css/index.css"/>
+<!--     <link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
+         <link rel="stylesheet" type="text/css" href="Content/css/index.css"/> -->
 </head>
 <body>
 <h1>
     Inscription
 </h1>
-<form action="/GitHub/AidAppart/index.php?controller=inscription&action=action_sinscrire" method="post">
+<form action="http://localhost:8000/index.php?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
         <button class="dropdown-btn" id="dropdownBtn">
             Status <span class="arrow"></span>
