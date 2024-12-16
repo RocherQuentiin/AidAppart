@@ -78,6 +78,9 @@ body {
     margin-top: 1%;
     color: var(--blue);
     text-decoration: none;
+    display: block; /* Garde le bouton en tant qu'élément de bloc */
+    margin-left: auto; /* Centre horizontalement */
+    margin-right: auto; /* Centre horizontalement */
 }
 .button {
     margin-top: 3%;
