@@ -8,6 +8,7 @@
 
     <link href="../Content/css/connexion.css" rel="stylesheet">
     <link rel="stylesheet" href="../Content/css/index.css"/>
+    <script src="Content/js/pageinscription_connexion.js" defer></script>
 </head>
 <body>
 
@@ -35,19 +36,5 @@
         <button class="button">Me Connecter</button>
     </div>
 
-    <!-- Script pour basculer la visibilité du mot de passe -->
-    <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const eyeIcon = document.getElementById('eye-toggle');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                eyeIcon.src = "../Content/images/eye_closed_icon.png"; // Change to eye closed
-            } else {
-                passwordInput.type = 'password';
-                eyeIcon.src = "../Content/images/eye_icon.png"; // Change back to eye open
-            }
-        }
-    </script>
 </body>
 </html>

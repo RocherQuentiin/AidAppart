@@ -183,6 +183,59 @@ form {
 }
 
 
+
+
+/* Groupes de champs */
+.input-group {
+
+    position: relative;
+
+}
+
+
+
+
+
+
+
+
+
+/* Icônes dans les champs */
+.input-group {
+    position: relative; /* Nécessaire pour positionner les icônes par rapport au champ */
+}
+
+/* Positionnement des icônes */
+.input-group .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Icône du cadenas */
+.input-group #icon-lock {
+    left: 10px; /* Positionne l'icône à gauche du champ */
+    width: 20px; /* Ajuste la taille du cadenas */
+    height: auto;
+}
+
+/* Icône de l'œil */
+.input-group #eye-toggle {
+    left: 380px; /* Positionne l'icône à 5px du bord droit du champ */
+    width: 20px; /* Ajuste la taille de l'œil */
+    height: auto;
+    cursor: pointer;
+    z-index: 1; /* Assure que l'icône de l'œil soit au-dessus de l'input */
+}
+
+
+
+
+
+
+
+
+
 input[type="mail"],
 input[type="password"],
 select{

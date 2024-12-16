@@ -8,7 +8,7 @@
     <title>Inscription</title>
     <link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
     <link rel="stylesheet" type="text/css" href="Content/css/index.css"/>
-    <script src="Content/js/pageinscription.js" defer></script>
+    <script src="Content/js/pageinscription_connexion.js" defer></script>
 </head>
 <body>
 <h1>
@@ -54,11 +54,14 @@
     <br>
     <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant"  >
     <br><br>
-    <i class = "envelope"></i>
     <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" >
-    <i class="eye-icon" onclick="togglePassword()"></i>
     <br><br>
-    <input type="password" id="mdp_confirmation" name="mdp_confirmation" placeholder="Confirmation"  >
+    <div class="input-group">
+        <img src="../Content/images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
+        <input type="password" id="password" name="mdp_confirmation" placeholder="Confirmation">
+        <img src="../Content/images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword()">
+    </div>
+
     <br><br>
 
     <label>
