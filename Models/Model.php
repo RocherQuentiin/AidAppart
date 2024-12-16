@@ -302,9 +302,10 @@ class Model {
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-    public function doublon($message, $table) {
-        $donnee = $this->db->query("SELECT $message FROM $table;");
-        return $donnee
+    public function doublon($email, $telephone) {
+        $stmt = $this->db->prepare("SELECT * FROM Personne WHERE email = :email OR telephone = :telephone");
+        $stmt->execute([":email" => $email, ":telephone"=> $telephone]);
+        return $stmt->rowCount()>0;
     }
 }
 ?>
