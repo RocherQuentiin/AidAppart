@@ -31,6 +31,7 @@ class Controller_inscription extends Controller {
             $actif = True; // Par défaut
             $email = $_POST['mail'];
             $mdp = $_POST['mdp'];
+            $mdp_confirmation=$_POST["mdp_confirmation"];
 
             
             // Validation des champs obligatoires
@@ -43,6 +44,13 @@ class Controller_inscription extends Controller {
             // Vérification de l'email
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $data = ["message" => "L'adresse email est invalide."];
+                $this->render("inscription", $data);
+                exit;
+            }
+
+            // Vérification que les mots de passe soit identique
+            if ($mdp_confirmation===$mdp) {
+                $data = ["message"=> "Les deux mots de passe doivent être identique"];
                 $this->render("inscription", $data);
                 exit;
             }

@@ -1,6 +1,3 @@
-<?php
-require_once __DIR__ . '/../controller_connexion.php'; // Inclut le contrôleur
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +28,7 @@ require_once __DIR__ . '/../controller_connexion.php'; // Inclut le contrôleur
         </div>
 
         <!-- Liens -->
-        <a href="view_inscription.php" class="link">Première connexion ? Je crée un compte AidAppart</a>
+        <a href="?controller=inscription&action=Controller_inscription" class="link">Première connexion ? Je crée un compte AidAppart</a>
         <a href="view_mot_de_passe_oublie.php" class="link">Mot de passe oublié ?</a>
 
         <!-- Bouton -->

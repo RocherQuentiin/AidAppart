@@ -8,6 +8,7 @@
     <title>Inscription</title>
     <link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
     <link rel="stylesheet" type="text/css" href="Content/css/index.css"/>
+    <script src="Content/js/pageinscription.js" defer></script>
 </head>
 <body>
 <h1>
@@ -16,7 +17,7 @@
 
 <form action="?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
-        <button class="dropdown-btn" id="dropdownBtn">
+        <button type="button" class="dropdown-btn" id="dropdownBtn">
             Status <span class="arrow"></span>
         </button>
         <ul class="dropdown-menu" id="dropdownMenu">
@@ -27,40 +28,6 @@
         <!-- Champ caché pour transmettre la valeur sélectionnée -->
         <input type="hidden" id="status" name="status" value="">
     </div>
-
-    <!-- script JS pour garder l'option selectionner-->
-    <script>
-        // Récupérer les éléments
-        const dropdownBtn = document.getElementById('dropdownBtn');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        const menuItems = dropdownMenu.querySelectorAll('li');
-        const hiddenInput = document.getElementById('status');
-
-        // Ajouter un événement clic pour chaque élément de menu
-        menuItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // Mettre à jour le texte du bouton avec l'option sélectionnée
-                dropdownBtn.innerHTML = `${item.dataset.value} <span class="arrow"></span>`;
-                // Mettre à jour la valeur du champ caché
-                hiddenInput.value = item.dataset.value;
-                // Fermer le menu après sélection (facultatif)
-                dropdownMenu.style.display = 'none';
-            });
-        });
-
-        // Optionnel : Fermer le menu lorsqu'on clique en dehors
-        document.addEventListener('click', (e) => {
-            if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                dropdownMenu.style.display = 'none';
-            }
-        });
-
-        // Optionnel : Ré-ouvrir le menu au clic sur le bouton
-        dropdownBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
-    </script>
 
     <br><br>
     <input type="text" id="nom" name="nom" placeholder="Nom">
@@ -88,7 +55,7 @@
     <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant"  >
     <br><br>
     <i class = "envelope"></i>
-    <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe"  >
+    <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" >
     <i class="eye-icon" onclick="togglePassword()"></i>
     <br><br>
     <input type="password" id="mdp_confirmation" name="mdp_confirmation" placeholder="Confirmation"  >
@@ -119,6 +86,5 @@
 <?php 
     if (isset($message)) {
         afficherPopup($message);
-        die();
     } 
 ?>

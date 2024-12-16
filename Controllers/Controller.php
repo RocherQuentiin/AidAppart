@@ -31,8 +31,7 @@ abstract class Controller
      * @param array $data tableau contenant les données à passer à la vue
      * @return 
      */
-    protected function render($vue, $data = [])
-    {
+    protected function render($vue, $data = []){
 
         //On extrait les données à afficher
         extract($data);
