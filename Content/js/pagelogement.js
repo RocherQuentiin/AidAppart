@@ -77,21 +77,24 @@ function updateListings(data) {
     data.forEach(logement => {
         const listing = document.createElement('div');
         listing.classList.add('listing');
+        // <a href="?controller=annonces&action=annonces&id=${logement.id}">
         listing.innerHTML = `
-            <img src="Content/Images/Proprio_${logement.proprietaire}/Logement_${logement.id}/image_vitrine.png" alt="Image du logement">
-            <p>Type: ${logement.type}</p>
-            <p>Loyer: ${logement.loyer} €</p>
-            <p>Charges: ${logement.charges} €</p>
-            <p>Adresse ID: ${logement.adresse}</p>
-             ${logement.est_meuble ? '<p>Meublé</p>' : ''}
-            ${logement.a_WIFI ? '<p>WiFi</p> ' : ''}
-            ${logement.est_accessible_PMR ? '<p>Accessible PMR</p>' : ''}
-            <p>Nombre de pièces: ${logement.nb_pieces}</p>
-            ${logement.a_parking ? '<p>Parking</p>' : ''}
-            <p>Description: ${logement.description}</p>
-            <button title="signaler" class="report-button" onclick="reportLogement(${logement.id})">
-                <img src="Content/Images/report.jpg" alt="Signaler">
-            </button>
+            <a href="?controller=annonces">
+                <img src="Content/Images/Proprio_${logement.proprietaire}/Logement_${logement.id}/image_vitrine.png" alt="Image du logement">
+                <p>Type: ${logement.type}</p>
+                <p>Loyer: ${logement.loyer} €</p>
+                <p>Charges: ${logement.charges} €</p>
+                <p>Adresse ID: ${logement.adresse}</p>
+                ${logement.est_meuble ? '<p>Meublé</p>' : ''}
+                ${logement.a_WIFI ? '<p>WiFi</p> ' : ''}
+                ${logement.est_accessible_PMR ? '<p>Accessible PMR</p>' : ''}
+                <p>Nombre de pièces: ${logement.nb_pieces}</p>
+                ${logement.a_parking ? '<p>Parking</p>' : ''}
+                <p>Description: ${logement.description}</p>
+                <button title="signaler" class="report-button" onclick="reportLogement(${logement.id})">
+                    <img src="Content/Images/report.jpg" alt="Signaler">
+                </button>
+            </a>
         `;
         listingsContainer.appendChild(listing);
     });   

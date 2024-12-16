@@ -105,6 +105,11 @@ ul > li{
     border-radius: 90px;
 }
 
+a{
+    text-decoration: none !important;
+    color: black !important;
+}
+
 @media (max-width: 768px) {
     .listings {
         flex-direction: column;
