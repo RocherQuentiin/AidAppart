@@ -133,6 +133,12 @@ CREATE TABLE Role (
     description TEXT NOT NULL
 );
 
+INSERT INTO Role (nom, description) VALUES
+('Admin', 'Administrateur du système'),
+('Propriétaire', 'Propriétaire d\'un ou plusieurs logement'),
+('Locataire', 'Locataire d\'un logement'),
+('Visiteur', 'Visiteur du site');
+
 CREATE TABLE Personne_Role (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_personne INT NOT NULL,
