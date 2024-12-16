@@ -31,48 +31,46 @@ class Controller_inscription extends Controller {
             $actif = True; // Par défaut
             $email = $_POST['mail'];
             $mdp = $_POST['mdp'];
-            $UtilisateurExistant=$model->doublon($email,$telephone);
 
+            
+            // Validation des champs obligatoires
+            if (empty($nom) || empty($prenom) || empty($telephone) || empty($email) || empty($mdp)) {
+                echo "Tous les champs sont obligatoires.";
+                $data = ["erreur" => true];
+                $this->render("inscription", $data);
+                exit;
+            }
 
+            // Vérification de l'email
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo "L'adresse email est invalide.";
+                $data = ["erreur" => true];
+                $this->render("inscription", $data);
+                exit;
+            }
+
+            // Vérification de l'existence d'un utilisateur
+            $UtilisateurExistant = $model->doublon($email, $telephone);
             if ($UtilisateurExistant) {
                 echo "Email ou téléphone déjà existant.";
-            } elseif (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo "L'adresse email est invalide ou vide.";
+                $data = ["erreur" => true];
+                $this->render("inscription", $data);
+                exit;
+            }
+
+            // Insertion dans la base de données
+            $reussie = $model->insertPersonne($nom, $prenom, $email, $actif, $telephone, $mdp);
+            if ($reussie) {
+                echo "Inscription réussie !";
+                $data = ["erreur" => false];
+                $this->render("accueil", $data);
             } else {
-                // Insérer la personne si l'email est valide et l'utilisateur n'existe pas
-                $reussie = $model->insertPersonne($nom, $prenom, $email, $actif, $telephone, $mdp);
-                if ($reussie) {
-                    echo "Inscription réussie !";
-                    $data = ["erreur" => false];
-                    $this->render("accueil", $data);
-                } else {
-                    echo "Erreur lors de l'inscription.";
-                }
+                echo "Erreur lors de l'inscription.";
             }
             
             }
 
-            
-            // Validation des champs
 
-            #if (!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($email) ) {
-            #    $data = ['message' => 'L\'email fourni n\'est pas valide.'];
-            #    $this->render('inscription', $data);
-            #    return; 
-            #}
-
-
-            #if (strlen($mdp) < 6) {
-            #    $data = ['message' => 'Le mot de passe doit comporter au moins 6 caractères.'];
-            #    $this->render('inscription', $data);
-            #    $data=
-            #    return; 
-            #}
-
-            // Envoie de mail pour la vérification
-#            $this->envoyerCodeVerification($email);
-
-            // Insérer dans la base de données
     
     }
 }   
