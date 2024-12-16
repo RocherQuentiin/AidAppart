@@ -7,12 +7,13 @@ class Controller_accueil extends Controller {
 
     public function action_accueil() {
         $model = Model::getModel();
-        $logements = $model->selectDistinctFromTable('Logement', 'type');
-        $villes = $model->selectDistinctFromTable('Adresse', 'ville');
-
+        $logements = $model->selectTypesWithMostLogement();
+        $villes = $model->selectVillesWithMostLogement();
+        $tom = $model->selectTypesWithMostLogement();
         $data = [
             "logements" => $logements,
             "villes" => $villes,
+            "tom" => $tom
         ];
         $this->render("accueil", $data);
 

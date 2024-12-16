@@ -32,6 +32,7 @@ require_once('Layout/view_header.php');?>
                 <img src="Content/Images/Accueil/bourse.png" alt="Image 4">
                 <h3>Éligibilité aux bourses / aides</h3>
             </div>
+
         </div>
     </div>
 
@@ -51,8 +52,8 @@ require_once('Layout/view_header.php');?>
         <div class="row">
             <?php foreach ($villes as $ville): ?>
                 <div class=box>
-                    <img src="<?php echo 'Content/Images/Accueil/' . $ville['ville'] . '.jpeg'; ?>" alt="<?php echo htmlspecialchars($ville['ville']); ?>">
-                    <h3><?php echo $ville['ville']; ?></h3>
+                    <img src="<?php echo 'Content/Images/Accueil/' . $ville['nom_ville'] . '.jpeg'; ?>" alt="<?php echo htmlspecialchars($ville['nom_ville']); ?>">
+                    <h3><?php echo $ville['nom_ville']; ?></h3>
                 </div>
             <?php endforeach;?>
         </div>
