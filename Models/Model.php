@@ -321,8 +321,8 @@ class Model {
              return $stmt->fetchAll(PDO::FETCH_ASSOC);
          }
 
- }
- ?>
+    }
+?>
 
 
 
