@@ -302,5 +302,142 @@ class Model {
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+         public function selectVillesWithMostLogement($limit = 4) {
+                $stmt = $this->db->prepare("SELECT ville AS nom_ville, COUNT(*)
+                    AS nombre_adresses FROM Adresse GROUP BY ville
+                    ORDER BY nombre_adresses DESC LIMIT :limit" );
+                $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+          }
+
+         public function selectTypesWithMostLogement($limit = 4) {
+             $stmt = $this->db->prepare("SELECT type, COUNT(*)
+                 AS nombre_logements FROM Logement GROUP BY type
+                 ORDER BY nombre_logements DESC LIMIT :limit" );
+             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+             $stmt->execute();
+             return $stmt->fetchAll(PDO::FETCH_ASSOC);
+         }
+
+ }
+ ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            '");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 }
 ?>
