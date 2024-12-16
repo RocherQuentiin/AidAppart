@@ -80,11 +80,10 @@ body {
     text-decoration: none;
 }
 .button {
-    margin-top: 2%;
-    display: flex;
-    flex-direction: column; /* Aligne les enfants verticalement */
-    justify-content: center;
-    align-items: center;
+    margin-top: 3%;
+    display: block; /* Garde le bouton en tant qu'élément de bloc */
+    margin-left: auto; /* Centre horizontalement */
+    margin-right: auto; /* Centre horizontalement */
 }
 
 .link:hover {
