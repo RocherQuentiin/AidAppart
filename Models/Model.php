@@ -302,5 +302,9 @@ class Model {
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+    public function doublon($message, $table) {
+        $donnee = $this->db->query("SELECT $message FROM $table;");
+        return $donnee
+    }
 }
 ?>
