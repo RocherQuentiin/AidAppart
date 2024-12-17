@@ -57,118 +57,118 @@ class Model {
         }
     }
 
-        public function insertPersonne($nom, $prenom, $email, $actif, $telephone, $mdp) {
-            /*
-            * Insérer une nouvelle personne dans la table Personne
-            * @param string $nom - Nom de la personne
-            * @param string $prenom - Prénom de la personne
-            * @param string $email - Email de la personne
-            * @param bool $actif - Statut actif de la personne
-            * @param string $telephone - Téléphone de la personne
-            * @param string $mdp - Mot de passe de la personne
-            * @return bool - Retourne true en cas de succès, false en cas d'échec
-            */
-            try {
-                $hashedMdp = password_hash($mdp, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO Personne (nom, prénom, email, actif, telephone, mdp) VALUES (:nom, :prenom, :email, :actif, :telephone, :mdp)";
-                $stmt = $this->db->prepare($sql);
-                return $stmt->execute([
-                    'nom' => $nom,
-                    'prenom' => $prenom,
-                    'email' => $email,
-                    'actif' => $actif,
-                    'telephone' => $telephone,
-                    'mdp' => $hashedMdp
-                ]);
-            } catch (PDOException $e) {
-                echo "Erreur db : " . $e->getMessage();
-                return false;
-            } catch (Exception $e) {
-                echo "Erreur : " . $e->getMessage();
-                return false;
-            } 
-                
-        }
-
-        public function insertLogement($type, $surface, $proprietaire, $loyer, $charges, $creer_a, $adresse, $est_meuble, $a_WIFI, $est_accessible_PMR, $nb_pieces, $a_parking, $description) {
-            /*
-            * Insérer un nouveau logement dans la table Logement
-            * @param string $type - Type de logement
-            * @param int $surface - Surface du logement
-            * @param int $proprietaire - ID du propriétaire
-            * @param int $loyer - Loyer du logement
-            * @param int $charges - Charges du logement
-            * @param string $creer_a - Date de création
-            * @param int $adresse - ID de l'adresse
-            * @param bool $est_meuble - Statut meublé du logement
-            * @param bool $a_WIFI - Statut WiFi du logement
-            * @param bool $est_accessible_PMR - Accessibilité PMR du logement
-            * @param int $nb_pieces - Nombre de pièces du logement
-            * @param bool $a_parking - Statut parking du logement
-            * @param string $description - Description du logement
-            * @return bool - Retourne true en cas de succès, false en cas d'échec
-            */
-            try {
-            $sql = "INSERT INTO Logement (type, surface, proprietaire, loyer, charges, creer_a, adresse, est_meuble, a_WIFI, est_accessible_PMR, nb_pieces, a_parking, description) VALUES (:type, :surface, :proprietaire, :loyer, :charges, :creer_a, :adresse, :est_meuble, :a_WIFI, :est_accessible_PMR, :nb_pieces, :a_parking, :description)";
+    public function insertPersonne($nom, $prenom, $email, $actif, $telephone, $mdp) {
+        /*
+        * Insérer une nouvelle personne dans la table Personne
+        * @param string $nom - Nom de la personne
+        * @param string $prenom - Prénom de la personne
+        * @param string $email - Email de la personne
+        * @param bool $actif - Statut actif de la personne
+        * @param string $telephone - Téléphone de la personne
+        * @param string $mdp - Mot de passe de la personne
+        * @return bool - Retourne true en cas de succès, false en cas d'échec
+        */
+        try {
+            $hashedMdp = password_hash($mdp, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO Personne (nom, prénom, email, actif, telephone, mdp) VALUES (:nom, :prenom, :email, :actif, :telephone, :mdp)";
             $stmt = $this->db->prepare($sql);
             return $stmt->execute([
-                'type' => $type,
-                'surface' => $surface,
-                'proprietaire' => $proprietaire,
-                'loyer' => $loyer,
-                'charges' => $charges,
-                'creer_a' => $creer_a,
-                'adresse' => $adresse,
-                'est_meuble' => $est_meuble,
-                'a_WIFI' => $a_WIFI,
-                'est_accessible_PMR' => $est_accessible_PMR,
-                'nb_pieces' => $nb_pieces,
-                'a_parking' => $a_parking,
-                'description' => $description
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'email' => $email,
+                'actif' => $actif,
+                'telephone' => $telephone,
+                'mdp' => $hashedMdp
             ]);
-            } catch (PDOException $e) {
-                echo "Erreur db : " . $e->getMessage();
-                return false;
-            } catch (Exception $e) {
-                echo "Erreur : " . $e->getMessage();
-                return false;
-            }
-        }
+        } catch (PDOException $e) {
+            echo "Erreur db : " . $e->getMessage();
+            return false;
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+            return false;
+        } 
+            
+    }
 
-        public function insertAnnonce($id_logement, $creer_a, $loueur, $a_colocation, $disponibilite, $nb_personnes, $statut, $info_complementaire) {
-            /*
-            * Insérer une nouvelle annonce dans la table Annonce
-            * @param int $id_logement - ID du logement
-            * @param string $creer_a - Date de création
-            * @param int $loueur - ID du loueur
-            * @param bool $a_colocation - Statut colocation de l'annonce
-            * @param string $disponibilite - Date de disponibilité
-            * @param int $nb_personnes - Nombre de personnes
-            * @param string $statut - Statut de l'annonce
-            * @param string $info_complementaire - Informations complémentaires
-            * @return bool - Retourne true en cas de succès, false en cas d'échec
-            */
-            try {
-            $sql = "INSERT INTO Annonce (id_logement, creer_a, loueur, a_colocation, disponibilite, nb_personnes, statut, info_complementaire) VALUES (:id_logement, :creer_a, :loueur, :a_colocation, :disponibilite, :nb_personnes, :statut, :info_complementaire)";
-            $stmt = $this->db->prepare($sql);
-            return $stmt->execute([
-                'id_logement' => $id_logement,
-                'creer_a' => $creer_a,
-                'loueur' => $loueur,
-                'a_colocation' => $a_colocation,
-                'disponibilite' => $disponibilite,
-                'nb_personnes' => $nb_personnes,
-                'statut' => $statut,
-                'info_complementaire' => $info_complementaire
-            ]);
-            } catch (PDOException $e) {
-                echo "Erreur db: " . $e->getMessage();
-                return false;
-            } catch (Exception $e) {
-                echo "Erreur : " . $e->getMessage();
-                return false;
-            }
+    public function insertLogement($type, $surface, $proprietaire, $loyer, $charges, $creer_a, $adresse, $est_meuble, $a_WIFI, $est_accessible_PMR, $nb_pieces, $a_parking, $description) {
+        /*
+        * Insérer un nouveau logement dans la table Logement
+        * @param string $type - Type de logement
+        * @param int $surface - Surface du logement
+        * @param int $proprietaire - ID du propriétaire
+        * @param int $loyer - Loyer du logement
+        * @param int $charges - Charges du logement
+        * @param string $creer_a - Date de création
+        * @param int $adresse - ID de l'adresse
+        * @param bool $est_meuble - Statut meublé du logement
+        * @param bool $a_WIFI - Statut WiFi du logement
+        * @param bool $est_accessible_PMR - Accessibilité PMR du logement
+        * @param int $nb_pieces - Nombre de pièces du logement
+        * @param bool $a_parking - Statut parking du logement
+        * @param string $description - Description du logement
+        * @return bool - Retourne true en cas de succès, false en cas d'échec
+        */
+        try {
+        $sql = "INSERT INTO Logement (type, surface, proprietaire, loyer, charges, creer_a, adresse, est_meuble, a_WIFI, est_accessible_PMR, nb_pieces, a_parking, description) VALUES (:type, :surface, :proprietaire, :loyer, :charges, :creer_a, :adresse, :est_meuble, :a_WIFI, :est_accessible_PMR, :nb_pieces, :a_parking, :description)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            'type' => $type,
+            'surface' => $surface,
+            'proprietaire' => $proprietaire,
+            'loyer' => $loyer,
+            'charges' => $charges,
+            'creer_a' => $creer_a,
+            'adresse' => $adresse,
+            'est_meuble' => $est_meuble,
+            'a_WIFI' => $a_WIFI,
+            'est_accessible_PMR' => $est_accessible_PMR,
+            'nb_pieces' => $nb_pieces,
+            'a_parking' => $a_parking,
+            'description' => $description
+        ]);
+        } catch (PDOException $e) {
+            echo "Erreur db : " . $e->getMessage();
+            return false;
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+            return false;
         }
+    }
+
+    public function insertAnnonce($id_logement, $creer_a, $loueur, $a_colocation, $disponibilite, $nb_personnes, $statut, $info_complementaire) {
+        /*
+        * Insérer une nouvelle annonce dans la table Annonce
+        * @param int $id_logement - ID du logement
+        * @param string $creer_a - Date de création
+        * @param int $loueur - ID du loueur
+        * @param bool $a_colocation - Statut colocation de l'annonce
+        * @param string $disponibilite - Date de disponibilité
+        * @param int $nb_personnes - Nombre de personnes
+        * @param string $statut - Statut de l'annonce
+        * @param string $info_complementaire - Informations complémentaires
+        * @return bool - Retourne true en cas de succès, false en cas d'échec
+        */
+        try {
+        $sql = "INSERT INTO Annonce (id_logement, creer_a, loueur, a_colocation, disponibilite, nb_personnes, statut, info_complementaire) VALUES (:id_logement, :creer_a, :loueur, :a_colocation, :disponibilite, :nb_personnes, :statut, :info_complementaire)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            'id_logement' => $id_logement,
+            'creer_a' => $creer_a,
+            'loueur' => $loueur,
+            'a_colocation' => $a_colocation,
+            'disponibilite' => $disponibilite,
+            'nb_personnes' => $nb_personnes,
+            'statut' => $statut,
+            'info_complementaire' => $info_complementaire
+        ]);
+        } catch (PDOException $e) {
+            echo "Erreur db: " . $e->getMessage();
+            return false;
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+            return false;
+        }
+    }
 
         public function selectDistinctFromTable($table, $column, $order_by=null) {
             /*
@@ -303,35 +303,21 @@ class Model {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function email_exist($email) {
+        public function getUserRole($userId) {
             /*
-            * Vérifie si un email existe dans la table Personne
-            * @param string $email - L'email à vérifier
-            * @return mixed - Retourne l'ID de l'utilisateur si l'email existe, sinon false
+            * Récupérer le rôle d'un utilisateur
+            * @param int $userId - ID de l'utilisateur
+            * @return string - Nom du rôle de l'utilisateur
             */
             try {
-                // Préparer la requête SQL
-                $stmt = $this->db->prepare("SELECT id FROM Personne WHERE email = :email");
-                
-                // Lier le paramètre email
-                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-                
-                // Exécuter la requête
-                $stmt->execute();
-                
-                // Récupérer le résultat
-                $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-                // Si un utilisateur est trouvé, retourner son ID
-                if ($user) {
-                    return $user['id'];
-                }
-        
-                // Si l'email n'existe pas
-                return false;
-        
+                $sql = "SELECT Role.nom FROM Personne_Role 
+                        JOIN Role ON Personne_Role.id_role = Role.id 
+                        WHERE Personne_Role.id_personne = :userId";
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute(['userId' => $userId]);
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $result ? $result['nom'] : null;
             } catch (PDOException $e) {
-                // Gérer l'exception en cas d'erreur de la base de données
                 echo "Erreur db : " . $e->getMessage();
                 return false;
             } catch (Exception $e) {
@@ -339,6 +325,88 @@ class Model {
                 echo "Erreur : " . $e->getMessage();
                 return false;
             }
+              
+        }
+
+    public function email_exist($email) {
+        /*
+        * Vérifie si un email existe dans la table Personne
+        * @param string $email - L'email à vérifier
+        * @return mixed - Retourne l'ID de l'utilisateur si l'email existe, sinon false
+        */
+        try {
+            // Préparer la requête SQL
+            $stmt = $this->db->prepare("SELECT id FROM Personne WHERE email = :email");
+            
+            // Lier le paramètre email
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            
+            // Exécuter la requête
+            $stmt->execute();
+            
+            // Récupérer le résultat
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            // Si un utilisateur est trouvé, retourner son ID
+            if ($user) {
+                return $user['id'];
+            }
+    
+            // Si l'email n'existe pas
+            return false;
+    
+        } catch (PDOException $e) {
+            // Gérer l'exception en cas d'erreur de la base de données
+            echo "Erreur db : " . $e->getMessage();
+            return false;
+        } catch (Exception $e) {
+            // Gérer l'exception générique
+            echo "Erreur : " . $e->getMessage();
+            return false;
         }
     }
+            
+    public function assignRole($userId, $roleId) {
+        $sql = "INSERT INTO Personne_Role (id_personne, id_role) VALUES (:userId, :roleId)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute(['userId' => $userId, 'roleId' => $roleId]);
+    }
+
+    public function getUserRoles($userId) {
+        $sql = "SELECT Role.nom FROM Personne_Role 
+                JOIN Role ON Personne_Role.id_role = Role.id 
+                WHERE Personne_Role.id_personne = :userId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['userId' => $userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function hasRole($userId, $roleName) {
+        $sql = "SELECT COUNT(*) FROM Personne_Role 
+                JOIN Role ON Personne_Role.id_role = Role.id 
+                WHERE Personne_Role.id_personne = :userId AND Role.nom = :roleName";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['userId' => $userId, 'roleName' => $roleName]);
+        return $stmt->fetchColumn() > 0;
+    }
+
+    public function getRolePage($userId) {
+        $roles = $this->getUserRoles($userId);
+        foreach ($roles as $role) {
+            switch ($role['nom']) {
+                case 'Admin':
+                    return '/admin_dashboard.php';
+                case 'Propriétaire':
+                    return '/proprietaire_dashboard.php';
+                case 'Etudiant':
+                    return '../?controller=pagelogement&action=pagelogementController';
+                case 'Visiteur':
+                    return '../index.php';
+                default:
+                    return '../index.php';
+            }
+        }
+        return '../index.php'; 
+    }
+}
 ?>

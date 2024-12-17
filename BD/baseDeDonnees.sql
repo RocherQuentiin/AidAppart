@@ -130,9 +130,30 @@ CREATE TABLE Garent (
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
+CREATE TABLE Role (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(255) NOT NULL UNIQUE,
+    description TEXT NOT NULL
+);
+
+INSERT INTO Role (nom, description) VALUES
+('Admin', 'Administrateur du système'),
+('Propriétaire', 'Propriétaire d\"un ou plusieurs logement'),
+('Etudiant', 'Recherche un logement'),
+('Visiteur', 'Visiteur du site');
+
+CREATE TABLE Personne_Role (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_personne INT NOT NULL,
+    id_role INT NOT NULL,
+    FOREIGN KEY (id_personne) REFERENCES Personne(id),
+    FOREIGN KEY (id_role) REFERENCES Role(id)
+);
+
+ALTER TABLE Personne ADD creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
+
 ALTER TABLE Logement ADD CONSTRAINT fk_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id);
 
-ALTER TABLE Personne MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 ALTER TABLE Messagerie MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 ALTER TABLE Logement MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 ALTER TABLE Avis MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
