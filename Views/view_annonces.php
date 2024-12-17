@@ -72,7 +72,6 @@
     </p>
   </section>
 
-  
   <!-- Map Section -->
   <section class="location">
     <h2>Voir l'emplacement</h2>
@@ -112,18 +111,6 @@
     </form>
   </section>
 
-  <!-- Additional Images -->
-  <div id="carousel-container" class="carousel-container">
-    <button class="carousel-arrow left" id="prev">&lt;</button>
-    <div class="carousel-wrapper">
-      <img src="images/kitchen.jpg" alt="Kitchen view">
-      <img src="images/bathroom.jpg" alt="Bathroom view">
-      <img src="images/balcony.jpg" alt="Balcony view">
-      <img src="images/gym.jpg" alt="Gym view">
-    </div>
-    <button class="carousel-arrow right" id="next">&gt;</button>
-    <button class="close-modal" id="close-modal">Close</button>
-  </div>
   <?php include 'Layout/footer.html'; ?>
 </body>
 </html>
