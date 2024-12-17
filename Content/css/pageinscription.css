@@ -292,7 +292,7 @@ p {
 
     /* Conteneur principal téléphone */
     .phone-input-container {
-        width: 100%; /* S'étend à la largeur de l'écran */
+        width: 105%; /* S'étend à la largeur de l'écran */
         margin-bottom: 10px; /* Ajoute de l'espace entre les champs */
     }
 
@@ -319,14 +319,40 @@ p {
     /* Champs d'entrée généraux */
     input[type="mail"],
     input[type="password"],
+    #password1,
+    #password2,
     #nom,
     #prenom,
     select {
         width: calc(100% - 20px); /* Ajustement dynamique pour inclure des marges */
-        padding: 8px 10px; /* Espacement réduit */
+        padding: 8px 18px; /* Espacement réduit */
         font-size: 14px; /* Texte ajusté pour éviter un effet trop zoomé */
         margin-bottom: 10px; /* Ajoute de l'espace entre les champs */
     }
+
+    /* Réduction de la taille des icônes */
+    .input-group .icon {
+        width: 5px; /* Réduisez la largeur des icônes */
+        top: 40%;
+    }
+
+    /* Ajustement pour l'icône de l'œil */
+    .input-group #eye-toggle {
+        left: 250px; /* Ajustez la position pour s'adapter à la nouvelle taille */
+        width: 15px; /* Même réduction que les autres icônes */
+        height: auto; /* Maintient le ratio d'aspect */
+    }
+
+    /* Ajustement pour le cadenas et les autres icônes */
+    .input-group #icon-lock, 
+    .input-group #icon-mail, 
+    select {
+        left: 3px; /* Ajustez si nécessaire pour réduire l'espace à gauche */
+        width: 15px; /* Réduction similaire */
+        height: auto;
+    }
+
+
 
     /* Boutons */
     .button-container {
