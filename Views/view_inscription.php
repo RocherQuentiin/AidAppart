@@ -8,6 +8,7 @@
     <title>Inscription</title>
     <link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
     <link rel="stylesheet" type="text/css" href="Content/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="Content/css/stylesheet.css"/>
     <script src="Content/js/pageinscription_connexion.js" defer></script>
 </head>
 <body>
@@ -18,12 +19,11 @@
 <form action="?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
         <button type="button" class="dropdown-btn" id="dropdownBtn">
-            Status <span class="arrow"></span>
+            Status  <span class="arrow"></span>
         </button>
         <ul class="dropdown-menu" id="dropdownMenu">
-            <li data-value="Option 1">Option 1</li>
-            <li data-value="Option 2">Option 2</li>
-            <li data-value="Option 3">Option 3</li>
+            <li data-value="Acheteur">Acheteur </li>
+            <li data-value="Vendeur">Vendeur </li>
         </ul>
         <!-- Champ caché pour transmettre la valeur sélectionnée -->
         <input type="hidden" id="status" name="status" value="">
@@ -73,13 +73,13 @@
 
     <label>
         <div class="Donnee">
-            <input type="checkbox" id="accorddonnees" name="accorddonnees"  ><p>En m'inscrivant, j'accepte que AidAppart recueille et traite mes données personnelles</p>
+            <input type="checkbox" id="accorddonnees" name="accorddonnees"  required><p>En m'inscrivant, j'accepte que AidAppart recueille et traite mes données personnelles</p>
         </div>
     </label>
     <label>
         <br>
         <div class="Condition">
-            <input type="checkbox" id="accordCGU" name="accordCDU"  ><p>J’accepte sans réserve les Conditions Générales d’Utilisation des services AidAppart</p>
+            <input type="checkbox" id="accordCGU" name="accordCDU" required><p>J’accepte sans réserve les Conditions Générales d’Utilisation des services AidAppart</p>
         </div>
     </label>
     <br>
