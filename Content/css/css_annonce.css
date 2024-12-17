@@ -204,7 +204,21 @@ header h1 {
   max-width: 63%;
 }
 
+.description, .avis, .location {
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 63%;
+}
+
 .description h2, .contact h2, .location h2 {
+  margin-bottom: 15px;
+  color: #23435c;
+}
+
+.description h2, .avis h2, .location h2 {
   margin-bottom: 15px;
   color: #23435c;
 }
@@ -328,4 +342,6 @@ form button:hover {
     padding: 5px 8px;
   }
 }
+
+
   

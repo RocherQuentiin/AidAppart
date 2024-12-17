@@ -72,6 +72,19 @@
     </p>
   </section>
 
+  <!-- Map Section -->
+  <section class="location">
+    <h2>Voir l'emplacement</h2>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.5263202364767!2d1.3570190155071896!3d43.61582257912245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aea3a4a4f7e1b1%3A0x74f80760b48a5a59!2sAppart&#39;City%20Toulouse%20A%C3%A9roport%20Cornebarrieu!5e0!3m2!1sen!2sfr!4v1635154872891!5m2!1sen!2sfr"
+      width="100%"
+      height="400"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+  </section>
+
   <section class="contact">
     <h2>Contactez le propriétaire</h2>
     <form>
@@ -88,17 +101,14 @@
     </form>
   </section>
 
-  <!-- Map Section -->
-  <section class="location">
-    <h2>Voir l'emplacement</h2>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.5263202364767!2d1.3570190155071896!3d43.61582257912245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aea3a4a4f7e1b1%3A0x74f80760b48a5a59!2sAppart&#39;City%20Toulouse%20A%C3%A9roport%20Cornebarrieu!5e0!3m2!1sen!2sfr!4v1635154872891!5m2!1sen!2sfr"
-      width="100%"
-      height="400"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-    ></iframe>
+  <section class="contact">
+    <h2>Donne ton avis</h2>
+    <form>
+      <label for="message">Avis:</label>
+      <textarea id="message" placeholder="Votre avis sur ce logement" rows="8" required></textarea>
+      
+      <button type="submit">Envoyer</button>
+    </form>
   </section>
 
   <!-- Additional Images -->
