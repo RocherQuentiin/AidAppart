@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-
     <?php require_once('Layout/view_header.html') ?>
-    
     <link href="Content/css/connexion.css" rel="stylesheet">
     <link rel="stylesheet" href="Content/css/index.css"/>
     <script src="Content/js/oeil_mot_de_passe.js" defer></script>
 </head>
-<body>
-    <div class="centre">
-        <h1>JE ME CONNECTE</h1>
 
-        <form action="Controllers/controller_connexion.php" method="POST">
+<title>Mot de passe oublié</title>
+
+<body>
+
+<div class="centre">
+        <h1>Mot de passe oublié</h1>
+
+        <form action="?controller=mdp_oublie&action=reset_mdp" method="POST">
             <!-- Groupe de champs email -->
             <div class="input-group">
                 <img src="Content/images/email.png" alt="Email Icon" class="icon">
-                <input type="email" name="email" placeholder="Votre adresse email" required>
+                <input type="email" name="email" placeholder="Renseignez votre adresse mail" required>
             </div>
-
-            <!-- Groupe de champs mot de passe -->
-            <div class="input-group">
-                <img src="Content/images/cadenas.png" alt="Lock Icon" class="icon">
-                <input type="password" name="password" placeholder="Votre mot de passe" id="password" required>
-                <img src="Content/images/eye_icon.png" alt="Eye Icon" class="eye-icon" id="eye-toggle" onclick="togglePassword()">
-            </div>
-
             <!-- Liens -->
             <div class="links">
                 <a href="?controller=inscription&action=inscriptionController" class="link">Première connexion ? Je crée un compte AidAppart</a>
-                <a href="?controller=mdp_oublie&action=mdp_oublieController" class="link">Mot de passe oublié ?</a>
+                <a href="?controller=connexion&action=connexionController" class="link">Retour à la connexion</a>
             </div>
 
             <!-- Bouton -->
@@ -41,5 +34,4 @@
     </div>
 
     <?php include 'Layout/footer.html'; ?>
-</body>
 </html>
