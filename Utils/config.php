@@ -13,6 +13,14 @@ if ( $environment == "local") {
     $dbname = getenv("MYSQL_DATABASE");
 }
 
+
+
+$servername = 'localhost:3306';
+$username = 'default_user';
+$password = 'AidappartNova';
+$dbname = 'Aidappart';
+
+
 global $TABLES;
 $TABLES = [
     'PERSONNE' => 'Personne',

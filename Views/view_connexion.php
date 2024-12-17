@@ -22,9 +22,9 @@
 
             <!-- Groupe de champs mot de passe -->
             <div class="input-group">
-                <img src="Content/images/cadenas.png" alt="Lock Icon" class="icon">
-                <input type="password" name="password" placeholder="Votre mot de passe" id="password" required>
-                <img src="Content/images/eye_icon.png" alt="Eye Icon" class="eye-icon" id="eye-toggle" onclick="togglePassword()">
+            <img src="Content/images/cadenas.png" alt="Lock Icon" class="icon">
+            <input type="password" placeholder="Votre mot de passe" id="password" required>
+            <img src="Content/images/eye_icon.png" alt="Eye Icon" class="eye-icon" id="eye-toggle" onclick="togglePassword('password')">
             </div>
 
             <!-- Liens -->
