@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php require_once('Layout/view_header.html') ?>
+    <?php require_once('Layout/view_header.php') ?>
     <link href="Content/css/connexion.css" rel="stylesheet">
     <link rel="stylesheet" href="Content/css/index.css"/>
     <script src="Content/js/oeil_mot_de_passe.js" defer></script>

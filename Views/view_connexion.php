@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Connexion</title>
 
-    <?php require_once('Layout/view_header.html') ?>
+    <?php require_once('Layout/view_header.php') ?>
     
     <link href="Content/css/connexion.css" rel="stylesheet">
     <script src="Content/js/oeil_mot_de_passe.js" defer></script>

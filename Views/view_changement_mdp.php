@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changement de mot de passe</title>
 
-    <?php require_once('Layout/view_header.html') ?>
+    <?php require_once('Layout/view_header.php') ?>
     
     <link href="Content/css/connexion.css" rel="stylesheet">
     <link rel="stylesheet" href="Content/css/index.css"/>
