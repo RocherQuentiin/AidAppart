@@ -185,15 +185,6 @@ form {
 
 
 
-/* Groupes de champs */
-.input-group {
-
-    position: relative;
-
-}
-
-
-
 
 
 
@@ -213,7 +204,8 @@ form {
 }
 
 /* Icône du cadenas */
-.input-group #icon-lock {
+.input-group #icon-lock, #icon-mail,
+select {
     left: 10px; /* Positionne l'icône à gauche du champ */
     width: 20px; /* Ajuste la taille du cadenas */
     height: auto;
@@ -232,16 +224,13 @@ form {
 
 
 
-
-
-
-
 input[type="mail"],
-input[type="password"],
+#password1,
+#password2,
 select{
     padding: 12px 40px; /* Plus d'espace intérieur */
-
     background-color: #fff; /* Fond blanc */
+    border: none; /* Suppression des contours */
     width: 325px;
     height: 20px;
     border: none;

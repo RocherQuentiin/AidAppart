@@ -52,14 +52,21 @@
         </div>
     </div>
     <br>
-    <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant"  >
-    <br><br>
-    <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" >
+    <div class="input-group">
+        <img src="Content/images/email.png" alt="Email Icon" id="icon-mail" class="icon">
+        <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant"  >
+    </div>
     <br><br>
     <div class="input-group">
-        <img src="../Content/images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
-        <input type="password" id="password" name="mdp_confirmation" placeholder="Confirmation">
-        <img src="../Content/images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword()">
+        <img src="Content/images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
+        <input type="password" id="password1" name="mdp" placeholder="Votre mot de passe" >
+        <img src="Content/images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password1')">
+    </div>
+    <br><br>
+    <div class="input-group">
+        <img src="Content/images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
+        <input type="password" id="password2" name="mdp_confirmation" placeholder="Confirmation">
+        <img src="Content/images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password2')">
     </div>
 
     <br><br>
