@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function togglePassword(id_appeller) {
     const passwordInput = document.getElementById(id_appeller);
-    const eyeIcon = document.getElementById('eye-toggle');
+    const parent = passwordInput.closest('.input-group'); // Récupère le conteneur parent
+    const eyeIcon = parent.querySelector('#eye-toggle'); // Cherche l'icône dans ce conteneur
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         eyeIcon.src = "Content/images/eye_closed_icon.png"; // Change to eye closed
