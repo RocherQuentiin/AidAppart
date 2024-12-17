@@ -72,6 +72,7 @@
     </p>
   </section>
 
+  
   <!-- Map Section -->
   <section class="location">
     <h2>Voir l'emplacement</h2>
