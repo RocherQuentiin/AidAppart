@@ -21,9 +21,8 @@
             Status <span class="arrow"></span>
         </button>
         <ul class="dropdown-menu" id="dropdownMenu">
-            <li data-value="Option 1">Option 1</li>
-            <li data-value="Option 2">Option 2</li>
-            <li data-value="Option 3">Option 3</li>
+            <li data-value="Acheteur">Acheteur</li>
+            <li data-value="Vendeur">Vendeur</li>
         </ul>
         <!-- Champ caché pour transmettre la valeur sélectionnée -->
         <input type="hidden" id="status" name="status" value="">
