@@ -346,7 +346,7 @@ class Model {
             $stat-> execute(['email' => $email]);
             return $stat->fetch(PDO::FETCH_ASSOC);
         }
-    }       
+           
     public function doublon($email, $telephone) {
         $stmt = $this->db->prepare("SELECT * FROM Personne WHERE email = :email OR telephone = :telephone");
         $stmt->execute([":email" => $email, ":telephone"=> $telephone]);
