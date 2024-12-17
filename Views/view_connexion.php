@@ -29,7 +29,7 @@
 
             <!-- Liens -->
             <div class="links">
-                <a href="?controller=inscription&action=inscriptionController" class="link">Première connexion ? Je crée un compte AidAppart</a>
+                <a href="?controller=inscription&action=Controller_inscription" class="link">Première connexion ? Je crée un compte AidAppart</a>
                 <a href="?controller=mdp_oublie&action=mdp_oublieController" class="link">Mot de passe oublié ?</a>
             </div>
 
