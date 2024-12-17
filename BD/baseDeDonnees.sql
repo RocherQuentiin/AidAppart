@@ -43,6 +43,9 @@ CREATE TABLE Logement (
     FOREIGN KEY (proprietaire) REFERENCES Personne(id)
 );
 
+ALTER TABLE logement
+ADD COLUMN statut BOOLEAN DEFAULT FALSE;
+
 CREATE TABLE Adresse (
     id INT PRIMARY KEY AUTO_INCREMENT,
     numero INT NOT NULL,
