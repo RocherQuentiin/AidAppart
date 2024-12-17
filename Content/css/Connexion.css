@@ -15,7 +15,8 @@ body {
 
 /* Groupes de champs */
 .input-group {
-    width: 80%; /* Largeur par défaut pour les grands écrans */
+    width: 75%; /* Largeur par défaut pour les grands écrans */
+    padding: 1%;
     margin-bottom: 8%; /* Espacement entre les groupes */
     position: relative;
 }
