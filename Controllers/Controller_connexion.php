@@ -10,7 +10,6 @@ class Controller_connexion extends Controller {
     }
 
 public function action_seconnecter() { 
-
     $model = Model::getModel(); 
     $email = $_POST['email']; 
     $mdp = $_POST['password']; 

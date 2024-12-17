@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,9 +90,6 @@
 </form>
 </body>
 </html>
-
-
-
 <?php 
     if (isset($message)) {
         afficherPopup($message);

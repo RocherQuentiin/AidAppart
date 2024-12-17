@@ -20,7 +20,6 @@ class Controller_inscription extends Controller {
     
 
     public function action_sinscrire() {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $model = Model::getModel();
             // Récupération des données POST
@@ -33,7 +32,6 @@ class Controller_inscription extends Controller {
             $mdp = $_POST['mdp'];
             $mdp_confirmation=$_POST["mdp_confirmation"];
 
-            
             // Validation des champs obligatoires
             if (empty($nom) || empty($prenom) || empty($telephone) || empty($email) || empty($mdp)) {
                 $data = ["message" => "Tous les champs sont obligatoires."];
@@ -72,11 +70,7 @@ class Controller_inscription extends Controller {
             } else {
                 echo "Erreur lors de l'inscription.";
             }
-            
-            }
-
-
-    
+        }
     }
 }   
 
