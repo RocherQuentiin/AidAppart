@@ -8,6 +8,7 @@
     <title>Inscription</title>
     <link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
     <link rel="stylesheet" type="text/css" href="Content/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="Content/css/stylesheet.css"/>
     <script src="Content/js/pageinscription_connexion.js" defer></script>
 </head>
 <body>
@@ -18,11 +19,11 @@
 <form action="?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
         <button type="button" class="dropdown-btn" id="dropdownBtn">
-            Status <span class="arrow"></span>
+            Status  <span class="arrow"></span>
         </button>
         <ul class="dropdown-menu" id="dropdownMenu">
-            <li data-value="Acheteur">Acheteur</li>
-            <li data-value="Vendeur">Vendeur</li>
+            <li data-value="Acheteur">Acheteur </li>
+            <li data-value="Vendeur">Vendeur </li>
         </ul>
         <!-- Champ caché pour transmettre la valeur sélectionnée -->
         <input type="hidden" id="status" name="status" value="">
