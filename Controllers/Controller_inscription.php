@@ -49,7 +49,7 @@ class Controller_inscription extends Controller {
             }
 
             // Vérification que les mots de passe soit identique
-            if ($mdp_confirmation===$mdp) {
+            if ($mdp_confirmation!=$mdp) {
                 $data = ["message"=> "Les deux mots de passe doivent être identique"];
                 $this->render("inscription", $data);
                 exit;
