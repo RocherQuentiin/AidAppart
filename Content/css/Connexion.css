@@ -73,13 +73,14 @@ body {
 
 /* Lien */
 .link {
-    display: block;
+    display: flex;
+    flex-direction: column; /* Aligne les enfants verticalement */
+    justify-content: center;
+    align-items: center;
     margin-top: 3%;
     color: var(--blue);
     text-decoration: none;
-    display: block; /* Garde le bouton en tant qu'élément de bloc */
-    margin-left: auto; /* Centre horizontalement */
-    margin-right: auto; /* Centre horizontalement */
+
 }
 .button {
     margin-top: 5%;
