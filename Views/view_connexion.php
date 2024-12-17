@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
 
     <?php require_once('Layout/view_header.html') ?>
     
     <link href="Content/css/connexion.css" rel="stylesheet">
-    <link rel="stylesheet" href="Content/css/index.css"/>
     <script src="Content/js/oeil_mot_de_passe.js" defer></script>
 </head>
 <body>
     <div class="centre">
         <h1>JE ME CONNECTE</h1>
 
-        <form action="Controllers/controller_connexion.php" method="POST">
+        <form action="?controller=connexion&action=seconnecter" method="POST">
             <!-- Groupe de champs email -->
             <div class="input-group">
                 <img src="Content/images/email.png" alt="Email Icon" class="icon">

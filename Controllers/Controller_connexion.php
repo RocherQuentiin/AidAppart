@@ -11,29 +11,24 @@ class Controller_connexion extends Controller {
         $this->render("connexion", $data);
     }
 
-    public function action_seconnecter(){
-    $message = "";
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Récupère les données du formulaire
-        $email = $_POST['email'] ?? null;
-        $motDePasse = $_POST['mot_de_passe'] ?? null;
+    public function action_seconnecter() {
 
-        if ($email && $motDePasse) {
-            // Vérifie les identifiants dans la base de données
-            $utilisateur = verifierUtilisateur($email, $motDePasse);
+        $model = Model::getModel();
+        $email = $_POST['email'];
+        $mdp = $_POST['password'];
+        $utilisateur = $model->UtilisateurConnexion($email);
 
-            if ($utilisateur) {
-                // Connexion réussie : initialise une session
-                session_start();
-                $_SESSION['utilisateur'] = $utilisateur; // Stocke l'utilisateur en session
-                header('Location: tableau_de_bord.php'); // Redirige vers le tableau de bord
-                exit;
-            } else {
-                // Erreur d'authentification
-                $message = "Adresse email ou mot de passe incorrect.";
-            }
-        } else {
-            $message = "Veuillez remplir tous les champs.";
+        if  ($utilisateur && password_verify($mdp, $utilisateur['mdp'])) {
+            $idUtilisateur= $utilisateur['utilisateurID'];
+            $_SESSION['idUtilisateur'] = $idUtilisateur;
+            $data = ["erreur" => false];
+            $this->render("accueil",$data);
+        }    
+        else {
+            $data = ["erreur" => true];
+            $this->render("connexion",$data);
+            echo "E-mail ou mot de passe incorect.";
+        }    
     }
-}}}
+}
 ?>

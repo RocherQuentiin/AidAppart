@@ -339,6 +339,12 @@ class Model {
                 echo "Erreur : " . $e->getMessage();
                 return false;
             }
+
         }
-    }
+        public function UtilisateurConnexion($email) {
+            $stat = $this->db->prepare('SeLECT * FROM Personne WHERE email = :email');
+            $stat-> execute(['email' => $email]);
+            return $stat->fetch(PDO::FETCH_ASSOC);
+        }
+    }       
 ?>
