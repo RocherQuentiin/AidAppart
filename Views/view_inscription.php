@@ -73,13 +73,15 @@
 
     <label>
         <div class="Donnee">
-            <input type="checkbox" id="accorddonnees" name="accorddonnees"  required><p>En m'inscrivant, j'accepte que AidAppart recueille et traite mes données personnelles</p>
+            <input type="checkbox" id="accorddonnees" name="accorddonnees"  required>
+            <p>En m'inscrivant, j'accepte que AidAppart recueille et traite mes données personnelles</p>
         </div>
     </label>
     <label>
         <br>
         <div class="Condition">
-            <input type="checkbox" id="accordCGU" name="accordCDU" required><p>J’accepte sans réserve les Conditions Générales d’Utilisation des services AidAppart</p>
+            <input type="checkbox" id="accordCGU" name="accordCDU" required>
+            <p>J’accepte sans réserve les Conditions Générales d’Utilisation des services AidAppart</p>
         </div>
     </label>
     <br>

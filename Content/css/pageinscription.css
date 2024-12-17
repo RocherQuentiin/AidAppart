@@ -238,13 +238,20 @@ select{
     box-shadow: 0 4px 4px 0 #00000040;
 }
 
+/* Aligner la case à cocher à gauche du texte */
 .Donnee, .Condition {
-    display: flex; /* Met les éléments sur une seule ligne */
-    gap: 5px; /* Espace minimal entre la case et le texte */
+    display: flex; /* Utilisation de Flexbox pour aligner horizontalement */
+    align-items: center; /* Assure que la case à cocher et le texte sont alignés verticalement */
+}
+
+/* Ajuster la position de la case à cocher */
+input[type="checkbox"] {
+    box-shadow: none; /* Retire toute ombre portée */
+    margin-left: -100px; /* S'assure qu'il n'y a pas de marge supplémentaire à gauche */
 }
 
 p {
-    margin: 0 50% 0 -33%; /* Définit les marges */
+    margin: 0 50% 0 -10%; /* Définit les marges */
 }
 
 .button-container {
