@@ -341,7 +341,7 @@ class Model {
             }
 
         }
-        public function UtilisateurConnexion($email) {
+        public function personneConnexion($email) {
             $stat = $this->db->prepare('SeLECT * FROM Personne WHERE email = :email');
             $stat-> execute(['email' => $email]);
             return $stat->fetch(PDO::FETCH_ASSOC);

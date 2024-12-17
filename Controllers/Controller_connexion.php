@@ -16,11 +16,11 @@ class Controller_connexion extends Controller {
         $model = Model::getModel();
         $email = $_POST['email'];
         $mdp = $_POST['password'];
-        $utilisateur = $model->UtilisateurConnexion($email);
+        $personne = $model->personneConnexion($email);
 
-        if  ($utilisateur && password_verify($mdp, $utilisateur['mdp'])) {
-            $idUtilisateur= $utilisateur['utilisateurID'];
-            $_SESSION['idUtilisateur'] = $idUtilisateur;
+        if  ($personne && password_verify($mdp, $personne['mdp'])) {
+            $idpersonne= $personne['id'];
+            $_SESSION['idpersonne'] = $idpersonne;
             $data = ["erreur" => false];
             $this->render("accueil",$data);
         }    
