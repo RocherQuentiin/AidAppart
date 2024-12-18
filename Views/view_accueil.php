@@ -1,5 +1,5 @@
 <?php
-require_once('Layout/view_header.html') ?>
+require_once('Layout/view_header.php');?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

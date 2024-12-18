@@ -132,7 +132,7 @@ class Model {
         } catch (Exception $e) {
             echo "Erreur : " . $e->getMessage();
             return false;
-        }
+	    }
     }
 
     public function insertAnnonce($id_logement, $creer_a, $loueur, $a_colocation, $disponibilite, $nb_personnes, $statut, $info_complementaire) {
@@ -170,163 +170,164 @@ class Model {
         }
     }
 
-        public function selectDistinctFromTable($table, $column, $order_by=null) {
-            /*
-            * Sélectionner des valeurs distinctes d'une colonne spécifiée dans une table spécifiée
-            * @param string $table - Nom de la table
-            * @param string $column - Nom de la colonne
-            * @return array - Tableau contenant les valeurs distinctes de la colonne
-            */
-            if ($order_by) {
-                $stmt = $this->db->query("SELECT DISTINCT $column FROM $table ORDER BY $order_by");
-            } else {
-                $stmt = $this->db->query("SELECT DISTINCT $column FROM $table");
+    public function selectDistinctFromTable($table, $column, $order_by=null) {
+        /*
+        * Sélectionner des valeurs distinctes d'une colonne spécifiée dans une table spécifiée
+        * @param string $table - Nom de la table
+        * @param string $column - Nom de la colonne
+        * @return array - Tableau contenant les valeurs distinctes de la colonne
+        */
+        if ($order_by) {
+            $stmt = $this->db->query("SELECT DISTINCT $column FROM $table ORDER BY $order_by");
+        } else {
+            $stmt = $this->db->query("SELECT DISTINCT $column FROM $table");
+        }
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function selectMinMaxFromTable($table, $column) {
+        /*
+        * Sélectionner les valeurs minimales et maximales d'une colonne spécifiée dans une table spécifiée
+        * @param string $table - Nom de la table
+        * @param string $column - Nom de la colonne
+        * @return array - Tableau contenant les valeurs minimales et maximales de la colonne
+        */
+        $stmt = $this->db->query("SELECT MIN($column) as min, MAX($column) as max FROM $table");
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function selectFieldsFromTable($table, $fields, $conditions = []) {
+        /*
+        * Sélectionner des champs spécifiques d'une table spécifiée avec des conditions optionnelles
+        * @param string $table - Nom de la table
+        * @param array $fields - Tableau des champs à sélectionner
+        * @param array $conditions - Tableau des conditions (facultatif)
+        * @return array - Tableau contenant les résultats de la sélection
+        */
+        $fieldsList = implode(", ", $fields);
+        echo $fieldsList;
+        $sql = "SELECT $fieldsList FROM $table";
+
+        if (!empty($conditions)) {
+            $conditionsList = [];
+            foreach ($conditions as $key => $value) {
+                $conditionsList[] = "$key = :$key";
             }
+            $sql .= " WHERE " . implode(" AND ", $conditionsList);
+        }
+
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute($conditions);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Erreur db : " . $e->getMessage();
+            return false;
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+            return false;
         }
+    }
 
-        public function selectMinMaxFromTable($table, $column) {
-            /*
-            * Sélectionner les valeurs minimales et maximales d'une colonne spécifiée dans une table spécifiée
-            * @param string $table - Nom de la table
-            * @param string $column - Nom de la colonne
-            * @return array - Tableau contenant les valeurs minimales et maximales de la colonne
-            */
-            $stmt = $this->db->query("SELECT MIN($column) as min, MAX($column) as max FROM $table");
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+    public function searchLogements($criteria) {
+        $query = "SELECT * FROM Logement WHERE 1=1"; // 1=1 pour éviter les erreurs de syntaxe si aucune condition n'est ajoutée
+        if (!empty($criteria['type'])) {
+            $query .= " AND type = :type";
         }
-
-        public function selectFieldsFromTable($table, $fields, $conditions = []) {
-            /*
-            * Sélectionner des champs spécifiques d'une table spécifiée avec des conditions optionnelles
-            * @param string $table - Nom de la table
-            * @param array $fields - Tableau des champs à sélectionner
-            * @param array $conditions - Tableau des conditions (facultatif)
-            * @return array - Tableau contenant les résultats de la sélection
-            */
-            $fieldsList = implode(", ", $fields);
-            echo $fieldsList;
-            $sql = "SELECT $fieldsList FROM $table";
-
-            if (!empty($conditions)) {
-                $conditionsList = [];
-                foreach ($conditions as $key => $value) {
-                    $conditionsList[] = "$key = :$key";
-                }
-                $sql .= " WHERE " . implode(" AND ", $conditionsList);
-            }
-
-            try {
-                $stmt = $this->db->prepare($sql);
-                $stmt->execute($conditions);
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } catch (PDOException $e) {
-                echo "Erreur db : " . $e->getMessage();
-                return false;
-            } catch (Exception $e) {
-                echo "Erreur : " . $e->getMessage();
-                return false;
-            }
+        if (!empty($criteria['surface'])) {
+            $query .= " AND surface >= :surface";
         }
-
-        public function searchLogements($criteria) {
-            $query = "SELECT * FROM Logement WHERE 1=1"; // 1=1 pour éviter les erreurs de syntaxe si aucune condition n'est ajoutée
-            if (!empty($criteria['type'])) {
-                $query .= " AND type = :type";
-            }
-            if (!empty($criteria['surface'])) {
-                $query .= " AND surface >= :surface";
-            }
-            if (!empty($criteria['loyerMax'])) {
-                $query .= " AND loyer <= :loyerMax";
-            }
-            if (!empty($criteria['loyerMin'])) {
-                $query .= " AND loyer >= :loyerMin";
-            }
-            if (!empty($criteria['nbPieces'])) {
-                $query .= " AND nb_pieces = :nbPieces";
-            }
-            if (!empty($criteria['surfaceMin'])) {
-                $query .= " AND surface >= :surfaceMin";
-            }
-            if (!empty($criteria['surfaceMax'])) {
-                $query .= " AND surface <= :surfaceMax";
-            }
-            if (!empty($criteria['wifi'])) {
-                $query .= " AND a_wifi = :wifi";
-            }
-            if (!empty($criteria['meuble'])) {
-                $query .= " AND est_meuble = :meuble";
-            }
-            if (!empty($criteria['accessiblePMR'])) {
-                $query .= " AND est_accessible_PMR  = :accessiblePMR";
-            }
-            if (!empty($criteria['parking'])) {
-                $query .= " AND a_parking = :parking";
-            }
-        
-            $stmt = $this->db->prepare($query);
-            if (!empty($criteria['type'])) {
-                $stmt->bindValue(':type', $criteria['type']);
-            }
-            if (!empty($criteria['surface'])) {
-                $stmt->bindValue(':surface', $criteria['surface']);
-            }
-            if (!empty($criteria['loyerMax'])) {
-                $stmt->bindValue(':loyerMax', $criteria['loyerMax']);
-            }
-            if (!empty($criteria['loyerMin'])) {
-                $stmt->bindValue(':loyerMin', $criteria['loyerMin']);
-            }
-            if (!empty($criteria['nbPieces'])) {
-                $stmt->bindValue(':nbPieces', $criteria['nbPieces']);
-            }
-            if (!empty($criteria['surfaceMin'])) {
-                $stmt->bindValue(':surfaceMin', $criteria['surfaceMin']);
-            }
-            if (!empty($criteria['surfaceMax'])) {
-                $stmt->bindValue(':surfaceMax', $criteria['surfaceMax']);
-            }
-            if (!empty($criteria['wifi'])) {
-                $stmt->bindValue(':wifi', $criteria['wifi'] == '1' ? 1 : 0);
-            }
-            if (!empty($criteria['meuble'])) {
-                $stmt->bindValue(':meuble', $criteria['meuble'] == '1' ? 1 : 0);
-            }
-            if (!empty($criteria['accessiblePMR'])) {
-                $stmt->bindValue(':accessiblePMR', $criteria['accessiblePMR'] == '1' ? 1 : 0);
-            }
-            if (!empty($criteria['parking'])) {
-                $stmt->bindValue(':parking', $criteria['parking'] == '1' ? 1 : 0);
-            }
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($criteria['loyerMax'])) {
+            $query .= " AND loyer <= :loyerMax";
         }
-
-        public function getUserRole($userId) {
-            /*
-            * Récupérer le rôle d'un utilisateur
-            * @param int $userId - ID de l'utilisateur
-            * @return string - Nom du rôle de l'utilisateur
-            */
-            try {
-                $sql = "SELECT Role.nom FROM Personne_Role 
-                        JOIN Role ON Personne_Role.id_role = Role.id 
-                        WHERE Personne_Role.id_personne = :userId";
-                $stmt = $this->db->prepare($sql);
-                $stmt->execute(['userId' => $userId]);
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                return $result ? $result['nom'] : null;
-            } catch (PDOException $e) {
-                echo "Erreur db : " . $e->getMessage();
-                return false;
-            } catch (Exception $e) {
-                // Gérer l'exception générique
-                echo "Erreur : " . $e->getMessage();
-                return false;
-            }
-              
+        if (!empty($criteria['loyerMin'])) {
+            $query .= " AND loyer >= :loyerMin";
         }
+        if (!empty($criteria['nbPieces'])) {
+            $query .= " AND nb_pieces = :nbPieces";
+        }
+        if (!empty($criteria['surfaceMin'])) {
+            $query .= " AND surface >= :surfaceMin";
+        }
+        if (!empty($criteria['surfaceMax'])) {
+            $query .= " AND surface <= :surfaceMax";
+        }
+        if (!empty($criteria['wifi'])) {
+            $query .= " AND a_wifi = :wifi";
+        }
+        if (!empty($criteria['meuble'])) {
+            $query .= " AND est_meuble = :meuble";
+        }
+        if (!empty($criteria['accessiblePMR'])) {
+            $query .= " AND est_accessible_PMR  = :accessiblePMR";
+        }
+        if (!empty($criteria['parking'])) {
+            $query .= " AND a_parking = :parking";
+        }
+    
+        $stmt = $this->db->prepare($query);
+        if (!empty($criteria['type'])) {
+            $stmt->bindValue(':type', $criteria['type']);
+        }
+        if (!empty($criteria['surface'])) {
+            $stmt->bindValue(':surface', $criteria['surface']);
+        }
+        if (!empty($criteria['loyerMax'])) {
+            $stmt->bindValue(':loyerMax', $criteria['loyerMax']);
+        }
+        if (!empty($criteria['loyerMin'])) {
+            $stmt->bindValue(':loyerMin', $criteria['loyerMin']);
+        }
+        if (!empty($criteria['nbPieces'])) {
+            $stmt->bindValue(':nbPieces', $criteria['nbPieces']);
+        }
+        if (!empty($criteria['surfaceMin'])) {
+            $stmt->bindValue(':surfaceMin', $criteria['surfaceMin']);
+        }
+        if (!empty($criteria['surfaceMax'])) {
+            $stmt->bindValue(':surfaceMax', $criteria['surfaceMax']);
+        }
+        if (!empty($criteria['wifi'])) {
+            $stmt->bindValue(':wifi', $criteria['wifi'] == '1' ? 1 : 0);
+        }
+        if (!empty($criteria['meuble'])) {
+            $stmt->bindValue(':meuble', $criteria['meuble'] == '1' ? 1 : 0);
+        }
+        if (!empty($criteria['accessiblePMR'])) {
+            $stmt->bindValue(':accessiblePMR', $criteria['accessiblePMR'] == '1' ? 1 : 0);
+        }
+        if (!empty($criteria['parking'])) {
+            $stmt->bindValue(':parking', $criteria['parking'] == '1' ? 1 : 0);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function getUserRole($userId) {
+        /*
+        * Récupérer le rôle d'un utilisateur
+        * @param int $userId - ID de l'utilisateur
+        * @return string - Nom du rôle de l'utilisateur
+        */
+        try {
+            $sql = "SELECT Role.nom FROM Personne_Role 
+                    JOIN Role ON Personne_Role.id_role = Role.id 
+                    WHERE Personne_Role.id_personne = :userId";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(['userId' => $userId]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['nom'] : null;
+        } catch (PDOException $e) {
+            echo "Erreur db : " . $e->getMessage();
+            return false;
+        } catch (Exception $e) {
+            // Gérer l'exception générique
+            echo "Erreur : " . $e->getMessage();
+            return false;
+        }
+            
+    }
 
     public function email_exist($email) {
         /*
@@ -364,6 +365,18 @@ class Model {
             echo "Erreur : " . $e->getMessage();
             return false;
         }
+    }
+
+    public function personneConnexion($email) {
+        $stat = $this->db->prepare('SeLECT * FROM Personne WHERE email = :email');
+        $stat-> execute(['email' => $email]);
+        return $stat->fetch(PDO::FETCH_ASSOC);
+    }
+           
+    public function doublon($email, $telephone) {
+        $stmt = $this->db->prepare("SELECT * FROM Personne WHERE email = :email OR telephone = :telephone");
+        $stmt->execute([":email" => $email, ":telephone"=> $telephone]);
+        return $stmt->rowCount() > 0;
     }
             
     public function assignRole($userId, $roleId) {
@@ -429,6 +442,38 @@ class Model {
             }
         }
         return '../index.php'; 
+    }
+
+    public function getIdPersonne($email) {
+        $stmt = $this->db->prepare("SELECT id FROM Personne WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+        return $stmt->fetchColumn();
+    }
+
+    public function insertSignalement($id_personne, $id_logement, $commentaire) {
+        /*
+        * Insérer un nouveau signalement dans la table Favoris_Signalement
+        * @param int $id_personne - ID de la personne
+        * @param int $id_logement - ID du logement
+        * @param string $commentaire - Commentaire du signalement
+        * @return bool - Retourne true en cas de succès, false en cas d'échec
+        */
+        try {
+            $sql = "INSERT INTO Favoris_Signalement (id_personne, id_logement, statut, commentaire) VALUES (:id_personne, :id_logement, :statut, :commentaire)";
+            $stmt = $this->db->prepare($sql);
+            return $stmt->execute([
+                'id_personne' => $id_personne,
+                'id_logement' => $id_logement,
+                'statut' => 'signalement',
+                'commentaire' => $commentaire
+            ]);
+        } catch (PDOException $e) {
+            echo "Erreur db: " . $e->getMessage();
+            return false;
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+            return false;
+        }
     }
 }
 ?>
