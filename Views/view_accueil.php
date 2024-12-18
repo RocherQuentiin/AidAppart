@@ -10,7 +10,7 @@ require_once('Layout/view_header.html') ?>
     <!-- Section principale -->
     <div class="part1">
         <h1>Trouve Ton Logement<br>Étudiant Aujourd'hui !</h1>
-        <button>Recherche un logement</button>
+        /<a href="?controller=pagelogement&action=pagelogementController"><button>Recherche un logement</button></a>
     </div>
 
     <!-- Section fonctionnalités -->
