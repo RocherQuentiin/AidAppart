@@ -10,7 +10,7 @@ require_once "Controllers/Controller.php";
 //Liste des contrôleurs -- A RENSEIGNER
 $controllers = ["inscription","connexion","pagelogement","accueil","aide","annonces"];
 //Nom du contrôleur par défaut-- A RENSEIGNER
-$controller_default = "annonces";
+$controller_default = "accueil";
 
 //On teste si le paramètre controller existe et correspond à un contrôleur de la liste $controllers
 if (isset($_GET['controller']) and in_array($_GET['controller'], $controllers)) {
