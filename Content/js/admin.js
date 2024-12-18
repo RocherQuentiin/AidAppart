@@ -49,16 +49,13 @@ function openRolePopup(userId) {
     // Add event listener to handle form submission
     document.getElementById('role-form').addEventListener('submit', (event) => {
         event.preventDefault();
-        console.log('submit');
-        const selectedRoles = Array.from(document.getElementById('roles').selectedOptions).map((option) => option.value, console.log(option.value));
+        const selectedRoles = Array.from(document.getElementById('roles').selectedOptions).map(option => option.value);
         updateUserRoles(userId, selectedRoles);
         document.body.removeChild(popup);
     });
 }
 
 function updateUserRoles(userId, roles) {
-    console.log('updateUserRoles');
-    console.log(userId, roles);
     fetch('?controller=admin&action=assign_role', {
         method: 'POST',
         headers: {
@@ -67,17 +64,14 @@ function updateUserRoles(userId, roles) {
         body: JSON.stringify({ id: userId, role: roles })
     })
     .then(data => {
-        console.log('Success:', data);
-        if (data.success) {
+        if (data.ok) {
             alert('Rôles mis à jour avec succès');
             location.reload();
         } else {
-            console.error('Error:', data);
             alert('Erreur lors de la mise à jour des rôles');
         }
     })
     .catch(error => {
-        console.error('Error:', error);
         alert('Erreur lors de la mise à jour des rôles');
     });
 }
