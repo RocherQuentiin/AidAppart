@@ -14,11 +14,11 @@
     <h1>Bienvenue, Administrateur</h1>
     <div class="navbar-menu" id="navbarMenu">        
         <ul class="navbar-links">
-            <li><a href="?page=Utilisateurs">Utilisateurs</a></li>
-            <li><a href="?page=Signalement">Signalement</a></li>
-            <li><a href="?page=Logement">Logement à confirmer</a></li>
+            <li><a href="?controller=admin&action=admin&page=Utilisateurs">Utilisateurs</a></li>
+            <li><a href="?controller=admin&action=admin&page=Signalement">Signalement</a></li>
+            <li><a href="?controller=admin&action=admin&page=Logement">Logement à confirmer</a></li>
         </ul>
-</div>
+    </div>
 <?php
     if (isset($_GET['page'])) {
         switch ($_GET['page']) {
