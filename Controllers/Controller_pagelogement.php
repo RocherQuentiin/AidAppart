@@ -31,5 +31,11 @@ class Controller_pagelogement extends Controller {
         $logements = $model->searchLogements($criteria);
         echo json_encode($logements);
     }
+
+    public function action_report() {
+        $model = Model::getModel();
+        $data = json_decode(file_get_contents('php://input'), true);
+        return $model->insertSignalement($data['id_utilisateur'], $data['id_logement'], $data['commentaire']);
+    }
 }
 ?>
