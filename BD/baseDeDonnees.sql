@@ -43,6 +43,9 @@ CREATE TABLE Logement (
     FOREIGN KEY (proprietaire) REFERENCES Personne(id)
 );
 
+ALTER TABLE logement
+ADD COLUMN statut BOOLEAN DEFAULT FALSE;
+
 CREATE TABLE Adresse (
     id INT PRIMARY KEY AUTO_INCREMENT,
     numero INT NOT NULL,
@@ -127,9 +130,31 @@ CREATE TABLE Garent (
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
-ALTER TABLE Logement ADD CONSTRAINT fk_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id);
+CREATE TABLE Role (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(255) NOT NULL UNIQUE,
+    description TEXT NOT NULL
+);
 
-ALTER TABLE Personne MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
+INSERT INTO Role (nom, description) VALUES
+('Admin', 'Administrateur du système'),
+('Propriétaire', 'Propriétaire d\"un ou plusieurs logement'),
+('Etudiant', 'Recherche un logement'),
+('Visiteur', 'Visiteur du site');
+
+CREATE TABLE Personne_Role (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_personne INT NOT NULL,
+    id_role INT NOT NULL,
+    FOREIGN KEY (id_personne) REFERENCES Personne(id),
+    FOREIGN KEY (id_role) REFERENCES Role(id)
+);
+
+ALTER TABLE Personne ADD creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
+
+ALTER TABLE Logement ADD CONSTRAINT fk_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id);
+ALTER TABLE Favoris_Signalement MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
+
 ALTER TABLE Messagerie MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 ALTER TABLE Logement MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 ALTER TABLE Avis MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;

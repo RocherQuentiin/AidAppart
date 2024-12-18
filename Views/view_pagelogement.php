@@ -8,7 +8,10 @@
     <title>Liste des Logements</title>
 </head>
 <body>
-    <?php include 'Layout/view_header.html'; ?>
+    <?php include 'Layout/view_header.php'; ?>
+    <script>
+        window.userId = <?php echo $_SESSION['idpersonne']; ?>;
+    </script>
     <div class="search-selection">
         <h1>Trouver un logement étudiant à $Ville </h1>
         <div class="search-bar">
@@ -44,12 +47,10 @@
             <h3>Charges</h3>
             <input type="number" id="charges-min" placeholder="<?php echo $minMaxCharges['min'] . ' (€)'; ?>" max="<?php echo $minMaxCharges['max']; ?>">
             <input type="number" id="charges-max" placeholder="<?php echo $minMaxCharges['max'] . ' (€)'; ?>" min="<?php echo $minMaxCharges['max']; ?>">
-            <ul>
-                <li><input type="checkbox" id="meuble" checked> Meublé</li>
-                <li><input type="checkbox" id="wifi" checked> WiFi</li>
-                <li><input type="checkbox" id="accessible-pmr"> Accessible PMR</li>
-                <li><input type="checkbox" id="parking" checked> Parking</li>
-            </ul>
+            <li><input type="checkbox" id="meuble" checked> Meublé</li>
+            <li><input type="checkbox" id="wifi" checked> WiFi</li>
+            <li><input type="checkbox" id="accessible-pmr"> Accessible PMR</li>
+            <li><input type="checkbox" id="parking" checked> Parking</li>
         </div>
         <div class="listings">
         </div>

@@ -1,35 +1,32 @@
 body {
-    font-family: 'Arial', sans-serif;
     background: var(--degrader-vert);
     color: var(--blue);
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* Conteneur principal */
 .centre {
-    text-align: center;
-    width: 90%;
-    max-width: 480px;
+    display: flex;
+    flex-direction: column; /* Aligne les enfants verticalement */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Largeur adaptable */
+    padding: 9% 0 7%;
 }
 
 /* Groupes de champs */
 .input-group {
-    margin-top: 2%;
+    width: 75%; /* Largeur par défaut pour les grands écrans */
+    padding: 1%;
+    margin-bottom: 8%; /* Espacement entre les groupes */
     position: relative;
-    margin-bottom: 4%; /* Espacement relatif */
 }
 
 /* Champs de saisie */
 .input-group input {
     width: 100%;
-    padding: 4% 15%; /* Espace intérieur en % */
+    padding: 1% 15%; /* Espace intérieur en % */
     border: none;
-    border-radius: 10px;
+
     box-shadow: 0 0.5em 0.8em rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     outline: none;
@@ -37,7 +34,7 @@ body {
 
 /* Icône du cadenas */
 .input-group .icon-lock {
-    width: 8%; /* Taille en fonction de la largeur du conteneur */
+    width: 10%; /* Taille en fonction de la largeur du conteneur */
     height: auto;
     position: absolute;
     top: 50%;
@@ -58,7 +55,7 @@ body {
     top: 50%;
     left: 3%;
     transform: translateY(-50%);
-    width: 6%; /* Taille relative */
+    width: 7%; /* Taille relative */
     height: auto;
     pointer-events: none;
 }
@@ -67,7 +64,7 @@ body {
 .input-group .eye-icon {
     position: absolute;
     top: 50%;
-    right: 3%;
+    right: -20%;
     transform: translateY(-50%);
     width: 6%;
     height: auto;
@@ -77,30 +74,22 @@ body {
 
 /* Lien */
 .link {
-    display: block;
-    margin-top: 2%;
-    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column; /* Aligne les enfants verticalement */
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
     color: var(--blue);
     text-decoration: none;
+
+}
+.button {
+    margin-top: 5%;
+    display: block; /* Garde le bouton en tant qu'élément de bloc */
+    margin-left: auto; /* Centre horizontalement */
+    margin-right: auto; /* Centre horizontalement */
 }
 
 .link:hover {
     text-decoration: underline;
-}
-
-/* Responsiveness pour petits écrans */
-@media (max-width: 768px) {
-    .centre {
-        width: 95%;
-    }
-    h1 {
-        font-size: 1.5rem;
-    }
-    input-group input {
-        font-size: 0.9rem;
-    }
-    button {
-        font-size: 1rem;
-        padding: 3% 4%;
-    }
 }
