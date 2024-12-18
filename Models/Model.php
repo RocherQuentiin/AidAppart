@@ -132,7 +132,7 @@ class Model {
         } catch (Exception $e) {
             echo "Erreur : " . $e->getMessage();
             return false;
-        }
+	    }
     }
 
     public function insertAnnonce($id_logement, $creer_a, $loueur, $a_colocation, $disponibilite, $nb_personnes, $statut, $info_complementaire) {
@@ -303,6 +303,32 @@ class Model {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    public function getUserRole($userId) {
+        /*
+        * Récupérer le rôle d'un utilisateur
+        * @param int $userId - ID de l'utilisateur
+        * @return string - Nom du rôle de l'utilisateur
+        */
+        try {
+            $sql = "SELECT Role.nom FROM Personne_Role 
+                    JOIN Role ON Personne_Role.id_role = Role.id 
+                    WHERE Personne_Role.id_personne = :userId";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(['userId' => $userId]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['nom'] : null;
+        } catch (PDOException $e) {
+            echo "Erreur db : " . $e->getMessage();
+            return false;
+        } catch (Exception $e) {
+            // Gérer l'exception générique
+            echo "Erreur : " . $e->getMessage();
+            return false;
+        }
+            
+    }
+
     public function email_exist($email) {
         /*
         * Vérifie si un email existe dans la table Personne
@@ -339,8 +365,8 @@ class Model {
             echo "Erreur : " . $e->getMessage();
             return false;
         }
-
     }
+
     public function personneConnexion($email) {
         $stat = $this->db->prepare('SeLECT * FROM Personne WHERE email = :email');
         $stat-> execute(['email' => $email]);
@@ -351,6 +377,55 @@ class Model {
         $stmt = $this->db->prepare("SELECT * FROM Personne WHERE email = :email OR telephone = :telephone");
         $stmt->execute([":email" => $email, ":telephone"=> $telephone]);
         return $stmt->rowCount() > 0;
+    }
+            
+    public function assignRole($userId, $roleId) {
+        $sql = "INSERT INTO Personne_Role (id_personne, id_role) VALUES (:userId, :roleId)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute(['userId' => $userId, 'roleId' => $roleId]);
+    }
+
+    public function getUserRoles($userId) {
+        $sql = "SELECT Role.nom FROM Personne_Role 
+                JOIN Role ON Personne_Role.id_role = Role.id 
+                WHERE Personne_Role.id_personne = :userId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['userId' => $userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function hasRole($userId, $roleName) {
+        $sql = "SELECT COUNT(*) FROM Personne_Role 
+                JOIN Role ON Personne_Role.id_role = Role.id 
+                WHERE Personne_Role.id_personne = :userId AND Role.nom = :roleName";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['userId' => $userId, 'roleName' => $roleName]);
+        return $stmt->fetchColumn() > 0;
+    }
+
+    public function getRolePage($userId) {
+        $roles = $this->getUserRoles($userId);
+        foreach ($roles as $role) {
+            switch ($role['nom']) {
+                case 'Admin':
+                    return '/admin_dashboard.php';
+                case 'Propriétaire':
+                    return '/proprietaire_dashboard.php';
+                case 'Etudiant':
+                    return '../?controller=pagelogement&action=pagelogementController';
+                case 'Visiteur':
+                    return '../index.php';
+                default:
+                    return '../index.php';
+            }
+        }
+        return '../index.php'; 
+    }
+
+    public function getIdPersonne($email) {
+        $stmt = $this->db->prepare("SELECT id FROM Personne WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+        return $stmt->fetchColumn();
     }
 }
 ?>

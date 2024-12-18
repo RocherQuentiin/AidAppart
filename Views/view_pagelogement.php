@@ -5,13 +5,11 @@
     <link rel="stylesheet" href="Content/css/pagelogement.css">
     <link rel="stylesheet" href="Content/css/index.css">
     <script src="Content/js/pagelogement.js" defer></script>
-    <script src="Content/js/pagelogement.js" defer></script>
     <title>Liste des Logements</title>
 </head>
 <body>
     <?php include 'Layout/view_header.php'; ?>
     <div class="search-selection">
-        <h1>Trouver un logement étudiant à $Ville </h1>
         <h1>Trouver un logement étudiant à $Ville </h1>
         <div class="search-bar">
             <input type="text" placeholder="Type de logement">
@@ -32,10 +30,8 @@
             </select>
             <h3>Type de logement</h3>
             <select id="type-logement" >
-            <select id="type-logement" >
                 <option value="">Tous</option>
                 <?php foreach ($types as $type): ?>
-                    <option value="<?php echo $type["type"]; ?>"><?php echo $type["type"]; ?></option>
                     <option value="<?php echo $type["type"]; ?>"><?php echo $type["type"]; ?></option>
                 <?php endforeach; ?>
             </select>
@@ -49,10 +45,6 @@
             <input type="number" id="charges-min" placeholder="<?php echo $minMaxCharges['min'] . ' (€)'; ?>" max="<?php echo $minMaxCharges['max']; ?>">
             <input type="number" id="charges-max" placeholder="<?php echo $minMaxCharges['max'] . ' (€)'; ?>" min="<?php echo $minMaxCharges['max']; ?>">
             <ul>
-                <li><input type="checkbox" id="meuble" checked> Meublé</li>
-                <li><input type="checkbox" id="wifi" checked> WiFi</li>
-                <li><input type="checkbox" id="accessible-pmr"> Accessible PMR</li>
-                <li><input type="checkbox" id="parking" checked> Parking</li>
                 <li><input type="checkbox" id="meuble" checked> Meublé</li>
                 <li><input type="checkbox" id="wifi" checked> WiFi</li>
                 <li><input type="checkbox" id="accessible-pmr"> Accessible PMR</li>

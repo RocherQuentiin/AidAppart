@@ -143,3 +143,15 @@ INSERT INTO Garent (id_personne, id_logement, montant, lien_affiliation, creer_a
 (5, 5, 900, 'Parents', '2023-01-05'),
 (6, 6, 1000, 'Amis', '2023-01-06'),
 (7, 7, 1100, 'Proche', '2023-01-07');
+
+INSERT INTO Personne_Role (id_personne, id_role) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 2),
+(6, 3),
+(7, 4),
+(8, 2),
+(9, 3),
+(10, 4);

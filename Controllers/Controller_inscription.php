@@ -64,7 +64,9 @@ class Controller_inscription extends Controller {
             // Insertion dans la base de données
             $reussie = $model->insertPersonne($nom, $prenom, $email, $actif, $telephone, $mdp);
             if ($reussie) {
-                echo "Inscription réussie !";
+                session_start();
+                $_SESSION['idpersonne'] = $model->getIdPersonne($email);
+                $_SESSION['prenom'] = $prenom;
                 $data = ["message" => null];
                 $this->render("accueil", $data);
             } else {

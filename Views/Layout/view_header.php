@@ -29,6 +29,9 @@
             </ul>
             <div class="navbar-right">
                 <?php 
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
                 if (isset($_SESSION['prenom'])): ?>
                     <a href="?controller=deconnexion&action=deconnexionController" class="btn-account"><button>Déconnexion</button></a>
                 <?php else: ?>
