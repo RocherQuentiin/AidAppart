@@ -8,7 +8,7 @@ require_once "Models/Model.php";
 require_once "Controllers/Controller.php";
 
 //Liste des contrôleurs -- A RENSEIGNER
-$controllers = ["inscription","connexion","deconnexion","pagelogement","accueil","aide","mdp_oublie","changement_mdp"];
+$controllers = ["inscription","connexion","deconnexion","pagelogement","accueil","aide","mdp_oublie","changement_mdp", "annonces"];
 //Nom du contrôleur par défaut-- A RENSEIGNER
 $controller_default = "accueil";
 
