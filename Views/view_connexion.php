@@ -16,15 +16,15 @@
         <form action="?controller=connexion&action=seconnecter" method="POST">
             <!-- Groupe de champs email -->
             <div class="input-group">
-                <img src="Content/images/email.png" alt="Email Icon" class="icon">
+                <img src="Content/Images/email.png" alt="Email Icon" class="icon">
                 <input type="email" name="email" placeholder="Votre adresse email" required>
             </div>
 
             <!-- Groupe de champs mot de passe -->
             <div class="input-group">
-            <img src="Content/images/cadenas.png" alt="Lock Icon" class="icon">
+            <img src="Content/Images/cadenas.png" alt="Lock Icon" class="icon">
             <input type="password" placeholder="Votre mot de passe" name="password" id="password" required>
-            <img src="Content/images/eye_icon.png" alt="Eye Icon" class="eye-icon" id="eye-toggle" onclick="togglePassword('password')">
+            <img src="Content/Images/eye_icon.png" alt="Eye Icon" class="eye-icon" id="eye-toggle" onclick="togglePassword('password')">
             </div>
 
             <!-- Liens -->
