@@ -9,6 +9,9 @@
 </head>
 <body>
     <?php include 'Layout/view_header.php'; ?>
+    <script>
+        window.userId = <?php echo $_SESSION['idpersonne']; ?>;
+    </script>
     <div class="search-selection">
         <h1>Trouver un logement étudiant à $Ville </h1>
         <div class="search-bar">

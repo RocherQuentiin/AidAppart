@@ -35,7 +35,7 @@ class Controller_pagelogement extends Controller {
     public function action_report() {
         $model = Model::getModel();
         $data = json_decode(file_get_contents('php://input'), true);
-        return $model->insertSignalement(21, $data['id_logement'], $data['commentaire']); // TODO: connaître l'id de l'utilisateur
+        return $model->insertSignalement($data['id_utilisateur'], $data['id_logement'], $data['commentaire']);
     }
 }
 ?>

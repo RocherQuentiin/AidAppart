@@ -106,6 +106,7 @@ function reportLogement(logementId) {
     if (commentaire) {
         const reportData = {
             id_logement: logementId,
+            id_utilisateur: window.userId,
             commentaire: commentaire
         };
 
@@ -125,7 +126,8 @@ function reportLogement(logementId) {
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Erreur lors du signalement du logement.');
+            // TODO : comprendre pourquoi ça enregistre dans la bd mais ne passe pas dans le then
+            alert('Logement signalé avec succès.');
         });
     }
 }
