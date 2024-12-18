@@ -1,8 +1,6 @@
 body {
     background: var(--degrader-vert);
     color: var(--blue);
-    margin: 0; /* Supprime les marges par défaut */
-    font-family: Arial, sans-serif;
 }
 
 /* Conteneur principal */
@@ -12,12 +10,14 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%; /* Largeur adaptable */
+    padding: 9% 0 7%;
 }
 
 /* Groupes de champs */
 .input-group {
-    width: 80%; /* Largeur par défaut pour les grands écrans */
-    margin-bottom: 4%; /* Espacement entre les groupes */
+    width: 75%; /* Largeur par défaut pour les grands écrans */
+    padding: 1%;
+    margin-bottom: 8%; /* Espacement entre les groupes */
     position: relative;
 }
 
@@ -74,16 +74,17 @@ body {
 
 /* Lien */
 .link {
-    display: block;
-    margin-top: 1%;
+    display: flex;
+    flex-direction: column; /* Aligne les enfants verticalement */
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
     color: var(--blue);
     text-decoration: none;
-    display: block; /* Garde le bouton en tant qu'élément de bloc */
-    margin-left: auto; /* Centre horizontalement */
-    margin-right: auto; /* Centre horizontalement */
+
 }
 .button {
-    margin-top: 3%;
+    margin-top: 5%;
     display: block; /* Garde le bouton en tant qu'élément de bloc */
     margin-left: auto; /* Centre horizontalement */
     margin-right: auto; /* Centre horizontalement */
