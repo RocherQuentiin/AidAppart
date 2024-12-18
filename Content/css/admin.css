@@ -40,3 +40,23 @@
 .popup-content form button {
     margin-top: 10px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: lightgrey;
+}
+
+tr:hover {
+    background-color: var(--green);
+}
