@@ -28,7 +28,15 @@
                 <li><a href="#">FAQ</a></li>
             </ul>
             <div class="navbar-right">
-                <a href="?controller=connexion&action=connexionController" class="btn-account"><button>Connexion</button></a>
+                <?php 
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
+                if (isset($_SESSION['prenom'])): ?>
+                    <a href="?controller=deconnexion&action=deconnexionController" class="btn-account"><button>Déconnexion</button></a>
+                <?php else: ?>
+                    <a href="?controller=connexion&action=connexionController" class="btn-account"><button>Connexion</button></a>
+                <?php endif; ?>
                 <a href="#" class="icon-translate">
                     <img src="Content/Images/Accueil/globe.png" alt="Traduire" title="Traduire">
                 </a>

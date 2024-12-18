@@ -8,7 +8,7 @@
     <title>Liste des Logements</title>
 </head>
 <body>
-    <?php include 'Layout/view_header.html'; ?>
+    <?php include 'Layout/view_header.php'; ?>
     <div class="search-selection">
         <h1>Trouver un logement étudiant à $Ville </h1>
         <div class="search-bar">
