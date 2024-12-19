@@ -163,8 +163,13 @@ ALTER TABLE Messagerie ADD CONSTRAINT fk_messagerie_personne FOREIGN KEY (id_per
 ALTER TABLE Messagerie ADD CONSTRAINT fk_messagerie_personne_destinataire FOREIGN KEY (id_personne_destinataire) REFERENCES Personne(id) ON DELETE CASCADE;
 ALTER TABLE Logement ADD CONSTRAINT fk_logement_proprietaire FOREIGN KEY (proprietaire) REFERENCES Personne(id) ON DELETE CASCADE;
 ALTER TABLE Logement ADD CONSTRAINT fk_logement_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id) ON DELETE CASCADE;
-ALTER TABLE Maison DROP FOREIGN KEY fk_maison_logement;
-ALTER TABLE Appartement DROP FOREIGN KEY fk_appartement_logement;
+IF EXISTS (SELECT 1 FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_NAME = 'fk_maison_logement') THEN
+    ALTER TABLE Maison DROP FOREIGN KEY fk_maison_logement;
+END IF;
+
+IF EXISTS (SELECT 1 FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_NAME = 'fk_appartement_logement') THEN
+    ALTER TABLE Appartement DROP FOREIGN KEY fk_appartement_logement;
+END IF;
 
 ALTER TABLE Maison ADD CONSTRAINT fk_maison_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
 ALTER TABLE Appartement ADD CONSTRAINT fk_appartement_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
