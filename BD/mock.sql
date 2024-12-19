@@ -7,7 +7,7 @@
 -- 2. Adresse
 -- 3. Logement
 -- 4. Messagerie
--- 5. studio
+-- 5. Maison
 -- 6. Appartement
 -- 7. Aviscss
 -- 8. Annonce
@@ -80,7 +80,7 @@ INSERT INTO Messagerie (id_personne, id_personne_destinataire, message, creer_a)
 (6, 5, 'Oui, à quelle heure?', '2023-01-06'),
 (7, 8, 'Tu as vu le dernier film?', '2023-01-07');
 
-INSERT INTO studio (id_logement, nb_etages, a_jardin) VALUES
+INSERT INTO Maison (id_logement, nb_etages, a_jardin) VALUES
 (2, 2, 1),
 (4, 3, 1),
 (6, 2, 1),
