@@ -21,6 +21,11 @@ class Controller_connexion extends Controller {
             $_SESSION['idpersonne'] = $idpersonne; 
             $_SESSION['prenom'] = $personne['prénom'];
             $data = ["erreur" => false]; 
+
+            if ($model->hasRole($idpersonne, 'Admin')) {
+                header('Location: ?controller=admin&action=admin');
+                return;
+            }
             $this->render("accueil",$data); 
         } 
         else { 

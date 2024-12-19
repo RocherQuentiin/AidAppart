@@ -380,9 +380,24 @@ class Model {
     }
             
     public function assignRole($userId, $roleId) {
-        $sql = "INSERT INTO Personne_Role (id_personne, id_role) VALUES (:userId, :roleId)";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute(['userId' => $userId, 'roleId' => $roleId]);
+        // Vérifier si l'utilisateur a déjà des rôles
+        $existingRoles = $this->getUserRoles($userId);
+
+        if (count($existingRoles) >= 1) {
+            // Mettre à jour le rôle existant
+            $sql = "UPDATE Personne_Role SET id_role = :roleId WHERE id_personne = :userId";
+            $stmt = $this->db->prepare($sql);
+            return $stmt->execute(['userId' => $userId, 'roleId' => $roleId[0]]);
+        } else {
+            // Vérifier si le rôle existe déjà
+            if (!$this->hasRole($userId, $roleId)) {
+                // Ajouter le nouveau rôle
+                $sql = "INSERT INTO Personne_Role (id_personne, id_role) VALUES (:userId, :roleId)";
+                $stmt = $this->db->prepare($sql);
+                return $stmt->execute(['userId' => $userId, 'roleId' => $roleId[0]]);
+            }
+        }
+        return false;
     }
 
     public function getUserRoles($userId) {
