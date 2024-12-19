@@ -91,10 +91,10 @@ function updateListings(data) {
                 <p>Nombre de pièces: ${logement.nb_pieces}</p>
                 ${logement.a_parking ? '<p>Parking</p>' : ''}
                 <p>Description: ${logement.description}</p>
+            </a>
                 <button title="signaler" class="report-button" onclick="reportLogement(${logement.id})">
                     <img src="Content/Images/report.jpg" alt="Signaler">
                 </button>
-            </a>
         `;
         listingsContainer.appendChild(listing);
     });   
@@ -127,7 +127,7 @@ function reportLogement(logementId) {
         .catch(error => {
             console.error('Error:', error);
             // TODO : comprendre pourquoi ça enregistre dans la bd mais ne passe pas dans le then
-            alert('Logement signalé avec succès.');
+            alert('Erreur lors du signalement du logement.');
         });
     }
 }
