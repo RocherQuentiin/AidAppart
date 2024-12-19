@@ -78,7 +78,7 @@ require_once('Layout/view_header.php');?>
             <label for="description">Description :</label>
             <textarea name="description" id="description" rows="5" required></textarea>
 
-            <button type="submit">Ajouter le logement</button>
+            <button class="button" type="submit">Ajouter le logement</button>
         </form>
     </div>
 <?php

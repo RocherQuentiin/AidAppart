@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>header</title>
     <link rel="stylesheet" href="Content/css/stylesheet.css"/>
     <link rel="stylesheet" href="Content/css/index.css"/>
@@ -33,9 +32,9 @@
                     session_start();
                 }
                 if (isset($_SESSION['prenom'])): ?>
-                    <a href="?controller=deconnexion&action=deconnexionController" class="btn-account"><button>Déconnexion</button></a>
+                    <a href="?controller=deconnexion&action=deconnexionController" class="btn-account"><button class="button">Déconnexion</button></a>
                 <?php else: ?>
-                    <a href="?controller=connexion&action=connexionController" class="btn-account"><button>Connexion</button></a>
+                    <a href="?controller=connexion&action=connexionController" class="btn-account"><button class="button">Connexion</button></a>
                 <?php endif; ?>
                 <a href="#" class="icon-translate">
                     <img src="Content/Images/Accueil/globe.png" alt="Traduire" title="Traduire">

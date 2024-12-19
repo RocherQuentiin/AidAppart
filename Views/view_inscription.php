@@ -84,7 +84,7 @@
     </label>
     <br>
     <div class="button-container">
-        <button type="submit">Je m'inscris</button>
+        <button class="button" type="submit">Je m'inscris</button>
     </div>
 
 </form>
