@@ -30,6 +30,12 @@ class Controller_admin extends Controller {
         print_r($data);
         $model->assignRole($data['id'], $data['role']);
     }
+
+    public function action_delete_user() {
+        $model = Model::getModel();
+        $data = json_decode(file_get_contents('php://input'), true);
+        $model->deleteById("personne", $data['id']);
+    }
 }
 
 ?>

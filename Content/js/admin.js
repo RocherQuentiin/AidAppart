@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Définir la fonction dans le scope global
     const updateButtons = document.querySelectorAll('#update_user');
 
     updateButtons.forEach(button => {
@@ -10,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function openRolePopup(userId) {
-    console.log('openRolePopup');
     // Create the popup container
     const popup = document.createElement('div');
     popup.classList.add('popup');
@@ -74,4 +74,27 @@ function updateUserRoles(userId, roles) {
     .catch(error => {
         alert('Erreur lors de la mise à jour des rôles');
     });
+}
+
+function deleteUser(userId, lastname, firstname) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer l\'utilisateur ' + lastname + ' ' + firstname + '  ?')) {
+        fetch('?controller=admin&action=delete_user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: userId })
+        })
+        .then(data => {
+            if (data.ok) {
+                alert('Utilisateur supprimé avec succès');
+                location.reload();
+            } else {
+                alert('Erreur lors de la suppression de l\'utilisateur');
+            }
+        })
+        .catch(error => {
+            alert('Erreur lors de la suppression de l\'utilisateur');
+        });
+    }
 }

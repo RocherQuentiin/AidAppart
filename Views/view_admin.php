@@ -40,7 +40,12 @@
                     echo "<td>{$user['prénom']}</td>";
                     echo "<td>{$user['email']}</td>";
                     echo "<td>" . implode(', ', $user['roles']) . "</td>";
-                    echo "<td><button id='update_user'>Modifier</button><button>Supprimer</button></td>";
+                    echo "<td>
+                            <button id='update_user'>Modifier</button>
+                            <button class='delete' id='delete_user' onclick='deleteUser({$user['id']}, \"{$user['nom']}\", \"{$user['prénom']}\")'>
+                                <img src='Content/Images/Poubelle.png' alt='Supprimer'>
+                            </button>
+                        </td>";
                     echo "</tr>";
                 }
                 echo '</table>';
@@ -52,11 +57,11 @@
                 echo '<h2>Logement</h2><p>Adjust your Logement here.</p>';
                 break;
             default:
-                echo '<h2>Utilisateurs</h2><p>Welcome to the Utilisateurs.</p>';
+                header('Location: ?controller=admin&action=admin&page=Utilisateurs');
                 break;
         }
     } else {
-        echo '<h2>Utilisateurs</h2><p>Welcome to the Utilisateurs.</p>';
+        header('Location: ?controller=admin&action=admin&page=Utilisateurs');
     }?>
 </body>
 </html>
