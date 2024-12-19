@@ -58,7 +58,7 @@ require_once('Layout/view_header.php');?>
             <?php endforeach;?>
         </div>
 
-        <button>Lancer la recherche</button>
+        <button class="button">Lancer la recherche</button>
     </div>
 
     <!-- Section atouts -->

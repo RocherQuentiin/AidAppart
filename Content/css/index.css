@@ -44,7 +44,7 @@ a:hover {
     text-decoration: underline;
 }
 
-button{
+.button{
     box-sizing: border-box;
     padding: 25px;
     background: var(--green);
@@ -57,7 +57,7 @@ button{
     font-weight: 700;
 }
 
-button:hover {
+.button:hover {
     background-color: var(--blue);
     color: var(--green);
 }
