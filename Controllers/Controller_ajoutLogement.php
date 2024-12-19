@@ -1,4 +1,5 @@
 <?php
+session_start();
 class Controller_ajoutLogement extends Controller {
 
     public function action_default() {
@@ -12,16 +13,19 @@ class Controller_ajoutLogement extends Controller {
 
    public function action_addLogement(){
      if ($_SERVER["REQUEST_METHOD"] == "POST") {
-         // Charger le modèle
          $model = Model::getModel();
 
-         // Récupérer les données du formulaire
+       $numero = $_POST['numero'];
+               $rue = $_POST['rue'];
+               $code_postal = $_POST['code_postal'];
+               $ville = $_POST['ville'];
+               $id_adresse = $model->insertAdresse($numero, $rue, $code_postal, $ville);
+
          $type = $_POST['type'];
          $surface = $_POST['surface'];
-         $proprietaire = $_POST['proprietaire'];
+         $proprietaire = $_SESSION['idpersonne'];
          $loyer = $_POST['loyer'];
          $charges = $_POST['charges'];
-         $adresse = $_POST['adresse'];
          $est_meuble = isset($_POST['est_meuble']) ? 1 : 0;
          $a_WIFI = isset($_POST['a_WIFI']) ? 1 : 0;
          $est_accessible_PMR = isset($_POST['est_accessible_PMR']) ? 1 : 0;
@@ -30,8 +34,14 @@ class Controller_ajoutLogement extends Controller {
          $description = $_POST['description'];
          $creer_a = date("Y-m-d");
 
+
+
+        if (!$id_adresse) {
+            echo "Erreur lors de l'insertion de l'adresse.";
+            return;
+        }
          // Insérer le logement dans la base de données
-         $logement_id = $model->insertLogement($type, $surface, $proprietaire, $loyer, $charges, $creer_a, $adresse, $est_meuble, $a_WIFI, $est_accessible_PMR, $nb_pieces, $a_parking, $description);
+         $logement_id = $model->insertLogement($type, $surface, $proprietaire, $loyer, $charges, $creer_a, $id_adresse, $est_meuble, $a_WIFI, $est_accessible_PMR, $nb_pieces, $a_parking, $description);
 
          if ($logement_id) {
              // Définir le chemin du dossier où l'image doit être placée
@@ -48,14 +58,12 @@ class Controller_ajoutLogement extends Controller {
                  $file_path = $directory . "/" . $file_name;
 
                  // Déplacer l'image dans le dossier
-                 if (move_uploaded_file($tmp_name, $file_path)) {
-                     echo "Image $file_name ajoutée avec succès dans le dossier $directory.<br>";
-                 } else {
+                 if (!move_uploaded_file($tmp_name, $file_path)) {
                      echo "Erreur lors de l'upload de l'image : $file_name. Le chemin attendu était : $file_path<br>";
                  }
              }
 
-             echo "Logement ajouté avec succès.";
+             header('Location: ?controller=pagelogement&action=pagelogement');;
          } else {
              echo "Erreur lors de l'ajout du logement.";
          }

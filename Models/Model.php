@@ -126,6 +126,9 @@ class Model {
             'a_parking' => $a_parking,
             'description' => $description
         ]);
+        $logement_id = $db->lastInsertId();
+        return $logement_id;
+
         } catch (PDOException $e) {
             echo "Erreur db : " . $e->getMessage();
             return false;
@@ -166,6 +169,24 @@ class Model {
             return false;
         } catch (Exception $e) {
             echo "Erreur : " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function insertAdresse($numero, $rue, $code_postal, $ville) {
+        try {
+            $sql = "INSERT INTO Adresse (numero, rue, code_postal, ville) VALUES (:numero, :rue, :code_postal, :ville)";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                ':numero' => $numero,
+                ':rue' => $rue,
+                ':code_postal' => $code_postal,
+                ':ville' => $ville
+            ]);
+
+            return $this->db->lastInsertId();
+        } catch (PDOException $e) {
+            echo "Erreur d'insertion d'adresse : " . $e->getMessage();
             return false;
         }
     }

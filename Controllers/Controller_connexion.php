@@ -27,9 +27,12 @@ class Controller_connexion extends Controller {
                 return;
             }
             if ($model->hasRole($idpersonne, 'Propriétaire')) {
-                        header('Location: ?controller=ajoutLogement&action=ajoutLogement');
-                        return;
-                    }
+                echo "Utilisateur identifié comme Propriétaire";
+                header('Location: ?controller=ajoutLogement&action=ajoutLogement');
+                exit; // Assurez-vous d'utiliser exit après la redirection
+            } else {
+                echo "L'utilisateur n'a pas le rôle Propriétaire";
+            }
             $this->render("pagelogement",$data);
         } 
         else { 
