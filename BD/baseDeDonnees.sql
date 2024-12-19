@@ -62,8 +62,6 @@ CREATE TABLE Maison (
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
 
-
-
 CREATE TABLE Appartement (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     id_logement INTEGER NOT NULL,
@@ -73,7 +71,6 @@ CREATE TABLE Appartement (
     a_concierge BOOLEAN NOT NULL,
     FOREIGN KEY (id_logement) REFERENCES Logement(id)
 );
-
 
 CREATE TABLE Avis (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -161,3 +158,25 @@ ALTER TABLE Avis MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 ALTER TABLE Annonce MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 ALTER TABLE Candidature MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 ALTER TABLE Garent MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
+
+ALTER TABLE Messagerie ADD CONSTRAINT fk_messagerie_personne FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE;
+ALTER TABLE Messagerie ADD CONSTRAINT fk_messagerie_personne_destinataire FOREIGN KEY (id_personne_destinataire) REFERENCES Personne(id) ON DELETE CASCADE;
+ALTER TABLE Logement ADD CONSTRAINT fk_logement_proprietaire FOREIGN KEY (proprietaire) REFERENCES Personne(id) ON DELETE CASCADE;
+ALTER TABLE Logement ADD CONSTRAINT fk_logement_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id) ON DELETE CASCADE;
+ALTER TABLE Maison DROP FOREIGN KEY fk_maison_logement;
+ALTER TABLE Appartement DROP FOREIGN KEY fk_appartement_logement;
+
+ALTER TABLE Maison ADD CONSTRAINT fk_maison_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
+ALTER TABLE Appartement ADD CONSTRAINT fk_appartement_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
+ALTER TABLE Avis ADD CONSTRAINT fk_avis_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
+ALTER TABLE Annonce ADD CONSTRAINT fk_annonce_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
+ALTER TABLE Annonce ADD CONSTRAINT fk_annonce_loueur FOREIGN KEY (loueur) REFERENCES Personne(id) ON DELETE CASCADE;
+ALTER TABLE Favoris_Signalement ADD CONSTRAINT fk_favoris_signalement_personne FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE;
+ALTER TABLE Favoris_Signalement ADD CONSTRAINT fk_favoris_signalement_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
+ALTER TABLE Candidature ADD CONSTRAINT fk_candidature_personne FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE;
+ALTER TABLE Candidature ADD CONSTRAINT fk_candidature_annonce FOREIGN KEY (id_annonce) REFERENCES Annonce(id) ON DELETE CASCADE;
+ALTER TABLE Garent ADD CONSTRAINT fk_garent_personne FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE;
+ALTER TABLE Garent ADD CONSTRAINT fk_garent_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
+ALTER TABLE Personne_Role ADD CONSTRAINT fk_personne_role_personne FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE;
+ALTER TABLE Personne_Role ADD CONSTRAINT fk_personne_role_role FOREIGN KEY (id_role) REFERENCES Role(id) ON DELETE CASCADE;
+
