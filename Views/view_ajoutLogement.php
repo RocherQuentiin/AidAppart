@@ -33,6 +33,15 @@ require_once('Layout/view_header.php');?>
                     <label for="nb_pieces">Nombre de pièces :</label>
                     <input type="number" name="nb_pieces" id="nb_pieces" required>
 
+                    <label for="surface">Surfaces en m² :</label>
+                    <input type="number" name="surface" id="surface" required>
+
+                    <label for="loyer">Loyer en €/mois :</label>
+                    <input type="number" name="loyer" id="loyer" required>
+
+                    <label for="charges">Charges en €/mois :</label>
+                    <input type="number" name="charges" id="charges" required>
+
                     <div class="checkbox-group">
                         <div>
                             <label for="est_meuble">Meublé :</label>
@@ -62,6 +71,9 @@ require_once('Layout/view_header.php');?>
 
             <label for="code_postal">Code Postal :</label>
             <input type="number" name="code_postal" id="code_postal" required>
+
+            <label for="ville">Ville :</label>
+            <input type="text" name="ville" id="ville" required>
 
             <label for="description">Description :</label>
             <textarea name="description" id="description" rows="5" required></textarea>

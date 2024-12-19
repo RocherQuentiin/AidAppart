@@ -90,7 +90,7 @@ class Model {
 
     }
 
-    public function insertLogement($type, $surface, $proprietaire, $loyer, $charges, $creer_a, $adresse, $est_meuble, $a_WIFI, $est_accessible_PMR, $nb_pieces, $a_parking, $description) {
+    public function insertLogement($type, $surface, $proprietaire, $loyer, $charges, $adresse, $est_meuble, $a_WIFI, $est_accessible_PMR, $nb_pieces, $a_parking, $description) {
         /*
         * Insérer un nouveau logement dans la table Logement
         * @param string $type - Type de logement
@@ -109,25 +109,24 @@ class Model {
         * @return bool - Retourne true en cas de succès, false en cas d'échec
         */
         try {
-        $sql = "INSERT INTO Logement (type, surface, proprietaire, loyer, charges, creer_a, adresse, est_meuble, a_WIFI, est_accessible_PMR, nb_pieces, a_parking, description) VALUES (:type, :surface, :proprietaire, :loyer, :charges, :creer_a, :adresse, :est_meuble, :a_WIFI, :est_accessible_PMR, :nb_pieces, :a_parking, :description)";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([
-            'type' => $type,
-            'surface' => $surface,
-            'proprietaire' => $proprietaire,
-            'loyer' => $loyer,
-            'charges' => $charges,
-            'creer_a' => $creer_a,
-            'adresse' => $adresse,
-            'est_meuble' => $est_meuble,
-            'a_WIFI' => $a_WIFI,
-            'est_accessible_PMR' => $est_accessible_PMR,
-            'nb_pieces' => $nb_pieces,
-            'a_parking' => $a_parking,
-            'description' => $description
-        ]);
-        $logement_id = $db->lastInsertId();
-        return $logement_id;
+            $sql = "INSERT INTO Logement (type, surface, proprietaire, loyer, charges, adresse, est_meuble, a_WIFI, est_accessible_PMR, nb_pieces, a_parking, description) VALUES (:type, :surface, :proprietaire, :loyer, :charges, :adresse, :est_meuble, :a_WIFI, :est_accessible_PMR, :nb_pieces, :a_parking, :description)";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                'type' => $type,
+                'surface' => $surface,
+                'proprietaire' => $proprietaire,
+                'loyer' => $loyer,
+                'charges' => $charges,
+                'adresse' => $adresse,
+                'est_meuble' => $est_meuble,
+                'a_WIFI' => $a_WIFI,
+                'est_accessible_PMR' => $est_accessible_PMR,
+                'nb_pieces' => $nb_pieces,
+                'a_parking' => $a_parking,
+                'description' => $description
+            ]);
+            $lastInsertId = $this->db->lastInsertId();
+            return $lastInsertId;
 
         } catch (PDOException $e) {
             echo "Erreur db : " . $e->getMessage();
@@ -177,14 +176,17 @@ class Model {
         try {
             $sql = "INSERT INTO Adresse (numero, rue, code_postal, ville) VALUES (:numero, :rue, :code_postal, :ville)";
             $stmt = $this->db->prepare($sql);
-            $stmt->execute([
+            $tmp = $stmt->execute([
                 ':numero' => $numero,
                 ':rue' => $rue,
                 ':code_postal' => $code_postal,
                 ':ville' => $ville
             ]);
-
-            return $this->db->lastInsertId();
+            if (!$tmp) {
+                return false;
+            }
+            $lastInsertId = $this->db->lastInsertId();
+            return $lastInsertId;
         } catch (PDOException $e) {
             echo "Erreur d'insertion d'adresse : " . $e->getMessage();
             return false;
