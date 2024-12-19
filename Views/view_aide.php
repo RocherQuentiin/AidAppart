@@ -1,3 +1,5 @@
+<?php
+require_once('Layout/view_header.html') ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -75,5 +77,8 @@
     </main>
     
     <script src="script.js"></script>
-</body>
-</html>
+
+<?php
+require_once('Layout/footer.html');
+?>
+
