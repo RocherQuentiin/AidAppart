@@ -111,7 +111,9 @@
     </form>
   </section>
 
-  <?php include 'Layout/footer.html'; ?>
+<?php
+require_once('Layout/footer.php');
+?>
 </body>
 </html>
 

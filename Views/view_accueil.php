@@ -98,5 +98,5 @@ require_once('Layout/view_header.php');?>
 </body>
 </html>
 <?php
-require_once('Layout/footer.html');
+require_once('Layout/footer.php');
 ?>

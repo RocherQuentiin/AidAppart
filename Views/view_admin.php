@@ -1,3 +1,5 @@
+<?php
+require_once('Layout/view_header.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,3 +67,6 @@
     }?>
 </body>
 </html>
+<?php
+require_once('Layout/footer.php');
+?>
