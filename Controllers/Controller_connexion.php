@@ -28,7 +28,7 @@ class Controller_connexion extends Controller {
             }
             if ($model->hasRole($idpersonne, 'Propriétaire')) {
                 header('Location: ?controller=ajoutLogement&action=ajoutLogement');
-                return
+                return;
             }
             $this->render("pagelogement",$data);
         } 
