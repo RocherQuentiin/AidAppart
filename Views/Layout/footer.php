@@ -9,12 +9,13 @@
         <a href=#><li>Studio</li></a>
         <a href=#><li>Chambre chez l’habitant</li></a>
     </ul>
-    <ul class="etudiant">
-        <li class="titre">Logement étudiant en France</li></a>
-            <?php foreach ($villes as $ville): ?>
-        <a href=#><li>Logement étudiant à <?php echo $ville['nom_ville']; ?></li></a>
-
-         <?php endforeach;?>
+     <ul class="etudiant">
+        <li class="titre">Logement étudiant en France</li>
+        <a href=#><li>Logement étudiant à Paris</li></a>
+        <a href=#><li>Logement étudiant à Lille</li></a>
+        <a href=#><li>Logement étudiant à Lyon</li></a>
+        <a href=#><li>Logement étudiant à Toulouse</li></a>
+        <a href=#><li>Logement étudiant à Marseille</li></a>
     </ul>
     <ul class="aPropos">
         <li class="titre">À propos</li></a>
