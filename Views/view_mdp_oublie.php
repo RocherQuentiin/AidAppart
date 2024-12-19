@@ -1,3 +1,5 @@
+<?php
+require_once('Layout/view_header.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
         <form action="?controller=mdp_oublie&action=reset_mdp" method="POST">
             <!-- Groupe de champs email -->
             <div class="input-group">
-                <img src="Content/images/email.png" alt="Email Icon" class="icon">
+                <img src="Content/Images/email.png" alt="Email Icon" class="icon">
                 <input type="email" name="email" placeholder="Renseignez votre adresse mail" required>
             </div>
             <!-- Liens -->
@@ -27,5 +29,7 @@
             <button type="submit" class="button">Me Connecter</button>
         </form>
     </div>
-    <?php include 'Layout/footer.html'; ?>
+    <?php
+    require_once('Layout/footer.php');
+    ?>
 </html>

@@ -68,7 +68,7 @@ class Controller_inscription extends Controller {
                 $_SESSION['idpersonne'] = $model->getIdPersonne($email);
                 $_SESSION['prenom'] = $prenom;
                 $data = ["message" => null];
-                $this->render("accueil", $data);
+                $this->render("pagelogement", $data);
             } else {
                 echo "Erreur lors de l'inscription.";
             }

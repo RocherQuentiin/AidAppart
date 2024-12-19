@@ -1,13 +1,14 @@
+<?php
+require_once('Layout/view_header.php');?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AidAppart</title>
     <link href="Content/css/aide.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="aide">
     <main>
         <section class="eligibility">
             <h1>Je vérifie mes éligibilités aux aides</h1>
@@ -69,11 +70,14 @@
                 </div>
     
                 <!-- Bouton soumission -->
-                <button type="submit" class="submit-btn">Lancer la recherche</button>
+                <button type="submit" class="submit-btn" class="button">Lancer la recherche</button>
             </form>
         </section>
     </main>
     
     <script src="script.js"></script>
-</body>
-</html>
+
+<?php
+require_once('Layout/footer.html');
+?>
+

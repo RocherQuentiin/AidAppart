@@ -86,11 +86,11 @@ class Model {
         } catch (Exception $e) {
             echo "Erreur : " . $e->getMessage();
             return false;
-        } 
-            
+        }
+
     }
 
-    public function insertLogement($type, $surface, $proprietaire, $loyer, $charges, $creer_a, $adresse, $est_meuble, $a_WIFI, $est_accessible_PMR, $nb_pieces, $a_parking, $description) {
+    public function insertLogement($type, $surface, $proprietaire, $loyer, $charges, $adresse, $est_meuble, $a_WIFI, $est_accessible_PMR, $nb_pieces, $a_parking, $description) {
         /*
         * Insérer un nouveau logement dans la table Logement
         * @param string $type - Type de logement
@@ -109,23 +109,25 @@ class Model {
         * @return bool - Retourne true en cas de succès, false en cas d'échec
         */
         try {
-        $sql = "INSERT INTO Logement (type, surface, proprietaire, loyer, charges, creer_a, adresse, est_meuble, a_WIFI, est_accessible_PMR, nb_pieces, a_parking, description) VALUES (:type, :surface, :proprietaire, :loyer, :charges, :creer_a, :adresse, :est_meuble, :a_WIFI, :est_accessible_PMR, :nb_pieces, :a_parking, :description)";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([
-            'type' => $type,
-            'surface' => $surface,
-            'proprietaire' => $proprietaire,
-            'loyer' => $loyer,
-            'charges' => $charges,
-            'creer_a' => $creer_a,
-            'adresse' => $adresse,
-            'est_meuble' => $est_meuble,
-            'a_WIFI' => $a_WIFI,
-            'est_accessible_PMR' => $est_accessible_PMR,
-            'nb_pieces' => $nb_pieces,
-            'a_parking' => $a_parking,
-            'description' => $description
-        ]);
+            $sql = "INSERT INTO Logement (type, surface, proprietaire, loyer, charges, adresse, est_meuble, a_WIFI, est_accessible_PMR, nb_pieces, a_parking, description) VALUES (:type, :surface, :proprietaire, :loyer, :charges, :adresse, :est_meuble, :a_WIFI, :est_accessible_PMR, :nb_pieces, :a_parking, :description)";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                'type' => $type,
+                'surface' => $surface,
+                'proprietaire' => $proprietaire,
+                'loyer' => $loyer,
+                'charges' => $charges,
+                'adresse' => $adresse,
+                'est_meuble' => $est_meuble,
+                'a_WIFI' => $a_WIFI,
+                'est_accessible_PMR' => $est_accessible_PMR,
+                'nb_pieces' => $nb_pieces,
+                'a_parking' => $a_parking,
+                'description' => $description
+            ]);
+            $lastInsertId = $this->db->lastInsertId();
+            return $lastInsertId;
+
         } catch (PDOException $e) {
             echo "Erreur db : " . $e->getMessage();
             return false;
@@ -166,6 +168,27 @@ class Model {
             return false;
         } catch (Exception $e) {
             echo "Erreur : " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function insertAdresse($numero, $rue, $code_postal, $ville) {
+        try {
+            $sql = "INSERT INTO Adresse (numero, rue, code_postal, ville) VALUES (:numero, :rue, :code_postal, :ville)";
+            $stmt = $this->db->prepare($sql);
+            $tmp = $stmt->execute([
+                ':numero' => $numero,
+                ':rue' => $rue,
+                ':code_postal' => $code_postal,
+                ':ville' => $ville
+            ]);
+            if (!$tmp) {
+                return false;
+            }
+            $lastInsertId = $this->db->lastInsertId();
+            return $lastInsertId;
+        } catch (PDOException $e) {
+            echo "Erreur d'insertion d'adresse : " . $e->getMessage();
             return false;
         }
     }
@@ -264,7 +287,7 @@ class Model {
         if (!empty($criteria['parking'])) {
             $query .= " AND a_parking = :parking";
         }
-    
+
         $stmt = $this->db->prepare($query);
         if (!empty($criteria['type'])) {
             $stmt->bindValue(':type', $criteria['type']);
@@ -311,8 +334,8 @@ class Model {
         * @return string - Nom du rôle de l'utilisateur
         */
         try {
-            $sql = "SELECT Role.nom FROM Personne_Role 
-                    JOIN Role ON Personne_Role.id_role = Role.id 
+            $sql = "SELECT Role.nom FROM Personne_Role
+                    JOIN Role ON Personne_Role.id_role = Role.id
                     WHERE Personne_Role.id_personne = :userId";
             $stmt = $this->db->prepare($sql);
             $stmt->execute(['userId' => $userId]);
@@ -326,7 +349,7 @@ class Model {
             echo "Erreur : " . $e->getMessage();
             return false;
         }
-            
+
     }
 
     public function email_exist($email) {
@@ -338,24 +361,24 @@ class Model {
         try {
             // Préparer la requête SQL
             $stmt = $this->db->prepare("SELECT id FROM Personne WHERE email = :email");
-            
+
             // Lier le paramètre email
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            
+
             // Exécuter la requête
             $stmt->execute();
-            
+
             // Récupérer le résultat
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
             // Si un utilisateur est trouvé, retourner son ID
             if ($user) {
                 return $user['id'];
             }
-    
+
             // Si l'email n'existe pas
             return false;
-    
+
         } catch (PDOException $e) {
             // Gérer l'exception en cas d'erreur de la base de données
             echo "Erreur db : " . $e->getMessage();
@@ -372,13 +395,13 @@ class Model {
         $stat-> execute(['email' => $email]);
         return $stat->fetch(PDO::FETCH_ASSOC);
     }
-           
+
     public function doublon($email, $telephone) {
         $stmt = $this->db->prepare("SELECT * FROM Personne WHERE email = :email OR telephone = :telephone");
         $stmt->execute([":email" => $email, ":telephone"=> $telephone]);
         return $stmt->rowCount() > 0;
     }
-            
+
     public function assignRole($userId, $roleId) {
         // Vérifier si l'utilisateur a déjà des rôles
         $existingRoles = $this->getUserRoles($userId);
@@ -401,8 +424,8 @@ class Model {
     }
 
     public function getUserRoles($userId) {
-        $sql = "SELECT Role.nom FROM Personne_Role 
-                JOIN Role ON Personne_Role.id_role = Role.id 
+        $sql = "SELECT Role.nom FROM Personne_Role
+                JOIN Role ON Personne_Role.id_role = Role.id
                 WHERE Personne_Role.id_personne = :userId";
         $stmt = $this->db->prepare($sql);
         $stmt->execute(['userId' => $userId]);
@@ -410,8 +433,8 @@ class Model {
     }
 
     public function hasRole($userId, $roleName) {
-        $sql = "SELECT COUNT(*) FROM Personne_Role 
-                JOIN Role ON Personne_Role.id_role = Role.id 
+        $sql = "SELECT COUNT(*) FROM Personne_Role
+                JOIN Role ON Personne_Role.id_role = Role.id
                 WHERE Personne_Role.id_personne = :userId AND Role.nom = :roleName";
         $stmt = $this->db->prepare($sql);
         $stmt->execute(['userId' => $userId, 'roleName' => $roleName]);
@@ -434,7 +457,7 @@ class Model {
                     return '../index.php';
             }
         }
-        return '../index.php'; 
+        return '../index.php';
     }
 
     public function getIdPersonne($email) {
@@ -468,5 +491,22 @@ class Model {
             return false;
         }
     }
+    public function selectVillesWithMostLogement($limit = 4) {
+                $stmt = $this->db->prepare("SELECT ville AS nom_ville, COUNT(*)
+                    AS nombre_adresses FROM Adresse GROUP BY ville
+                    ORDER BY nombre_adresses DESC LIMIT :limit" );
+                $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+     public function selectTypesWithMostLogement($limit = 4) {
+         $stmt = $this->db->prepare("SELECT type, COUNT(*)
+             AS nombre_logements FROM Logement GROUP BY type
+             ORDER BY nombre_logements DESC LIMIT :limit" );
+         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+         $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
 }
 ?>

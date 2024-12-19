@@ -20,8 +20,8 @@
             Status  <span class="arrow"></span>
         </button>
         <ul class="dropdown-menu" id="dropdownMenu">
-            <li data-value="Acheteur">Acheteur </li>
-            <li data-value="Vendeur">Vendeur </li>
+            <li data-value="Acheteur">Étudiant </li>
+            <li data-value="Vendeur">Particuliers </li>
         </ul>
         <!-- Champ caché pour transmettre la valeur sélectionnée -->
         <input type="hidden" id="status" name="status" value="">
@@ -51,20 +51,20 @@
     </div>
     <br>
     <div class="input-group">
-        <img src="Content/images/email.png" alt="Email Icon" id="icon-mail" class="icon">
+        <img src="Content/Images/email.png" alt="Email Icon" id="icon-mail" class="icon">
         <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant"  >
     </div>
     <br><br>
     <div class="input-group">
-        <img src="Content/images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
+        <img src="Content/Images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
         <input type="password" id="password1" name="mdp" placeholder="Votre mot de passe" >
-        <img src="Content/images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password1')">
+        <img src="Content/Images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password1')">
     </div>
     <br><br>
     <div class="input-group">
-        <img src="Content/images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
+        <img src="Content/Images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
         <input type="password" id="password2" name="mdp_confirmation" placeholder="Confirmation">
-        <img src="Content/images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password2')">
+        <img src="Content/Images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password2')">
     </div>
 
     <br><br>
@@ -84,7 +84,7 @@
     </label>
     <br>
     <div class="button-container">
-        <button type="submit">Je m'inscris</button>
+        <button class="button" type="submit">Je m'inscris</button>
     </div>
 
 </form>

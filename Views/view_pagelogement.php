@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Content/css/pagelogement.css">
-    <link rel="stylesheet" href="Content/css/index.css">
     <script src="Content/js/pagelogement.js" defer></script>
     <title>Liste des Logements</title>
 </head>
@@ -56,6 +55,8 @@
         </div>
     </div>
 
-    <?php include 'Layout/footer.html'; ?>
+   <?php
+   require_once('Layout/footer.php');
+   ?>
 </body>
 </html>
