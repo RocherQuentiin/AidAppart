@@ -30,7 +30,7 @@ class Controller_connexion extends Controller {
                 header('Location: ?controller=ajoutLogement&action=ajoutLogement');
                 return;
             }
-            $this->render("pagelogement",$data);
+            header('Location: ?controller=pagelogement&action=pagelogementController');
         } 
         else { 
             $data = ["erreur" => true]; 

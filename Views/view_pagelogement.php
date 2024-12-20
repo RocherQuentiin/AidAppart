@@ -14,7 +14,7 @@
     </script>
     <?php } ?>
     <div class="search-selection">
-        <h1>Trouver un logement étudiant à $Ville </h1>
+        <h1>Trouver un logement étudiant</h1>
         <div class="search-bar">
             <input type="text" placeholder="Type de logement">
             <input type="text" placeholder="Surface">
