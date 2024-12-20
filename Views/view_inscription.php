@@ -23,8 +23,8 @@ require_once('Layout/view_header.php');
             Status  <span class="arrow"></span>
         </button>
         <ul class="dropdown-menu" id="dropdownMenu">
-            <li data-value="Acheteur">Étudiant </li>
-            <li data-value="Vendeur">Particuliers </li>
+            <li data-value="Etudiant">Étudiant </li>
+            <li data-value="Particuliers">Particuliers </li>
         </ul>
         <!-- Champ caché pour transmettre la valeur sélectionnée -->
         <input type="hidden" id="status" name="status" value="">
