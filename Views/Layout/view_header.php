@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>header</title>
     <link rel="stylesheet" href="Content/css/stylesheet.css"/>
     <link rel="stylesheet" href="Content/css/index.css"/>
     <link rel="stylesheet" href="Content/css/footer.css"/>
+    <link rel="icon" href="Content/Images/logo.ico" type="image/x-icon">
 </head>
 <body>
 
