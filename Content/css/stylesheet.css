@@ -62,7 +62,7 @@ body {
     justify-content: end;
     img{
         min-height: 45px;
-        width: auto; /* Par exemple, une largeur plus grande */
+        width: auto;
 
     }
 }
@@ -124,13 +124,16 @@ body {
     .navbar-links {
         flex-direction: column;
         gap: 10px;
+        align-items: baseline;
+        padding-left: 70%;
     }
 
+    li{
+        text-align: left;
+    }
     .navbar-right {
         flex-direction: column;
         gap: 10px;
         display: flex;
-        align-items: center;
-        justify-content: start;
     }
 }

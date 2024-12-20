@@ -38,6 +38,6 @@
         </form>
     </div>
 
-    <?php include 'Layout/footer.html'; ?>
-</body>
-</html>
+   <?php
+   require_once('Layout/footer.php');
+   ?>

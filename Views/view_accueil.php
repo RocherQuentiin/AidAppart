@@ -10,7 +10,7 @@ require_once('Layout/view_header.php');?>
     <!-- Section principale -->
     <div class="part1">
         <h1>Trouve Ton Logement<br>Étudiant Aujourd'hui !</h1>
-        <button>Recherche un logement</button>
+        /<a href="?controller=pagelogement&action=pagelogementController"><button>Recherche un logement</button></a>
     </div>
 
     <!-- Section fonctionnalités -->
@@ -32,6 +32,7 @@ require_once('Layout/view_header.php');?>
                 <img src="Content/Images/Accueil/bourse.png" alt="Image 4">
                 <h3>Éligibilité aux bourses / aides</h3>
             </div>
+
         </div>
     </div>
 
@@ -39,51 +40,25 @@ require_once('Layout/view_header.php');?>
     <div class="part3">
         <h1>Choisis le type de logement qui te convient !</h1>
         <div class="row">
-            <div class="box">
-                <img src="Content/Images/Accueil/appart.jpeg" alt="Appartement">
-                <h3>Appartement</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/residence.jpeg" alt="Résidence">
-                <h3>Résidence</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/studio.jpg" alt="Studio">
-                <h3>Studio</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/colocation.jpg" alt="Colocation">
-                <h3>Colocation</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/chambre.jpeg" alt="Chambre">
-                <h3>Chambre</h3>
-            </div>
+            <?php foreach ($logements as $logement): ?>
+                <div class="box">
+                    <img src="<?php echo 'Content/Images/Accueil/' . $logement['type'] . '.jpeg'; ?>" alt="<?php echo htmlspecialchars($logement['type']); ?>">
+                    <h3><?php echo htmlspecialchars($logement["type"]); ?></h3>
+                </div>
+            <?php endforeach; ?>
+
         </div>
         <h1>Choisis ta ville !</h1>
         <div class="row">
-            <div class="box">
-                <img src="Content/Images/Accueil/paris.jpeg" alt="Paris">
-                <h3>Paris</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/lyon.jpeg" alt="Lyon">
-                <h3>Lyon</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/lille.jpg" alt="Lille">
-                <h3>Lille</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/marseille.jpeg" alt="Marseille">
-                <h3>Marseille</h3>
-            </div>
-            <div class="box">
-                <img src="Content/Images/Accueil/toulouse.jpg" alt="Toulouse">
-                <h3>Toulouse</h3>
-            </div>
+            <?php foreach ($villes as $ville): ?>
+                <div class=box>
+                    <img src="<?php echo 'Content/Images/Accueil/' . $ville['nom_ville'] . '.jpeg'; ?>" alt="<?php echo htmlspecialchars($ville['nom_ville']); ?>">
+                    <h3><?php echo $ville['nom_ville']; ?></h3>
+                </div>
+            <?php endforeach;?>
         </div>
-        <button>Lancer la recherche</button>
+
+        <button class="button">Lancer la recherche</button>
     </div>
 
     <!-- Section atouts -->
@@ -123,5 +98,5 @@ require_once('Layout/view_header.php');?>
 </body>
 </html>
 <?php
-require_once('Layout/footer.html');
+require_once('Layout/footer.php');
 ?>

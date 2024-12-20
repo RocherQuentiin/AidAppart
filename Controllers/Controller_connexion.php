@@ -26,7 +26,11 @@ class Controller_connexion extends Controller {
                 header('Location: ?controller=admin&action=admin');
                 return;
             }
-            $this->render("accueil",$data); 
+            if ($model->hasRole($idpersonne, 'Propriétaire')) {
+                header('Location: ?controller=ajoutLogement&action=ajoutLogement');
+                return;
+            }
+            $this->render("pagelogement",$data);
         } 
         else { 
             $data = ["erreur" => true]; 

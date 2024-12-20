@@ -37,14 +37,14 @@ class Controller_admin extends Controller {
     public function action_delete_user() {
         $model = Model::getModel();
         $data = json_decode(file_get_contents('php://input'), true);
-        $model->deleteById("personne", $data['id']);
+        $model->deleteById("Personne", $data['id']);
     }
 
     public function get_reported_logements() {
         $model = Model::getModel();
         $reportedLogements = $model->getReportedLogements();
         foreach ($reportedLogements as &$logement) {
-            $reporter = $model->getdataById('personne', $logement['id_personne']);
+            $reporter = $model->getdataById('Personne', $logement['id_personne']);
             $logement['reporter_name'] = $reporter['nom'] . ' ' . $reporter['prénom'];
         }
         return $reportedLogements;

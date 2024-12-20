@@ -96,6 +96,7 @@ li{
     padding: 2px;
     cursor: pointer;
     display: flex;
+    border-radius: 90px;
     margin-left: auto;
 }
 

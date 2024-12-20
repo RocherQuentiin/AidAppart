@@ -11,6 +11,9 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0;
+    a {
+        color: white !important;
+    }
 }
 .logement {
     padding-left: 70px;

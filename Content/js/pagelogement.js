@@ -92,7 +92,7 @@ function updateListings(data) {
                 ${logement.a_parking ? '<p>Parking</p>' : ''}
                 <p>Description: ${logement.description}</p>
             </a>
-                <button title="signaler" class="report-button" onclick="reportLogement(${logement.id})">
+                <button title="signaler" class="report-button " onclick="reportLogement(${logement.id})">
                     <img src="Content/Images/report.jpg" alt="Signaler">
                 </button>
         `;

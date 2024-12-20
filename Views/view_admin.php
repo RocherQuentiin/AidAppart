@@ -1,3 +1,5 @@
+<?php
+require_once('Layout/view_header.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +44,8 @@
                     echo "<td>{$user['email']}</td>";
                     echo "<td>" . implode(', ', $user['roles']) . "</td>";
                     echo "<td>
-                            <button id='update_user'>Modifier</button>
-                            <button class='delete' id='delete_user' onclick='deleteUser({$user['id']}, \"{$user['nom']}\", \"{$user['prénom']}\")'>
+                            <button id='update_user' class='button'>Modifier</button>
+                            <button class='delete button' id='delete_user' onclick='deleteUser({$user['id']}, \"{$user['nom']}\", \"{$user['prénom']}\")'>
                                 <img src='Content/Images/Poubelle.png' alt='Supprimer'>
                             </button>
                         </td>";
@@ -84,3 +86,6 @@
     ?>
 </body>
 </html>
+<?php
+require_once('Layout/footer.php');
+?>

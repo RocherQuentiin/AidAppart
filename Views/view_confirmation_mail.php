@@ -1,3 +1,5 @@
+<?php
+require_once('Layout/view_header.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,5 +15,6 @@
         <input type="text" name="verification_code" id="verification_code" required>
         <button type="submit">Vérifier</button>
     </form>
-</body>
-</html>
+<?php
+require_once('Layout/footer.php');
+?>
