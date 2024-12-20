@@ -13,7 +13,6 @@ require_once('Layout/view_header.php');?>
     
 </head>
 <body>
-    <?php include 'Views/Layout/view_header.php'; ?>
     <h1>Bienvenue, Administrateur</h1>
     <div class="navbar-menu" id="navbarMenu">        
         <ul class="navbar-links">
@@ -58,7 +57,7 @@ require_once('Layout/view_header.php');?>
                 echo '<table>';
                 echo '<tr>';
                 echo '<th>ID Logement</th>';
-                echo '<th>ID Personne</th>';
+                echo '<th>Personne</th>';
                 echo '<th>Commentaire</th>';
                 echo '<th>Date</th>';
                 echo '</tr>';
