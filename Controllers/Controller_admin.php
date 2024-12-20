@@ -7,7 +7,10 @@ class Controller_admin extends Controller {
 
     public function action_admin() {
         $users = $this->get_users_with_roles();
-        $data = ["erreur" => false, "users" => $users];
+        $reportedLogements = $this->get_reported_logements();
+        $data = ["erreur" => false, 
+                 "users" => $users,
+                 "reportedLogements" => $reportedLogements];
         $this->render("admin", $data);
     }
 
@@ -35,6 +38,16 @@ class Controller_admin extends Controller {
         $model = Model::getModel();
         $data = json_decode(file_get_contents('php://input'), true);
         $model->deleteById("personne", $data['id']);
+    }
+
+    public function get_reported_logements() {
+        $model = Model::getModel();
+        $reportedLogements = $model->getReportedLogements();
+        foreach ($reportedLogements as &$logement) {
+            $reporter = $model->getdataById('personne', $logement['id_personne']);
+            $logement['reporter_name'] = $reporter['nom'] . ' ' . $reporter['prénom'];
+        }
+        return $reportedLogements;
     }
 }
 
