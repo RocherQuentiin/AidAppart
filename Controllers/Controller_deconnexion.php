@@ -10,7 +10,7 @@ class Controller_deconnexion extends Controller {
         }
         session_destroy();
         $data = ["erreur" => false];
-        $this->render("accueil", $data);
+        header('Location: ?controller=accueil&action=accueil');
     }     
 } 
 ?>

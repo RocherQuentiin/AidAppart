@@ -7,17 +7,19 @@
     <title>Liste des Logements</title>
 </head>
 <body>
-    <?php include 'Layout/view_header.php'; ?>
+    <?php include 'Layout/view_header.php'; 
+    if(isset($_SESSION['idpersonne'])) {?>
     <script>
         window.userId = <?php echo $_SESSION['idpersonne']; ?>;
     </script>
+    <?php } ?>
     <div class="search-selection">
         <h1>Trouver un logement étudiant à $Ville </h1>
         <div class="search-bar">
             <input type="text" placeholder="Type de logement">
             <input type="text" placeholder="Surface">
             <input type="text" placeholder="Loyer max">
-            <button>Rechercher</button>
+            <button class="button">Rechercher</button>
         </div>
     </div>
     <div class="row">
@@ -46,10 +48,10 @@
             <h3>Charges</h3>
             <input type="number" id="charges-min" placeholder="<?php echo $minMaxCharges['min'] . ' (€)'; ?>" max="<?php echo $minMaxCharges['max']; ?>">
             <input type="number" id="charges-max" placeholder="<?php echo $minMaxCharges['max'] . ' (€)'; ?>" min="<?php echo $minMaxCharges['max']; ?>">
-            <li><input type="checkbox" id="meuble" checked> Meublé</li>
-            <li><input type="checkbox" id="wifi" checked> WiFi</li>
+            <li><input type="checkbox" id="meuble"> Meublé</li>
+            <li><input type="checkbox" id="wifi"> WiFi</li>
             <li><input type="checkbox" id="accessible-pmr"> Accessible PMR</li>
-            <li><input type="checkbox" id="parking" checked> Parking</li>
+            <li><input type="checkbox" id="parking"> Parking</li>
         </div>
         <div class="listings">
         </div>

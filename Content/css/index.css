@@ -45,6 +45,7 @@ a:hover {
 }
 
 .button{
+    cursor: pointer;
     box-sizing: border-box;
     padding: 25px;
     background: var(--green);

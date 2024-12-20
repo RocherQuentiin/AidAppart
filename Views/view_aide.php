@@ -78,6 +78,6 @@ require_once('Layout/view_header.php');?>
     <script src="script.js"></script>
 
 <?php
-require_once('Layout/footer.html');
+require_once('Layout/footer.php');
 ?>
 
