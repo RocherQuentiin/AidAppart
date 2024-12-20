@@ -7,7 +7,7 @@
 -- 2. Adresse
 -- 3. Logement
 -- 4. Messagerie
--- 5. studio
+-- 5. Maison
 -- 6. Appartement
 -- 7. Aviscss
 -- 8. Annonce

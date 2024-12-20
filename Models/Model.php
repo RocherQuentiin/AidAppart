@@ -508,5 +508,26 @@ class Model {
          $stmt->execute();
          return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
+
+    public function getReportedLogements() {
+        /*
+        * Récupérer les logements signalés
+        * @return array - Tableau contenant les logements signalés
+        */
+        $stmt = $this->db->query("SELECT * FROM Favoris_Signalement WHERE statut = 'signalement' order by creer_a desc");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getdataById($table, $dataId) {
+        /*
+        * Récupérer les données d'une table spécifiée par l'ID
+        * @param string $table - Nom de la table
+        * @param int $dataId - ID de la donnée
+        * @return array - Tableau contenant les données de la table
+        */
+        $stmt = $this->db->prepare("SELECT * FROM $table WHERE id = :dataId");
+        $stmt->execute(['dataId' => $dataId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>

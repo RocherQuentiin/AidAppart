@@ -13,6 +13,7 @@ require_once('Layout/view_header.php');?>
     
 </head>
 <body>
+    <?php include 'Views/Layout/view_header.php'; ?>
     <h1>Bienvenue, Administrateur</h1>
     <div class="navbar-menu" id="navbarMenu">        
         <ul class="navbar-links">
@@ -53,7 +54,23 @@ require_once('Layout/view_header.php');?>
                 echo '</table>';
                 break;
             case 'Signalement':
-                echo '<h2>Signalement</h2><p>Manage your Signalement here.</p>';
+                echo '<h2>Logement signalé</h2>';
+                echo '<table>';
+                echo '<tr>';
+                echo '<th>ID Logement</th>';
+                echo '<th>ID Personne</th>';
+                echo '<th>Commentaire</th>';
+                echo '<th>Date</th>';
+                echo '</tr>';
+                foreach ($data['reportedLogements'] as $logement) {
+                    echo "<tr>";
+                    echo "<td>{$logement['id_logement']}</td>";
+                    echo "<td>{$logement['reporter_name']}</td>";
+                    echo "<td>{$logement['commentaire']}</td>";
+                    echo "<td>{$logement['creer_a']}</td>";
+                    echo "</tr>";
+                }
+                echo '</table>';
                 break;
             case 'Logement':
                 echo '<h2>Logement</h2><p>Adjust your Logement here.</p>';
@@ -64,7 +81,9 @@ require_once('Layout/view_header.php');?>
         }
     } else {
         header('Location: ?controller=admin&action=admin&page=Utilisateurs');
-    }?>
+    }
+    require 'Layout/footer.php';
+    ?>
 </body>
 </html>
 <?php
