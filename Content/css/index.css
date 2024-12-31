@@ -99,3 +99,7 @@ input::placeholder{
     gap: 20px;
 }
 
+button, a {
+    cursor: pointer;
+  }
+  
