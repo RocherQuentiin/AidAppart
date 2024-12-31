@@ -104,4 +104,23 @@ h3 {
     background-color: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);;
   }
   
- 
+
+
+  #R1, #R2, #R3, #R4, #R5{
+    width: 15vw;
+    margin-left: 2vw;
+    padding-left: 1vw;
+    height: 10vh;
+    border-radius: 30px;
+    background-color: #A9CA59;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    color: #23435C;
+
+  }
+
+  button, a {
+    cursor: pointer;
+  }
+  
