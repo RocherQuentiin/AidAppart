@@ -16,7 +16,7 @@
       <img src="Content/Images/Annonce/pool.jpg" alt="Pool view">
       <img src="Content/Images/Annonce/lounge.jpg" alt="Lounge area">
       <img src="Content/Images/Annonce/rooftop.jpg" alt="Rooftop area">
-      <button id="show-more" class="show-more">+ Show More</button>
+      <button id="show-more" class="show-more">+ Voir plus</button>
     </div>
 
     <!-- Apartment Info Card -->
