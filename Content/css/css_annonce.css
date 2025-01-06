@@ -320,16 +320,6 @@ cursor: pointer;
 }
 
 /* Contact Form */
-form {
-display: flex;
-flex-direction: column;
-gap: 15px;
-}
-
-form label {
-font-size: 14px;
-font-weight: bold;
-}
 
 form input, form textarea, form button {
 padding: 10px;
@@ -339,21 +329,6 @@ font-size: 14px;
 width: 130%;
 }
 
-form textarea {
-resize: none;
-}
-
-form button {
-background-color: #a9ca59;
-color: white;
-border: none;
-cursor: pointer;
-transition: background-color 0.3s ease;
-}
-
-form button:hover {
-background-color: #91b54b;
-}
 }
 
 @media (max-width: 768px) {
