@@ -1,23 +1,23 @@
 <?php
-require_once('Layout/view_header.php');?>
+require_once('Layout/view_header.php');
+?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AidAppart</title>
     <link href="Content/css/aide.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+ <!-- Contenu principal -->
     <main>
         <section class="eligibility">
             <h1>Je vérifie mes éligibilités aux aides</h1>
             <form id="eligibility-form">
                 <!-- Groupe: Statut marital -->
-                <div class="form-group">
+                <div class="form-group" id="group-1">
                     <label for="R1">Statut marital</label>
-                    <select id="R1">
-                        <option value="" disabled selected>Choisir...</option>
+                    <select id="R1" onchange="showNextGroup(2)">
                         <option value="option1">Célibataire</option>
                         <option value="option2">Marié(e)</option>
                         <option value="option3">Pacsé(e)</option>
@@ -26,24 +26,22 @@ require_once('Layout/view_header.php');?>
                     </select>
                 </div>
 
-                <!-- Groupe: Statut professionnel -->
-                <div class="form-group hidden">
+                <!-- Groupe: Statut professionnel (initialement caché) -->
+                <div class="form-group" id="group-2" style="display:none;">
                     <label for="R2">Statut professionnel</label>
-                    <select id="R2">
-                        <option value="" disabled selected>Choisir...</option>
-                        <option value="option1">Etudiant à temps plein</option>
+                    <select id="R2" onchange="showNextGroup(3)">
+                        <option value="option1">Étudiant à temps plein</option>
                         <option value="option2">Alternant(e)</option>
-                        <option value="option3">Etudiant(e) salarié(e)</option>
+                        <option value="option3">Étudiant(e) salarié(e)</option>
                         <option value="option4">Demandeur d'emploi</option>
                         <option value="option5">Sans emploi</option>
                     </select>
                 </div>
 
-                <!-- Groupe: Niveau d'études -->
-                <div class="form-group hidden">
+                <!-- Groupe: Niveau d'études (initialement caché) -->
+                <div class="form-group" id="group-3" style="display:none;">
                     <label for="R3">Niveau d'études</label>
-                    <select id="R3">
-                        <option value="" disabled selected>Choisir...</option>
+                    <select id="R3" onchange="showNextGroup(4)">
                         <option value="option1">Bac</option>
                         <option value="option2">Bac +2</option>
                         <option value="option3">Bac +3</option>
@@ -52,11 +50,10 @@ require_once('Layout/view_header.php');?>
                     </select>
                 </div>
 
-                <!-- Groupe: Type de logement recherché -->
-                <div class="form-group hidden">
+                <!-- Groupe: Type de logement (initialement caché) -->
+                <div class="form-group" id="group-4" style="display:none;">
                     <label for="R4">Type de logement</label>
-                    <select id="R4">
-                        <option value="" disabled selected>Choisir...</option>
+                    <select id="R4" onchange="showNextGroup(5)">
                         <option value="option1">Logement universitaire</option>
                         <option value="option2">Appartement privé</option>
                         <option value="option3">Colocation</option>
@@ -65,45 +62,41 @@ require_once('Layout/view_header.php');?>
                     </select>
                 </div>
 
-                <!-- Groupe: Revenus ou bourse -->
-                <div class="form-group hidden">
+                <!-- Groupe: Revenus ou bourse (initialement caché) -->
+                <div class="form-group" id="group-5" style="display:none;">
                     <label for="R5">Revenus ou bourse</label>
                     <select id="R5">
-                        <option value="" disabled selected>Choisir...</option>
                         <option value="option1">Boursier sur critères sociaux</option>
                         <option value="option2">Aide au logement</option>
                         <option value="option3">Aucune aide</option>
                     </select>
                 </div>
 
-                <!-- Bouton soumission -->
-                <button type="submit" class="submit-btn hidden">Lancer la recherche</button>
+                <!-- Bouton de soumission -->
+                <button type="submit" class="submit-btn">Lancer la recherche</button>
             </form>
         </section>
     </main>
-    
-    <script src="script.js"></script>
-<?php
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 AidAppart. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script>
+        // Fonction pour afficher la section suivante après une sélection
+        function showNextGroup(nextGroupId) {
+            const nextGroup = document.getElementById('group-' + nextGroupId);
+            if (nextGroup) {
+                nextGroup.style.display = 'block'; // Afficher le groupe suivant
+            }
+        }
+    </script>
+<?php
 require_once('Layout/footer.php');
 ?>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const formGroups = document.querySelectorAll(".form-group");
-        formGroups.forEach((group, index) => {
-            const select = group.querySelector("select");
+</body>
+</html>
 
-            // Quand l'utilisateur change un select, on affiche le suivant
-            select.addEventListener("change", () => {
-                if (index + 1 < formGroups.length) {
-                    const nextGroup = formGroups[index + 1];
-                    nextGroup.classList.remove("hidden");
-                } else {
-                    // Si on est à la fin, afficher le bouton
-                    const submitBtn = document.querySelector(".submit-btn");
-                    submitBtn.classList.remove("hidden");
-                }
-            });
-        });
-    });
-</script>
+
