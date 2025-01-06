@@ -309,14 +309,87 @@ cursor: pointer;
   align-items: center; /* Center items on smaller screens */
 }
 
-.details {
-  width: 90%; /* Expand the details box width */
-  margin-left: 0; /* Remove left margin for centering */
-  margin-top: 20px; /* Add spacing between gallery and details */
-}
-
 .image-gallery {
   width: 100%; /* Adjust gallery to take full width */
+}
+
+/* Apartment Details */
+.details {
+position: absolute;
+margin-top: 600px;
+top: 7%;
+left: 0%;
+flex: 1; /* Take 1 part of the available space */
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+width: 90%; /* Set a max-width for the details box */
+box-sizing: border-box;
+height: 600px;
+}
+
+.details h2 {
+color: #a9ca59;
+}
+
+.details p {
+margin: 10px 0;
+}
+
+.details button {
+background-color: #a9ca59;
+color: #23435c;
+padding: 12px;
+border: none;
+border-radius: 25px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.details button:hover {
+background-color: #91b54b;
+}
+
+.details-info {
+position: absolute;
+top: 80%;
+left: 70%;
+flex: 1; /* Take 1 part of the available space */
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+width: 380px; /* Set a max-width for the details box */
+margin-left: 20px; /* Adds spacing between gallery and details */
+box-sizing: border-box;
+height: 500px;
+}
+
+.details-info h2 {
+color: #a9ca59;
+}
+
+.details-info p {
+margin: 10px 0;
+}
+
+.details-info button {
+background-color: #a9ca59;
+color: #23435c;
+padding: 12px;
+border: none;
+border-radius: 25px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.details-info button:hover {
+background-color: #91b54b;
 }
 
 /* Contact Form */
@@ -326,7 +399,19 @@ padding: 10px;
 border: 1px solid #ddd;
 border-radius: 5px;
 font-size: 14px;
-width: 130%;
+width: 90%;
+}
+
+.description{
+  margin-top: 640px;
+}
+  
+.description, .contact, .location {
+padding: 20px;
+background-color: white;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+max-width: 100%;
 }
 
 }
