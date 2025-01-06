@@ -5,10 +5,12 @@ body {
     padding: 0;
     background-color: #dfe8c7;
     color: #23435C; /* Couleur globale pour tout le texte */
+    text-align: center;
 }
 
 
 main {
+    margin-top: 100px;
     padding: 20px;
 }
 
@@ -50,6 +52,7 @@ form {
     flex: 1; /* Chaque groupe prend un espace égal */
     min-width: 180px; /* Largeur minimale pour s'adapter */
     text-align: left;
+    cursor: pointer;
 }
 
 .form-group label {
@@ -59,6 +62,7 @@ form {
     font-weight: bold; /* Met en gras pour les rendre plus visibles */
     margin-bottom: 10px; /* Ajoute un espace entre le titre et les options */
     color: #23435C; /* Assure que la couleur correspond au reste du design */
+    
 }
 
 
@@ -67,22 +71,28 @@ form {
     display: flex;
     flex-direction: column; /* Liste les boutons verticalement */
     gap: 10px;
+    cursor: pointer;
 }
 
 .options button {
-    padding: 5px 10px;
+    padding: 20px; /* Taille du bouton */
     font-size: 16px;
     border: 2px solid white; /* Contour blanc */
     background-color: transparent; /* Fond transparent */
     color: #23435C; /* Couleur du texte */
-    border-radius: 12px; /* Coins arrondis */
+    border-radius: 50%; /* Forme ronde */
     cursor: pointer; /* Curseur en forme de main */
     transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center; /* Centre le texte dans le bouton */
+    width: 60px; /* Largeur du bouton (égale à la hauteur pour garder la forme ronde) */
+    height: 60px; /* Hauteur du bouton */
+
 }
 
 .options button:hover {
     background-color: white; /* Fond blanc au survol */
     color: #23435C; /* Texte bleu */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Ajoute une ombre au survol */
 }
 
 
@@ -91,6 +101,7 @@ form {
     margin-top: 20px;
     margin-left: 40%;
     margin-right: 40%;
+    margin-bottom: 100px;
     padding: 10px;
     font-size: 16px;
     color: white;
@@ -101,7 +112,11 @@ form {
 }
 
 .submit-btn:hover {
-    background: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);;
+    background: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
+    cursor: pointer;
 }
 
 
+.hidden {
+    display: none;
+}
