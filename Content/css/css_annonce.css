@@ -355,17 +355,17 @@ background-color: #91b54b;
 
 .details-info {
 position: absolute;
-top: 80%;
-left: 70%;
+margin-top: 1220px;
+top: 7%;
+left: 0%;
 flex: 1; /* Take 1 part of the available space */
 background-color: white;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-width: 380px; /* Set a max-width for the details box */
-margin-left: 20px; /* Adds spacing between gallery and details */
+width: 90%; /* Set a max-width for the details box */
 box-sizing: border-box;
-height: 500px;
+height: 600px;
 }
 
 .details-info h2 {
@@ -403,7 +403,7 @@ width: 90%;
 }
 
 .description{
-  margin-top: 640px;
+  margin-top: 1260px;
 }
   
 .description, .contact, .location {
