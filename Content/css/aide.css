@@ -3,120 +3,116 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column; /* Structure verticale */
+    min-height: 100vh; /* Hauteur totale de la fenêtre */
     background-color: #dfe8c7;
-    color: #23435C; /* Couleur globale pour tout le texte */
-    text-align: center;
+    color: #23435C;
 }
 
-
+/* Conteneur du formulaire centré */
 main {
-    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Empile verticalement le contenu */
+    flex-grow: 1; /* Prend toute la place disponible */
     padding: 20px;
 }
 
-/* Applique à tous les textes à l'intérieur du formulaire */
-#eligibility-form label,
-#eligibility-form button {
-    font-weight: bold; /* Texte en gras */
-    color: #23435C; /* Couleur bleue */
-}
-
-/* Applique spécifiquement au texte des boutons */
-#eligibility-form .options button {
-    font-weight: bold; /* Texte en gras */
-    color: #23435C; /* Couleur bleue */
-}
-
-/* Les titres des colonnes */
-h3 {
-    font-weight: bold; /* Texte en gras */
-    color: #23435C; /* Couleur bleue */
-}
-
+/* Titre principal centré */
 .eligibility h1 {
-    text-align: center; /* Centre le texte horizontalement */
-    color: #23435C; /* Couleur bleue */
-    font-weight: bold; /* Texte en gras */
+    color: #23435C;
+    font-weight: bold;
+    font-size: 28px; /* Plus grand pour le rendre visible */
+    margin-bottom: 30px;
+    text-align: center; /* Assure le centrage du texte */
+    cursor: pointer; /* Change le curseur survolé */
 }
 
-
-/* Formulaire */
-form {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
+/* Groupes de formulaires alignés */
 .form-group {
-    flex: 1; /* Chaque groupe prend un espace égal */
-    min-width: 180px; /* Largeur minimale pour s'adapter */
-    text-align: left;
-    cursor: pointer;
+    text-align: center; /* Centre les labels */
+    margin-bottom: 20px;
 }
 
+/* Labels */
 .form-group label {
     display: block;
-    text-align: center; /* Centre le texte horizontalement */
-    font-size: 18px; /* Augmente légèrement la taille du texte */
-    font-weight: bold; /* Met en gras pour les rendre plus visibles */
-    margin-bottom: 10px; /* Ajoute un espace entre le titre et les options */
-    color: #23435C; /* Assure que la couleur correspond au reste du design */
-    
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #23435C;
 }
 
-
-
-.options {
-    display: flex;
-    flex-direction: column; /* Liste les boutons verticalement */
-    gap: 10px;
-    cursor: pointer;
+/* Style des menus déroulants (select) */
+select {
+    width: 300px; /* Largeur du menu déroulant */
+    height: 40px; /* Hauteur du menu déroulant */
+    padding: 8px;
+    background-color: #fff; /* Fond blanc */
+    border: 2px solid var(--blue); /* Bordure bleue */
+    border-radius: 5px; /* Coins arrondis */
+    appearance: none; /* Enlever l'apparence par défaut du select */
+    outline: none; /* Enlever le contour par défaut */
+    cursor: pointer; /* Curseur pointer */
+    font-size: 16px; /* Taille de police */
+    transition: all 0.3s ease; /* Transition douce pour les changements d'état */
 }
 
-.options button {
-    padding: 20px; /* Taille du bouton */
-    font-size: 16px;
-    border: 2px solid white; /* Contour blanc */
-    background-color: transparent; /* Fond transparent */
-    color: #23435C; /* Couleur du texte */
-    border-radius: 50%; /* Forme ronde */
-    cursor: pointer; /* Curseur en forme de main */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    text-align: center; /* Centre le texte dans le bouton */
-    width: 60px; /* Largeur du bouton (égale à la hauteur pour garder la forme ronde) */
-    height: 60px; /* Hauteur du bouton */
-
+/* Effet au survol et focus */
+select:hover, select:focus {
+    border-color: var(--secondary-color); /* Bordure bleue plus foncée au survol ou focus */
+    background-color: #f2f8ff; /* Fond légèrement bleu clair */
 }
 
-.options button:hover {
-    background-color: white; /* Fond blanc au survol */
-    color: #23435C; /* Texte bleu */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Ajoute une ombre au survol */
+/* Style des options du menu déroulant */
+select option {
+    font-size: 16px; /* Taille de police des options */
 }
 
-
+/* Apparence des boutons de soumission */
 .submit-btn {
-    width: 300px;
-    margin-top: 20px;
-    margin-left: 40%;
-    margin-right: 40%;
-    margin-bottom: 100px;
-    padding: 10px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: var(--green);
     color: white;
-    background-color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+/* Effet de survol du bouton de soumission */
 .submit-btn:hover {
-    background: linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
-    cursor: pointer;
+    background-color: var(--blue);
 }
 
+/* Footer */
+footer {
+    background-color: #23435C;
+    color: white;
+    text-align: center;
+    padding: 10px; /* Hauteur réduite */
+    font-size: 14px; /* Texte plus petit */
+    margin-top: auto; /* Pousse le footer en bas */
+}
+/* Sélecteurs de formulaire (input, select, etc.) avec des bordures arrondies et plus grands */
+input[type="text"], input[type="email"], input[type="password"], textarea, select, .submit-btn,
+input[type="radio"], input[type="checkbox"] {
+    cursor: pointer; /* Change le curseur en main lors du survol */
+    border-radius: 20px; /* Bordures arrondies */
+    padding: 12px; /* Un peu plus d'espace à l'intérieur */
+    font-size: 16px; /* Augmenter la taille de la police pour plus de lisibilité */
+    height: 50px; /* Augmenter la hauteur des cases */
+    width: 500px; /* Augmenter la largeur des champs */
+}
 
-.hidden {
-    display: none;
+/* Groupes de formulaires */
+.form-group select {
+    border-radius: 20px; /* Bordures arrondies pour les menus déroulants */
+    padding: 12px; /* Ajouter du padding pour un espacement interne plus grand */
+    font-size: 16px; /* Augmenter la taille de la police */
+    height: 50px; /* Ajuster la hauteur des menus déroulants */
+    width: 500px; /* Ajuster la largeur des menus déroulants */
 }
