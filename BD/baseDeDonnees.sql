@@ -185,3 +185,4 @@ ALTER TABLE Garent ADD CONSTRAINT fk_garent_logement FOREIGN KEY (id_logement) R
 ALTER TABLE Personne_Role ADD CONSTRAINT fk_personne_role_personne FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE;
 ALTER TABLE Personne_Role ADD CONSTRAINT fk_personne_role_role FOREIGN KEY (id_role) REFERENCES Role(id) ON DELETE CASCADE;
 
+ALTER TABLE Personne ADD COLUMN etat ENUM("actif", "inactif", "bloqué") DEFAULT "inactif";
