@@ -57,20 +57,20 @@ require_once('Layout/view_header.php');
         <img src="Content/Images/email.png" alt="Email Icon" id="icon-mail" class="icon">
         <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant"  >
     </div>
-    <br><br>
+    <br>
     <div class="input-group">
         <img src="Content/Images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
         <input type="password" id="password1" name="mdp" placeholder="Votre mot de passe" >
         <img src="Content/Images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password1')">
     </div>
-    <br><br>
+    <br>
     <div class="input-group">
         <img src="Content/Images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
         <input type="password" id="password2" name="mdp_confirmation" placeholder="Confirmation">
         <img src="Content/Images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password2')">
     </div>
 
-    <br><br>
+    <br>
 
     <label>
         <div class="Donnee">
@@ -85,6 +85,8 @@ require_once('Layout/view_header.php');
             <p>J’accepte sans réserve les Conditions Générales d’Utilisation des services AidAppart</p>
         </div>
     </label>
+    <br>
+    <p>Cliquez <a href="https://www.dossierfacile.logement.gouv.fr" target="_blank">ici</a> pour constituer votre dossier locatif</p>
     <br>
     <button class="button" type="submit">Je m'inscris</button>
 
