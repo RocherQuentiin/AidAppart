@@ -17,8 +17,14 @@ h1 {
 }
 
 form {
-    border: none; /* Suppression des contours */
-    margin-left: 35%;
+    width:405px;
+    margin: 0 auto; /* Centre le formulaire horizontalement */
+}
+
+.formulaire{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -291,24 +297,20 @@ p {
         margin: 0 auto; /* Centre le formulaire */
         width: 90%; /* Largeur relative pour s'adapter à l'écran */
     }
+    
 
     /* Bouton dropdown */
     .dropdown-btn {
-        width: 100%; /* Largeur complète sur mobile */
-        padding: 10px 15px; /* Espacement réduit pour éviter l'effet "zoomer" */
+        width: 100%;
+        padding: 17px 100px; /* Espacement réduit pour éviter l'effet "zoomer" */
         font-size: 14px; /* Taille ajustée */
-    }
-
-    /*  */
-    .dropdown-menu {
-        width: 100%; /* S'étend à la largeur du bouton */
     }
 
 
 
     /* Conteneur principal téléphone */
     .phone-input-container {
-        width: 105%; /* S'étend à la largeur de l'écran */
+        width: 100% ;
         margin-bottom: 10px; /* Ajoute de l'espace entre les champs */
     }
 
@@ -340,7 +342,7 @@ p {
     #nom,
     #prenom,
     select {
-        width: calc(100% - 20px); /* Ajustement dynamique pour inclure des marges */
+        width: calc(100% - 30px); /* Ajustement dynamique pour inclure des marges */
         padding: 8px 18px; /* Espacement réduit */
         font-size: 14px; /* Texte ajusté pour éviter un effet trop zoomé */
         margin-bottom: 10px; /* Ajoute de l'espace entre les champs */
@@ -352,9 +354,8 @@ p {
         top: 40%;
     }
 
-    /* Ajustement pour l'icône de l'œil */
-    .input-group #eye-toggle {
-        width: 15px; /* Même réduction que les autres icônes */
+    .input-group #eye-toggle{
+        left: 95%;
     }
 
     /* Ajustement pour le cadenas et les autres icônes */
