@@ -16,7 +16,6 @@ require_once('Layout/view_header.php');
 <h1>
     Inscription
 </h1>
-
 <form action="?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
         <button type="button" class="dropdown-btn" id="dropdownBtn">

@@ -3,14 +3,19 @@
 body {
     font-family: sans-serif;
     background:linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
-    height: 100vh; /* Pour gérer le positionnement des éléments */
+    height: 100%; /* Pour gérer le positionnement des éléments */
     flex-direction: column;
     align-items: center;
 }
 h1 {
+    display: block;
     color: #23435c; /* Texte bleu */
     padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
+
 form {
     border: none; /* Suppression des contours */
     margin-left: 35%;
@@ -175,7 +180,6 @@ form {
     padding: 12px 40px; /* Plus d'espace intérieur */
     width: 117px;
     height: 20px;
-    background-color: #f5f5f5;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 4px 0 #00000040;
@@ -243,15 +247,21 @@ select{
     align-items: center; /* Assure que la case à cocher et le texte sont alignés verticalement */
 }
 
-/* Ajuster la position de la case à cocher */
+
+
+/* Style de la case à cocher */
 input[type="checkbox"] {
+    margin: 0,5px,0,0; /* Supprime la marge par défaut de la case à cocher */
     box-shadow: none; /* Retire toute ombre portée */
-    margin-left: -100px; /* S'assure qu'il n'y a pas de marge supplémentaire à gauche */
+    width: 20px; /* Ajuste la taille de la case si nécessaire */
+    height: 20px; /* Ajuste la hauteur */
 }
 
+/* Texte à côté de la case à cocher */
 p {
-    margin: 0 50% 0 -10%; /* Définit les marges */
+    margin: 0 35% 0 0; /* Marges correctement spécifiées */
 }
+
 
 .button-container {
     display: flex; /* Utilisation de Flexbox si nécessaire */
@@ -344,9 +354,7 @@ p {
 
     /* Ajustement pour l'icône de l'œil */
     .input-group #eye-toggle {
-        left: 250px; /* Ajustez la position pour s'adapter à la nouvelle taille */
         width: 15px; /* Même réduction que les autres icônes */
-        height: auto; /* Maintient le ratio d'aspect */
     }
 
     /* Ajustement pour le cadenas et les autres icônes */
@@ -364,7 +372,6 @@ p {
     .button-container {
         flex-direction: column; /* Les boutons s'empilent verticalement */
         align-items: center;
-        margin: 10px 0; /* Réduction des marges */
     }
     /* Cases à cocher */
     input[type="checkbox"] {
