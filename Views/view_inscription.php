@@ -34,7 +34,7 @@ require_once('Layout/view_header.php');
     <input type="text" id="nom" name="nom" placeholder="Nom">
     <input type="text" id="prenom" name="prenom" placeholder="Prénom"  >
     <br><br>
-    <div class="form-section">
+    <div class="ContenaireTelephone">
         <label for="pays-code"></label>
         <div class="phone-input-container" id="phone-input-container">
             <select id="pays-code" name="pays-code" class="country-code-select"  >
