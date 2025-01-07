@@ -1,16 +1,11 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 footer {
-    margin-top: 5%;
+    margin: 5% 0 0 0;
+    padding: 0;
     background-color: var(--blue);
     color: white;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0;
     a {
         color: white !important;
     }

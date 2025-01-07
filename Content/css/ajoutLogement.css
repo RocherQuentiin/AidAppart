@@ -58,22 +58,6 @@ textarea {
     box-sizing: border-box;
 }
 
-.adresse {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    margin-bottom: 20px;
-}
-
-.adresse .input-container {
-    width: 48%;
-}
-
-.adresse label {
-    font-weight: normal;
-    color: var(--blue);
-}
-
 .checkbox-group {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -97,6 +81,10 @@ textarea {
     height: 20px;
 }
 
+.adresse{
+    background: #91b54b;
+}
+
 @media (max-width: 1200px) {
     .flex {
         flex-direction: column;
@@ -112,13 +100,6 @@ textarea {
         grid-template-columns: 1fr;
     }
 
-    .adresse {
-        gap: 20px;
-    }
-
-    .adresse .input-container {
-        width: 100%;
-    }
 }
 
 @media (max-width: 768px) {
@@ -134,15 +115,6 @@ textarea {
 
     .checkbox-group {
         grid-template-columns: 1fr;
-    }
-
-    .adresse {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .adresse .input-container {
-        width: 100%;
     }
 
     input,
@@ -169,10 +141,6 @@ textarea {
 
     .checkbox-group {
         grid-template-columns: 1fr;
-    }
-
-    .adresse .input-container {
-        width: 100%;
     }
 
     input,
