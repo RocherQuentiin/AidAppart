@@ -86,9 +86,7 @@ require_once('Layout/view_header.php');
         </div>
     </label>
     <br>
-    <div class="button-container">
-        <button class="button" type="submit">Je m'inscris</button>
-    </div>
+    <button class="button" type="submit">Je m'inscris</button>
 
 </form>
 </div>
