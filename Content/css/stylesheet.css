@@ -73,7 +73,9 @@ body {
 }
 
 .btn-account button:hover {
-    background-color: #0056b3;
+    background-color: var(--blue);
+    color: white;
+    border: var(--blue);
 }
 
 .icon-translate img {
