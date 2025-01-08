@@ -31,8 +31,8 @@ require_once('Layout/view_header.php');
     </div>
 
     <br><br>
-    <input type="text" id="nom" name="nom" placeholder="Nom">
-    <input type="text" id="prenom" name="prenom" placeholder="Prénom"  >
+    <input type="text" id="nom" name="nom" placeholder="Nom" required>
+    <input type="text" id="prenom" name="prenom" placeholder="Prénom"  required>
     <br><br>
     <div class="ContenaireTelephone">
         <label for="pays-code"></label>
@@ -49,7 +49,7 @@ require_once('Layout/view_header.php');
                 <option value="+34">+34</option>
             </select>
             <div class="separator"></div><!-- Séparateur -->
-            <input type="tel" id="phone" name="phone" class="phone-number-input" placeholder="Numéro de téléphone"  >
+            <input type="tel" id="phone" name="phone" class="phone-number-input" placeholder="Numéro de téléphone" required>
         </div>
     </div>
     <br>
