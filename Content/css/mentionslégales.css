@@ -1,0 +1,52 @@
+/* Général */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dfe8c7;  /* Fond vert clair */
+    color: #23435C; /* Texte bleu foncé */
+}
+
+main {
+    padding: 20px;
+}
+
+/* Section Mentions Légales */
+.mentions-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #23435C; /* Bleu foncé */
+    text-align: center;
+    font-weight: bold;
+}
+
+p, ul {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+ul {
+    margin-left: 20px;
+}
+
+a {
+    color: #23435C;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #23435C;  /* Bleu foncé */
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
