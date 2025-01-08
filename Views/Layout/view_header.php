@@ -8,7 +8,7 @@
     <link rel="icon" href="Content/Images/logo.ico" type="image/x-icon">
 </head>
 <body>
-
+    
 <nav class="navbar">
     <div class="navbar-container">
         <!-- Logo -->
