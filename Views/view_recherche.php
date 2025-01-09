@@ -43,7 +43,7 @@ require_once('Layout/view_header.php');
             if (count($aidesDisponibles) > 0) {
                 echo '<ul>';
                 foreach ($aidesDisponibles as $aide) {
-                    echo '<li>' . $aide . '</li>';
+                    echo '<li class="aide">' . $aide . '</li>';
                 }
                 echo '</ul>';
             } else {
@@ -54,8 +54,9 @@ require_once('Layout/view_header.php');
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 AidAppart. Tous droits réservés.</p>
-    </footer>
+    <?php
+require_once('Layout/footer.php');
+?>
+
 </body>
 </html>

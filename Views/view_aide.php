@@ -15,7 +15,7 @@ require_once('Layout/view_header.php');
     <main>
         <section class="eligibility">
             <h1>Je vérifie mes éligibilités aux aides</h1>
-            <form id="eligibility-form" action="view_recherche.php" method="POST">
+            <form id="eligibility-form" action="?controller=recherche" method="POST">
                 <!-- Groupe: Statut marital -->
                 <div class="form-group" id="group-1">
                     <label for="R1">Statut marital</label>
