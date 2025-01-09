@@ -36,7 +36,11 @@ class Model {
         * @param string $table - Nom de la table
         * @return array - Tableau contenant toutes les entrées de la table
         */
-        $stmt = $this->db->query("SELECT * FROM " . $table);
+        if ($table == 'Personne') {
+            $stmt = $this->db->query("SELECT * FROM " . $table . " WHERE etat='actif'");
+        } else {
+            $stmt = $this->db->query("SELECT * FROM " . $table);
+        }
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -528,6 +532,15 @@ class Model {
         $stmt = $this->db->prepare("SELECT * FROM $table WHERE id = :dataId");
         $stmt->execute(['dataId' => $dataId]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function disableUser($userId, $etat) {
+        /*
+        * Désactiver un utilisateur
+        * @param int $userId - ID de l'utilisateur
+        */
+        $stmt = $this->db->prepare("UPDATE Personne SET etat = :etat WHERE id = :userId");
+        $stmt->execute(['etat' => $etat, 'userId' => $userId]);
     }
 }
 ?>

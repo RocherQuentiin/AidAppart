@@ -37,7 +37,7 @@ class Controller_admin extends Controller {
     public function action_delete_user() {
         $model = Model::getModel();
         $data = json_decode(file_get_contents('php://input'), true);
-        $model->deleteById("Personne", $data['id']);
+        $model->disableUser($data['id'], "inactif");
     }
 
     public function get_reported_logements() {
