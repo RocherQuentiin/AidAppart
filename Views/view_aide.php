@@ -76,6 +76,7 @@ require_once('Layout/view_header.php');
 
                 <!-- Bouton de soumission -->
                 <button type="submit" class="submit-btn">Lancer la recherche</button>
+              
             </form>
         </section>
     </main>
