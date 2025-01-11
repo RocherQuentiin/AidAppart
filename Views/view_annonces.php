@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="Content/css/css_annonce.css">
 </head>
 <body>
-  <?php include 'Layout/view_header.html'; ?>
+  <?php include 'Layout/view_header.php'; ?>
   <!-- Main Container -->
   <div class="container-annonce">
     <!-- Image Gallery -->

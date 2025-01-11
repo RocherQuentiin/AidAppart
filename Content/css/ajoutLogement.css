@@ -1,0 +1,184 @@
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.image-upload {
+    width: 40%;
+    height: 500px;
+    background-color: var(--bleu-claire);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 36px;
+    color: var(--primary-color);
+}
+
+.image-upload input[type="file"] {
+    display: none;
+}
+
+.form-section {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: var(--blue);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.adresse {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.adresse .input-container {
+    width: 48%;
+}
+
+.adresse label {
+    font-weight: normal;
+    color: var(--blue);
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.checkbox-group div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.checkbox-group label {
+    margin-right: 10px;
+    font-weight: normal;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 1200px) {
+    .flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-upload {
+        width: 80%;
+        height: 400px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    .adresse {
+        gap: 20px;
+    }
+
+    .adresse .input-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    form {
+        padding: 20px;
+    }
+
+    .image-upload {
+        width: 100%;
+        height: 250px;
+        font-size: 28px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    .adresse {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .adresse .input-container {
+        width: 100%;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        width: 95%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .image-upload {
+        height: 200px;
+        font-size: 24px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    .adresse .input-container {
+        width: 100%;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
