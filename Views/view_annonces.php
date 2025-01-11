@@ -126,7 +126,7 @@
     </form>
   </section>
 
-  <?php include 'Layout/footer.html'; ?>
+  <?php include 'Layout/footer.php'; ?>
   <script src="Content/js/annonce.js"></script>
 </body>
 </html>
