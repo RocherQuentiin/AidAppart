@@ -12,7 +12,7 @@
   <div class="container-annonce">
     <!-- Image Gallery -->
   <div class="image-gallery">
-    <img src="Content/Images/Annonce/room.jpg" alt="Room view">
+    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Room view">
     <img src="Content/Images/Annonce/pool.jpg" alt="Pool view">
     <img src="Content/Images/Annonce/lounge.jpg" alt="Lounge area">
     <img src="Content/Images/Annonce/rooftop.jpg" alt="Rooftop area">
@@ -37,7 +37,7 @@
     <!-- Apartment Info Card -->
     <aside class="details">
       <h2>À partir de <strong><?php echo htmlspecialchars($annonce['loyer']); ?> € / mois </strong></h2>
-      <p><strong>Prix du loyer : </strong><?php echo htmlspecialchars($annonce['loyer']); ?> € / mois</p>
+      <p><strong>Charges : </strong><?php echo htmlspecialchars($annonce['charges']); ?> € / mois</p>
       <p><strong>Surface : </strong><?php echo htmlspecialchars($annonce['surface']); ?> m2 </p>
       <p><strong>Adresse : </strong><?php echo htmlspecialchars($annonce['adresse']); ?></p>
       <p><strong>Pièces : </strong><?php echo htmlspecialchars($annonce['nb_pieces']); ?> pièces </p>

@@ -10,8 +10,10 @@ class Controller_annonces extends Controller {
 
     public function action_annonces() {
 
+        $id = 3;
+
         $model = Model::getModel();
-        $annonce = $model->getAnnonceById(3);
+        $annonce = $model->getAnnonceById($id);
 
         if ($annonce) {
             $annonce['est_meuble'] = $annonce['est_meuble'] ? 'Oui' : 'Non';
