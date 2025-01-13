@@ -7,6 +7,9 @@ require_once('Layout/view_header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AidAppart</title>
     <link href="Content/css/aide.css" rel="stylesheet">
+    <script src="Content/js/aide.js"></script>
+    
+
 </head>
 <body>
  <!-- Contenu principal -->
@@ -78,23 +81,9 @@ require_once('Layout/view_header.php');
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 AidAppart. Tous droits réservés.</p>
-    </footer>
-
-    <!-- Script JavaScript -->
-    <script>
-        // Fonction pour afficher la section suivante après une sélection
-        function showNextGroup(nextGroupId) {
-            const nextGroup = document.getElementById('group-' + nextGroupId);
-            if (nextGroup) {
-                nextGroup.style.display = 'block'; // Afficher le groupe suivant
-            }
-        }
-    </script>
 <?php
 require_once('Layout/footer.php');
 ?>
 </body>
 </html>
+
