@@ -13,9 +13,9 @@
     <!-- Image Gallery -->
   <div class="image-gallery">
     <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Room view">
-    <img src="Content/Images/Annonce/pool.jpg" alt="Pool view">
-    <img src="Content/Images/Annonce/lounge.jpg" alt="Lounge area">
-    <img src="Content/Images/Annonce/rooftop.jpg" alt="Rooftop area">
+    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Pool view">
+    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Lounge area">
+    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Rooftop area">
     <button id="show-more" class="show-more">+ Voir plus</button>
   </div>
 
@@ -24,10 +24,11 @@
     <span class="close">&times;</span>
     <div class="modal-content">
       <div class="modal-images">
-        <img src="Content/Images/Annonce/room.jpg" alt="Room view">
-        <img src="Content/Images/Annonce/pool.jpg" alt="Pool view">
-        <img src="Content/Images/Annonce/lounge.jpg" alt="Lounge area">
-        <img src="Content/Images/Annonce/rooftop.jpg" alt="Rooftop area">
+        <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Room view">
+        <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Room view">
+    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Pool view">
+    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Lounge area">
+    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Rooftop area">
         <!-- Add more images here -->
       </div>
     </div>
