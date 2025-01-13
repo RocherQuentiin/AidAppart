@@ -542,5 +542,15 @@ class Model {
         $stmt = $this->db->prepare("UPDATE Personne SET etat = :etat WHERE id = :userId");
         $stmt->execute(['etat' => $etat, 'userId' => $userId]);
     }
+
+    // Récupérer une annonce par son ID
+    public function getAnnonceById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM logement WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Retourne les données de l'annonce
+    }
+    
 }
+
 ?>

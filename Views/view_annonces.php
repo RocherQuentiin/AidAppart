@@ -36,16 +36,10 @@
 
     <!-- Apartment Info Card -->
     <aside class="details">
-      <h2>À partir de <strong>660€/mois</strong></h2>
-
-      <p>Charges comprises</p>
-      <p>Logements meublés de <strong>19m² à 19m²</strong></p>
-      <p>Éligible aux aides (APL, ALS): <strong>Oui</strong></p>
-      <p>Services inclus: <strong>Oui</strong></p>
-      <p>Charges comprises</p>
-      <p>Logements meublés de <strong>19m² à 19m²</strong></p>
-      <p>Éligible aux aides (APL, ALS): <strong>Oui</strong></p>
-      <p>Services inclus: <strong>Oui</strong></p>
+      <h2>À partir de <strong><?php echo htmlspecialchars($annonce['loyer']); ?> € / mois </strong></h2>
+      <p><strong>Prix du loyer : </strong><?php echo htmlspecialchars($annonce['loyer']); ?> € / mois</p>
+      <p><strong>Charges : </strong><?php echo htmlspecialchars($annonce['charges']); ?> € / mois</p>
+      <p><strong>Surface : </strong><?php echo htmlspecialchars($annonce['surface']); ?> m2 </p>
       
       <button>Voir les chambres</button>
     </aside>
@@ -69,22 +63,8 @@
   <!-- Additional Sections -->
   <section class="description">
     <h2>Description du logement</h2>
-    <p>Pour vos études optez pour notre résidence.</p>
-    <p>Séjourner chez Appart'City c'est retrouver le confort et le bien-être d'un chez-soi.</p>
-    <p>Pour vos études optez pour notre résidence ***
-
-      Séjourner chez Appart'City c'est retrouver le confort et le bien être d'un chez-soi, les services en plus !
-      
-      Appart'City vous propose
-      des studios tout équipés : espace cuisine avec frigo, plaques, micro-onde, cafetière/bouilloire et lave-vaisselle, ;TV, wifi, bureau et salle-de-bain privative.
-      
-      Retrouvez également sur place des prestations hôtelières et services qui vous faciliteront la
-      vie : petit-déjeuner, laverie, parking, piscine etc.
-      
-      De plus vous aurez a votre disposition une navette qui pourra vous emmenez a l'aéroport, dans le centre ville et ou le centre commercial sur demande.
-      
-      Attention ! Une taxe de séjour est appliquée pour chaque nuit passée dans la résidence !
-    </p>
+    <p><?php echo htmlspecialchars($annonce['description']); ?></p>
+    
   </section>
 
   <!-- Map Section -->
