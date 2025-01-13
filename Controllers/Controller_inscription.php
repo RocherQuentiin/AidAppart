@@ -78,7 +78,7 @@ class Controller_inscription extends Controller {
             }
 
             // Téléphone
-            if (strlen($telephone) != 9 && strlen($telephone) != 10) {
+            if (strlen($telephone) != 9 || strlen($telephone) != 10) {
                 $data = ["message" => "Le numéro de téléphone doit contenir le bon nombre de chiffres."];
                 $this->render("inscription", $data);
                 exit;
