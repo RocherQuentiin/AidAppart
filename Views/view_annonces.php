@@ -38,8 +38,13 @@
     <aside class="details">
       <h2>À partir de <strong><?php echo htmlspecialchars($annonce['loyer']); ?> € / mois </strong></h2>
       <p><strong>Prix du loyer : </strong><?php echo htmlspecialchars($annonce['loyer']); ?> € / mois</p>
-      <p><strong>Charges : </strong><?php echo htmlspecialchars($annonce['charges']); ?> € / mois</p>
       <p><strong>Surface : </strong><?php echo htmlspecialchars($annonce['surface']); ?> m2 </p>
+      <p><strong>Adresse : </strong><?php echo htmlspecialchars($annonce['adresse']); ?></p>
+      <p><strong>Pièces : </strong><?php echo htmlspecialchars($annonce['nb_pieces']); ?> pièces </p>
+      <p><strong>Meublé : </strong><?php echo htmlspecialchars($annonce['est_meuble']); ?></p>
+      <p><strong>Accessible aux PMR : </strong><?php echo htmlspecialchars($annonce['est_accessible_PMR']); ?></p>
+      <p><strong>WIFI : </strong><?php echo htmlspecialchars($annonce['a_WIFI']); ?></p>
+      <p><strong>Parking : </strong><?php echo htmlspecialchars($annonce['a_parking']); ?></p></br>
       
       <button>Voir les chambres</button>
     </aside>
