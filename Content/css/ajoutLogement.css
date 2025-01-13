@@ -11,45 +11,22 @@ h1 {
     text-align: center;
 }
 
-.flex {
+.part-haut{
     display: flex;
     justify-content: space-between;
-    gap: 30px;
-    flex-wrap: wrap;
 }
-
-.image-upload {
-    width: 40%;
-    height: 500px;
-    background-color: var(--bleu-claire);
+.from-section{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 36px;
-    color: var(--primary-color);
-}
-
-.image-upload input[type="file"] {
-    display: none;
+    flex-direction: column;
 }
 
 .form-section {
     flex: 1;
 }
 
-label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-    color: var(--blue);
-}
-
 input,
-select,
-textarea {
-    width: 100%;
+select{
+    width: 30%;
     padding: 10px;
     margin-bottom: 20px;
     border: 2px solid var(--blue);
@@ -81,72 +58,42 @@ textarea {
     height: 20px;
 }
 
-.adresse{
-    background: #91b54b;
+.part-image {
+    display: flex;
+    width: 70%;
+    height: 80vh;
 }
 
-@media (max-width: 1200px) {
-    .flex {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .image-upload {
-        width: 80%;
-        height: 400px;
-    }
-
-    .checkbox-group {
-        grid-template-columns: 1fr;
-    }
-
+.left-column {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: space-between;
+    padding: 10px;
 }
 
-@media (max-width: 768px) {
-    form {
-        padding: 20px;
-    }
-
-    .image-upload {
-        width: 100%;
-        height: 250px;
-        font-size: 28px;
-    }
-
-    .checkbox-group {
-        grid-template-columns: 1fr;
-    }
-
-    input,
-    select,
-    textarea {
-        padding: 8px;
-    }
+.image-upload {
+    width: 70%;
+    aspect-ratio: 1;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
 }
 
-@media (max-width: 480px) {
-    form {
-        width: 95%;
-        padding: 10px;
-    }
+.square {
+    width: 70%;
+    aspect-ratio: 1;
+    background-color: #f0f0f0;
+}
 
-    h1 {
-        font-size: 24px;
-    }
-
-    .image-upload {
-        height: 200px;
-        font-size: 24px;
-    }
-
-    .checkbox-group {
-        grid-template-columns: 1fr;
-    }
-
-    input,
-    select,
-    textarea {
-        padding: 10px;
-        font-size: 14px;
-    }
+.right-square {
+    width: 70%;
+    background-color: #e0e0e0;
+    aspect-ratio: 1;
+    align-self: center;
+    margin: auto;
 }

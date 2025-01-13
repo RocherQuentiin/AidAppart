@@ -5,7 +5,7 @@ if ( $environment == "local") {
     $servername = 'localhost';
     $username = 'default_user';
     $password = 'AidappartNova';
-    $dbname = 'aidappart';
+    $dbname = 'Aidappart';
 } else {
     $servername = getenv("MYSQL_HOST");
     $username = getenv("MYSQL_USER");

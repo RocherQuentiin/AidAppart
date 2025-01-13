@@ -13,11 +13,19 @@ require_once('Layout/view_header.php');?>
         <h1>Ajouter un Logement</h1>
         <form method="POST" action="?controller=ajoutLogement&action=addLogement" enctype="multipart/form-data">
 
-            <div class="flex">
-                <div class="image-upload" onclick="document.getElementById('images').click();">
-                    +
-                    <input type="file" name="images[]" id="images" multiple accept="image/*">
+            <div class="part-haut">
+                <div class="part-image">
+                    <div class="left-column">
+                        <div class="image-upload" onclick="document.getElementById('images').click();">
+                            +
+                            <input type="file" name="images[]" id="images" multiple accept="image/*" style="display:none;">
+                        </div>
+                        <div class="square"></div>
+                        <div class="square"></div>
+                    </div>
+                    <div class="right-square"></div>
                 </div>
+
 
                 <div class="form-section">
                     <label for="type">Type :</label>
@@ -29,36 +37,34 @@ require_once('Layout/view_header.php');?>
                         <option value="Résidence">Résidence</option>
                     </select>
 
+                    <div class="prix">
+                        <label for="loyer">Loyer en €/mois :</label>
+                        <input type="number" name="loyer" id="loyer" required>
 
-                    <label for="nb_pieces">Nombre de pièces :</label>
-                    <input type="number" name="nb_pieces" id="nb_pieces" required>
+                        <label for="charges">Charges en €/mois :</label>
+                        <input type="number" name="charges" id="charges" required>
+                    </div>
+                    <div class="surface-pieces">
+                        <label for="nb_pieces">Nombre de pièces :</label>
+                        <input type="number" name="nb_pieces" id="nb_pieces" required>
 
-                    <label for="surface">Surfaces en m² :</label>
-                    <input type="number" name="surface" id="surface" required>
-
-                    <label for="loyer">Loyer en €/mois :</label>
-                    <input type="number" name="loyer" id="loyer" required>
-
-                    <label for="charges">Charges en €/mois :</label>
-                    <input type="number" name="charges" id="charges" required>
-
+                        <label for="surface">Surfaces en m² :</label>
+                        <input type="number" name="surface" id="surface" required>
+                    </div>
                     <div class="checkbox-group">
                         <div>
                             <label for="est_meuble">Meublé :</label>
                             <input type="checkbox" name="est_meuble" id="est_meuble">
-                        </div>
-                        <div>
                             <label for="a_WIFI">WiFi :</label>
                             <input type="checkbox" name="a_WIFI" id="a_WIFI">
                         </div>
                         <div>
                             <label for="est_accessible_PMR">Accessible PMR :</label>
                             <input type="checkbox" name="est_accessible_PMR" id="est_accessible_PMR">
-                        </div>
-                        <div>
                             <label for="a_parking">Parking :</label>
                             <input type="checkbox" name="a_parking" id="a_parking">
                         </div>
+
                     </div>
                 </div>
             </div>
