@@ -8,6 +8,7 @@ class Controller_connexion extends Controller {
         $data = ["erreur" => false];
         $this->render("connexion", $data);
     }
+}
 
 public function action_seconnecter() { 
 
@@ -28,5 +29,5 @@ public function action_seconnecter() {
         echo "E-mail ou mot de passe incorect."; 
         }
     } 
-} 
+
 ?>

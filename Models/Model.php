@@ -303,6 +303,31 @@ class Model {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        public function getUserRole($userId) {
+            /*
+            * Récupérer le rôle d'un utilisateur
+            * @param int $userId - ID de l'utilisateur
+            * @return string - Nom du rôle de l'utilisateur
+            */
+            try {
+                $sql = "SELECT Role.nom FROM Personne_Role 
+                        JOIN Role ON Personne_Role.id_role = Role.id 
+                        WHERE Personne_Role.id_personne = :userId";
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute(['userId' => $userId]);
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $result ? $result['nom'] : null;
+            } catch (PDOException $e) {
+                echo "Erreur db : " . $e->getMessage();
+                return false;
+            } catch (Exception $e) {
+                // Gérer l'exception générique
+                echo "Erreur : " . $e->getMessage();
+                return false;
+            }
+              
+        }
+
         public function email_exist($email) {
             /*
             * Vérifie si un email existe dans la table Personne
@@ -345,6 +370,11 @@ class Model {
             $stat = $this->db->prepare('SeLECT * FROM Personne WHERE email = :email');
             $stat-> execute(['email' => $email]);
             return $stat->fetch(PDO::FETCH_ASSOC);
+            
+    public function assignRole($userId, $roleId) {
+        $sql = "INSERT INTO Personne_Role (id_personne, id_role) VALUES (:userId, :roleId)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute(['userId' => $userId, 'roleId' => $roleId]);
         }
            
     public function doublon($email, $telephone) {

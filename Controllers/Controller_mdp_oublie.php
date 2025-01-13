@@ -73,4 +73,64 @@ class Controller_mdp_oublie extends Controller {
         }
     }
 }
+require_once 'Model/PersonneModel.php';
+require_once 'Services/Mailer.php';
+
+class MdpOublieController
+{
+    public function resetMdp()
+    {
+        if (isset($_POST['email'])) {
+            $email = htmlspecialchars($_POST['email']);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $error = "Adresse email invalide.";
+                require 'View/reset_mdp.php';
+                return;
+            }
+
+            $personneModel = new PersonneModel();
+            $user = $personneModel->getUserByEmail($email);
+
+            if ($user) {
+                // Générer un token
+                $token = bin2hex(random_bytes(32));
+                $personneModel->storeResetToken($email, $token);
+
+                // Envoi de l'email
+                $mailer = new Mailer();
+                $resetLink = "http://127.0.0.1/path/?controller=mdp_oublie&action=changeMdp&token=" . $token;
+                $mailer->sendResetPasswordEmail($email, $resetLink);
+
+                $success = "Un email avec un lien de réinitialisation a été envoyé.";
+            } else {
+                $error = "Adresse email non trouvée.";
+            }
+        }
+        require 'View/reset_mdp.php';
+    }
+
+    public function changeMdp()
+    {
+        if (isset($_GET['token']) && !empty($_POST['new_password'])) {
+            $token = htmlspecialchars($_GET['token']);
+            $newPassword = htmlspecialchars($_POST['new_password']);
+
+            $personneModel = new PersonneModel();
+            $email = $personneModel->getEmailByToken($token);
+
+            if ($email) {
+                $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+                $personneModel->updatePassword($email, $hashedPassword);
+                $personneModel->deleteToken($token);
+
+                $success = "Votre mot de passe a été réinitialisé.";
+                header("Location: ?controller=connexion&action=connexionController");
+                return;
+            } else {
+                $error = "Lien invalide ou expiré.";
+            }
+        }
+        require 'View/change_mdp.php';
+    }
+}
 ?>
