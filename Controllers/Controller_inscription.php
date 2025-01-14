@@ -152,7 +152,7 @@ class Controller_inscription extends Controller {
         else{
             $data = ["message" => "Le mots de passe est incorrect."];
             $this->render("view_confirmation_mail", $data);
-
+            exit;
 
         }
     }
