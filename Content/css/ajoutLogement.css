@@ -7,73 +7,27 @@ form {
     margin: 0 auto;
 }
 
-h1 {
-    text-align: center;
-}
-
-.part-haut{
+.part-haut {
     display: flex;
-    justify-content: space-between;
-}
-.from-section{
-    display: flex;
-    flex-direction: column;
-}
-
-.form-section {
-    flex: 1;
-}
-
-input,
-select{
-    width: 30%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid var(--blue);
-    border-radius: 10px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-.checkbox-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.checkbox-group div {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.checkbox-group label {
-    margin-right: 10px;
-    font-weight: normal;
-}
-
-.checkbox-group input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+    /*margin-bottom: 10px;*/
 }
 
 .part-image {
     display: flex;
-    width: 70%;
-    height: 80vh;
+    width: 30%;
+    margin-right: 10%;
 }
 
 .left-column {
     display: flex;
     flex-direction: column;
-    width: 30%;
-    justify-content: space-between;
-    padding: 10px;
+    width: 40%;
+    gap: 10px;
 }
 
 .image-upload {
     width: 70%;
+    height: 22%;
     aspect-ratio: 1;
     border: 2px dashed #ccc;
     display: flex;
@@ -85,15 +39,173 @@ select{
 }
 
 .square {
-    width: 70%;
+    width: 70
+    %;
+    height: 22%;
     aspect-ratio: 1;
     background-color: #f0f0f0;
 }
 
-.right-square {
+.large-image {
     width: 70%;
+    margin-left: 1px;
+}
+
+.large {
+    width: 100%;
+    height: 70%;
     background-color: #e0e0e0;
-    aspect-ratio: 1;
-    align-self: center;
-    margin: auto;
+}
+
+.form-section {
+    width: 40%;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+.adresse-description {
+    margin-top: 20px;
+    label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+}
+
+.adresse-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.adresse-row div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.small-input {
+    flex: 1;
+}
+
+.large-input {
+    flex: 2;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-upload {
+        width: 80%;
+        height: 400px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 768px) {
+    form {
+        padding: 20px;
+    }
+
+    .image-upload {
+        width: 100%;
+        height: 250px;
+        font-size: 28px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        width: 95%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .image-upload {
+        height: 200px;
+        font-size: 24px;
+    }
+
+    .checkbox-group {
+        label{
+            width: 1%;
+        }
+        grid-template-columns: 1fr;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
 }

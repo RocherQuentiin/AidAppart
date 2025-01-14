@@ -1,15 +1,16 @@
 <?php
-require_once('Layout/view_header.php');?>
+require_once('Layout/view_header.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Content/css/ajoutLogement.css">
-
     <title>Ajouter un Logement</title>
 </head>
- <div class="container">
+<body>
+    <div class="container">
         <h1>Ajouter un Logement</h1>
         <form method="POST" action="?controller=ajoutLogement&action=addLogement" enctype="multipart/form-data">
 
@@ -23,9 +24,10 @@ require_once('Layout/view_header.php');?>
                         <div class="square"></div>
                         <div class="square"></div>
                     </div>
-                    <div class="right-square"></div>
+                    <div class="large-image">
+                        <div class="square large"></div>
+                    </div>
                 </div>
-
 
                 <div class="form-section">
                     <label for="type">Type :</label>
@@ -64,25 +66,33 @@ require_once('Layout/view_header.php');?>
                             <label for="a_parking">Parking :</label>
                             <input type="checkbox" name="a_parking" id="a_parking">
                         </div>
-
                     </div>
                 </div>
             </div>
 
-            <label for="numero">Numéro :</label>
-            <input type="number" name="numero" id="numero" required>
+            <div class="adresse-description">
+                <div class="adresse-row">
+                    <div class="small-input">
+                        <label for="numero">Numéro :</label>
+                        <input type="number" name="numero" id="numero" required>
+                    </div>
+                    <div class="large-input">
+                        <label for="rue">Rue :</label>
+                        <input type="text" name="rue" id="rue" required>
+                    </div>
+                    <div class="small-input">
+                        <label for="code_postal">Code Postal :</label>
+                        <input type="number" name="code_postal" id="code_postal" required>
+                    </div>
+                    <div class="large-input">
+                        <label for="ville">Ville :</label>
+                        <input type="text" name="ville" id="ville" required>
+                    </div>
+                </div>
+                <label for="description">Description :</label>
+                <textarea name="description" id="description" rows="5" required></textarea>
+            </div>
 
-            <label for="rue">Rue :</label>
-            <input type="text" name="rue" id="rue" required>
-
-            <label for="code_postal">Code Postal :</label>
-            <input type="number" name="code_postal" id="code_postal" required>
-
-            <label for="ville">Ville :</label>
-            <input type="text" name="ville" id="ville" required>
-
-            <label for="description">Description :</label>
-            <textarea name="description" id="description" rows="5" required></textarea>
 
             <button class="button" type="submit">Ajouter le logement</button>
         </form>
@@ -90,3 +100,5 @@ require_once('Layout/view_header.php');?>
 <?php
 require_once('Layout/footer.php');
 ?>
+</body>
+</html>
