@@ -35,7 +35,7 @@ ul {
     padding: 0;
 }
 
-ul .aide {
+.aide{
     background-color: #f7f9ee;
     border: 2px solid #23435C;
     border-radius: 10px;
@@ -46,7 +46,7 @@ ul .aide {
     transition: background-color 0.3s ease;
 }
 
-ul .aide:hover {
+ul li:hover {
     background-color: #f2f8ff; /* Fond bleu clair lors du survol */
 }
 
@@ -57,6 +57,7 @@ p {
     text-align: center;
     margin-top: 20px;
 }
+
 
 /* Adaptation des styles pour les résultats */
 .eligibility {
@@ -87,6 +88,3 @@ input[type="radio"], input[type="checkbox"] {
     height: 50px; /* Ajuster la hauteur des menus déroulants */
     width: 500px; /* Ajuster la largeur des menus déroulants */
 }
-
-
-
