@@ -259,7 +259,7 @@ cursor: pointer;
 }
 
 /* Design Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1224px) {
 .container {
 flex-direction: column;
 align-items: center; 
@@ -317,8 +317,6 @@ margin-top: 1260px;
 
 .description, .contact, .location {
 background-color: white;
-border-radius: 10px;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 max-width: 110%;
 }
 
@@ -333,6 +331,11 @@ grid-row: auto;
 .modal-images img {
 flex: 1 1 100%;
 }
+
+.show-more {
+  grid-column: 2 / span 2;
+  margin-top: 10px;
+  }
 
 }
 
