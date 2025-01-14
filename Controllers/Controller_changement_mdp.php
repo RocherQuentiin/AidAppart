@@ -8,8 +8,10 @@ class Controller_changement_mdp extends Controller {
         $data = ["erreur" => false];
         $this->render("changement_mdp", $data);
     }
-}
-public function changeMdp()
+
+
+
+    public function changeMdp()
     {
         if (isset($_GET['token']) && !empty($_POST['new_password'])) {
             $token = htmlspecialchars($_GET['token']);
@@ -32,4 +34,5 @@ public function changeMdp()
         }
         require 'View/change_mdp.php';
     }
+}    
 ?>

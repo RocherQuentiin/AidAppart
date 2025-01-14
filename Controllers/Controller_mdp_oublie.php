@@ -66,7 +66,8 @@ class Controller_mdp_oublie extends Controller {
             // Générer le message de réinitialisation
             $subject = "Réinitialisation de votre mot de passe";
             $message = "Bonjour,<br><br>Cliquez sur le lien suivant pour réinitialiser votre mot de passe :<br><br>";
-            $message .= "<a href='https://aidappart.herogu.garageisep.com/?controller=changement_mdp&action=changement_mdpController?email=$email'>Réinitialiser mon mot de passe</a><br><br>";
+            $message .= "<a href='localhost/AidAppart/?controller=changement_mdp&action=changement_mdpController?email=$email'>Réinitialiser mon mot de passe</a><br><br>";
+            //$message .= "<a href='https://aidappart.herogu.garageisep.com/?controller=changement_mdp&action=changement_mdpController?email=$email'>Réinitialiser mon mot de passe</a><br><br>";
             
             $message .= "Ce lien est valable pendant 1 heure.<br><br>Merci.";
 

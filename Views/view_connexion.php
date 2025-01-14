@@ -7,6 +7,7 @@
     <?php require_once('Layout/view_header.html') ?>
     
     <link href="Content/css/connexion.css" rel="stylesheet">
+    <link rel="stylesheet" href="Content/css/index.css"/>
     <script src="Content/js/oeil_mot_de_passe.js" defer></script>
 </head>
 <body>
