@@ -8,10 +8,8 @@ class Controller_admin extends Controller {
     public function action_admin() {
         $name = $_POST['name'] ?? NULL;
         if ($name == NULL) {
-            echo "<br> je n'ai pas de nom";
             $users = $this->get_users_with_roles();
         } else {
-            echo "<br> j'ai un nom";
             $users = $this->get_user_by_name_or_last_name($name);
         }
         $reportedLogements = $this->get_reported_logements();

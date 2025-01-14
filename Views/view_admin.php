@@ -67,7 +67,7 @@ require_once('Layout/view_header.php');?>
                 echo '<th>Date</th>';
                 echo '</tr>';
                 foreach ($data['reportedLogements'] as $logement) {
-                    echo "<tr>";
+                    echo "<tr onclick=\"window.location.href='?controller=annonces&action=annonces&id={$logement['id_logement']}'\" style='cursor:pointer;'>";
                     echo "<td>{$logement['id_logement']}</td>";
                     echo "<td>{$logement['reporter_name']}</td>";
                     echo "<td>{$logement['commentaire']}</td>";
