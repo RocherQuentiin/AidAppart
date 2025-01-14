@@ -7,6 +7,7 @@ require_once('Layout/view_header.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Content/css/ajoutLogement.css">
+    <script src="Content/js/ajoutLogement.js" ></script>
     <title>Ajouter un Logement</title>
 </head>
 <body>
@@ -15,19 +16,21 @@ require_once('Layout/view_header.php');
         <form method="POST" action="?controller=ajoutLogement&action=addLogement" enctype="multipart/form-data">
 
             <div class="part-haut">
-                <div class="part-image">
-                    <div class="left-column">
-                        <div class="image-upload" onclick="document.getElementById('images').click();">
-                            +
-                            <input type="file" name="images[]" id="images" multiple accept="image/*" style="display:none;">
-                        </div>
-                        <div class="square"></div>
-                        <div class="square"></div>
-                    </div>
-                    <div class="large-image">
-                        <div class="square large"></div>
-                    </div>
-                </div>
+                  <div class="part-image">
+                         <div class="left-column">
+                             <div class="image-upload" onclick="document.getElementById('images').click();">
+                                 +
+                                 <input type="file" name="images[]" id="images" multiple accept="image/*" style="display:none;" onchange="displayImages(event)">
+                             </div>
+                             <div class="square"></div>
+                             <div class="square"></div>
+                             <div class="square"></div>
+                         </div>
+                         <div class="large-image">
+                             <div class="square large"></div>
+                         </div>
+                     </div>
+
 
                 <div class="form-section">
                     <label for="type">Type :</label>
