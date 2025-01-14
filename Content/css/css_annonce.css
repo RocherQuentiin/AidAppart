@@ -1,13 +1,11 @@
 
-
-/* Image Gallery */
 .image-gallery {
 position: relative;
 display: grid;
-height: auto; /* Allow the height to adjust dynamically */
-grid-template-columns: repeat(3, 1fr); /* Three columns of images */
+height: auto; 
+grid-template-columns: repeat(3, 1fr);
 gap: 10px;
-flex: 3; /* Take 3 parts of the available space */
+flex: 3; 
 max-width: 100%;
 }
 
@@ -18,34 +16,31 @@ max-width: 100%;
   object-fit: cover;
 }
 
-/* Custom Layout */
-/* First image spans first column */
 .image-gallery img:nth-child(1) {
 height: 500px;
-grid-column: 1; /* First column */
-grid-row: 1 / span 2; /* Span two rows */
+grid-column: 1;
+grid-row: 1 / span 2;
 }
 
-/* Second image in second column */
+
 .image-gallery img:nth-child(2) {
 height: 500px;
-grid-column: 2; /* Second column */
-grid-row: 1; /* First row */
+grid-column: 2; 
+grid-row: 1; 
 }
 
-/* Third image in third column */
+
 .image-gallery img:nth-child(3) {
 height: 250px;
-grid-column: 3; /* Third column */
-grid-row: 1; /* First row */
+grid-column: 3; 
+grid-row: 1; 
 }
 
-/* Fourth image stacked below third image in third column */
 .image-gallery img:nth-child(4) {
 margin-top: 260px;
 height: 240px;
-grid-column: 3; /* Third column */
-grid-row: 1; /* Second row */
+grid-column: 3; 
+grid-row: 1; 
 }
 
 
@@ -66,8 +61,6 @@ background-color: #91b54b;
 }
 
 
-
-/* Container Layout */
 .container-annonce {
 display: flex;
 justify-content: space-between;
@@ -75,23 +68,22 @@ align-items: flex-start;
 gap: 10px;
 max-width: 100%;
 margin: 10px;
-flex-wrap: wrap; /* Allows wrapping on smaller screens */
+flex-wrap: wrap; 
 box-sizing: border-box;
 }
 
 
-/* Apartment Details */
 .details {
 position: absolute;
 top: 25%;
 left: 70%;
-flex: 1; /* Take 1 part of the available space */
+flex: 1; 
 background-color: white;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-width: 380px; /* Set a max-width for the details box */
-margin-left: 20px; /* Adds spacing between gallery and details */
+width: 380px;
+margin-left: 20px; 
 box-sizing: border-box;
 height: 500px;
 }
@@ -124,13 +116,13 @@ background-color: #91b54b;
 position: absolute;
 top: 80%;
 left: 70%;
-flex: 1; /* Take 1 part of the available space */
+flex: 1; 
 background-color: white;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-width: 380px; /* Set a max-width for the details box */
-margin-left: 20px; /* Adds spacing between gallery and details */
+width: 380px;
+margin-left: 20px; 
 box-sizing: border-box;
 height: 500px;
 }
@@ -159,7 +151,7 @@ transition: background-color 0.3s ease;
 background-color: #91b54b;
 }
 
-/* Section Styling */
+
 .description, .contact, .location {
 margin: 20px;
 padding: 20px;
@@ -188,7 +180,6 @@ margin-bottom: 15px;
 color: #23435c;
 }
 
-/* Contact Form */
 form {
 display: flex;
 flex-direction: column;
@@ -267,32 +258,29 @@ font-size: 24px;
 cursor: pointer;
 }
 
-
-
-
-/* Responsive Design */
+/* Design Responsive */
 @media (max-width: 1024px) {
 .container {
 flex-direction: column;
-align-items: center; /* Center items on smaller screens */
+align-items: center; 
 }
 
 .image-gallery {
-width: 100%; /* Adjust gallery to take full width */
+width: 100%;
 }
 
-/* Apartment Details */
+
 .details {
 position: absolute;
 margin-top: 620px;
 top: 7%;
 left: 0%;
-flex: 1; /* Take 1 part of the available space */
+flex: 1;
 background-color: white;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-width: 94%; /* Set a max-width for the details box */
+width: 94%;
 box-sizing: border-box;
 height: 600px;
 }
@@ -303,18 +291,17 @@ position: absolute;
 margin-top: 1240px;
 top: 7%;
 left: 0%;
-flex: 1; /* Take 1 part of the available space */
+flex: 1; 
 background-color: white;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-width: 94%; /* Set a max-width for the details box */
+width: 94%;
 box-sizing: border-box;
 height: 600px;
 
 }
 
-/* Contact Form */
 
 form input, form textarea, form button {
 padding: 10px;
