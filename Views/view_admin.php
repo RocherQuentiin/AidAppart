@@ -26,6 +26,11 @@ require_once('Layout/view_header.php');?>
         switch ($_GET['page']) {
             case 'Utilisateurs':
                 echo '<h2>Utilisateurs</h2>';
+                echo '<form id="form-assign-role" action="?controller=admin&action=search_user" method="POST">';
+                echo '<lable for="select-user">Rechercher un utilisateur</lable>';
+                echo '<input id="select-user" type="text"></input>';
+                echo '<button type="submit">Rechercher</button>';
+                echo '</form>';
                 echo '<table>';
                 echo '<tr>';
                 echo '<th>ID</th>';

@@ -1,7 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('admin.js loaded');
     // Définir la fonction dans le scope global
     const updateButtons = document.querySelectorAll('#update_user');
+    // const input = document.querySelector("input");
+    // input.addEventListener("input", selectUsers);
+    const input = document.querySelector("input");
+    console.log(input);
 
+    input.addEventListener("input", selectUsers);
+    function selectUsers(e) {
+        console.log('selectUsers');
+        console.log(e.target.value);
+        const $name = e.target.value;
+        fetch('?controller=admin&action=action_admin&' + $name, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: $name })
+        })
+    }
     updateButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const userId = event.target.closest('tr').querySelector('td:first-child').textContent;
@@ -9,6 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function updateValue(e, log) {
+    console.log(e.target.value);
+    log.textContent = e.target.value;
+ }
+
+
 
 function openRolePopup(userId) {
     // Create the popup container
@@ -98,3 +123,4 @@ function deleteUser(userId, lastname, firstname) {
         });
     }
 }
+
