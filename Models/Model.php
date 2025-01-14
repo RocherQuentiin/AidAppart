@@ -366,10 +366,11 @@ class Model {
             }
 
         }
-        public function personneConnexion($email) {
+    public function personneConnexion($email) {
             $stat = $this->db->prepare('SeLECT * FROM Personne WHERE email = :email');
             $stat-> execute(['email' => $email]);
             return $stat->fetch(PDO::FETCH_ASSOC);
+    }
             
     public function assignRole($userId, $roleId) {
         $sql = "INSERT INTO Personne_Role (id_personne, id_role) VALUES (:userId, :roleId)";
