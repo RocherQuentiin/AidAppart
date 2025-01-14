@@ -74,7 +74,7 @@ class Model {
         */
         try {
             $hashedMdp = password_hash($mdp, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO Personne (nom, prénom, email, actif, telephone, mdp) VALUES (:nom, :prenom, :email, :actif, :telephone, :mdp)";
+            $sql = "INSERT INTO Personne (nom, prenom, email, actif, telephone, mdp) VALUES (:nom, :prenom, :email, :actif, :telephone, :mdp)";
             $stmt = $this->db->prepare($sql);
             return $stmt->execute([
                 'nom' => $nom,
@@ -537,6 +537,15 @@ class Model {
     public function disableUser($userId, $etat) {
         /*
         * Désactiver un utilisateur
+        * @param int $userId - ID de l'utilisateur
+        */
+        $stmt = $this->db->prepare("UPDATE Personne SET etat = :etat WHERE id = :userId");
+        $stmt->execute(['etat' => $etat, 'userId' => $userId]);
+    }
+    
+    public function change_personne_actif($userId, $etat) {
+        /*
+        * Active un utilisateur
         * @param int $userId - ID de l'utilisateur
         */
         $stmt = $this->db->prepare("UPDATE Personne SET etat = :etat WHERE id = :userId");

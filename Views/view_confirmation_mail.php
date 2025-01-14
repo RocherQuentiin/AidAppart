@@ -1,5 +1,7 @@
 <?php
-require_once('Layout/view_header.php');?>
+require_once('Layout/view_header.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +12,16 @@ require_once('Layout/view_header.php');?>
 <body>
     <h1>Un e-mail a été envoyé !</h1>
     <p>Veuillez vérifier votre boîte mail et entrer le code reçu pour confirmer votre adresse.</p>
-    <form action="controller=inscription&action=validerCodeVerification" method="POST">
+    <form action="controller=inscription&action=changebdd" method="POST">
         <label for="verification_code">Code de vérification :</label>
         <input type="text" name="verification_code" id="verification_code" required>
         <button type="submit">Vérifier</button>
     </form>
-<?php
+</body>
+</html>
+<?php 
 require_once('Layout/footer.php');
+if (isset($message)) {
+    afficherPopup($message);
+} 
 ?>

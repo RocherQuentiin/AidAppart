@@ -96,7 +96,7 @@ require_once('Layout/view_header.php');
 </html>
 <?php 
 require_once('Layout/footer.php');
-    if (isset($message)) {
-        afficherPopup($message);
-    } 
+if (isset($message)) {
+    afficherPopup($message);
+} 
 ?>
