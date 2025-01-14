@@ -16,14 +16,14 @@ require_once('Layout/view_header.php');
             
             <h2>1. Éditeur du site</h2>
             <p><strong>Nom :</strong> AidAppart</p>
-            <p><strong>Responsable de la publication :</strong> [Nom de la personne responsable]</p>
-            <p><strong>Adresse :</strong> [Adresse complète]</p>
+            <p><strong>Responsable de la publication :</strong> NovaTeam </p>
+            <p><strong>Adresse :</strong> 10 rue de Vanves 92130 </p>
             <p><strong>Email :</strong> [Email de contact]</p>
 
             <h2>2. Hébergement</h2>
-            <p><strong>Hébergeur :</strong> [Nom de l'hébergeur]</p>
-            <p><strong>Adresse :</strong> [Adresse de l'hébergeur]</p>
-            <p><strong>Email :</strong> [Email de l'hébergeur]</p>
+            <p><strong>Hébergeur :</strong> Herogu </p>
+            <p><strong>Adresse :</strong> 28 Rue Notre Dame des Champs 75006 </p>
+            <p><strong>Email :</strong> garage@asso.isep.fr </p>
 
             <h2>3. Propriété intellectuelle</h2>
             <p>Les contenus présents sur le site AidAppart, tels que les textes, images, vidéos, logos, et autres éléments sont protégés par des droits de propriété intellectuelle et sont la propriété exclusive de l'éditeur.</p>
@@ -37,12 +37,7 @@ require_once('Layout/view_header.php');
             <h2>6. Modifications des mentions légales</h2>
             <p>AidAppart se réserve le droit de modifier ces mentions légales à tout moment. Il est recommandé de consulter cette page régulièrement pour vous tenir informé des changements.</p>
         </section>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 AidAppart. Tous droits réservés.</p>
-    </footer>
-
+    </main> 
     <script src="script.js"></script>
 </body>
 </html>
