@@ -8,8 +8,6 @@ require_once('Layout/view_header.php');
     <title>AidAppart</title>
     <link href="Content/css/aide.css" rel="stylesheet">
     <script src="Content/js/aide.js"></script>
-
-
 </head>
 <body>
     <!-- Contenu principal -->
@@ -76,18 +74,12 @@ require_once('Layout/view_header.php');
                 </div>
 
                 <!-- Bouton de soumission -->
-                <button type="submit" class="submit-btn">Lancer la recherche</button>
-              
+                <button type="submit" class="submit-btn">Lancer la recherche</button>              
             </form>
         </section>
     </main>
-
-    <!-- Footer -->
-
-
 <?php
 require_once('Layout/footer.php');
 ?>
 </body>
 </html>
-

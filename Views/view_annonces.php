@@ -11,13 +11,28 @@
   <!-- Main Container -->
   <div class="container-annonce">
     <!-- Image Gallery -->
-    <div class="image-gallery">
-      <img src="Content/Images/Annonce/room.jpg" alt="Room view">
-      <img src="Content/Images/Annonce/pool.jpg" alt="Pool view">
-      <img src="Content/Images/Annonce/lounge.jpg" alt="Lounge area">
-      <img src="Content/Images/Annonce/rooftop.jpg" alt="Rooftop area">
-      <button id="show-more" class="show-more">+ Show More</button>
+  <div class="image-gallery">
+    <img src="Content/Images/Annonce/room.jpg" alt="Room view">
+    <img src="Content/Images/Annonce/pool.jpg" alt="Pool view">
+    <img src="Content/Images/Annonce/lounge.jpg" alt="Lounge area">
+    <img src="Content/Images/Annonce/rooftop.jpg" alt="Rooftop area">
+    <button id="show-more" class="show-more">+ Voir plus</button>
+  </div>
+
+  <!-- Modal for Additional Images -->
+  <div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+      <div class="modal-images">
+        <img src="Content/Images/Annonce/room.jpg" alt="Room view">
+        <img src="Content/Images/Annonce/pool.jpg" alt="Pool view">
+        <img src="Content/Images/Annonce/lounge.jpg" alt="Lounge area">
+        <img src="Content/Images/Annonce/rooftop.jpg" alt="Rooftop area">
+        <!-- Add more images here -->
+      </div>
     </div>
+  </div>
+
 
     <!-- Apartment Info Card -->
     <aside class="details">
@@ -111,9 +126,8 @@
     </form>
   </section>
 
-<?php
-require_once('Layout/footer.php');
-?>
+  <?php include 'Layout/footer.php'; ?>
+  <script src="Content/js/annonce.js"></script>
 </body>
 </html>
 
