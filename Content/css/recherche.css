@@ -1,0 +1,92 @@
+/* Style général */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Structure verticale */
+    min-height: 100vh; /* Hauteur totale de la fenêtre */
+    background-color: #dfe8c7;
+    color: #23435C;
+}
+
+/* Conteneur principal */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Titre principal */
+h1 {
+    color: #23435C;
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Liste des résultats */
+ul {
+    list-style-type: none; /* Retirer les puces */
+    padding: 0;
+}
+
+ul .aide {
+    background-color: #f7f9ee;
+    border: 2px solid #23435C;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #23435C;
+    transition: background-color 0.3s ease;
+}
+
+ul .aide:hover {
+    background-color: #f2f8ff; /* Fond bleu clair lors du survol */
+}
+
+/* Message d'erreur ou d'information */
+p {
+    font-size: 16px;
+    color: #444;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Adaptation des styles pour les résultats */
+.eligibility {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Stylisation des éléments du formulaire */
+input[type="text"], input[type="email"], input[type="password"], textarea, select, .submit-btn,
+input[type="radio"], input[type="checkbox"] {
+    cursor: pointer; /* Change le curseur en main lors du survol */
+    border-radius: 20px; /* Bordures arrondies */
+    padding: 12px; /* Un peu plus d'espace à l'intérieur */
+    font-size: 16px; /* Augmenter la taille de la police pour plus de lisibilité */
+    height: 50px; /* Augmenter la hauteur des cases */
+    width: 500px; /* Augmenter la largeur des champs */
+}
+
+/* Groupes de formulaires */
+.form-group select {
+    border-radius: 20px; /* Bordures arrondies pour les menus déroulants */
+    padding: 12px; /* Ajouter du padding pour un espacement interne plus grand */
+    font-size: 16px; /* Augmenter la taille de la police */
+    height: 50px; /* Ajuster la hauteur des menus déroulants */
+    width: 500px; /* Ajuster la largeur des menus déroulants */
+}
+
+
+

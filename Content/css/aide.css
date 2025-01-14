@@ -71,66 +71,40 @@ select option {
     font-size: 16px; /* Taille de police des options */
 }
 
-/* Formulaire */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centre les éléments horizontalement */
-    justify-content: center; /* Centre verticalement les éléments */
-    gap: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 50px auto;
-}
-
-/* Bouton Lancer la recherche */
+/* Apparence des boutons de soumission */
 .submit-btn {
-    width: 300px; /* Largeur fixe pour le bouton */
-    padding: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: var(--green);
     color: white;
-    background-color: #23435C;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin: 0 auto; /* Centrer le bouton */
+    transition: background-color 0.3s ease;
 }
 
+/* Effet de survol du bouton de soumission */
 .submit-btn:hover {
-    background-color: #171e2c;
-    color: #fff;
+    background-color: var(--blue);
 }
 
 
-/* Footer */
-footer {
-    background-color: #23435C;
-    color: white;
-    text-align: center;
-    padding: 10px; /* Hauteur réduite */
-    font-size: 14px; /* Texte plus petit */
-    margin-top: auto; /* Pousse le footer en bas */
-}
-
-/* Sélecteurs de formulaire (input, select, etc.) avec des bordures arrondies */
+/* Sélecteurs de formulaire (input, select, etc.) avec des bordures arrondies et plus grands */
 input[type="text"], input[type="email"], input[type="password"], textarea, select, .submit-btn,
 input[type="radio"], input[type="checkbox"] {
     cursor: pointer; /* Change le curseur en main lors du survol */
-    border-radius: 20px; /* Augmenter la valeur pour des bords encore plus arrondis */
-    padding: 10px; /* Optionnel : pour ajouter un peu d'espace autour du texte dans les champs */
+    border-radius: 20px; /* Bordures arrondies */
+    padding: 12px; /* Un peu plus d'espace à l'intérieur */
+    font-size: 16px; /* Augmenter la taille de la police pour plus de lisibilité */
+    height: 50px; /* Augmenter la hauteur des cases */
+    width: 500px; /* Augmenter la largeur des champs */
 }
 
 /* Groupes de formulaires */
 .form-group select {
     border-radius: 20px; /* Bordures arrondies pour les menus déroulants */
-    padding: 10px;
+    padding: 12px; /* Ajouter du padding pour un espacement interne plus grand */
+    font-size: 16px; /* Augmenter la taille de la police */
+    height: 50px; /* Ajuster la hauteur des menus déroulants */
+    width: 500px; /* Ajuster la largeur des menus déroulants */
 }
-
-
-
