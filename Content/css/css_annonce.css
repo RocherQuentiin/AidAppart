@@ -692,6 +692,9 @@ font-size: 24px;
 cursor: pointer;
 }
 
+
+
+
 /* Responsive Design */
 @media (max-width: 1024px) {
 .container {
@@ -706,7 +709,7 @@ width: 100%; /* Adjust gallery to take full width */
 /* Apartment Details */
 .details {
 position: absolute;
-margin-top: 600px;
+margin-top: 620px;
 top: 7%;
 left: 0%;
 flex: 1; /* Take 1 part of the available space */
@@ -719,33 +722,10 @@ box-sizing: border-box;
 height: 600px;
 }
 
-.details h2 {
-color: #a9ca59;
-}
-
-.details p {
-margin: 10px 0;
-}
-
-.details button {
-background-color: #a9ca59;
-color: #23435c;
-padding: 12px;
-border: none;
-border-radius: 25px;
-font-size: 16px;
-font-weight: bold;
-cursor: pointer;
-transition: background-color 0.3s ease;
-}
-
-.details button:hover {
-background-color: #91b54b;
-}
 
 .details-info {
 position: absolute;
-margin-top: 1220px;
+margin-top: 1240px;
 top: 7%;
 left: 0%;
 flex: 1; /* Take 1 part of the available space */
@@ -757,30 +737,6 @@ width: 94%; /* Set a max-width for the details box */
 box-sizing: border-box;
 height: 600px;
 
-}
-
-.details-info h2 {
-color: #a9ca59;
-}
-
-.details-info p {
-margin: 10px 0;
-}
-
-.details-info button {
-background-color: #a9ca59;
-color: #23435c;
-padding: 12px;
-border: none;
-border-radius: 25px;
-font-size: 16px;
-font-weight: bold;
-cursor: pointer;
-transition: background-color 0.3s ease;
-}
-
-.details-info button:hover {
-background-color: #91b54b;
 }
 
 /* Contact Form */
@@ -798,11 +754,10 @@ margin-top: 1260px;
 }
 
 .description, .contact, .location {
-padding: 0px;
 background-color: white;
 border-radius: 10px;
 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-max-width: 100%;
+max-width: 110%;
 }
 
 }
