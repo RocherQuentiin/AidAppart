@@ -13,10 +13,10 @@
   <div class="container-annonce">
     <!-- Image Gallery -->
   <div class="image-gallery">
-    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Room view">
-    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Pool view">
-    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Lounge area">
-    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Rooftop area">
+    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
+    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Pool view">
+    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Lounge area">
+    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Rooftop area">
     <button id="show-more" class="show-more">+ Voir plus</button>
   </div>
 
@@ -25,11 +25,11 @@
     <span class="close">&times;</span>
     <div class="modal-content">
       <div class="modal-images">
-        <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Room view">
-        <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Room view">
-    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Pool view">
-    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Lounge area">
-    <img src="Content/Images/Proprio_<?php echo $id; ?>/Logement_<?php echo $id; ?>/image_vitrine.png" alt="Rooftop area">
+        <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
+        <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
+    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Pool view">
+    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Lounge area">
+    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Rooftop area">
         <!-- Add more images here -->
       </div>
     </div>
@@ -38,30 +38,30 @@
 
     <!-- Apartment Info Card -->
     <aside class="details">
-      <h2>À partir de <strong><?php echo htmlspecialchars($annonce['loyer']); ?> € / mois </strong></h2>
-      <p><strong>Charges : </strong><?php echo htmlspecialchars($annonce['charges']); ?> € / mois</p>
-      <p><strong>Surface : </strong><?php echo htmlspecialchars($annonce['surface']); ?> m2 </p>
-      <p><strong>Adresse : </strong><?php echo htmlspecialchars($annonce['adresse']); ?></p>
-      <p><strong>Pièces : </strong><?php echo htmlspecialchars($annonce['nb_pieces']); ?> pièces </p>
-      <p><strong>Meublé : </strong><?php echo htmlspecialchars($annonce['est_meuble']); ?></p>
-      <p><strong>Accessible aux PMR : </strong><?php echo htmlspecialchars($annonce['est_accessible_PMR']); ?></p>
-      <p><strong>WIFI : </strong><?php echo htmlspecialchars($annonce['a_WIFI']); ?></p>
-      <p><strong>Parking : </strong><?php echo htmlspecialchars($annonce['a_parking']); ?></p></br>
+      <h2>À partir de <strong><?php echo htmlspecialchars($data["annonces"]['loyer']); ?> € / mois </strong></h2>
+      <p><strong>Charges : </strong><?php echo htmlspecialchars($data["annonces"]['charges']); ?> € / mois</p>
+      <p><strong>Surface : </strong><?php echo htmlspecialchars($data["annonces"]['surface']); ?> m2 </p>
+      <p><strong>Adresse : </strong><?php echo htmlspecialchars($data["annonces"]['adresse']); ?></p>
+      <p><strong>Pièces : </strong><?php echo htmlspecialchars($data["annonces"]['nb_pieces']); ?> pièces </p>
+      <p><strong>Meublé : </strong><?php echo htmlspecialchars($data["annonces"]['est_meuble']); ?></p>
+      <p><strong>Accessible aux PMR : </strong><?php echo htmlspecialchars($data["annonces"]['est_accessible_PMR']); ?></p>
+      <p><strong>WIFI : </strong><?php echo htmlspecialchars($data["annonces"]['a_WIFI']); ?></p>
+      <p><strong>Parking : </strong><?php echo htmlspecialchars($data["annonces"]['a_parking']); ?></p></br>
       
       <button>Voir les chambres</button>
     </aside>
   </div>
 
   <aside class="details-info">
-    <h2>À partir de <strong><?php echo htmlspecialchars($annonce['loyer']); ?> € / mois </strong></h2>
-      <p><strong>Charges : </strong><?php echo htmlspecialchars($annonce['charges']); ?> € / mois</p>
-      <p><strong>Surface : </strong><?php echo htmlspecialchars($annonce['surface']); ?> m2 </p>
-      <p><strong>Adresse : </strong><?php echo htmlspecialchars($annonce['adresse']); ?></p>
-      <p><strong>Pièces : </strong><?php echo htmlspecialchars($annonce['nb_pieces']); ?> pièces </p>
-      <p><strong>Meublé : </strong><?php echo htmlspecialchars($annonce['est_meuble']); ?></p>
-      <p><strong>Accessible aux PMR : </strong><?php echo htmlspecialchars($annonce['est_accessible_PMR']); ?></p>
-      <p><strong>WIFI : </strong><?php echo htmlspecialchars($annonce['a_WIFI']); ?></p>
-      <p><strong>Parking : </strong><?php echo htmlspecialchars($annonce['a_parking']); ?></p></br>
+    <h2>À partir de <strong><?php echo htmlspecialchars($data["annonces"]['loyer']); ?> € / mois </strong></h2>
+      <p><strong>Charges : </strong><?php echo htmlspecialchars($data["annonces"]['charges']); ?> € / mois</p>
+      <p><strong>Surface : </strong><?php echo htmlspecialchars($data["annonces"]['surface']); ?> m2 </p>
+      <p><strong>Adresse : </strong><?php echo htmlspecialchars($data["annonces"]['adresse']); ?></p>
+      <p><strong>Pièces : </strong><?php echo htmlspecialchars($data["annonces"]['nb_pieces']); ?> pièces </p>
+      <p><strong>Meublé : </strong><?php echo htmlspecialchars($data["annonces"]['est_meuble']); ?></p>
+      <p><strong>Accessible aux PMR : </strong><?php echo htmlspecialchars($data["annonces"]['est_accessible_PMR']); ?></p>
+      <p><strong>WIFI : </strong><?php echo htmlspecialchars($data["annonces"]['a_WIFI']); ?></p>
+      <p><strong>Parking : </strong><?php echo htmlspecialchars($data["annonces"]['a_parking']); ?></p></br>
     <button>Voir les chambres</button>
   </aside>
 </div>
@@ -69,7 +69,7 @@
   <!-- Additional Sections -->
   <section class="description">
     <h2>Description du logement</h2>
-    <p><?php echo htmlspecialchars($annonce['description']); ?></p>
+    <p><?php echo htmlspecialchars($data["annonces"]['description']); ?></p>
     
   </section>
 

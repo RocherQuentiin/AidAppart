@@ -9,19 +9,22 @@ class Controller_annonces extends Controller {
     }
 
     public function action_annonces() {
-
-        $id = 3;
+        
 
         $model = Model::getModel();
-        $annonce = $model->getAnnonceById($id);
+        $annonce = $model->getAnnonceById($_GET["id"]);
 
         if ($annonce) {
             $annonce['est_meuble'] = $annonce['est_meuble'] ? 'Oui' : 'Non';
             $annonce['est_accessible_PMR'] = $annonce['est_accessible_PMR'] ? 'Oui' : 'Non';
             $annonce['a_parking'] = $annonce['a_parking'] ? 'Oui' : 'Non';
             $annonce['a_WIFI'] = $annonce['a_WIFI'] ? 'Oui' : 'Non';
-            // Charger la vue
-            require 'views/view_annonces.php';
+          
+            $data = ["erreur" => false, 
+                 "annonces" => $annonce,
+                 "id_annonces" => $_GET["id"]];
+
+            $this->render("annonces", $data);
         } else {
             echo "Annonce introuvable.";
         }
