@@ -7,7 +7,6 @@ require_once('Layout/view_header.php'); ?>
     <title>Conditions Générales d'Utilisation - AidAppart</title>
     <link href="Content/css/cgu.css" rel="stylesheet">
     <script src="Content/js/cgu.js"></script>
-    
 </head>
 <body class="cgu">
     <main>
@@ -48,7 +47,6 @@ require_once('Layout/view_header.php'); ?>
             <p>Pour toute question relative à ces CGU, vous pouvez nous contacter via notre page <a href="#">Contact</a>.</p>
         </section>
     </main>
-
 <?php
 require_once('Layout/footer.php'); ?>
 

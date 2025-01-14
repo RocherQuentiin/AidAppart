@@ -1,9 +1,9 @@
-CREATE DATABASE IF NOT EXISTS Aidappart;
+CREATE DATABASE Aidappart;
 USE Aidappart;
 
-CREATE USER 'default_user'@'localhost' IDENTIFIED BY 'AidappartNova';
+/*CREATE USER 'default_user'@'localhost' IDENTIFIED BY 'AidappartNova';
 GRANT ALL PRIVILEGES ON Aidappart.* TO 'default_user'@'localhost';
-FLUSH PRIVILEGES;
+FLUSH PRIVILEGES;*/
 
 CREATE TABLE Personne (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -43,9 +43,6 @@ CREATE TABLE Logement (
     FOREIGN KEY (proprietaire) REFERENCES Personne(id)
 );
 
-ALTER TABLE logement
-ADD COLUMN statut BOOLEAN DEFAULT FALSE;
-
 CREATE TABLE Adresse (
     id INT PRIMARY KEY AUTO_INCREMENT,
     numero INT NOT NULL,
@@ -59,7 +56,7 @@ CREATE TABLE Maison (
     id_logement INT NOT NULL,
     nb_etages INT NOT NULL,
     a_jardin BOOLEAN NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+    FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Appartement (
@@ -69,7 +66,7 @@ CREATE TABLE Appartement (
     a_ascenseur BOOLEAN NOT NULL,
     a_balcon BOOLEAN NOT NULL,
     a_concierge BOOLEAN NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+    FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Avis (
@@ -77,43 +74,43 @@ CREATE TABLE Avis (
     id_logement INT NOT NULL,
     note INT NOT NULL,
     commentaire TEXT NOT NULL,
-    creer_a DATE NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+    creer_a DATE NOT NULL DEFAULT CURRENT_DATE,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Annonce (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_logement INT NOT NULL,
-    creer_a DATE NOT NULL,
+    creer_a DATE NOT NULL DEFAULT CURRENT_DATE,
     loueur INT NOT NULL,
     a_colocation BOOLEAN NOT NULL,
     disponibilite DATE NOT NULL,
     nb_personnes INT NOT NULL,
     statut ENUM('disponible', 'reservé', 'loué') NOT NULL,
     info_complementaire TEXT NOT NULL,
-    FOREIGN KEY (id_logement) REFERENCES Logement(id),
-    FOREIGN KEY (loueur) REFERENCES Personne(id)
+    FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE,
+    FOREIGN KEY (loueur) REFERENCES Personne(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Favoris_Signalement (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_personne INT NOT NULL,
     id_logement INT NOT NULL,
-    creer_a DATE NOT NULL,
+    creer_a DATE NOT NULL DEFAULT CURRENT_DATE,
     statut ENUM('favoris', 'signalement') NOT NULL,
     commentaire TEXT NOT NULL,
-    FOREIGN KEY (id_personne) REFERENCES Personne(id),
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+    FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Candidature (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_personne INT NOT NULL,
     id_annonce INT NOT NULL,
-    creer_a DATE NOT NULL,
+    creer_a DATE NOT NULL DEFAULT CURRENT_DATE,
     statut ENUM('accepté', 'refusé', 'en_attente') NOT NULL,
-    FOREIGN KEY (id_personne) REFERENCES Personne(id),
-    FOREIGN KEY (id_annonce) REFERENCES Annonce(id)
+    FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_annonce) REFERENCES Annonce(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Garent (
@@ -122,9 +119,9 @@ CREATE TABLE Garent (
     id_logement INT NOT NULL,
     montant INT NOT NULL,
     lien_affiliation ENUM('Parents', 'Amis', 'Proche', 'Autre') NOT NULL,
-    creer_a DATE NOT NULL,
-    FOREIGN KEY (id_personne) REFERENCES Personne(id),
-    FOREIGN KEY (id_logement) REFERENCES Logement(id)
+    creer_a DATE NOT NULL DEFAULT CURRENT_DATE,
+    FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Role (
@@ -143,13 +140,15 @@ CREATE TABLE Personne_Role (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_personne INT NOT NULL,
     id_role INT NOT NULL,
-    FOREIGN KEY (id_personne) REFERENCES Personne(id),
-    FOREIGN KEY (id_role) REFERENCES Role(id)
+    FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_role) REFERENCES Role(id) ON DELETE CASCADE
 );
 
 ALTER TABLE Personne ADD creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 
 ALTER TABLE Logement ADD CONSTRAINT fk_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id);
+ALTER TABLE Logement
+ADD COLUMN statut BOOLEAN DEFAULT FALSE;
 ALTER TABLE Favoris_Signalement MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
 
 ALTER TABLE Messagerie MODIFY creer_a DATE NOT NULL DEFAULT CURRENT_DATE;
@@ -163,13 +162,7 @@ ALTER TABLE Messagerie ADD CONSTRAINT fk_messagerie_personne FOREIGN KEY (id_per
 ALTER TABLE Messagerie ADD CONSTRAINT fk_messagerie_personne_destinataire FOREIGN KEY (id_personne_destinataire) REFERENCES Personne(id) ON DELETE CASCADE;
 ALTER TABLE Logement ADD CONSTRAINT fk_logement_proprietaire FOREIGN KEY (proprietaire) REFERENCES Personne(id) ON DELETE CASCADE;
 ALTER TABLE Logement ADD CONSTRAINT fk_logement_adresse FOREIGN KEY (adresse) REFERENCES Adresse(id) ON DELETE CASCADE;
-IF EXISTS (SELECT 1 FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_NAME = 'fk_maison_logement') THEN
-    ALTER TABLE Maison DROP FOREIGN KEY fk_maison_logement;
-END IF;
 
-IF EXISTS (SELECT 1 FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_NAME = 'fk_appartement_logement') THEN
-    ALTER TABLE Appartement DROP FOREIGN KEY fk_appartement_logement;
-END IF;
 
 ALTER TABLE Maison ADD CONSTRAINT fk_maison_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
 ALTER TABLE Appartement ADD CONSTRAINT fk_appartement_logement FOREIGN KEY (id_logement) REFERENCES Logement(id) ON DELETE CASCADE;
