@@ -7,6 +7,7 @@
     <link href="Content/css/connexion.css" rel="stylesheet">
     <link rel="stylesheet" href="Content/css/index.css"/>
     <script src="Content/js/oeil_mot_de_passe.js" defer></script>
+    <script src="Content/js/pop_up.js" defer></script>
 </head>
 
 <title>Mot de passe oublié</title>
@@ -33,5 +34,14 @@
         </form>
     </div>
 
-    <?php include 'Layout/footer.html'; ?>
+    <?php 
+        // Condition pour afficher le pop-up en fonction du message de succès ou d'erreur
+        if (isset($data['success'])):
+            echo "<script>showModal('" . $data['success'] . "', 'success');</script>";
+        elseif (isset($data['erreur'])):
+            echo "<script>showModal('" . $data['erreur'] . "', 'error');</script>";
+        endif;
+
+        include 'Layout/footer.html'; 
+    ?>
 </html>

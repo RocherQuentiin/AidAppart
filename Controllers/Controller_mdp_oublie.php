@@ -2,7 +2,9 @@
 // Charger l'autoloader généré par Composer
 require_once '../Aidappart/Utils/vendor/autoload.php';
 
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 require 'Utils/vendor/PHPMailer/src/Exception.php';
 require 'Utils/vendor/PHPMailer/src/PHPMailer.php';
 require 'Utils/vendor/PHPMailer/src/SMTP.php';
@@ -67,14 +69,13 @@ class Controller_mdp_oublie extends Controller {
             $message .= "<a href='http://votresite.com/reset_password.php?email=$email'>Réinitialiser mon mot de passe</a><br><br>";
             $message .= "Ce lien est valable pendant 1 heure.<br><br>Merci.";
 
-            // Envoi de l'email de réinitialisation
-            if ($this->envoie_mail('Utilisateur', $email, $subject, $message)) {
-                echo "Un email de réinitialisation a été envoyé à $email.";
-                // Redirection vers une page de confirmation après l'envoi
-                header("Location: confirmation.php"); // Remplacez par la page de votre choix
-                exit();
-            } else {
-                echo "Échec de l'envoi de l'email.";
+           // Envoi de l'email de réinitialisation
+           if ($this->envoie_mail('Utilisateur', $email, $subject, $message)) {
+            $data['success'] = "Un email de réinitialisation a été envoyé à $email.";
+            $this->render("mdp_oublie", $data);
+        } else {
+            $data['erreur'] = "Échec de l'envoi de l'email.";
+            $this->render("mdp_oublie", $data);
             }
         }
     }
