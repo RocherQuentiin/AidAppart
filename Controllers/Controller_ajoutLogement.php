@@ -47,23 +47,22 @@ class Controller_ajoutLogement extends Controller {
                 mkdir($directory, 0777, true); // Créer le dossier avec les permissions appropriées
             }
 
-            // Gestion des fichiers uploadés
-            foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
-                $file_name = "image_vitrine.png";
-                $file_path = $directory . "/" . $file_name;
+                foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
+                    if (!empty($tmp_name)) {
+                        $file_name = "image_vitrine" . ($key + 1) . ".png";
+                        $file_path = $directory . "/" . $file_name;
 
-                // Déplacer l'image dans le dossier
-                if (!move_uploaded_file($tmp_name, $file_path)) {
-                    echo "Erreur lors de l'upload de l'image : $file_name. Le chemin attendu était : $file_path<br>";
+                        if (!move_uploaded_file($tmp_name, $file_path)) {
+                            echo "Erreur lors de l'upload de l'image : $file_name. Le chemin attendu était : $file_path<br>";
+                        }
+                    }
                 }
+
+                header('Location: ?controller=pagelogement&action=pagelogement');
+            } else {
+                echo "Erreur lors de l'ajout du logement.";
             }
-
-            header('Location: ?controller=pagelogement&action=pagelogement');;
-        } else {
-            echo "Erreur lors de l'ajout du logement.";
         }
-     }
-
-    }}
-
+    }
+}
 ?>
