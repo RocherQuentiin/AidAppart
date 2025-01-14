@@ -39,8 +39,7 @@ form {
 }
 
 .square {
-    width: 70
-    %;
+    width: 70%;
     height: 22%;
     aspect-ratio: 1;
     background-color: #f0f0f0;
