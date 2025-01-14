@@ -77,9 +77,9 @@ function updateListings(data) {
     data.forEach(logement => {
         const listing = document.createElement('div');
         listing.classList.add('listing');
-        // <a href="?controller=annonces&action=annonces&id=${logement.id}">
+            // <a href="?controller=annonces">
         listing.innerHTML = `
-            <a href="?controller=annonces">
+             <a href="?controller=annonces&action=annonces&id=${logement.id}">
                 <img src="Content/Images/Proprio_${logement.proprietaire}/Logement_${logement.id}/image_vitrine.png" alt="Image du logement">
                 <p>Type: ${logement.type}</p>
                 <p>Loyer: ${logement.loyer} €</p>

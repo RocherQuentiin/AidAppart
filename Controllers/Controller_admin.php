@@ -18,7 +18,6 @@ class Controller_admin extends Controller {
         $data = ["erreur" => false, 
                  "users" => $users,
                  "reportedLogements" => $reportedLogements];
-        sleep(3);
         $this->render("admin", $data);
     }
 
@@ -77,7 +76,6 @@ class Controller_admin extends Controller {
         $data = ["erreur" => false, 
                  "users" => $users,
                  "reportedLogements" => $reportedLogements];
-        sleep(3);
         $this->render("admin", $data);
     }
 }
