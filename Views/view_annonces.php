@@ -9,9 +9,8 @@
 <body>
 
   <?php include 'Layout/view_header.php'; ?>
-  <!-- Main Container -->
+
   <div class="container-annonce">
-    <!-- Image Gallery -->
   <div class="image-gallery">
     <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
     <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Pool view">
@@ -20,23 +19,20 @@
     <button id="show-more" class="show-more">+ Voir plus</button>
   </div>
 
-  <!-- Modal for Additional Images -->
   <div id="image-modal" class="modal">
     <span class="close">&times;</span>
     <div class="modal-content">
       <div class="modal-images">
         <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
         <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
-    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Pool view">
-    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Lounge area">
-    <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Rooftop area">
-        <!-- Add more images here -->
+        <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Pool view">
+        <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Lounge area">
+        <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Rooftop area">
       </div>
     </div>
   </div>
 
 
-    <!-- Apartment Info Card -->
     <aside class="details">
       <h2>À partir de <strong><?php echo htmlspecialchars($data["annonces"]['loyer']); ?> € / mois </strong></h2>
       <p><strong>Charges : </strong><?php echo htmlspecialchars($data["annonces"]['charges']); ?> € / mois</p>
@@ -66,14 +62,11 @@
   </aside>
 </div>
 
-  <!-- Additional Sections -->
   <section class="description">
     <h2>Description du logement</h2>
     <p><?php echo htmlspecialchars($data["annonces"]['description']); ?></p>
-    
   </section>
 
-  <!-- Map Section -->
   <section class="location">
     <h2>Voir l'emplacement</h2>
     <iframe
