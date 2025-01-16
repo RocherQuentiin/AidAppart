@@ -26,26 +26,33 @@ $logements = $data['logements'];
     </div>
 
     <!-- Formulaire de désactivation du compte -->
-    <form method="POST">
+    <form method="POST" action="?controller=user&action=desactivateUser">
         <button type="submit" name="deactivate_account" class="button-danger">Désactiver mon compte</button>
     </form>
 
     <h2>Mes Logements</h2>
 
     <!-- Liste des logements -->
-    <ul>
-        <?php if (count($logements) > 0): ?>
-            <?php foreach ($logements as $logement): ?>
-                <li>
-                    <strong><?php echo htmlspecialchars($logement['type']); ?></strong>
-                    - <?php echo htmlspecialchars($logement['surface']); ?>m²
-                    - <a href="profil.php?delete_logement=<?php echo $logement['id']; ?>" class="button-danger">Supprimer</a>
-                </li>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>Aucun logement créé.</p>
-        <?php endif; ?>
-    </ul>
+   <ul>
+      <?php if (!empty($logements)): ?>
+          <?php foreach ($logements as $logement): ?>
+              <li>
+                  <strong><?php echo htmlspecialchars($logement['type']); ?></strong>
+                  - <?php echo htmlspecialchars($logement['surface']); ?>m²
+                  <form method="POST" action="?controller=user&action=supprimerLogement">
+                      <!-- Champ caché pour l'ID du logement -->
+                      <input type="hidden" name="logement_id" value="<?php echo htmlspecialchars($logement['id']); ?>">
+                      - <button type="submit" name="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce logement ?');">Supprimer le logement</button>
+                  </form>
+              </li>
+          <?php endforeach; ?>
+      <?php else: ?>
+          <p>Aucun logement créé.</p>
+      <?php endif; ?>
+   </ul>
+
+
+
 </div>
 
 </body>

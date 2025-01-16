@@ -58,7 +58,7 @@ class Controller_ajoutLogement extends Controller {
                 }
             }
 
-            header('Location: ?controller=pagelogement&action=pagelogement');;
+            header('Location: ?controller=pagelogement&action=pagelogement');
         } else {
             echo "Erreur lors de l'ajout du logement.";
         }

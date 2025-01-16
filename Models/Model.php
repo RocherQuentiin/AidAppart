@@ -542,5 +542,37 @@ class Model {
         $stmt = $this->db->prepare("UPDATE Personne SET etat = :etat WHERE id = :userId");
         $stmt->execute(['etat' => $etat, 'userId' => $userId]);
     }
+public function getUserLogements($user_id) {
+    /*
+    * Récupérer tous les logements appartenant à un utilisateur spécifique
+    * @param int $user_id - L'identifiant de l'utilisateur
+    * @return array - Liste des logements du propriétaire
+    */
+
+    // Préparer la requête SQL pour sélectionner les logements du propriétaire
+    $stmt = $this->db->prepare("SELECT * FROM Logement WHERE proprietaire = :user_id");
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Récupérer les résultats sous forme de tableau associatif
+    $logements = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $logements;
+}
+public function deleteLogement($logement_id) {
+    /*
+    * Supprimer un logement par son identifiant
+    * @param int $logement_id - L'identifiant du logement à supprimer
+    * @return bool - Retourne true si la suppression est réussie, sinon false
+    */
+
+    // Préparer la requête SQL pour supprimer le logement
+    $stmt = $this->db->prepare("DELETE FROM Logement WHERE id = :logement_id");
+    $stmt->bindParam(':logement_id', $logement_id, PDO::PARAM_INT);
+
+    // Exécuter la requête et vérifier si la suppression a réussi
+    return $stmt->execute();
+}
+
 }
 ?>
