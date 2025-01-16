@@ -542,5 +542,36 @@ class Model {
         $stmt = $this->db->prepare("UPDATE Personne SET etat = :etat WHERE id = :userId");
         $stmt->execute(['etat' => $etat, 'userId' => $userId]);
     }
+
+   public function ReponseRecu($idUtilisateurActif)
+   {
+       $query = $this->db->prepare("SELECT Messagerie.id, Messagerie.id_personne, Messagerie.id_personne_destinataire,
+           Messagerie.message, Messagerie.creer_a, expediteur.nom as expediteurNom
+           FROM Messagerie
+           INNER JOIN Personne as expediteur ON Messagerie.id_personne = expediteur.id
+           WHERE Messagerie.id_personne_destinataire = :idUtilisateurActif");
+
+       $query->bindParam(':idUtilisateurActif', $idUtilisateurActif);
+       $query->execute();
+
+       return $query->fetchAll(PDO::FETCH_ASSOC);
+   }
+
+   public function InsertionDonnees($idUtilisateurActif, $MessageDestinataire, $MessageContenu)
+   {
+       $requeteInsertion = $this->db->prepare('INSERT INTO Messagerie (id_personne, id_personne_destinataire, message, creer_a)
+                                               VALUES (:id_personne, :id_personne_destinataire, :message, NOW())');
+       $requeteInsertion->bindParam(':id_personne', $idUtilisateurActif);
+       $requeteInsertion->bindParam(':id_personne_destinataire', $MessageDestinataire);
+       $requeteInsertion->bindParam(':message', $MessageContenu);
+       $requeteInsertion->execute();
+   }
+   public function allUser()
+       {
+           $all = $this->db->prepare('SELECT nom, id FROM Personne');
+           $all->execute();
+           return $all->fetchAll(PDO::FETCH_ASSOC);
+       }
+
 }
 ?>
