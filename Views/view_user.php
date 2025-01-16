@@ -16,14 +16,62 @@ $logements = $data['logements'];
 
 <div class="container">
     <h1>Mon Profil</h1>
+    <!-- update_personne_form.php -->
 
-    <!-- Affichage des informations de l'utilisateur -->
-    <div class="profile-info">
-        <p><strong>Nom :</strong> <?php echo htmlspecialchars($nom); ?></p>
-        <p><strong>Prénom :</strong> <?php echo htmlspecialchars($prenom); ?></p>
-        <p><strong>Email :</strong> <?php echo htmlspecialchars($email); ?></p>
-        <p><strong>Téléphone :</strong> <?php echo htmlspecialchars($telephone); ?></p>
-    </div>
+  <!-- Bouton pour afficher/masquer le formulaire -->
+  <button id="editButton">Modifier</button>
+
+  <!-- Formulaire de mise à jour -->
+  <div id="updateForm" style="display: none;">
+      <form action="?controller=user&action=update" method="POST">
+          <label for="email">Email:</label>
+          <input type="email" id="emailInput" name="email" required><br>
+
+          <label for="nom">Nom:</label>
+          <input type="text" id="nomInput" name="nom" required><br>
+
+          <label for="prenom">Prénom:</label>
+          <input type="text" id="prenomInput" name="prenom" required><br>
+
+          <label for="telephone">Téléphone:</label>
+          <input type="text" id="telephoneInput" name="telephone" required><br>
+
+          <button type="submit">Mettre à jour</button>
+      </form>
+  </div>
+
+  <!-- Affichage des informations de l'utilisateur -->
+  <div id="profileInfo">
+      <p><strong>Nom :</strong> <span id="nomText"><?php echo htmlspecialchars($nom); ?></span></p>
+      <p><strong>Prénom :</strong> <span id="prenomText"><?php echo htmlspecialchars($prenom); ?></span></p>
+      <p><strong>Email :</strong> <span id="emailText"><?php echo htmlspecialchars($email); ?></span></p>
+      <p><strong>Téléphone :</strong> <span id="telephoneText"><?php echo htmlspecialchars($telephone); ?></span></p>
+  </div>
+
+  <script>
+      document.getElementById('editButton').addEventListener('click', function() {
+          var updateForm = document.getElementById('updateForm');
+          var profileInfo = document.getElementById('profileInfo');
+
+          if (updateForm.style.display === 'none') {
+              // Remplir les champs du formulaire avec les valeurs actuelles de l'utilisateur
+              document.getElementById('emailInput').value = document.getElementById('emailText').textContent;
+              document.getElementById('nomInput').value = document.getElementById('nomText').textContent;
+              document.getElementById('prenomInput').value = document.getElementById('prenomText').textContent;
+              document.getElementById('telephoneInput').value = document.getElementById('telephoneText').textContent;
+
+              // Afficher le formulaire et masquer les informations de profil
+              updateForm.style.display = 'block';
+              profileInfo.style.display = 'none';
+          } else {
+              // Masquer le formulaire et afficher les informations de profil
+              updateForm.style.display = 'none';
+              profileInfo.style.display = 'block';
+          }
+      });
+  </script>
+
+
 
     <!-- Formulaire de désactivation du compte -->
     <form method="POST" action="?controller=user&action=desactivateUser">

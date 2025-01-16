@@ -559,20 +559,32 @@ public function getUserLogements($user_id) {
 
     return $logements;
 }
-public function deleteLogement($logement_id) {
-    /*
-    * Supprimer un logement par son identifiant
-    * @param int $logement_id - L'identifiant du logement à supprimer
-    * @return bool - Retourne true si la suppression est réussie, sinon false
-    */
 
-    // Préparer la requête SQL pour supprimer le logement
-    $stmt = $this->db->prepare("DELETE FROM Logement WHERE id = :logement_id");
-    $stmt->bindParam(':logement_id', $logement_id, PDO::PARAM_INT);
+public function updatePersonne($id, $email, $nom, $prenom, $telephone) {
+    // Requête SQL pour mettre à jour les informations
+    $query = "UPDATE Personne
+              SET email = :email,
+                  nom = :nom,
+                  prénom = :prenom,
+                  telephone = :telephone
+              WHERE id = :id";
 
-    // Exécuter la requête et vérifier si la suppression a réussi
-    return $stmt->execute();
+    // Préparation de la requête
+    $stmt = $this->db->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+    $stmt->bindParam(':telephone', $telephone, PDO::PARAM_STR);
+
+    // Exécution de la requête et retour du résultat
+    if ($stmt->execute()) {
+        return true; // Succès
+    } else {
+        return false; // Échec
+    }
 }
+
 
 }
 ?>
