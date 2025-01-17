@@ -33,3 +33,4 @@ if (is_readable($nom_fichier)) {
 } else {
     die("Error 404: not found!");
 }
+
