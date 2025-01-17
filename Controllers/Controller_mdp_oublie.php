@@ -62,14 +62,81 @@ class Controller_mdp_oublie extends Controller {
                 echo "Adresse e-mail invalide.";
                 return;
             }
-
-            // Générer le message de réinitialisation
-            $subject = "Changer de  mot de passe";
-            $message = "Bonjour,<br><br>Cliquez sur le lien suivant pour réinitialiser votre mot de passe :<br><br>";
-            $message .= "<a href='localhost/AidAppart/?controller=changement_mdp&action=changement_mdpController?email=$email'>Réinitialiser mon mot de passe</a><br><br>";
-            //$message .= "<a href='https://aidappart.herogu.garageisep.com/?controller=changement_mdp&action=changement_mdpController?email=$email'>Réinitialiser mon mot de passe</a><br><br>";
             
-            $message .= "Ce lien est valable pendant 1 heure.<br><br>Merci.";
+            // Générer le message de réinitialisation
+            $subject = "Changer de mot de passe";
+
+            // Le contenu du message en HTML
+            $message = "
+            <html>
+            <head>
+                <title>Changer de mot de passe - AidAppart</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        color: #333;
+                    }
+                    .email-container {
+                        width: 100%;
+                        max-width: 600px;
+                        margin: 0 auto;
+                        border: 1px solid #ccc;
+                        padding: 20px;
+                        background-color:linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
+                    }
+                    .header {
+                        text-align: center;
+                    }
+                    .logo {
+                        max-width: 200px;
+                        height: auto;
+                    }
+                    .content {
+                        margin-top: 20px;
+                        font-size: 16px;
+                    }
+                    .cta-button {
+                        display: inline-block;
+                        background-color:#A9CA59;
+                        color: #fff;
+                        padding: 10px 20px;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        margin-top: 20px;
+                    }
+                    .cta-button:hover {
+                        background-color:#23435C;
+                    }
+                    .footer {
+                        font-size: 12px;
+                        color: #888;
+                        text-align: center;
+                        margin-top: 20px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class='email-container'>
+                    <div class='content'>
+                        <p>Bonjour,</p>
+                        <p>Cliquez sur le lien suivant pour réinitialiser votre mot de passe :</p>
+                        <a href='http://localhost/AidAppart/?controller=changement_mdp&action=changement_mdpController&email=$email' class='cta-button'>Réinitialiser mon mot de passe</a>
+                        <p>Ce lien est valable pendant 1 heure.</p>
+                    </div>
+                    <div class='footer'>
+                        <p>Merci de faire confiance à <strong>AidAppart</strong></p>
+                    </div>
+                </div>
+            </body>
+            </html>
+            ";
+            
+            // Pour envoyer le mail, vous devrez définir les headers pour indiquer que le message est en HTML
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+            
+            // En-tête supplémentaire pour l'objet
+            $headers .= 'From: aidappart@exemple.com' . "\r\n"; // Remplacez par l'email d'expédition
 
            // Envoi de l'email de réinitialisation
            if ($this->envoie_mail('Utilisateur', $email, $subject, $message)) {

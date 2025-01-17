@@ -17,7 +17,7 @@
 <div class="centre">
         <h1>Mot de passe oublié</h1>
 
-        <h3>Un email avec un lien pour changer votre mot de passe va vous être envoyé.</h3>
+        <h3>Un lien pour changer votre mot de passe va vous être envoyé.</h3>
 
 
         <form action="?controller=mdp_oublie&action=reset_mdp" method="POST">

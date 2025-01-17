@@ -46,10 +46,29 @@ class Controller_changement_mdp extends Controller {
                 return;
             }
 
-            if (strlen($new_password) < 6) {
-                $data['erreur'] = "Le mot de passe doit contenir au moins 6 caractères.";
-                $this->render("changement_mdp", $data);
-                return;
+            // Validation des champs obligatoires
+            if (empty($nom) || empty($prenom) || empty($telephone) || empty($email) || empty($mdp) || empty($status)) {
+                $data = ["message" => "Tous les champs sont obligatoires."];
+                $this->render("inscription", $data);
+                exit;
+            }
+
+            // Vérification de la sécurité du mot de passe
+            if (!preg_match('/[A-Z]/', $mdp)) { // Au moins une majuscule
+                $data = ["message" => "Le mot de passe doit contenir au moins une lettre majuscule."];
+                $this->render("inscription", $data);
+                exit;
+            }
+
+            if (strlen($mdp) < 8) { // Longueur minimale de 8 caractères
+                $data = ["message" => "Le mot de passe doit contenir au moins 8 caractères."];
+                $this->render("inscription", $data);
+                exit;
+            }
+            if (!preg_match('/[0-9]/', $mdp)) { // Au moins un chiffre
+                $data = ["message" => "Le mot de passe doit contenir au moins un chiffre."];
+                $this->render("inscription", $data);
+                exit;
             }
 
             $userModel = Model::getModel();
