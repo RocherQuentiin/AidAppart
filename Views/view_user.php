@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Profil</title>
-    <link rel="stylesheet" href="Content/css/pagelogement.css">
+    <link rel="stylesheet" href="Content/css/user.css">
     <script src="Content/js/user.js" defer></script>
 </head>
 <body>
