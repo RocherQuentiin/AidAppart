@@ -383,5 +383,17 @@ class Model {
         $stmt->execute([":email" => $email, ":telephone"=> $telephone]);
         return $stmt->rowCount() > 0;
     }
+    public function updatePassword($email, $new_password) {
+        try {
+            $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
+            $sql = "UPDATE Personne SET mdp = :mdp WHERE email = :email";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(['mdp' => $hashedPassword, 'email' => $email]);
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            echo "Erreur db : " . $e->getMessage();
+            return false;
+        }
+    }
 }
 ?>

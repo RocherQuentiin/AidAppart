@@ -16,7 +16,7 @@ function showModal(message, type) {
     
     // Ajouter le message
     modal.innerText = message;
-
+   
     // Ajouter le modal au body
     document.body.appendChild(modal);
 

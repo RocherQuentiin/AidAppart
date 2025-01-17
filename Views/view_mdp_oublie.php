@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mot de passe oublié</title>
+
     <?php require_once('Layout/view_header.html') ?>
     <link href="Content/css/connexion.css" rel="stylesheet">
     <link rel="stylesheet" href="Content/css/index.css"/>
@@ -10,18 +12,19 @@
     <script src="Content/js/pop_up.js" defer></script>
 </head>
 
-<title>Mot de passe oublié</title>
-
 <body>
 
 <div class="centre">
         <h1>Mot de passe oublié</h1>
 
+        <h3>Un email avec un lien pour changer votre mot de passe va vous être envoyé.</h3>
+
+
         <form action="?controller=mdp_oublie&action=reset_mdp" method="POST">
             <!-- Groupe de champs email -->
             <div class="input-group">
                 <img src="Content/images/email.png" alt="Email Icon" class="icon">
-                <input type="email" name="email" placeholder="Renseignez votre adresse mail" required>
+                <input type="email" name="email" placeholder="Adresse email" required>
             </div>
             <!-- Liens -->
             <div class="links">
@@ -30,7 +33,7 @@
             </div>
 
             <!-- Bouton -->
-            <button type="submit" class="button">Me Connecter</button>
+            <button type="submit" class="button">Envoyer email</button>
         </form>
     </div>
 
