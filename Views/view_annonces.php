@@ -8,7 +8,12 @@
 </head>
 <body>
 
-  <?php include 'Layout/view_header.php';?>
+  <?php include 'Layout/view_header.php'; 
+    if(isset($_SESSION['idpersonne'])) {?>
+    <script>
+        window.userId = <?php echo $_SESSION['idpersonne']; ?>;
+    </script>
+    <?php } ?>
 
   <div class="container-annonce">
     <div class="image-gallery">
@@ -44,6 +49,7 @@
       <p><strong>WIFI : </strong><?php echo htmlspecialchars($data["annonces"]['a_WIFI']); ?></p>
       <p><strong>Parking : </strong><?php echo htmlspecialchars($data["annonces"]['a_parking']); ?></p></br>
       <button id="show-more-ch" class="show-more-ch">Voir les chambres</button>
+      <button title="signaler" class="report-button " onclick="reportLogement(<?php echo $data["id_annonces"]; ?>)">Signaler</button>
   </aside>
 </div>
 
