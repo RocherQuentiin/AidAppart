@@ -108,17 +108,8 @@ form {
 }
 
 
-/* Footer */
-footer {
-    background-color: #23435C;
-    color: white;
-    text-align: center;
-    padding: 10px; /* Hauteur réduite */
-    font-size: 14px; /* Texte plus petit */
-    margin-top: auto; /* Pousse le footer en bas */
-}
 
-/* Sélecteurs de formulaire (input, select, etc.) avec des bordures arrondies */
+/* Sélecteurs de formulaire (input, select, etc.) avec des bordures arrondies et plus grands */
 input[type="text"], input[type="email"], input[type="password"], textarea, select, .submit-btn,
 input[type="radio"], input[type="checkbox"] {
     cursor: pointer; /* Change le curseur en main lors du survol */
