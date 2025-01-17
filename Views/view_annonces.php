@@ -43,8 +43,7 @@
       <p><strong>Accessible aux PMR : </strong><?php echo htmlspecialchars($data["annonces"]['est_accessible_PMR']); ?></p>
       <p><strong>WIFI : </strong><?php echo htmlspecialchars($data["annonces"]['a_WIFI']); ?></p>
       <p><strong>Parking : </strong><?php echo htmlspecialchars($data["annonces"]['a_parking']); ?></p></br>
-      
-      <button>Voir les chambres</button>
+      <button id="show-more-ch" class="show-more-ch">Voir les chambres</button>
     </aside>
   </div>
 
@@ -58,7 +57,7 @@
       <p><strong>Accessible aux PMR : </strong><?php echo htmlspecialchars($data["annonces"]['est_accessible_PMR']); ?></p>
       <p><strong>WIFI : </strong><?php echo htmlspecialchars($data["annonces"]['a_WIFI']); ?></p>
       <p><strong>Parking : </strong><?php echo htmlspecialchars($data["annonces"]['a_parking']); ?></p></br>
-    <button>Voir les chambres</button>
+      <button id="show-more-ch" class="show-more-ch">Voir les chambres</button>
   </aside>
 </div>
 
