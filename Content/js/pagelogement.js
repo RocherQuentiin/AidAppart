@@ -84,7 +84,7 @@ function updateListings(data) {
                 <p>Type: ${logement.type}</p>
                 <p>Loyer: ${logement.loyer} €</p>
                 <p>Charges: ${logement.charges} €</p>
-                <p>Adresse ID: ${logement.adresse}</p>
+                <p>Adresse : ${logement.adresse}</p>
                 ${logement.est_meuble ? '<p>Meublé</p>' : ''}
                 ${logement.a_WIFI ? '<p>WiFi</p> ' : ''}
                 ${logement.est_accessible_PMR ? '<p>Accessible PMR</p>' : ''}
