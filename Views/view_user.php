@@ -11,7 +11,10 @@
 
 <?php include 'Layout/view_header.php'; ?>
 
+<h1></h1>
+
 <div class="container">
+    
     <h1>Mon Profil</h1>
 
     <!-- Bouton pour afficher/masquer le formulaire de mise à jour -->
@@ -30,7 +33,7 @@
             <input type="text" id="prenomInput" name="prenom" required><br>
 
             <label for="telephone">Téléphone:</label>
-            <input type="text" id="telephoneInput" name="telephone" required><br>
+            <input type="text" id="telephoneInput" name="telephone" required><br><br>
 
             <button type="submit">Mettre à jour</button>
         </form>
