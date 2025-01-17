@@ -6,6 +6,7 @@ require_once('Layout/view_header.php'); ?>
     <meta charset="UTF-8">
     <title>Conditions Générales d'Utilisation - AidAppart</title>
     <link href="Content/css/cgu.css" rel="stylesheet">
+    <script src="Content/js/cgu.js"></script>
 </head>
 <body class="cgu">
     <main>
@@ -46,61 +47,6 @@ require_once('Layout/view_header.php'); ?>
             <p>Pour toute question relative à ces CGU, vous pouvez nous contacter via notre page <a href="#">Contact</a>.</p>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2025 AidAppart. Tous droits réservés.</p>
-    </footer>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #dfe8c7;
-            color: #23435C;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        .cgu-section {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h1, h2 {
-            color: #23435C;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        p, ul {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        ul {
-            margin-left: 20px;
-        }
-
-        a {
-            color: #23435C;
-            text-decoration: underline;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #23435C;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
 <?php
 require_once('Layout/footer.php'); ?>
 

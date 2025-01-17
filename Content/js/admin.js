@@ -1,7 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('admin.js loaded');
     // Définir la fonction dans le scope global
     const updateButtons = document.querySelectorAll('#update_user');
-
+    // const input = document.querySelector("input");
+    input.addEventListener("input", selectUsers);
+    const input = document.querySelector("input");
+    if (input) {
+        input.addEventListener("input", selectUsers);
+    }
+    function selectUsers(e) {
+        console.log('selectUsers');
+        console.log(e.target.value);
+        const $name = e.target.value;
+        fetch('?controller=admin&action=action_admin&' + $name, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: $name })
+        })
+    }
     updateButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const userId = event.target.closest('tr').querySelector('td:first-child').textContent;
@@ -9,6 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function updateValue(e, log) {
+    console.log(e.target.value);
+    log.textContent = e.target.value;
+ }
+
+
 
 function openRolePopup(userId) {
     // Create the popup container
@@ -98,3 +123,27 @@ function deleteUser(userId, lastname, firstname) {
         });
     }
 }
+
+function deleteLogement(logementId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer le logement n° ' + logementId + ' ?')) {
+        fetch('?controller=admin&action=delete_logement', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: logementId })
+        })
+        .then(data => {
+            if (data.ok) {
+                alert('Logement supprimé avec succès');
+                location.reload();
+            } else {
+                alert('Erreur lors de la suppression du logement');
+            }
+        })
+        .catch(error => {
+            alert('Erreur lors de la suppression du logement');
+        });
+    }
+}
+

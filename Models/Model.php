@@ -542,6 +542,21 @@ class Model {
         $stmt = $this->db->prepare("UPDATE Personne SET etat = :etat WHERE id = :userId");
         $stmt->execute(['etat' => $etat, 'userId' => $userId]);
     }
+
+    public function getUserByNameOrLastName($name) {
+        $stmt = $this->db->prepare("SELECT * FROM Personne WHERE nom LIKE :name OR prénom LIKE :name");
+        $stmt->execute(['name' => "%$name%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Récupérer une annonce par son ID
+    public function getAnnonceById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM logement WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Retourne les données de l'annonce
+    }
+
 public function getUserLogements($user_id) {
     /*
     * Récupérer tous les logements appartenant à un utilisateur spécifique
