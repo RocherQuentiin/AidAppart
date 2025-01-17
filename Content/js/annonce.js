@@ -1,23 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const showMoreButton = document.getElementById("show-more");
-    const modal = document.getElementById("image-modal");
-    const closeModal = document.querySelector(".close");
+  const showMoreButton = document.getElementById("show-more");
+  const showRoomsButton = document.getElementById("show-more-ch");
+  const modal = document.getElementById("image-modal"); 
+  const closeModal = document.querySelector(".close");
+
   
-    // Show the modal when the button is clicked
-    showMoreButton.addEventListener("click", () => {
-      modal.style.display = "flex";
-    });
-  
-    // Close the modal when the close button is clicked
-    closeModal.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-  
-    // Close the modal when clicking outside the modal content
-    window.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
+  const openModal = () => {
+    modal.style.display = "flex";
+  };
+
+  const closeModalHandler = () => {
+    modal.style.display = "none"; 
+  };
+
+  if (showMoreButton) {
+    showMoreButton.addEventListener("click", openModal);
+  }
+
+  if (showRoomsButton) {
+    showRoomsButton.addEventListener("click", openModal);
+  }
+
+  if (closeModal) {
+    closeModal.addEventListener("click", closeModalHandler);
+  }
+
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModalHandler();
+    }
   });
-  
+});
