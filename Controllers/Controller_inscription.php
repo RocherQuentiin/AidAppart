@@ -105,10 +105,10 @@ class Controller_inscription extends Controller {
                 $this->envoie_mail($nom, $email, "Confirmation de votre inscription", "Votre code de verification est : " . $this->verificationCode);// Envoyer l'e-mail de confirmation
 
                 $this->render("confirmation_mail", $data);
+                exit;
             } else {
                 echo "Erreur lors de l'inscription.";
             }
-
         }
     }
 
@@ -140,21 +140,20 @@ class Controller_inscription extends Controller {
         }
     }
 
-    public function changebdd(){
-        echo "marche";
-
-        if ($_SESSION['verificationCode']==$_POST['verificationCode']){
-            $model = Model::getModel();
-            $model->change_personne_actif($_SESSION['idpersonne'], 1);
-            $data = ["erreur" => false]; 
-            $this->render("accueil", $data);
-        }
-
-        else{
-            $data = ["message" => "Le mots de passe est incorrect."];
-            $this->render("view_confirmation_mail", $data);
-            exit;
-
+    public function action_changebdd(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            session_start();
+            if ($_SESSION['verificationCode'] == $_POST['verificationCode']){
+                $model = Model::getModel();
+                $model->change_personne_actif($_SESSION['idpersonne'], 1);
+                $data = ["erreur" => false]; 
+                $this->render("accueil", $data);
+                exit;
+            }else{
+                $data = ["message" => "Le mots de passe est incorrect."];
+                $this->render("confirmation_mail", $data);
+                exit;
+            }
         }
     }
 }

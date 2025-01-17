@@ -548,8 +548,8 @@ class Model {
         * Active un utilisateur
         * @param int $userId - ID de l'utilisateur
         */
-        $stmt = $this->db->prepare("UPDATE Personne SET etat = :etat WHERE id = :userId");
-        $stmt->execute(['etat' => $etat, 'userId' => $userId]);
+        $stmt = $this->db->prepare("UPDATE Personne SET actif = :etat WHERE id = :userId");
+        $stmt->execute([':etat' => $etat, ':userId' => $userId]);
     }
 }
 ?>

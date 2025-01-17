@@ -12,7 +12,7 @@ require_once('Layout/view_header.php');
 <body>
     <h1>Un e-mail a été envoyé !</h1>
     <p>Veuillez vérifier votre boîte mail et entrer le code reçu pour confirmer votre adresse.</p>
-    <form action="controller=inscription&action=changebdd" method="POST">
+    <form action="?controller=inscription&action=changebdd" method="POST">
         <label for="verification_code">Code de vérification :</label>
         <input type="text" name="verificationCode" id="verification_code" required>
         <button type="submit">Vérifier</button>
