@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Définir la fonction dans le scope global
     const updateButtons = document.querySelectorAll('#update_user');
     // const input = document.querySelector("input");
-    // input.addEventListener("input", selectUsers);
-    const input = document.querySelector("input");
-    console.log(input);
-
     input.addEventListener("input", selectUsers);
+    const input = document.querySelector("input");
+    if (input) {
+        input.addEventListener("input", selectUsers);
+    }
     function selectUsers(e) {
         console.log('selectUsers');
         console.log(e.target.value);
@@ -120,6 +120,29 @@ function deleteUser(userId, lastname, firstname) {
         })
         .catch(error => {
             alert('Erreur lors de la suppression de l\'utilisateur');
+        });
+    }
+}
+
+function deleteLogement(logementId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer le logement n° ' + logementId + ' ?')) {
+        fetch('?controller=admin&action=delete_logement', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: logementId })
+        })
+        .then(data => {
+            if (data.ok) {
+                alert('Logement supprimé avec succès');
+                location.reload();
+            } else {
+                alert('Erreur lors de la suppression du logement');
+            }
+        })
+        .catch(error => {
+            alert('Erreur lors de la suppression du logement');
         });
     }
 }

@@ -12,11 +12,19 @@ class Controller_admin extends Controller {
         } else {
             $users = $this->get_user_by_name_or_last_name($name);
         }
+        $allLogements = $this->allLogement();
         $reportedLogements = $this->get_reported_logements();
         $data = ["erreur" => false, 
                  "users" => $users,
-                 "reportedLogements" => $reportedLogements];
+                 "reportedLogements" => $reportedLogements,
+                 "allLogements" => $allLogements];
         $this->render("admin", $data);
+    }
+
+    public function allLogement() {
+        $model = Model::getModel();
+        $allLogements = $model->selectAllFromTable("logement");
+        return $allLogements;
     }
 
     public function get_users_with_roles() {
@@ -35,7 +43,6 @@ class Controller_admin extends Controller {
     public function action_assign_role() {
         $model = Model::getModel();
         $data = json_decode(file_get_contents('php://input'), true);
-        print_r($data);
         $model->assignRole($data['id'], $data['role']);
     }
 
@@ -75,6 +82,12 @@ class Controller_admin extends Controller {
                  "users" => $users,
                  "reportedLogements" => $reportedLogements];
         $this->render("admin", $data);
+    }
+
+    public function action_delete_logement() {
+        $model = Model::getModel();
+        $data = json_decode(file_get_contents('php://input'), true);
+        $model->deleteById("logement", $data['id']);
     }
 }
 

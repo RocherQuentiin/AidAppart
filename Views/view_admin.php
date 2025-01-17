@@ -18,6 +18,7 @@ require_once('Layout/view_header.php');?>
         <ul class="navbar-links">
             <li><a href="?controller=admin&action=admin&page=Utilisateurs">Utilisateurs</a></li>
             <li><a href="?controller=admin&action=admin&page=Signalement">Signalement</a></li>
+            <li><a href="?controller=admin&action=admin&page=AllLogement">Tous les logements</a></li>
             <li><a href="?controller=admin&action=admin&page=Logement">Logement à confirmer</a></li>
         </ul>
     </div>
@@ -72,6 +73,31 @@ require_once('Layout/view_header.php');?>
                     echo "<td>{$logement['reporter_name']}</td>";
                     echo "<td>{$logement['commentaire']}</td>";
                     echo "<td>{$logement['creer_a']}</td>";
+                    echo "</tr>";
+                }
+                echo '</table>';
+                break;
+            case 'AllLogement':
+                echo '<h2>Tous les logements</h2>';
+                echo '<table>';
+                echo '<tr>';
+                echo '<th>ID Logement</th>';
+                echo '<th>Commentaire</th>';
+                echo '<th>Date</th>';
+                echo '<th>Actions</th>';
+                echo '</tr>';
+                foreach ($data['allLogements'] as $logement) {
+                    echo "<tr>";
+                    echo "<div onclick=\"window.location.href='?controller=annonces&action=annonces&id={$logement['id']}'\" style='cursor:pointer;'>";
+                    echo "<td>{$logement['id']}</td>";
+                    echo "<td>{$logement['description']}</td>";
+                    echo "<td>{$logement['creer_a']}</td>";
+                    echo "</div>";
+                    echo "<td>
+                            <button class='delete button' id='delete_user' onclick='deleteLogement({$logement['id']})'>
+                                <img src='Content/Images/Poubelle.png' alt='Supprimer'>
+                            </button>
+                        </td>";
                     echo "</tr>";
                 }
                 echo '</table>';
