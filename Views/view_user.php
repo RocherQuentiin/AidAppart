@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<?php include 'Layout/view_header.php'; ?>
+
 <div class="container">
     <h1>Mon Profil</h1>
 
@@ -79,5 +81,6 @@
     </ul>
 </div>
 
+<?php include 'Layout/footer.php'; ?>
 </body>
 </html>
