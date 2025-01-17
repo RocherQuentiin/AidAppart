@@ -543,6 +543,15 @@ class Model {
         $stmt->execute(['etat' => $etat, 'userId' => $userId]);
     }
 
+    // Récupérer une annonce par son ID
+    public function getAnnonceById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM logement WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Retourne les données de l'annonce
+    }
+
+
    public function ReponseRecu($idUtilisateurActif)
    {
        $query = $this->db->prepare("SELECT Messagerie.id, Messagerie.id_personne, Messagerie.id_personne_destinataire,
