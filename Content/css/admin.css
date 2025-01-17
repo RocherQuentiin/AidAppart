@@ -11,13 +11,24 @@
     z-index: 1000;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Structure verticale */
+    min-height: 100vh; /* Hauteur totale de la fenêtre */
+    background-color: #dfe8c7;
+    color: #23435C;
+}
+
 .popup-content {
     background: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    max-width: 100%;
+    width: 90%;
+    max-width: 400px;
 }
 
 .popup-content h2 {
@@ -61,19 +72,44 @@ tr:hover {
     background-color: var(--green);
 }
 
-.delete  {
+.delete {
     width: 45px !important;
     height: 45px !important;
     background-color: transparent !important;
     cursor: pointer;
     padding: 0px;
-    :hover {
-        background-color: red;
-        border-radius: 90px;
-    }
 }
+
+.delete:hover {
+    background-color: red;
+    border-radius: 90px;
+}
+
 .delete img {
     width: 30px;
     height: 30px;
     object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .popup-content {
+        width: 95%;
+        max-width: 350px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-content {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
 }

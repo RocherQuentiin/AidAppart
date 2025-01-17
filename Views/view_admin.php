@@ -19,7 +19,6 @@ require_once('Layout/view_header.php');?>
             <li><a href="?controller=admin&action=admin&page=Utilisateurs">Utilisateurs</a></li>
             <li><a href="?controller=admin&action=admin&page=Signalement">Signalement</a></li>
             <li><a href="?controller=admin&action=admin&page=AllLogement">Tous les logements</a></li>
-            <li><a href="?controller=admin&action=admin&page=Logement">Logement à confirmer</a></li>
         </ul>
     </div>
 <?php
@@ -27,11 +26,8 @@ require_once('Layout/view_header.php');?>
         switch ($_GET['page']) {
             case 'Utilisateurs':
                 echo '<h2>Utilisateurs</h2>';
-                echo '<form id="form-assign-role" action="?controller=admin&action=search_user" method="POST">';
-                echo '<lable for="select-user">Rechercher un utilisateur</lable>';
+                echo '<lable for="select-user">Rechercher un utilisateur </lable>';
                 echo '<input id="select-user" type="text"></input>';
-                echo '<button type="submit">Rechercher</button>';
-                echo '</form>';
                 echo '<table>';
                 echo '<tr>';
                 echo '<th>ID</th>';
@@ -39,8 +35,10 @@ require_once('Layout/view_header.php');?>
                 echo '<th>Prénom</th>';
                 echo '<th>Email</th>';
                 echo '<th>Role</th>';
+                echo '<th>Crée le </th>';
                 echo '<th>Actions</th>';
                 echo '</tr>';
+                echo '<tbody id="table-body">';
                 foreach ($data['users'] as $user) {
                     echo "<tr>";
                     echo "<td>{$user['id']}</td>";
@@ -48,6 +46,7 @@ require_once('Layout/view_header.php');?>
                     echo "<td>{$user['prénom']}</td>";
                     echo "<td>{$user['email']}</td>";
                     echo "<td>" . implode(', ', $user['roles']) . "</td>";
+                    echo "<td>{$user['creer_a']}</td>";
                     echo "<td>
                             <button id='update_user' class='button'>Modifier</button>
                             <button class='delete button' id='delete_user' onclick='deleteUser({$user['id']}, \"{$user['nom']}\", \"{$user['prénom']}\")'>
@@ -56,6 +55,7 @@ require_once('Layout/view_header.php');?>
                         </td>";
                     echo "</tr>";
                 }
+                echo '</tbody>';
                 echo '</table>';
                 break;
             case 'Signalement':

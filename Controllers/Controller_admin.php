@@ -6,12 +6,7 @@ class Controller_admin extends Controller {
     }
 
     public function action_admin() {
-        $name = $_POST['name'] ?? NULL;
-        if ($name == NULL) {
-            $users = $this->get_users_with_roles();
-        } else {
-            $users = $this->get_user_by_name_or_last_name($name);
-        }
+        $users = $this->get_users_with_roles();
         $allLogements = $this->allLogement();
         $reportedLogements = $this->get_reported_logements();
         $data = ["erreur" => false, 
@@ -89,6 +84,25 @@ class Controller_admin extends Controller {
         $data = json_decode(file_get_contents('php://input'), true);
         $model->deleteById("logement", $data['id']);
     }
+
+    public function action_get_user() {
+        header('Content-Type: application/json');
+        $model = Model::getModel();
+        $user = $this->get_users_with_roles();
+        $user = array_map(function($u) {
+            return [
+            'id' => $u['id'],
+            'nom' => $u['nom'],
+            'prenom' => $u['prénom'],
+            'email' => $u['email'],
+            'creer_a' => $u['creer_a'],
+            'roles' => $u['roles']
+            ];
+        }, $user);
+        echo json_encode($user);
+        exit;
+    }
+
 }
 
 ?>
