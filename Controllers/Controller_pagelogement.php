@@ -24,16 +24,6 @@ class Controller_pagelogement extends Controller {
         $this->render("pagelogement", $data);
     }
 
-    public function get_logements_adresse($logements) {
-        $model = Model::getModel();
-        $logementsWithAdresse = [];
-        foreach ($logements as $logement) {
-            $adresse = $model->getdataById('Adresse', $logement['adresse']);
-            $logement['adresse'] = $adresse["numero"] . ' ' . $adresse['rue'] . ', ' . $adresse['code_postal'] . ' ' . $adresse['ville'];
-            $logementsWithAdresse[] = $logement;
-        }
-        return $logementsWithAdresse;
-    }
     public function action_search() {
         $model = Model::getModel();
         $criteria = json_decode(file_get_contents('php://input'), true);

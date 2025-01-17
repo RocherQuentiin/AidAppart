@@ -62,4 +62,15 @@ abstract class Controller
         ];
         $this->render("message", $data);
     }
+
+    public function get_logements_adresse($logements) {
+        $model = Model::getModel();
+        $logementsWithAdresse = [];
+        foreach ($logements as $logement) {
+            $adresse = $model->getdataById('adresse', $logement['adresse']);
+            $logement['adresse'] = $adresse["numero"] . ' ' . $adresse['rue'] . ', ' . $adresse['code_postal'] . ' ' . $adresse['ville'];
+            $logementsWithAdresse[] = $logement;
+        }
+        return $logementsWithAdresse;
+    }
 }
