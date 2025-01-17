@@ -14,7 +14,7 @@ require_once('Layout/view_header.php');
     <p>Veuillez vérifier votre boîte mail et entrer le code reçu pour confirmer votre adresse.</p>
     <form action="controller=inscription&action=changebdd" method="POST">
         <label for="verification_code">Code de vérification :</label>
-        <input type="text" name="verification_code" id="verification_code" required>
+        <input type="text" name="verificationCode" id="verification_code" required>
         <button type="submit">Vérifier</button>
     </form>
 </body>

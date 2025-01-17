@@ -141,8 +141,9 @@ class Controller_inscription extends Controller {
     }
 
     public function changebdd(){
+        echo "marche";
 
-        if ($_SESSION['verificationCode']==$_POST['verification_code']){
+        if ($_SESSION['verificationCode']==$_POST['verificationCode']){
             $model = Model::getModel();
             $model->change_personne_actif($_SESSION['idpersonne'], 1);
             $data = ["erreur" => false]; 
