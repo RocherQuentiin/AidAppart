@@ -27,10 +27,10 @@ class Controller_connexion extends Controller {
                 return;
             }
             if ($model->hasRole($idpersonne, 'Propriétaire')) {
-                header('Location: ?controller=user&action=user');
+                header('Location: ?controller=acceuil&action=acceuil');
                 return;
             }
-            header('Location: ?controller=user&action=userController');
+            header('Location: ?controller=acceuil&action=acceuilController');
         } 
         else { 
             $data = ["erreur" => true]; 

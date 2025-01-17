@@ -118,5 +118,6 @@ class Controller_user extends Controller {
         header('Location: ?controller=user&action=profile');
         exit;
     }
+    
 }
 ?>
