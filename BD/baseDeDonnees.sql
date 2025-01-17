@@ -21,8 +21,8 @@ CREATE TABLE Messagerie (
     id_personne_destinataire INT NOT NULL,
     message TEXT NOT NULL,
     creer_a DATE NOT NULL,
-    FOREIGN KEY (id_personne) REFERENCES Personne(id),
-    FOREIGN KEY (id_personne_destinataire) REFERENCES Personne(id)
+    FOREIGN KEY (id_personne) REFERENCES Personne(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_personne_destinataire) REFERENCES Personne(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Logement (
@@ -40,7 +40,7 @@ CREATE TABLE Logement (
     nb_pieces INT NOT NULL,
     a_parking BOOLEAN NOT NULL,
     description TEXT NOT NULL,
-    FOREIGN KEY (proprietaire) REFERENCES Personne(id)
+    FOREIGN KEY (proprietaire) REFERENCES Personne(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Adresse (
