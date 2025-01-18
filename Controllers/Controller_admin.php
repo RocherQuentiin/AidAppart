@@ -18,7 +18,7 @@ class Controller_admin extends Controller {
 
     public function allLogement() {
         $model = Model::getModel();
-        $allLogements = $model->selectAllFromTable("logement");
+        $allLogements = $model->selectAllFromTable("Logement");
         return $allLogements;
     }
 
