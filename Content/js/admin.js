@@ -1,7 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Définir la fonction dans le scope global
+    const input = document.querySelector("input");
     const updateButtons = document.querySelectorAll('#update_user');
 
+    let users = [];
+    fetch('?controller=admin&action=get_user', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST'
+    }).then(response => {
+        return response.json();
+    })
+    .then(data => {
+        users = data;
+    });
+
+    if (input) {
+        input.addEventListener("input", selectUsers);
+    }
+
+    function selectUsers(e) {
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = '';
+        users.filter(user => {
+            return user.prenom.toLowerCase().includes(e.target.value.toLowerCase()) || 
+                   user.nom.toLowerCase().includes(e.target.value.toLowerCase()) || 
+                   user.email.toLowerCase().includes(e.target.value.toLowerCase());
+        }).forEach(user => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+            <td>${user.id}</td>
+            <td>${user.nom}</td>
+            <td>${user.prenom}</td>
+            <td>${user.email}</td>
+            <td>${user.roles.join(', ')}</td>
+            <td>${user.creer_a}
+            <td>
+                <button id="update_user" class="button">Modifier</button>
+                <button class="delete button" id="delete_user" onclick="deleteUser(${user.id}, '${user.nom}', '${user.prenom}')">
+                    <img src='Content/Images/Poubelle.png' alt='Supprimer'>
+                </button>
+            </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
     updateButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const userId = event.target.closest('tr').querySelector('td:first-child').textContent;
@@ -9,6 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function updateValue(e, log) {
+    console.log(e.target.value);
+    log.textContent = e.target.value;
+ }
+
+
 
 function openRolePopup(userId) {
     // Create the popup container
@@ -95,6 +145,29 @@ function deleteUser(userId, lastname, firstname) {
         })
         .catch(error => {
             alert('Erreur lors de la suppression de l\'utilisateur');
+        });
+    }
+}
+
+function deleteLogement(logementId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer le logement n° ' + logementId + ' ?')) {
+        fetch('?controller=admin&action=delete_logement', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: logementId })
+        })
+        .then(data => {
+            if (data.ok) {
+                alert('Logement supprimé avec succès');
+                location.reload();
+            } else {
+                alert('Erreur lors de la suppression du logement');
+            }
+        })
+        .catch(error => {
+            alert('Erreur lors de la suppression du logement');
         });
     }
 }
