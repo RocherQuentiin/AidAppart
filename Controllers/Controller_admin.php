@@ -24,7 +24,7 @@ class Controller_admin extends Controller {
 
     public function get_users_with_roles() {
         $model = Model::getModel();
-        $users = $model->selectAllFromTable('personne');
+        $users = $model->selectAllFromTable('Personne');
         $usersWithRoles = [];
 
         foreach ($users as $user) {
