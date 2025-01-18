@@ -67,7 +67,7 @@ abstract class Controller
         $model = Model::getModel();
         $logementsWithAdresse = [];
         foreach ($logements as $logement) {
-            $adresse = $model->getdataById('adresse', $logement['adresse']);
+            $adresse = $model->getdataById('Adresse', $logement['adresse']);
             $logement['adresse'] = $adresse["numero"] . ' ' . $adresse['rue'] . ', ' . $adresse['code_postal'] . ' ' . $adresse['ville'];
             $logement['signale'] = $this->est_signale($logement['id']);
             $logementsWithAdresse[] = $logement;
