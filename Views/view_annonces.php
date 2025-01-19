@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <aside class="details-info">
+  <aside class="details">
     <h2>À partir de <strong><?php echo htmlspecialchars($data["annonces"]['loyer']); ?> € / mois </strong></h2>
       <p><strong>Charges : </strong><?php echo htmlspecialchars($data["annonces"]['charges']); ?> € / mois</p>
       <p><strong>Surface : </strong><?php echo htmlspecialchars($data["annonces"]['surface']); ?> m2 </p>
