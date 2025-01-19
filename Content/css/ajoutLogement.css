@@ -35,14 +35,14 @@ form {
     align-items: center;
     cursor: pointer;
     font-size: 24px;
-    color: #888;
+    color: var(--green);
 }
 
 .square {
     width: 70%;
     height: 22%;
     aspect-ratio: 1;
-    background-color: #f0f0f0;
+    background-color: var(--green);
 }
 
 .large-image {
@@ -53,11 +53,12 @@ form {
 .large {
     width: 100%;
     height: 92%;
-    background-color: #e0e0e0;
+    background-color: var(--green);
 }
 
 .form-section {
     width: 40%;
+    margin-left: 10%;
 }
 
 
@@ -84,7 +85,6 @@ input, select, textarea {
     border-radius: 5px;
 }
 
-
 .adresse-description {
     margin-top: 20px;
     label {
@@ -100,6 +100,13 @@ input, select, textarea {
         box-sizing: border-box;
     }
 
+}
+input[type="checkbox"] {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: none;
+    align-items: start;
+    width: 5%;
 }
 
 .adresse-row {
