@@ -124,7 +124,6 @@ box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 width: 380px;
 margin-left: 20px; 
 box-sizing: border-box;
-height: 500px;
 }
 
 .details-info h2 {
@@ -280,6 +279,22 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 .modal-images img:hover {
   transform: scale(1.05); 
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+}
+
+
+.report-button {
+  background-color: #ff4d4d;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  display: flex;
+  border-radius: 90px;
+  margin-left: auto;
+}
+
+a{
+  text-decoration: none !important;
+  color: black !important;
 }
 
 @media (max-width: 1024px) {

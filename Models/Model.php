@@ -543,9 +543,15 @@ class Model {
         $stmt->execute(['etat' => $etat, 'userId' => $userId]);
     }
 
+    public function getUserByNameOrLastName($name) {
+        $stmt = $this->db->prepare("SELECT * FROM Personne WHERE nom LIKE :name OR prénom LIKE :name");
+        $stmt->execute(['name' => "%$name%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // Récupérer une annonce par son ID
     public function getAnnonceById($id) {
-        $stmt = $this->db->prepare("SELECT * FROM logement WHERE id = :id");
+        $stmt = $this->db->prepare("SELECT * FROM Logement WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC); // Retourne les données de l'annonce
@@ -566,6 +572,49 @@ class Model {
        return $query->fetchAll(PDO::FETCH_ASSOC);
    }
 
+public function getUserLogements($user_id) {
+    /*
+    * Récupérer tous les logements appartenant à un utilisateur spécifique
+    * @param int $user_id - L'identifiant de l'utilisateur
+    * @return array - Liste des logements du propriétaire
+    */
+
+    // Préparer la requête SQL pour sélectionner les logements du propriétaire
+    $stmt = $this->db->prepare("SELECT * FROM Logement WHERE proprietaire = :user_id");
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Récupérer les résultats sous forme de tableau associatif
+    $logements = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $logements;
+}
+
+public function updatePersonne($id, $email, $nom, $prenom, $telephone) {
+    // Requête SQL pour mettre à jour les informations
+    $query = "UPDATE Personne
+              SET email = :email,
+                  nom = :nom,
+                  prénom = :prenom,
+                  telephone = :telephone
+              WHERE id = :id";
+
+    // Préparation de la requête
+    $stmt = $this->db->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+    $stmt->bindParam(':telephone', $telephone, PDO::PARAM_STR);
+
+    // Exécution de la requête et retour du résultat
+    if ($stmt->execute()) {
+        return true; // Succès
+    } else {
+        return false; // Échec
+    }
+}
+
    public function InsertionDonnees($idUtilisateurActif, $MessageDestinataire, $MessageContenu)
    {
        $requeteInsertion = $this->db->prepare('INSERT INTO Messagerie (id_personne, id_personne_destinataire, message, creer_a)
@@ -581,6 +630,8 @@ class Model {
            $all->execute();
            return $all->fetchAll(PDO::FETCH_ASSOC);
        }
+
+}
 
 }
 ?>

@@ -34,11 +34,13 @@
                 }
                 if (isset($_SESSION['prenom'])): ?>
                     <a href="?controller=deconnexion&action=deconnexionController" class="btn-account"><button class="button">Déconnexion</button></a>
+                    <a href="?controller=user&action=userController" class="icon-translate">
+                        <img src="Content/Images/Accueil/profile.png" alt="Traduire" title="Traduire">
                 <?php else: ?>
                     <a href="?controller=connexion&action=connexionController" class="btn-account"><button class="button">Connexion</button></a>
+                    <a href="?controller=connexion&action=connexionController" class="icon-translate">
+                        <img src="Content/Images/Accueil/profile.png" alt="Traduire" title="Traduire">
                 <?php endif; ?>
-                <a href="#" class="icon-translate">
-                    <img src="Content/Images/Accueil/globe.png" alt="Traduire" title="Traduire">
                 </a>
             </div>
         </div>

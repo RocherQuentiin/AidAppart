@@ -6,7 +6,7 @@ class Controller_pagelogement extends Controller {
 
     public function action_pagelogement() {
         $model = Model::getModel();
-        $logements = $model->selectAllFromTable('Logement');
+        $logements = $this->get_logements_adresse($model->selectAllFromTable('Logement'));
         $types = $model->selectDistinctFromTable('Logement', 'type');
         $nbPieces = $model->selectDistinctFromTable('Logement', 'nb_pieces', 'nb_pieces');
         $minMaxSurface = $model->selectMinMaxFromTable('Logement', 'surface');
@@ -29,7 +29,7 @@ class Controller_pagelogement extends Controller {
         $criteria = json_decode(file_get_contents('php://input'), true);
 
         $logements = $model->searchLogements($criteria);
-        echo json_encode($logements);
+        echo json_encode($this->get_logements_adresse($logements));
     }
 
     public function action_report() {
