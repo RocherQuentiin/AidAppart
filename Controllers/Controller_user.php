@@ -2,30 +2,26 @@
 session_start();
 
 class Controller_user extends Controller {
-    // Action par défaut
+
     public function action_default() {
         $this->action_user();
     }
 
-    // Affichage du profil utilisateur
+
     public function action_user() {
         $idpersonne = $_SESSION['idpersonne'];
 
-        // Récupérer le modèle
         $model = Model::getModel();
 
-        // Récupérer les informations de l'utilisateur, ses logements et ses messages
         $userInfo = $model->getdataById('Personne', $idpersonne);
         $logements = $model->getUserLogements($idpersonne);
         $messages = $model->getMessagesByUserId($idpersonne);
 
-        // Ajouter les informations de l'expéditeur et du destinataire pour chaque message
         foreach ($messages as &$message) {
             $message['expediteur'] = $model->getUserInfoById($message['id_personne']);
             $message['destinataire'] = $model->getUserInfoById($message['id_personne_destinataire']);
         }
 
-        // Si les informations de l'utilisateur sont trouvées
         if ($userInfo) {
             $data = [
                 "idpersonne" => $userInfo['id'],
@@ -47,7 +43,6 @@ class Controller_user extends Controller {
         $this->render("user", $data);
     }
 
-    // Mise à jour des informations utilisateur
     public function action_update() {
         $idpersonne = $_SESSION['idpersonne'];
 
@@ -55,20 +50,16 @@ class Controller_user extends Controller {
         $model = Model::getModel();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Récupérer les données du formulaire
             $email = $_POST['email'];
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
             $telephone = $_POST['telephone'];
 
-            // Mettre à jour les informations de l'utilisateur
             $model->updatePersonne($idpersonne, $email, $nom, $prenom, $telephone);
 
-            // Redirection vers la page de profil après mise à jour
             header("Location: ?controller=user&action=userController");
             exit();
         } else {
-            // Récupérer les informations actuelles de l'utilisateur
             $personne = $model->getPersonneById($idpersonne);
 
             // Passer les données à la vue
@@ -89,7 +80,6 @@ class Controller_user extends Controller {
             exit;
         }
 
-        // Utilisation de l'ID de l'utilisateur depuis la session ou l'URL
         $user_id = isset($_GET['userId']) ? $_GET['userId'] : $_SESSION['idpersonne'];
 
         if (isset($_POST['deactivate_account']) || isset($_GET['userId'])) {
@@ -116,7 +106,6 @@ class Controller_user extends Controller {
     // Suppression d'un logement
     public function action_supprimerLogement() {
         if (!isset($_POST['logement_id'])) {
-            // Si l'ID du logement n'est pas fourni, redirection vers le profil
             header('Location: ?controller=user&action=profile');
             exit;
         }
