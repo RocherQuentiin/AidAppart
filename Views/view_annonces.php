@@ -72,7 +72,7 @@
 
   <section class="contact">
         <h2>Contactez le propriétaire</h2>
-        <form id="messageForm" action='?controller=messagerie&action=envoyerMessage&id=<?= $_GET['id'] ?>' method="post">
+        <form id="messageForm" action='?controller=annonces&action=envoyerMessage&id=<?= $_GET['id'] ?>' method="post">
             <label for="message">Message:</label>
             <textarea id="message" name="message" placeholder="Votre message au propriétaire" rows="5" required></textarea>
             <button type="submit">Envoyer</button>
