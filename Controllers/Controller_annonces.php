@@ -1,7 +1,5 @@
 <?php
-
-
-
+session_start();
 class Controller_annonces extends Controller {
     
     public function action_default() {
@@ -9,8 +7,6 @@ class Controller_annonces extends Controller {
     }
 
     public function action_annonces() {
-        
-
         $model = Model::getModel();
         $annonce = $model->getAnnonceById($_GET["id"]);
 
@@ -29,6 +25,33 @@ class Controller_annonces extends Controller {
             echo "Annonce introuvable.";
         }
     
+    }
+    function action_envoyerMessage() {
+        $model = Model::getModel();
+        $idUtilisateurActif = $_SESSION['idpersonne'];
+        $id_logement = $_GET['id']; // Récupère l'ID du logement depuis l'URL
+
+        if ($idUtilisateurActif !== null && isset($_POST['message'])) {
+           $messagerieContenu = $_POST['message'];
+
+           // Récupérer l'ID du propriétaire du logement
+           $messagerieDestinataire = $model->getUserIdByLogementId($id_logement);
+
+           if ($messagerieDestinataire !== null) {
+               try {
+                   $model->InsertionDonnees($idUtilisateurActif, $messagerieDestinataire, $messagerieContenu);
+                   header('Location: ?controller=annonces&action=annonces&id=' . $id_logement . '&success=1');
+                   exit;
+               } catch (Exception $e) {
+                   echo 'Erreur SQL : ', $e->getMessage();
+               }
+           } else {
+               echo "Propriétaire du logement non trouvé.";
+           }
+        } else {
+           header('Location: ?controller=annonces&action=annonces&id=' . $id_logement . '&error=2');
+           exit;
+        }
     }
 
 }

@@ -63,3 +63,16 @@ function reportLogement(logementId) {
       });
   }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    // Vérifier si l'URL contient le paramètre success=1
+    if (window.location.search.includes('success=1')) {
+        alert('Le message a bien été envoyé');
+    }
+
+    // Vérifier si l'URL contient le paramètre error=2 (user non connecter)
+    if (window.location.search.includes('error=2')) {
+        alert('Vous devez être connecté ou créer un compte pour envoyer un message.');
+    }
+});
+
+

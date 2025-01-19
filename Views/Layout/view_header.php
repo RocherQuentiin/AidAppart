@@ -23,9 +23,20 @@
         <!-- Navbar Links -->
         <div class="navbar-menu" id="navbarMenu">
             <ul class="navbar-links">
-                <li><a href="?controller=aide&action=aideController">Aides</a></li>
-                <li><a href="?controller=pagelogement&action=pagelogementController">Locations</a></li>
-                <li><a href="#">FAQ</a></li>
+                <?php
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
+                    if (isset($_SESSION['idpersonne'])): ?>
+                        <li><a href="?controller=aide&action=aideController">Aides</a></li>
+                        <li><a href="?controller=pagelogement&action=pagelogementController">Locations</a></li>
+                        <li><a href="?controller=ajoutLogement&action=ajoutLogement">Nouveau Logement</a></li>
+                    <?php else: ?>
+                        <li><a href="?controller=aide&action=aideController">Aides</a></li>
+                        <li><a href="?controller=pagelogement&action=pagelogementController">Locations</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    <?php endif; ?>
+
             </ul>
             <div class="navbar-right">
                 <?php 

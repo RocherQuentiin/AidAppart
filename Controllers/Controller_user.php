@@ -2,23 +2,27 @@
 session_start();
 
 class Controller_user extends Controller {
+
     public function action_default() {
         $this->action_user();
     }
 
+
     public function action_user() {
         $idpersonne = $_SESSION['idpersonne'];
 
-        // Récupérer le modèle
         $model = Model::getModel();
 
-        // Récupérer les informations de l'utilisateur
         $userInfo = $model->getdataById('Personne', $idpersonne);
-        // Récupérer les logements de l'utilisateur
         $logements = $model->getUserLogements($idpersonne);
+        $messages = $model->getMessagesByUserId($idpersonne);
+
+        foreach ($messages as &$message) {
+            $message['expediteur'] = $model->getUserInfoById($message['id_personne']);
+            $message['destinataire'] = $model->getUserInfoById($message['id_personne_destinataire']);
+        }
 
         if ($userInfo) {
-            // Si les informations de l'utilisateur sont trouvées, les passer à la vue
             $data = [
                 "idpersonne" => $userInfo['id'],
                 "nom" => $userInfo['nom'],
@@ -26,9 +30,10 @@ class Controller_user extends Controller {
                 "email" => $userInfo['email'],
                 "telephone" => $userInfo['telephone'],
                 "logements" => $logements,
+                "messages" => $messages,
             ];
         } else {
-            // Gérer le cas où l'utilisateur n'est pas trouvé
+            // Si l'utilisateur n'est pas trouvé
             $data = [
                 "erreur" => "Utilisateur non trouvé.",
             ];
@@ -39,36 +44,33 @@ class Controller_user extends Controller {
     }
 
     public function action_update() {
-        $idpersonne = $_SESSION['idpersonne']; // Récupérer l'ID de la session
+        $idpersonne = $_SESSION['idpersonne'];
 
         // Récupérer le modèle
         $model = Model::getModel();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Récupérer les données soumises dans le formulaire
             $email = $_POST['email'];
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
             $telephone = $_POST['telephone'];
 
-            // Mettre à jour les informations dans la base de données
             $model->updatePersonne($idpersonne, $email, $nom, $prenom, $telephone);
 
-            // Rediriger vers une page de confirmation ou afficher un message
             header("Location: ?controller=user&action=userController");
             exit();
         } else {
-            // Récupérer les informations actuelles de la personne à partir de la base de données
             $personne = $model->getPersonneById($idpersonne);
 
             // Passer les données à la vue
             $data = [
                 "personne" => $personne
             ];
-            $this->render("user", $data); // Afficher le formulaire avec les données actuelles
+            $this->render("user", $data);
         }
     }
 
+    // Désactivation de compte utilisateur
     public function action_desactivateUser() {
         $model = Model::getModel();
 
@@ -78,7 +80,6 @@ class Controller_user extends Controller {
             exit;
         }
 
-        // Utilisation de l'ID de l'utilisateur soit depuis la session, soit depuis l'URL
         $user_id = isset($_GET['userId']) ? $_GET['userId'] : $_SESSION['idpersonne'];
 
         if (isset($_POST['deactivate_account']) || isset($_GET['userId'])) {
@@ -94,6 +95,7 @@ class Controller_user extends Controller {
             exit;
         }
 
+        // Récupérer les informations de l'utilisateur pour afficher la confirmation de désactivation
         $user = $model->getdataById('Personne', $user_id);
         $data = [
             "user" => $user,
@@ -101,9 +103,9 @@ class Controller_user extends Controller {
         $this->render("user", $data);
     }
 
+    // Suppression d'un logement
     public function action_supprimerLogement() {
         if (!isset($_POST['logement_id'])) {
-            // Gérer le cas où l'ID du logement n'est pas fourni
             header('Location: ?controller=user&action=profile');
             exit;
         }
@@ -118,6 +120,27 @@ class Controller_user extends Controller {
         header('Location: ?controller=user&action=profile');
         exit;
     }
-    
+
+    // Affichage des conversations de l'utilisateur
+    public function action_afficherConversations() {
+        $model = Model::getModel();
+        $idUtilisateurActif = $_SESSION['idpersonne']; // Utilisateur connecté
+
+        try {
+            $userId = $idUtilisateurActif; // ID de l'utilisateur
+            $conversations = $this->messagerieModel->getMessagesByUserId($userId);
+
+            // Vérifier si des conversations sont trouvées
+            if ($conversations) {
+                $data = ['conversations' => $conversations];
+                // Passer les conversations à la vue
+                return $this->render('messages', $data);
+            } else {
+                echo "Aucune conversation trouvée pour cet utilisateur.";
+            }
+        } catch (Exception $e) {
+            echo 'Erreur : ' . $e->getMessage();
+        }
+    }
 }
 ?>
