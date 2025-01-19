@@ -572,48 +572,48 @@ class Model {
        return $query->fetchAll(PDO::FETCH_ASSOC);
    }
 
-public function getUserLogements($user_id) {
-    /*
-    * Récupérer tous les logements appartenant à un utilisateur spécifique
-    * @param int $user_id - L'identifiant de l'utilisateur
-    * @return array - Liste des logements du propriétaire
-    */
+    public function getUserLogements($user_id) {
+        /*
+        * Récupérer tous les logements appartenant à un utilisateur spécifique
+        * @param int $user_id - L'identifiant de l'utilisateur
+        * @return array - Liste des logements du propriétaire
+        */
 
-    // Préparer la requête SQL pour sélectionner les logements du propriétaire
-    $stmt = $this->db->prepare("SELECT * FROM Logement WHERE proprietaire = :user_id");
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->execute();
+        // Préparer la requête SQL pour sélectionner les logements du propriétaire
+        $stmt = $this->db->prepare("SELECT * FROM Logement WHERE proprietaire = :user_id");
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    // Récupérer les résultats sous forme de tableau associatif
-    $logements = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Récupérer les résultats sous forme de tableau associatif
+        $logements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    return $logements;
-}
-
-public function updatePersonne($id, $email, $nom, $prenom, $telephone) {
-    // Requête SQL pour mettre à jour les informations
-    $query = "UPDATE Personne
-              SET email = :email,
-                  nom = :nom,
-                  prénom = :prenom,
-                  telephone = :telephone
-              WHERE id = :id";
-
-    // Préparation de la requête
-    $stmt = $this->db->prepare($query);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
-    $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
-    $stmt->bindParam(':telephone', $telephone, PDO::PARAM_STR);
-
-    // Exécution de la requête et retour du résultat
-    if ($stmt->execute()) {
-        return true; // Succès
-    } else {
-        return false; // Échec
+        return $logements;
     }
-}
+
+    public function updatePersonne($id, $email, $nom, $prenom, $telephone) {
+        // Requête SQL pour mettre à jour les informations
+        $query = "UPDATE Personne
+                  SET email = :email,
+                      nom = :nom,
+                      prénom = :prenom,
+                      telephone = :telephone
+                  WHERE id = :id";
+
+        // Préparation de la requête
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+        $stmt->bindParam(':telephone', $telephone, PDO::PARAM_STR);
+
+        // Exécution de la requête et retour du résultat
+        if ($stmt->execute()) {
+            return true; // Succès
+        } else {
+            return false; // Échec
+        }
+    }
 
    public function InsertionDonnees($idUtilisateurActif, $MessageDestinataire, $MessageContenu)
    {
@@ -624,12 +624,13 @@ public function updatePersonne($id, $email, $nom, $prenom, $telephone) {
        $requeteInsertion->bindParam(':message', $MessageContenu);
        $requeteInsertion->execute();
    }
-   public function allUser()
-       {
+
+    public function allUser(){
            $all = $this->db->prepare('SELECT nom, id FROM Personne');
            $all->execute();
            return $all->fetchAll(PDO::FETCH_ASSOC);
-       }
+    }
+
     public function getUserIdByLogementId($id_logement) {
         $stmt = $this->db->prepare("SELECT proprietaire FROM Logement WHERE id = :id_logement");
         $stmt->bindParam(':id_logement', $id_logement, PDO::PARAM_INT);
@@ -639,6 +640,60 @@ public function updatePersonne($id, $email, $nom, $prenom, $telephone) {
         return $result ? $result['proprietaire'] : null;
     }
 
+    public function getUserInfoById($userId) {
+        try {
+            $stmt = $this->db->prepare("SELECT nom, prénom FROM Personne WHERE id = :userId");
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Récupérer l'utilisateur sous forme de tableau associatif
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo 'Erreur lors de la récupération des informations de l\'utilisateur : ' . $e->getMessage();
+            return null;
+        }
+    }
+
+   public function getMessagesByUserId($userId) {
+          try {
+              // Préparer la requête pour récupérer les messages envoyés et reçus par l'utilisateur
+              $stmt = $this->db->prepare("
+                  SELECT *
+                  FROM Messagerie
+                  WHERE id_personne = :userId
+                  OR id_personne_destinataire = :userId
+                  ORDER BY creer_a DESC
+              ");
+
+              // Lier l'ID utilisateur à la requête
+              $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+
+              // Exécuter la requête
+              $stmt->execute();
+
+              // Récupérer les résultats sous forme de tableau associatif
+              $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+              // Ajouter les informations des utilisateurs aux messages
+              foreach ($messages as &$message) {
+                  // Récupérer les informations sur l'expéditeur
+                  $senderInfo = $this->getUserInfoById($message['id_personne']);
+                  // Récupérer les informations sur le destinataire
+                  $receiverInfo = $this->getUserInfoById($message['id_personne_destinataire']);
+
+                  // Ajouter les informations de l'expéditeur et du destinataire aux messages
+                  $message['sender_name'] = $senderInfo ? $senderInfo['prénom'] . ' ' . $senderInfo['nom'] : 'Inconnu';
+                  $message['receiver_name'] = $receiverInfo ? $receiverInfo['prénom'] . ' ' . $receiverInfo['nom'] : 'Inconnu';
+              }
+
+              // Retourner les messages récupérés
+              return $messages;
+          } catch (Exception $e) {
+              // Gérer les erreurs et afficher un message d'erreur si nécessaire
+              echo 'Erreur lors de la récupération des messages : ' . $e->getMessage();
+              return null;
+          }
+      }
 
 }
 ?>
