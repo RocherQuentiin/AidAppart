@@ -71,20 +71,13 @@
   </section>
 
   <section class="contact">
-    <h2>Contactez le propriétaire</h2>
-    <form>
-      <label for="name">Nom:</label>
-      <input type="text" id="name" placeholder="Votre nom" required>
-      
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Votre email" required>
-      
-      <label for="message">Message:</label>
-      <textarea id="message" placeholder="Votre message au propriétaire" rows="5" required></textarea>
-      
-      <button type="submit">Envoyer</button>
-    </form>
-  </section>
+        <h2>Contactez le propriétaire</h2>
+        <form id="messageForm" action='?controller=messagerie&action=envoyerMessage&id=<?= $_GET['id'] ?>' method="post">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Votre message au propriétaire" rows="5" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
 
   <section class="contact">
     <h2>Donne ton avis</h2>

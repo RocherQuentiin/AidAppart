@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Controller_annonces extends Controller {
     
     public function action_default() {
@@ -9,8 +7,6 @@ class Controller_annonces extends Controller {
     }
 
     public function action_annonces() {
-        
-
         $model = Model::getModel();
         $annonce = $model->getAnnonceById($_GET["id"]);
 

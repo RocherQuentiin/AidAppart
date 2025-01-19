@@ -630,8 +630,15 @@ public function updatePersonne($id, $email, $nom, $prenom, $telephone) {
            $all->execute();
            return $all->fetchAll(PDO::FETCH_ASSOC);
        }
+    public function getUserIdByLogementId($id_logement) {
+        $stmt = $this->db->prepare("SELECT proprietaire FROM Logement WHERE id = :id_logement");
+        $stmt->bindParam(':id_logement', $id_logement, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-}
+        return $result ? $result['proprietaire'] : null;
+    }
+
 
 }
 ?>

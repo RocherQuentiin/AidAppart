@@ -14,24 +14,14 @@
         <div class="left-content">
             <div class="slider-container">
                 <form id="messageForm" action='?controller=messagerie&action=envoyerMessage' method="post">
-                    <label for="MessageId">Envoyer un message à :</label>
-                    <select id="MessageId" name="MessageDestinataire">
-                        <?php
-                        foreach ($utilisateurs as $utilisateur) {
-                            if ($utilisateur['id'] != $idUtilisateurActif) {
-                                echo "<option value='{$utilisateur['id']}'>{$utilisateur['nom']}</option>";
-                            }
-                        }
-                        ?>
-                    </select><br><br>
-                    <label for="Message">Taper le message :</label>
-                    <input type="text" id="Message" class="message" name="MessageContenu"><br>
-                    <!-- action='?controller=message&action=message' -->
-                    <button type="submit" >Envoyer</button>
-                    <input type="hidden" name="send" value="1">
-                    <p>
-                        <span id="messageReussie" style="display: none; color: green;">Le message a bien été envoyé</span>
-                    </p>
+                       <label for="LogementId">ID du Logement:</label>
+                       <input type="text" id="LogementId" name="LogementId" required>
+
+                       <label for="MessageContenu">Message:</label>
+                       <textarea id="MessageContenu" name="MessageContenu" required></textarea>
+
+                       <input type="hidden" name="send" value="1">
+                       <button type="submit">Envoyer</button>
                 </form>
                 <hr>
             </div>

@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 class Controller_messagerie extends Controller {
 
     public function action_default() {
@@ -13,7 +9,7 @@ class Controller_messagerie extends Controller {
 
     public function action_messagerie() {
         $m = Model::getModel();
-        $idUtilisateurActif = $_SESSION['idpersonne']; // Unifier les clés de session
+        $idUtilisateurActif = $_SESSION['idpersonne'];
         $TousLesReponses = $m->ReponseRecu($idUtilisateurActif);
         $data = [
             'utilisateurs' => $m->allUser(),
@@ -23,30 +19,33 @@ class Controller_messagerie extends Controller {
         $this->render("messagerie", $data);
     }
 
-    public function action_envoyerMessage() {
-        $model = Model::getModel();
-        $idUtilisateurActif = $_SESSION['idpersonne']; // Unifier les clés de session
+   function action_envoyerMessage() {
+           $model = Model::getModel();
+           $idUtilisateurActif = $_SESSION['idpersonne'];
+           $id_logement = $_GET['id']; // Récupère l'ID du logement depuis l'URL
 
-        if ($idUtilisateurActif !== null && isset($_POST['send']) && $_POST['send'] == 1) {
-            if (!empty($_POST['MessageDestinataire']) && !empty($_POST['MessageContenu'])) {
-                $messagerieDestinataire = intval($_POST['MessageDestinataire']);
-                $messagerieContenu = $_POST['MessageContenu'];
+           if ($idUtilisateurActif !== null && isset($_POST['message'])) {
+               $messagerieContenu = $_POST['message'];
 
+               // Récupérer l'ID du propriétaire du logement
+               $messagerieDestinataire = $model->getUserIdByLogementId($id_logement);
 
-                    try {
-                        $model->InsertionDonnees($idUtilisateurActif, $messagerieDestinataire, $messagerieContenu);
-                        echo "<span id='messageReussie' style='display: block; color: green;'>Le message a bien été envoyé</span>";
-                        // Option de redirection ou autre logique
-                        header('Location: ?controller=messagerie&action=messagerie');
-                        exit;
-                    } catch (Exception $e) {
-                        echo 'Erreur SQL : ', $e->getMessage();
-                    }
+               if ($messagerieDestinataire !== null) {
+                   try {
+                       $model->InsertionDonnees($idUtilisateurActif, $messagerieDestinataire, $messagerieContenu);
+                       header('Location: ?controller=annonces&action=annonces&id=' . $id_logement . '&success=1');
+                       exit;
+                   } catch (Exception $e) {
+                       echo 'Erreur SQL : ', $e->getMessage();
+                   }
+               } else {
+                   echo "Propriétaire du logement non trouvé.";
+               }
+           } else {
+               header('Location: ?controller=annonces&action=annonces&id=' . $id_logement . '&error=2');
+               exit;
+           }
+       }
 
-            } else {
-                echo "Tous les champs sont obligatoires.";
-            }
-        }
-    }
 }
 ?>
