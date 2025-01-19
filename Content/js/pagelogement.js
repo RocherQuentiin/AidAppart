@@ -98,5 +98,6 @@ function updateListings(data) {
         }
         listingsContainer.appendChild(listing);
     });   
+    
 }
 

@@ -9,12 +9,13 @@
 <body>
 <?php include 'Layout/view_header.php'; ?>
     <div class="search-selection">
-        <h1>Trouver un logement étudiant</h1>
+        <h1> Trouver un logement étudiant </h1>
+        <p> Plus de 200 logements étudiants dispos immédiatement en studio, résidence et coloc à Paris chez AidAppart, n°1 du logement </br>étudiant. À partir de 649€/mois. </p>
         <div class="search-bar">
-            <input type="text" placeholder="Type de logement">
+            <input id="search-type" type="text" placeholder="Type de logement">
             <input type="text" placeholder="Surface">
-            <input type="text" placeholder="Loyer max">
-            <button class="button">Rechercher</button>
+            <input id="search-loyer" type="text" placeholder="Loyer max">
+            <button id="recherche-log" class="button"><span class="button-text">Rechercher</span></button>
         </div>
     </div>
     <div class="row">
