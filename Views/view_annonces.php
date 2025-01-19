@@ -7,72 +7,57 @@
   <link rel="stylesheet" href="Content/css/css_annonce.css">
 </head>
 <body>
-  <?php include 'Layout/view_header.php'; ?>
-  <!-- Main Container -->
+
+  <?php include 'Layout/view_header.php'; 
+    if(isset($_SESSION['idpersonne'])) {?>
+    <script>
+        window.userId = <?php echo $_SESSION['idpersonne']; ?>;
+    </script>
+    <?php } ?>
+
   <div class="container-annonce">
-    <!-- Image Gallery -->
     <div class="image-gallery">
-      <img src="Content/Images/Annonce/room.jpg" alt="Room view">
-      <img src="Content/Images/Annonce/pool.jpg" alt="Pool view">
-      <img src="Content/Images/Annonce/lounge.jpg" alt="Lounge area">
-      <img src="Content/Images/Annonce/rooftop.jpg" alt="Rooftop area">
-      <button id="show-more" class="show-more">+ Show More</button>
+      <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
+      <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Pool view">
+      <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Lounge area">
+      <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Rooftop area">
+      <button id="show-more" class="show-more">+ Voir plus</button>
     </div>
 
-    <!-- Apartment Info Card -->
-    <aside class="details">
-      <h2>À partir de <strong>660€/mois</strong></h2>
-
-      <p>Charges comprises</p>
-      <p>Logements meublés de <strong>19m² à 19m²</strong></p>
-      <p>Éligible aux aides (APL, ALS): <strong>Oui</strong></p>
-      <p>Services inclus: <strong>Oui</strong></p>
-      <p>Charges comprises</p>
-      <p>Logements meublés de <strong>19m² à 19m²</strong></p>
-      <p>Éligible aux aides (APL, ALS): <strong>Oui</strong></p>
-      <p>Services inclus: <strong>Oui</strong></p>
-      
-      <button>Voir les chambres</button>
-    </aside>
+    <div id="image-modal" class="modal">
+      <span class="close">&times;</span>
+      <div class="modal-content">
+        <div class="modal-images">
+          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
+          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
+          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Pool view">
+          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Lounge area">
+          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Rooftop area">
+        </div>
+      </div>
+    </div>
   </div>
 
   <aside class="details-info">
-    <h2>À partir de <strong>660€/mois</strong></h2>
-
-    <p>Charges comprises</p>
-    <p>Logements meublés de <strong>19m² à 19m²</strong></p>
-    <p>Éligible aux aides (APL, ALS): <strong>Oui</strong></p>
-    <p>Services inclus: <strong>Oui</strong></p>
-    <p>Charges comprises</p>
-    <p>Logements meublés de <strong>19m² à 19m²</strong></p>
-    <p>Éligible aux aides (APL, ALS): <strong>Oui</strong></p>
-    <p>Services inclus: <strong>Oui</strong></p>
-    <button>Voir les chambres</button>
+    <h2>À partir de <strong><?php echo htmlspecialchars($data["annonces"]['loyer']); ?> € / mois </strong></h2>
+      <p><strong>Charges : </strong><?php echo htmlspecialchars($data["annonces"]['charges']); ?> € / mois</p>
+      <p><strong>Surface : </strong><?php echo htmlspecialchars($data["annonces"]['surface']); ?> m2 </p>
+      <p><strong>Adresse : </strong><?php echo htmlspecialchars($data["annonces"]['adresse']); ?></p>
+      <p><strong>Pièces : </strong><?php echo htmlspecialchars($data["annonces"]['nb_pieces']); ?> pièces </p>
+      <p><strong>Meublé : </strong><?php echo htmlspecialchars($data["annonces"]['est_meuble']); ?></p>
+      <p><strong>Accessible aux PMR : </strong><?php echo htmlspecialchars($data["annonces"]['est_accessible_PMR']); ?></p>
+      <p><strong>WIFI : </strong><?php echo htmlspecialchars($data["annonces"]['a_WIFI']); ?></p>
+      <p><strong>Parking : </strong><?php echo htmlspecialchars($data["annonces"]['a_parking']); ?></p></br>
+      <button id="show-more-ch" class="show-more-ch">Voir les chambres</button>
+      <button title="signaler" class="report-button " onclick="reportLogement(<?php echo $data["id_annonces"]; ?>)">Signaler</button>
   </aside>
 </div>
 
-  <!-- Additional Sections -->
   <section class="description">
     <h2>Description du logement</h2>
-    <p>Pour vos études optez pour notre résidence.</p>
-    <p>Séjourner chez Appart'City c'est retrouver le confort et le bien-être d'un chez-soi.</p>
-    <p>Pour vos études optez pour notre résidence ***
-
-      Séjourner chez Appart'City c'est retrouver le confort et le bien être d'un chez-soi, les services en plus !
-      
-      Appart'City vous propose
-      des studios tout équipés : espace cuisine avec frigo, plaques, micro-onde, cafetière/bouilloire et lave-vaisselle, ;TV, wifi, bureau et salle-de-bain privative.
-      
-      Retrouvez également sur place des prestations hôtelières et services qui vous faciliteront la
-      vie : petit-déjeuner, laverie, parking, piscine etc.
-      
-      De plus vous aurez a votre disposition une navette qui pourra vous emmenez a l'aéroport, dans le centre ville et ou le centre commercial sur demande.
-      
-      Attention ! Une taxe de séjour est appliquée pour chaque nuit passée dans la résidence !
-    </p>
+    <p><?php echo htmlspecialchars($data["annonces"]['description']); ?></p>
   </section>
 
-  <!-- Map Section -->
   <section class="location">
     <h2>Voir l'emplacement</h2>
     <iframe
@@ -86,20 +71,13 @@
   </section>
 
   <section class="contact">
-    <h2>Contactez le propriétaire</h2>
-    <form>
-      <label for="name">Nom:</label>
-      <input type="text" id="name" placeholder="Votre nom" required>
-      
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Votre email" required>
-      
-      <label for="message">Message:</label>
-      <textarea id="message" placeholder="Votre message au propriétaire" rows="5" required></textarea>
-      
-      <button type="submit">Envoyer</button>
-    </form>
-  </section>
+        <h2>Contactez le propriétaire</h2>
+        <form id="messageForm" action='?controller=annonces&action=envoyerMessage&id=<?= $_GET['id'] ?>' method="post">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Votre message au propriétaire" rows="5" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
 
   <section class="contact">
     <h2>Donne ton avis</h2>
@@ -111,9 +89,8 @@
     </form>
   </section>
 
-<?php
-require_once('Layout/footer.php');
-?>
+  <?php include 'Layout/footer.php'; ?>
+  <script src="Content/js/annonce.js"></script>
 </body>
 </html>
 

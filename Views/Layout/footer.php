@@ -22,8 +22,8 @@
         <a href=#><li>Blog</li></a>
         <a href=#><li>Actualités</li></a>
         <a href=#><li>Écoles et universités partenaires</li></a>
-        <a href=#><li>Mentions légales</li></a>
-        <a href=#><li>CGU</li></a>
+        <a href="?controller=mentionslégales"><li>Mentions légales</li></a>
+        <a href="?controller=cgu"><li>CGU</li></a>
         <a href=#><li>FAQ</li></a>
     </ul>
     <div class="partDroite">

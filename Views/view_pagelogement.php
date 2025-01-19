@@ -7,12 +7,7 @@
     <title>Liste des Logements</title>
 </head>
 <body>
-    <?php include 'Layout/view_header.php'; 
-    if(isset($_SESSION['idpersonne'])) {?>
-    <script>
-        window.userId = <?php echo $_SESSION['idpersonne']; ?>;
-    </script>
-    <?php } ?>
+<?php include 'Layout/view_header.php'; ?>
     <div class="search-selection">
         <h1>Trouver un logement étudiant</h1>
         <div class="search-bar">

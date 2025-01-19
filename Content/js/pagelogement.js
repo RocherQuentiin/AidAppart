@@ -77,57 +77,26 @@ function updateListings(data) {
     data.forEach(logement => {
         const listing = document.createElement('div');
         listing.classList.add('listing');
-        // <a href="?controller=annonces&action=annonces&id=${logement.id}">
+            // <a href="?controller=annonces">
         listing.innerHTML = `
-            <a href="?controller=annonces">
-                <img src="Content/Images/Proprio_${logement.proprietaire}/Logement_${logement.id}/image_vitrine.png" alt="Image du logement">
-                <p>Type: ${logement.type}</p>
-                <p>Loyer: ${logement.loyer} €</p>
-                <p>Charges: ${logement.charges} €</p>
-                <p>Adresse ID: ${logement.adresse}</p>
-                ${logement.est_meuble ? '<p>Meublé</p>' : ''}
-                ${logement.a_WIFI ? '<p>WiFi</p> ' : ''}
-                ${logement.est_accessible_PMR ? '<p>Accessible PMR</p>' : ''}
-                <p>Nombre de pièces: ${logement.nb_pieces}</p>
-                ${logement.a_parking ? '<p>Parking</p>' : ''}
-                <p>Description: ${logement.description}</p>
+             <a href="?controller=annonces&action=annonces&id=${logement.id}">
+	            <img src="${logement.signale ? 'Content/Images/report.jpg' : `Content/Images/Proprio_${logement.proprietaire}/Logement_${logement.id}/image_vitrine.png`}" alt="Image du logement">
+	            <p>Type: ${logement.type}</p>
+	            <p>Loyer: ${logement.loyer} €</p>
+	            <p>Charges: ${logement.charges} €</p>
+	            <p>Adresse : ${logement.adresse}</p>
+	            ${logement.est_meuble ? '<p>Meublé</p>' : ''}
+	            ${logement.a_WIFI ? '<p>WiFi</p> ' : ''}
+	            ${logement.est_accessible_PMR ? '<p>Accessible PMR</p>' : ''}
+	            <p>Nombre de pièces: ${logement.nb_pieces}</p>
+	            ${logement.a_parking ? '<p>Parking</p>' : ''}
+	            <p>Description: ${logement.description}</p>
             </a>
-                <button title="signaler" class="report-button " onclick="reportLogement(${logement.id})">
-                    <img src="Content/Images/report.jpg" alt="Signaler">
-                </button>
         `;
+        if (logement.signale) {
+            listing.style.border = '2px solid red';
+        }
         listingsContainer.appendChild(listing);
     });   
 }
 
-function reportLogement(logementId) {
-    const commentaire = prompt('Veuillez entrer un commentaire pour le signalement:');
-    // TODO : verifier que l'utiisateur est connecté
-    if (commentaire) {
-        const reportData = {
-            id_logement: logementId,
-            id_utilisateur: window.userId,
-            commentaire: commentaire
-        };
-
-        fetch('?controller=pagelogement&action=report', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(reportData)
-        })
-        .then(data => {
-            if (data.ok) {
-                alert('Logement signalé avec succès.');
-            } else {
-                alert('Erreur lors du signalement du logement.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // TODO : comprendre pourquoi ça enregistre dans la bd mais ne passe pas dans le then
-            alert('Erreur lors du signalement du logement.');
-        });
-    }
-}

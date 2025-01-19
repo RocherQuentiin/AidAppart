@@ -9,7 +9,7 @@
     <link rel="icon" href="Content/Images/logo.ico" type="image/x-icon">
 </head>
 <body>
-
+    
 <nav class="navbar">
     <div class="navbar-container">
         <!-- Logo -->
@@ -23,9 +23,20 @@
         <!-- Navbar Links -->
         <div class="navbar-menu" id="navbarMenu">
             <ul class="navbar-links">
-                <li><a href="?controller=aide&action=aideController">Aides</a></li>
-                <li><a href="?controller=pagelogement&action=pagelogementController">Locations</a></li>
-                <li><a href="#">FAQ</a></li>
+                <?php
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
+                    if (isset($_SESSION['idpersonne'])): ?>
+                        <li><a href="?controller=aide&action=aideController">Aides</a></li>
+                        <li><a href="?controller=pagelogement&action=pagelogementController">Locations</a></li>
+                        <li><a href="?controller=ajoutLogement&action=ajoutLogement">Nouveau Logement</a></li>
+                    <?php else: ?>
+                        <li><a href="?controller=aide&action=aideController">Aides</a></li>
+                        <li><a href="?controller=pagelogement&action=pagelogementController">Locations</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    <?php endif; ?>
+
             </ul>
             <div class="navbar-right">
                 <?php 
@@ -34,11 +45,13 @@
                 }
                 if (isset($_SESSION['prenom'])): ?>
                     <a href="?controller=deconnexion&action=deconnexionController" class="btn-account"><button class="button">Déconnexion</button></a>
+                    <a href="?controller=user&action=userController" class="icon-translate">
+                        <img src="Content/Images/Accueil/profile.png" alt="Traduire" title="Traduire">
                 <?php else: ?>
                     <a href="?controller=connexion&action=connexionController" class="btn-account"><button class="button">Connexion</button></a>
+                    <a href="?controller=connexion&action=connexionController" class="icon-translate">
+                        <img src="Content/Images/Accueil/profile.png" alt="Traduire" title="Traduire">
                 <?php endif; ?>
-                <a href="#" class="icon-translate">
-                    <img src="Content/Images/Accueil/globe.png" alt="Traduire" title="Traduire">
                 </a>
             </div>
         </div>
