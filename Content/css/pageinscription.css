@@ -97,13 +97,7 @@ form {
 
 
 
-
-
-
 /* Telephone */
-
-
-
 
 /*DEUXIEME menue déroulant*/
 
@@ -186,22 +180,6 @@ form {
     color: rgb(0, 0, 0); /* Reste la même couleur */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #nom,
 #prenom {
     padding: 12px 41px; /* Plus d'espace intérieur */
@@ -212,15 +190,6 @@ form {
     box-shadow: 0 4px 4px 0 #00000040;
     border: None;
 }
-
-
-
-
-
-
-
-
-
 
 /* Icônes dans les champs */
 .input-group {
@@ -250,10 +219,6 @@ select {
     cursor: pointer;
     z-index: 1; /* Assure que l'icône de l'œil soit au-dessus de l'input */
 }
-
-
-
-
 
 input[type="mail"],
 #password1,
@@ -298,8 +263,6 @@ p {
     
 }
 
-
-
 /* Pour les téléphones */
 
 @media (max-width: 768px) {
@@ -329,13 +292,6 @@ p {
         padding: 18px; /* Espacement réduit */
     }
 
-
- 
-    
-    
-    
-    
-    
     .ContenaireTelephone {
         margin-top: 15px;
     }
@@ -367,11 +323,6 @@ p {
         height: 6px; /* Spécifiez la hauteur souhaitée */
 
     }
-    
-    
-    
-    
-    
     
     /* Champs d'entrée généraux */
     input[type="mail"],
