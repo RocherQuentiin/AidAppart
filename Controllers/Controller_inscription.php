@@ -32,55 +32,63 @@ class Controller_inscription extends Controller {
             $mdp = $_POST['mdp'];
             $mdp_confirmation=$_POST["mdp_confirmation"];
 
+            $data = [
+                "status" => $status,
+                "nom" => $nom,
+                "prenom" => $prenom,
+                "telephone" => $telephone,
+                "email" => $email,
+            ];
+
             // Validation des champs obligatoires
             if (empty($nom) || empty($prenom) || empty($telephone) || empty($email) || empty($mdp)) {
-                $data = ["message" => "Tous les champs sont obligatoires."];
+                $data["message"] = "Tous les champs sont obligatoires.";
                 $this->render("inscription", $data);
                 exit;
             }
             
             // Vérification de la sécurité du mot de passe
             if (!preg_match('/[A-Z]/', $mdp)) { // Au moins une majuscule
-                $data = ["message" => "Le mot de passe doit contenir au moins une lettre majuscule."];
+                $data["message"] = "Le mot de passe doit contenir au moins une lettre majuscule.";
                 $this->render("inscription", $data);
                 exit;
             }
 
             if (strlen($mdp) < 8) { // Longueur minimale de 8 caractères
-                $data = ["message" => "Le mot de passe doit contenir au moins 8 caractères."];
+                $data["message"] = "Le mot de passe doit contenir au moins 8 caractères.";
                 $this->render("inscription", $data);
                 exit;
             }
             if (!preg_match('/[0-9]/', $mdp)) { // Au moins un chiffre
-                $data = ["message" => "Le mot de passe doit contenir au moins un chiffre."];
+                $data["message"] = "Le mot de passe doit contenir au moins un chiffre.";
                 $this->render("inscription", $data);
                 exit;
             }
 
             // Vérification de l'email
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $data = ["message" => "L'adresse email est invalide."];
+                $data["message"] = "L'adresse email est invalide.";
                 $this->render("inscription", $data);
                 exit;
             }
 
             // Vérification que les mots de passe soit identique
             if ($mdp_confirmation!=$mdp) {
-                $data = ["message"=> "Les deux mots de passe doivent être identique"];
+                $data["message"] = "Les deux mots de passe doivent être identiques.";
                 $this->render("inscription", $data);
                 exit;
             }
 
             // Vérification de l'email
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $data = ["message" => "L'adresse email est invalide."];
+                $data ["message"] = "L'adresse email est invalide.";
                 $this->render("inscription", $data);
                 exit;
             }
 
             // Téléphone
             if (strlen($telephone) != 9 && strlen($telephone) != 10) {
-                $data = ["message" => "Le numéro de téléphone doit contenir le bon nombre de chiffres."];
+                $data ["message"] = "Le numéro de téléphone doit contenir le bon nombre de chiffres.";
                 $this->render("inscription", $data);
                 exit;
             }
@@ -88,7 +96,7 @@ class Controller_inscription extends Controller {
             // Vérification de l'existence d'un utilisateur
             $UtilisateurExistant = $model->doublon($email, $telephone);
             if ($UtilisateurExistant) {
-                $data = ["message" => "Email ou téléphone déjà existant."];
+                $data ["message"] = "Email ou téléphone déjà existant.";
                 $this->render("inscription", $data);
                 exit;
             }

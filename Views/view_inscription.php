@@ -20,19 +20,19 @@ require_once('Layout/view_header.php');
 <form action="?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
         <button type="button" class="dropdown-btn" id="dropdownBtn">
-            Status  <span class="arrow"></span>
+            <?= isset($data['status']) ? htmlspecialchars($data['status']) : 'Status' ?> <span class="arrow"></span>
         </button>
         <ul class="dropdown-menu" id="dropdownMenu">
-            <li data-value="Etudiant">Étudiant </li>
-            <li data-value="Particuliers">Particuliers </li>
+            <li data-value="Etudiant" <?= (isset($data['status']) && $data['status'] === "Etudiant") ? 'class="active"' : '' ?>>Étudiant</li>
+            <li data-value="Particuliers" <?= (isset($data['status']) && $data['status'] === "Particuliers") ? 'class="active"' : '' ?>>Particuliers</li>
         </ul>
         <!-- Champ caché pour transmettre la valeur sélectionnée -->
-        <input type="hidden" id="status" name="status" value="">
+        <input type="hidden" id="status" name="status" value="<?= isset($data['status']) ? htmlspecialchars($data['status']) : '' ?>">
     </div>
 
     <br><br>
-    <input type="text" id="nom" name="nom" placeholder="Nom" required>
-    <input type="text" id="prenom" name="prenom" placeholder="Prénom"  required>
+    <input type="text" id="nom" name="nom" placeholder="Nom" value="<?= isset($data['nom']) ? htmlspecialchars($data['nom']) : '' ?>" required>
+    <input type="text" id="prenom" name="prenom" placeholder="Prénom" value="<?= isset($data['prenom']) ? htmlspecialchars($data['prenom']) : '' ?>" required>
     <br><br>
     <div class="ContenaireTelephone">
         <label for="pays-code"></label>
@@ -49,13 +49,13 @@ require_once('Layout/view_header.php');
                 <option value="+34">+34</option>
             </select>
             <div class="separator"></div><!-- Séparateur -->
-            <input type="tel" id="phone" name="phone" class="phone-number-input" placeholder="Numéro de téléphone" required>
+            <input type="tel" id="phone" name="phone" class="phone-number-input" placeholder="Numéro de téléphone" value="<?= isset($data['telephone']) ? htmlspecialchars($data['telephone']) : '' ?>" required>
         </div>
     </div>
     <br>
     <div class="input-group">
         <img src="Content/Images/email.png" alt="Email Icon" id="icon-mail" class="icon">
-        <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant"  >
+        <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant" value="<?= isset($data['email']) ? htmlspecialchars($data['email']) : '' ?>">
     </div>
     <br>
     <div class="input-group">
