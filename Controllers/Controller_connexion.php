@@ -20,6 +20,7 @@ class Controller_connexion extends Controller {
             session_start();
             $_SESSION['idpersonne'] = $idpersonne; 
             $_SESSION['prenom'] = $personne['prénom'];
+            $_SESSION['isAdmin'] = $model->hasRole($idpersonne, 'Admin');
             $data = ["erreur" => false]; 
 
             if ($model->hasRole($idpersonne, 'Admin')) {

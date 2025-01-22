@@ -42,7 +42,7 @@
                     session_start();
                 }
                 // Si l'utilisateur est un administrateur
-                if (isset($_SESSION['admin'])): ?>
+                if (isset($_SESSION['isAdmin'])): ?>
                     <a href="?controller=deconnexion&action=deconnexionController" class="btn-account">
                         <button class="button">Déconnexion</button>
                     </a>
