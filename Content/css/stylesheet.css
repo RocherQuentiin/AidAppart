@@ -101,27 +101,26 @@ body {
   }
 
 /* Responsiveness */
-@media (max-width: 1000px) {
+@media (max-width: 1054px) {
     .navbar-toggle {
         display: block;
     }
-.navbar-menu {
-    display:none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%; /* S'affiche juste en dessous de la navbar */
-    left: 0;
-    width: 100%;
-    background-color: #f9f9f9; /* Fond du menu déroulant */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Léger effet d'ombre */
-    padding: 10px 0;
-    border-radius: 5px;
-}
+    .navbar-menu {
+        display:none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* S'affiche juste en dessous de la navbar */
+        left: 0;
+        width: 100%;
+        background-color: #f9f9f9; /* Fond du menu déroulant */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Léger effet d'ombre */
+        padding: 10px 0;
+        border-radius: 5px;
+    }
 
-.navbar-menu.active {
-    display: flex; /* Affiche le menu lorsqu'il est actif */
-}
-
+    .navbar-menu.active {
+        display: flex; /* Affiche le menu lorsqu'il est actif */
+    }
 
     .navbar-links {
         flex-direction: column;
