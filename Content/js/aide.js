@@ -4,7 +4,7 @@
     function showNextGroup(nextGroupId) {
         const nextGroup = document.getElementById('group-' + nextGroupId);
         if (nextGroup) {
-            nextGroup.style.display = 'block'; // Afficher le groupe suivant
+            nextGroup.style.display = 'block'; 
         }
     }
 

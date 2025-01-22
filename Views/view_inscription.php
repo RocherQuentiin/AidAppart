@@ -16,7 +16,7 @@ require_once('Layout/view_header.php');
 <h1>
     Inscription
 </h1>
-
+<div class= "formulaire">
 <form action="?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
         <button type="button" class="dropdown-btn" id="dropdownBtn">
@@ -31,10 +31,10 @@ require_once('Layout/view_header.php');
     </div>
 
     <br><br>
-    <input type="text" id="nom" name="nom" placeholder="Nom">
-    <input type="text" id="prenom" name="prenom" placeholder="Prénom"  >
+    <input type="text" id="nom" name="nom" placeholder="Nom" required>
+    <input type="text" id="prenom" name="prenom" placeholder="Prénom"  required>
     <br><br>
-    <div class="form-section">
+    <div class="ContenaireTelephone">
         <label for="pays-code"></label>
         <div class="phone-input-container" id="phone-input-container">
             <select id="pays-code" name="pays-code" class="country-code-select"  >
@@ -49,7 +49,7 @@ require_once('Layout/view_header.php');
                 <option value="+34">+34</option>
             </select>
             <div class="separator"></div><!-- Séparateur -->
-            <input type="tel" id="phone" name="phone" class="phone-number-input" placeholder="Numéro de téléphone"  >
+            <input type="tel" id="phone" name="phone" class="phone-number-input" placeholder="Numéro de téléphone" required>
         </div>
     </div>
     <br>
@@ -57,20 +57,20 @@ require_once('Layout/view_header.php');
         <img src="Content/Images/email.png" alt="Email Icon" id="icon-mail" class="icon">
         <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant"  >
     </div>
-    <br><br>
+    <br>
     <div class="input-group">
         <img src="Content/Images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
         <input type="password" id="password1" name="mdp" placeholder="Votre mot de passe" >
         <img src="Content/Images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password1')">
     </div>
-    <br><br>
+    <br>
     <div class="input-group">
         <img src="Content/Images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
         <input type="password" id="password2" name="mdp_confirmation" placeholder="Confirmation">
         <img src="Content/Images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password2')">
     </div>
 
-    <br><br>
+    <br>
 
     <label>
         <div class="Donnee">
@@ -86,16 +86,17 @@ require_once('Layout/view_header.php');
         </div>
     </label>
     <br>
-    <div class="button-container">
-        <button class="button" type="submit">Je m'inscris</button>
-    </div>
+    <p>Cliquez <a href="https://www.dossierfacile.logement.gouv.fr" target="_blank">ici</a> pour constituer votre dossier locatif</p>
+    <br>
+    <button class="button" type="submit">Je m'inscris</button>
 
 </form>
+</div>
 </body>
 </html>
 <?php 
 require_once('Layout/footer.php');
-    if (isset($message)) {
-        afficherPopup($message);
-    } 
+if (isset($message)) {
+    afficherPopup($message);
+} 
 ?>

@@ -15,7 +15,7 @@ require_once('Layout/view_header.php');
             <h1>Les aides disponibles en fonction de vos critères</h1>
 
             <?php
-            // Mappage des options à des noms lisibles
+           
             $labels = [
                 'R1' => [
                     'option1' => 'Célibataire',
@@ -52,14 +52,14 @@ require_once('Layout/view_header.php');
                 ]
             ];
 
-            // Récupérer les critères envoyés par le formulaire (POST)
-            $statutMarital = isset($_POST['R1']) ? $_POST['R1'] : null;
-            $statutPro = isset($_POST['R2']) ? $_POST['R2'] : null;
-            $niveauEtudes = isset($_POST['R3']) ? $_POST['R3'] : null;
-            $typeLogement = isset($_POST['R4']) ? $_POST['R4'] : null;
-            $revenusOuBourse = isset($_POST['R5']) ? $_POST['R5'] : null;
 
-            // Afficher les critères choisis
+            $statutMarital = $_POST['R1'] ?? null;
+            $statutPro = $_POST['R2'] ?? null;
+            $niveauEtudes = $_POST['R3'] ?? null;
+            $typeLogement = $_POST['R4'] ?? null;
+            $revenusOuBourse = $_POST['R5'] ?? null;
+
+            
             echo "<div class='criteria'>";
             echo "<h2>Vos critères sélectionnés :</h2>";
             echo "<ul>";
@@ -71,48 +71,35 @@ require_once('Layout/view_header.php');
             echo "</ul>";
             echo "</div>";
 
-            // Liste complète des aides disponibles
+        
             $aides = [
-                // Aides par statut marital
                 ['nom' => 'APL (Aide personnalisée au logement)', 'statutMarital' => 'option1', 'statutPro' => null, 'niveauEtudes' => null, 'typeLogement' => null, 'revenusOuBourse' => null],
                 ['nom' => 'Allocation de soutien familial (ASF)', 'statutMarital' => 'option5', 'statutPro' => null, 'niveauEtudes' => null, 'typeLogement' => null, 'revenusOuBourse' => null],
-                
-                // Aides par statut professionnel
                 ['nom' => 'Bourse sur critères sociaux (CROUS)', 'statutMarital' => null, 'statutPro' => 'option1', 'niveauEtudes' => null, 'typeLogement' => null, 'revenusOuBourse' => 'option1'],
                 ['nom' => 'Aide Mobili-Jeune', 'statutMarital' => null, 'statutPro' => 'option2', 'niveauEtudes' => null, 'typeLogement' => null, 'revenusOuBourse' => null],
-
-                // Aides par niveau d’études
                 ['nom' => 'Bourse Erasmus+', 'statutMarital' => null, 'statutPro' => null, 'niveauEtudes' => 'option3', 'typeLogement' => null, 'revenusOuBourse' => null],
                 ['nom' => 'Contrats CIFRE', 'statutMarital' => null, 'statutPro' => null, 'niveauEtudes' => 'option5', 'typeLogement' => null, 'revenusOuBourse' => null],
-
-                // Aides par type de logement
                 ['nom' => 'Garantie Visale', 'statutMarital' => null, 'statutPro' => null, 'niveauEtudes' => null, 'typeLogement' => 'option2', 'revenusOuBourse' => null],
-
-                // Aides par revenus ou bourse
                 ['nom' => 'Fonds d’urgence des associations étudiantes', 'statutMarital' => null, 'statutPro' => null, 'niveauEtudes' => null, 'typeLogement' => null, 'revenusOuBourse' => 'option3'],
             ];
 
-            // Filtrer les aides en fonction des critères sélectionnés
-            $aidesDisponibles = [];
-            foreach ($aides as $aide) {
-                if (
-                    ($statutMarital == $aide['statutMarital'] || $statutMarital === null) &&
-                    ($statutPro == $aide['statutPro'] || $statutPro === null) &&
-                    ($niveauEtudes == $aide['niveauEtudes'] || $niveauEtudes === null) &&
-                    ($typeLogement == $aide['typeLogement'] || $typeLogement === null) &&
-                    ($revenusOuBourse == $aide['revenusOuBourse'] || $revenusOuBourse === null)
-                ) {
-                    $aidesDisponibles[] = $aide['nom'];
-                }
-            }
+        
+            $aidesDisponibles = array_filter($aides, function ($aide) use ($statutMarital, $statutPro, $niveauEtudes, $typeLogement, $revenusOuBourse) {
+                return 
+                    (!$aide['statutMarital'] || $aide['statutMarital'] === $statutMarital) &&
+                    (!$aide['statutPro'] || $aide['statutPro'] === $statutPro) &&
+                    (!$aide['niveauEtudes'] || $aide['niveauEtudes'] === $niveauEtudes) &&
+                    (!$aide['typeLogement'] || $aide['typeLogement'] === $typeLogement) &&
+                    (!$aide['revenusOuBourse'] || $aide['revenusOuBourse'] === $revenusOuBourse);
+            });
 
-            // Affichage des aides disponibles
+
             echo "<div class='aides-disponibles'>";
             if (count($aidesDisponibles) > 0) {
                 echo "<h2>Aides disponibles :</h2>";
                 echo '<ul>';
                 foreach ($aidesDisponibles as $aide) {
-                    echo '<li class="aide">' . $aide . '</li>';
+                    echo '<li class="aide">' . $aide['nom'] . '</li>';
                 }
                 echo '</ul>';
             } else {
