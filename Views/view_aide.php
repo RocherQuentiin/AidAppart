@@ -10,7 +10,6 @@ require_once('Layout/view_header.php');
     <script src="Content/js/aide.js"></script>
 </head>
 <body>
-    <!-- Contenu principal -->
     <main>
         <section class="eligibility">
             <h1>Je vérifie mes éligibilités aux aides</h1>
@@ -27,7 +26,7 @@ require_once('Layout/view_header.php');
                     </select>
                 </div>
 
-                <!-- Groupe: Statut professionnel (initialement caché) -->
+                <!-- Groupe: Statut professionnel -->
                 <div class="form-group" id="group-2" style="display:none;">
                     <label for="R2">Statut professionnel</label>
                     <select id="R2" name="R2" onchange="showNextGroup(3)">
@@ -39,7 +38,7 @@ require_once('Layout/view_header.php');
                     </select>
                 </div>
 
-                <!-- Groupe: Niveau d'études (initialement caché) -->
+                <!-- Groupe: Niveau d'études -->
                 <div class="form-group" id="group-3" style="display:none;">
                     <label for="R3">Niveau d'études</label>
                     <select id="R3" name="R3" onchange="showNextGroup(4)">
@@ -51,7 +50,7 @@ require_once('Layout/view_header.php');
                     </select>
                 </div>
 
-                <!-- Groupe: Type de logement (initialement caché) -->
+                <!-- Groupe: Type de logement -->
                 <div class="form-group" id="group-4" style="display:none;">
                     <label for="R4">Type de logement</label>
                     <select id="R4" name="R4" onchange="showNextGroup(5)">
@@ -63,7 +62,7 @@ require_once('Layout/view_header.php');
                     </select>
                 </div>
 
-                <!-- Groupe: Revenus ou bourse (initialement caché) -->
+                <!-- Groupe: Revenus ou bourse -->
                 <div class="form-group" id="group-5" style="display:none;">
                     <label for="R5">Revenus ou bourse</label>
                     <select id="R5" name="R5">
