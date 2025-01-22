@@ -49,7 +49,11 @@ class Controller_ajoutLogement extends Controller {
 
                 foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
                     if (!empty($tmp_name)) {
-                        $file_name = "image_vitrine.png";
+                        if ($key == 0) {
+                            $file_name = "image_vitrine.png";
+                        } else {
+                            $file_name = "image_" . ($key + 1) . ".png";
+                        }
                         $file_path = $directory . "/" . $file_name;
 
                         if (!move_uploaded_file($tmp_name, $file_path)) {

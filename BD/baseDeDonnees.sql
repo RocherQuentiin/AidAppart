@@ -179,3 +179,6 @@ ALTER TABLE Personne_Role ADD CONSTRAINT fk_personne_role_personne FOREIGN KEY (
 ALTER TABLE Personne_Role ADD CONSTRAINT fk_personne_role_role FOREIGN KEY (id_role) REFERENCES Role(id) ON DELETE CASCADE;
 
 ALTER TABLE Personne ADD COLUMN etat ENUM("actif", "inactif", "bloqué") DEFAULT "inactif";
+
+INSERT INTO `Personne` (`id`, `nom`, `prénom`, `email`, `actif`, `telephone`, `mdp`, `creer_a`, `etat`) VALUES (NULL, 'amdin', 'admin', 'admin@nova.fr', '1', '1234', '$2y$10$JYNpn92Y77y.v8aX2mm1New3SCfnG8vXsD0A71BRCps.ax4frXAUq', '2024-12-19', 'actif');
+INSERT INTO `Personne_Role` (`id`, `id_personne`, `id_role`) VALUES (NULL, '1', '1')

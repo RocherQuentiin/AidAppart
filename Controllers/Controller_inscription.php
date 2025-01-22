@@ -38,6 +38,24 @@ class Controller_inscription extends Controller {
                 $this->render("inscription", $data);
                 exit;
             }
+            
+            // Vérification de la sécurité du mot de passe
+            if (!preg_match('/[A-Z]/', $mdp)) { // Au moins une majuscule
+                $data = ["message" => "Le mot de passe doit contenir au moins une lettre majuscule."];
+                $this->render("inscription", $data);
+                exit;
+            }
+
+            if (strlen($mdp) < 8) { // Longueur minimale de 8 caractères
+                $data = ["message" => "Le mot de passe doit contenir au moins 8 caractères."];
+                $this->render("inscription", $data);
+                exit;
+            }
+            if (!preg_match('/[0-9]/', $mdp)) { // Au moins un chiffre
+                $data = ["message" => "Le mot de passe doit contenir au moins un chiffre."];
+                $this->render("inscription", $data);
+                exit;
+            }
 
             // Vérification de l'email
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -49,6 +67,20 @@ class Controller_inscription extends Controller {
             // Vérification que les mots de passe soit identique
             if ($mdp_confirmation!=$mdp) {
                 $data = ["message"=> "Les deux mots de passe doivent être identique"];
+                $this->render("inscription", $data);
+                exit;
+            }
+
+            // Vérification de l'email
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $data = ["message" => "L'adresse email est invalide."];
+                $this->render("inscription", $data);
+                exit;
+            }
+
+            // Téléphone
+            if (strlen($telephone) != 9 && strlen($telephone) != 10) {
+                $data = ["message" => "Le numéro de téléphone doit contenir le bon nombre de chiffres."];
                 $this->render("inscription", $data);
                 exit;
             }

@@ -17,8 +17,8 @@ class Controller_annonces extends Controller {
             $annonce['a_WIFI'] = $annonce['a_WIFI'] ? 'Oui' : 'Non';
             $annonce = $this->get_logements_adresse([$annonce])[0];
             $data = ["erreur" => false, 
-                 "annonces" => $annonce,
-                 "id_annonces" => $_GET["id"]];
+                    "annonces" => $annonce,
+                    "id_annonces" => $_GET["id"]];
 
             $this->render("annonces", $data);
         } else {

@@ -54,32 +54,28 @@
     <h2>Mes Logements</h2>
 
     <!-- Liste des logements -->
-    <ul>
-        <?php if (!empty($logements)): ?>
-            <?php foreach ($logements as $logement): ?>
-                <li>
-                    <strong><?= htmlspecialchars($logement['type']); ?></strong> -
-                    <?= htmlspecialchars($logement['surface']); ?> m² -
-                    <?= htmlspecialchars($logement['charges']); ?> $ -
-                    <?= htmlspecialchars($logement['proprietaire']); ?> $ -
-                    <?= htmlspecialchars($logement['loyer']); ?> $ -
-                    <?= htmlspecialchars($logement['creer_a']); ?> -
-                    <?= htmlspecialchars($logement['adresse']); ?> -
-                    <?= htmlspecialchars($logement['est_meuble']); ?> -
-                    <?= htmlspecialchars($logement['est_accessible_PMR']); ?> -
-                    <?= htmlspecialchars($logement['nb_pieces']); ?> -
-                    <?= htmlspecialchars($logement['a_parking']); ?> -
-                    <?= htmlspecialchars($logement['description']); ?>
-                    <form method="POST" action="?controller=user&action=supprimerLogement">
-                        <input type="hidden" name="logement_id" value="<?= htmlspecialchars($logement['id']); ?>">
-                        <button type="submit" name="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce logement ?');">Supprimer le logement</button>
-                    </form>
-                </li>
+        <div class="listings">
+        <?php if (!empty($logements)):
+            foreach ($logements as $logement): ?>
+            <div class="listing">
+                <a href="?controller=annonces&action=annonces&id=<?= htmlspecialchars($logement['id']); ?>">
+                    <img src="Content/Images/Proprio_<?= htmlspecialchars($logement['proprietaire']); ?>/Logement_<?= htmlspecialchars($logement['id']); ?>/image_vitrine.png" alt="Image du logement">
+                    <p>Type: <?= htmlspecialchars($logement['type']); ?></p>
+                    <p>Loyer: <?= htmlspecialchars($logement['loyer']); ?> €</p>
+                    <p>Charges: <?= htmlspecialchars($logement['charges']); ?> €</p>
+                    <p>Adresse: <?= htmlspecialchars($logement['adresse']); ?></p>
+                    <?= $logement['est_meuble'] ? '<p>Meublé</p>' : '' ?>
+                </a>
+                <form method="POST" action="?controller=user&action=supprimerLogement">
+                    <input type="hidden" name="logement_id" value="<?= htmlspecialchars($logement['id']); ?>">
+                    <button type="submit" name="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce logement ?');">Supprimer le logement</button>
+                </form>
+            </div>
             <?php endforeach; ?>
         <?php else: ?>
             <p>Aucun logement créé.</p>
         <?php endif; ?>
-    </ul>
+        </div>
 
     <h2>Mes Conversations</h2>
 

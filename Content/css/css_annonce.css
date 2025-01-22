@@ -81,11 +81,11 @@ flex: 1;
 background-color: white;
 padding: 20px;
 border-radius: 10px;
-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 width: 380px;
 margin-left: 20px; 
 box-sizing: border-box;
-height: 500px;
+height: 550px;
 }
 
 .details h2 {
@@ -120,7 +120,7 @@ flex: 1;
 background-color: white;
 padding: 20px;
 border-radius: 10px;
-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 width: 380px;
 margin-left: 20px; 
 box-sizing: border-box;
@@ -317,7 +317,6 @@ flex: 1;
 background-color: white;
 padding: 20px;
 border-radius: 10px;
-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 width: 94%;
 box-sizing: border-box;
 height: 600px;
@@ -325,18 +324,7 @@ height: 600px;
 
 
 .details-info {
-position: absolute;
-margin-top: 1240px;
-top: 7%;
-left: 0%;
-flex: 1; 
-background-color: white;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-width: 94%;
-box-sizing: border-box;
-height: 600px;
+height: 0px;
 
 }
 
@@ -350,7 +338,7 @@ width: 90%;
 }
 
 .description{
-margin-top: 1260px;
+margin-top: 635px;
 }
 
 .description, .contact, .location {
