@@ -43,7 +43,9 @@ require_once('Layout/view_header.php');?>
             <?php foreach ($logements as $logement): ?>
                 <div class="box">
                     <img src="<?php echo 'Content/Images/Accueil/' . $logement['type'] . '.jpeg'; ?>" alt="<?php echo htmlspecialchars($logement['type']); ?>">
-                    <h3><?php echo htmlspecialchars($logement["type"]); ?></h3>
+                    <a href="?controller=pagelogement&action=pagelogement" class="icon-translate">
+                        <h3><?php echo htmlspecialchars($logement["type"]); ?></h3>
+                    </a>
                 </div>
             <?php endforeach; ?>
 
@@ -53,7 +55,9 @@ require_once('Layout/view_header.php');?>
             <?php foreach ($villes as $ville): ?>
                 <div class=box>
                     <img src="<?php echo 'Content/Images/Accueil/' . $ville['nom_ville'] . '.jpeg'; ?>" alt="<?php echo htmlspecialchars($ville['nom_ville']); ?>">
-                    <h3><?php echo $ville['nom_ville']; ?></h3>
+                    <a href="?controller=pagelogement&action=pagelogement" class="icon-translate">
+                        <h3><?php echo $ville['nom_ville']; ?></h3>
+                    </a>
                 </div>
             <?php endforeach;?>
         </div>
