@@ -82,7 +82,7 @@ class Controller_admin extends Controller {
     public function action_delete_logement() {
         $model = Model::getModel();
         $data = json_decode(file_get_contents('php://input'), true);
-        $model->deleteById("logement", $data['id']);
+        $model->deleteById("Logement", $data['id']);
     }
 
     public function action_get_user() {
