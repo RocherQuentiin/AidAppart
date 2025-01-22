@@ -38,8 +38,6 @@ Cette séparation en trois composants permet de rendre le code plus modulaire et
 
 
 ## Structure du Répertoire
-Voici la structure des répertoires du projet :
-
 ```
 AidAppart/
 ├── BD/
@@ -61,17 +59,22 @@ AidAppart/
 │   │   ├── admin.js
 │   │   ├── pageinscription_connexion.js
 │   │   ├── pagelogement.js
+│   │   ├── user.js
 ├── Controllers/
 │   ├── Controller.php
 │   ├── Controller_accueil.php
 │   ├── Controller_admin.php
 │   ├── Controller_aide.php
 │   ├── Controller_ajoutLogement.php
+│   ├── Controller_changement_mdp.php
+│   ├── Controller_cgu.php
 │   ├── Controller_connexion.php
 │   ├── Controller_deconnexion.php
 │   ├── Controller_inscription.php
 │   ├── Controller_mdp_oublie.php
+│   ├── Controller_mentionslégales.php
 │   ├── Controller_pagelogement.php
+│   ├── Controller_user.php
 ├── Models/
 │   ├── Model.php
 ├── Utils/
@@ -90,10 +93,12 @@ AidAppart/
 │   ├── view_aide.php
 │   ├── view_ajoutLogement.php
 │   ├── view_annonces.php
+│   ├── view_changement_mdp.php
 │   ├── view_connexion.php
 │   ├── view_inscription.php
 │   ├── view_mdp_oublie.php
 │   ├── view_pagelogement.php
+│   ├── view_user.php
 ├── docker/
 │   ├── nginx.conf
 ├── index.php
@@ -123,11 +128,15 @@ Ce répertoire contient les contrôleurs qui gèrent les différentes actions de
 - `Controller_admin.php` : Gère les actions de l'interface d'administration.
 - `Controller_aide.php` : Gère les actions de la page d'aide.
 - `Controller_ajoutLogement.php` : Gère les actions pour ajouter un logement.
+- `Controller_changement_mdp.php` : Gère les actions de changement de mot de passe.
+- `Controller_cgu.php` : Gère les actions de la page des conditions générales d'utilisation.
 - `Controller_connexion.php` : Gère les actions de connexion.
 - `Controller_deconnexion.php` : Gère les actions de déconnexion.
 - `Controller_inscription.php` : Gère les actions d'inscription.
 - `Controller_mdp_oublie.php` : Gère les actions de récupération de mot de passe.
+- `Controller_mentionslégales.php` : Gère les actions de la page des mentions légales.
 - `Controller_pagelogement.php` : Gère les actions de la page de recherche de logements.
+- `Controller_user.php` : Gère les actions liées aux utilisateurs.
 
 ### 4. Models
 Ce répertoire contient les modèles qui interagissent avec la base de données.
@@ -150,10 +159,12 @@ Ce répertoire contient les vues qui sont affichées à l'utilisateur.
 - `view_aide.php` : Vue de la page d'aide.
 - `view_ajoutLogement.php` : Vue pour ajouter un logement.
 - `view_annonces.php` : Vue des annonces de logements.
+- `view_changement_mdp.php` : Vue de la page de changement de mot de passe.
 - `view_connexion.php` : Vue de la page de connexion.
 - `view_inscription.php` : Vue de la page d'inscription.
 - `view_mdp_oublie.php` : Vue de la page de récupération de mot de passe.
 - `view_pagelogement.php` : Vue de la page de recherche de logements.
+- `view_user.php` : Vue du profil utilisateur.
 
 ### 7. docker
 Ce répertoire contient les fichiers de configuration pour Docker.
