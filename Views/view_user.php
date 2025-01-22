@@ -66,7 +66,7 @@
                     <p>Adresse: <?= htmlspecialchars($logement['adresse']); ?></p>
                     <?= $logement['est_meuble'] ? '<p>Meublé</p>' : '' ?>
                 </a>
-                <form method="POST" action="?controller=user&action=supprimerLogement">
+                <form class="supp_logement" method="POST" action="?controller=user&action=supprimerLogement">
                     <input type="hidden" name="logement_id" value="<?= htmlspecialchars($logement['id']); ?>">
                     <button type="submit" name="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce logement ?');">Supprimer le logement</button>
                 </form>
