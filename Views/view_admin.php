@@ -87,12 +87,10 @@ require_once('Layout/view_header.php');?>
                 echo '<th>Actions</th>';
                 echo '</tr>';
                 foreach ($data['allLogements'] as $logement) {
-                    echo "<tr>";
-                    echo "<div onclick=\"window.location.href='?controller=annonces&action=annonces&id={$logement['id']}'\" style='cursor:pointer;'>";
+                    echo "<tr onclick=\"window.location.href='?controller=annonces&action=annonces&id={$logement['id']}'\" style='cursor:pointer;'>";
                     echo "<td>{$logement['id']}</td>";
                     echo "<td>{$logement['description']}</td>";
                     echo "<td>{$logement['creer_a']}</td>";
-                    echo "</div>";
                     echo "<td>
                             <button class='delete button' id='delete_user' onclick='deleteLogement({$logement['id']})'>
                                 <img src='Content/Images/Poubelle.png' alt='Supprimer'>
