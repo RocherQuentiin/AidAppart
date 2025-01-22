@@ -80,7 +80,7 @@ function updateListings(data) {
             // <a href="?controller=annonces">
         listing.innerHTML = `
              <a href="?controller=annonces&action=annonces&id=${logement.id}">
-	            <img src="${logement.signale ? 'Content/Images/report.jpg' : `Content/Images/Proprio_${logement.proprietaire}/Logement_${logement.id}/image_vitrine.png`}" alt="Image du logement">
+                <img src="Content/Images/Proprio_${logement.proprietaire}/Logement_${logement.id}/image_vitrine.png" alt="Image du logement">
 	            <p>Type: ${logement.type}</p>
 	            <p>Loyer: ${logement.loyer} €</p>
 	            <p>Charges: ${logement.charges} €</p>
