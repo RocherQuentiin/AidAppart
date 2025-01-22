@@ -72,3 +72,9 @@ input[type="email"]:focus {
     justify-content: center;
     align-items: center;
 }
+
+.conversation-item{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
