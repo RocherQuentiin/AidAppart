@@ -74,7 +74,7 @@ class Model {
         */
         try {
             $hashedMdp = password_hash($mdp, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO Personne (nom, prénom, email, actif, telephone, mdp) VALUES (:nom, :prenom, :email, :actif, :telephone, :mdp)";
+            $sql = "INSERT INTO Personne (nom, prenom, email, actif, telephone, mdp) VALUES (:nom, :prenom, :email, :actif, :telephone, :mdp)";
             $stmt = $this->db->prepare($sql);
             return $stmt->execute([
                 'nom' => $nom,
