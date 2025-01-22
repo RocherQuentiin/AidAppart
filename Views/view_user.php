@@ -64,7 +64,6 @@
                     <p>Loyer: <?= htmlspecialchars($logement['loyer']); ?> €</p>
                     <p>Charges: <?= htmlspecialchars($logement['charges']); ?> €</p>
                     <p>Adresse: <?= htmlspecialchars($logement['adresse']); ?></p>
-                    <?= $logement['est_meuble'] ? '<p>Meublé</p>' : '' ?>
                 </a>
                 <form class="supp_logement" method="POST" action="?controller=user&action=supprimerLogement">
                     <input type="hidden" name="logement_id" value="<?= htmlspecialchars($logement['id']); ?>">

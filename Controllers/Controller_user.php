@@ -14,7 +14,7 @@ class Controller_user extends Controller {
         $model = Model::getModel();
 
         $userInfo = $model->getdataById('Personne', $idpersonne);
-        $logements = $model->getUserLogements($idpersonne);
+        $logements = $this->get_logements_adresse($model->getUserLogements($idpersonne));
         $messages = $model->getMessagesByUserId($idpersonne);
 
         foreach ($messages as &$message) {
