@@ -3,21 +3,32 @@
 body {
     font-family: sans-serif;
     background:linear-gradient(180deg, rgba(171, 201, 89, 0.5) 23.5%, rgba(255, 255, 255, 0.5) 100%);
-    height: 100vh; /* Pour gérer le positionnement des éléments */
+    height: 100%; /* Pour gérer le positionnement des éléments */
     flex-direction: column;
     align-items: center;
 }
 h1 {
+    display: block;
     color: #23435c; /* Texte bleu */
     padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
+
 form {
-    border: none; /* Suppression des contours */
-    margin-left: 35%;
+    width:405px;
+    margin: 0 auto; /* Centre le formulaire horizontalement */
+}
+
+.formulaire{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
-/* Conteneur principal du menu déroulant */
+/* Conteneur principal du PREMIER menu déroulant */
 .dropdown {
     position: relative; /* Permet de positionner le menu déroulant par rapport à ce conteneur */
     display: inline-block; /* Affiche le conteneur en ligne avec d'autres éléments */
@@ -86,21 +97,22 @@ form {
 
 
 
-
-
-
 /* Telephone */
+
+/*DEUXIEME menue déroulant*/
+
 
 /* Conteneur principal */
 .phone-input-container {
     display: flex;
     align-items: center;
+    
+    padding : 0px 0 0 0;
 
     background-color: #fff; /* Fond blanc */
     border: 2px solid transparent; /* Bordure fine, transparente par défaut */
     border-radius: 10px;
     box-shadow: 0 4px 4px 0 #00000040;
-
     font-style: normal;
     font-weight: 900;
     font-size: 16px;
@@ -119,7 +131,9 @@ form {
 }
 
 
-/* Menu déroulant (select) */
+/* menu déroulant */
+
+
 .country-code-select {
     border: none;
     outline: none;
@@ -134,11 +148,11 @@ form {
 }
 
 /* Séparateur vertical entre le menu déroulant et le champ de saisie */
-.phone-input-container .separator {
+.separator {
     content: '';
     display: inline-block; /* Assure que la ligne soit visible */
     width: 2px; /* Largeur de la ligne */
-    height: 40px; /* Hauteur de la ligne (ajustable) */
+    height: 44px; /* Hauteur de la ligne (ajustable) */
     background-color: #070606; /* Couleur de la ligne */
     margin: 0 6px; /* Ajoute de l'espace autour de la ligne */
 }
@@ -147,6 +161,7 @@ form {
 /* Champ de saisie téléphone (normal, sans focus) */
 .phone-number-input {
     border: none;
+    border-radius: 10px; /* Coins carrés */
     outline: none;
     padding: 6px 0;
     font-style: normal;
@@ -165,30 +180,16 @@ form {
     color: rgb(0, 0, 0); /* Reste la même couleur */
 }
 
-
-
-
-
-
 #nom,
 #prenom {
-    padding: 12px 40px; /* Plus d'espace intérieur */
+    padding: 12px 41px; /* Plus d'espace intérieur */
     width: 117px;
     height: 20px;
-    background-color: #f5f5f5;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 4px 0 #00000040;
+    border: None;
 }
-
-
-
-
-
-
-
-
-
 
 /* Icônes dans les champs */
 .input-group {
@@ -219,10 +220,6 @@ select {
     z-index: 1; /* Assure que l'icône de l'œil soit au-dessus de l'input */
 }
 
-
-
-
-
 input[type="mail"],
 #password1,
 #password2,
@@ -243,22 +240,28 @@ select{
     align-items: center; /* Assure que la case à cocher et le texte sont alignés verticalement */
 }
 
-/* Ajuster la position de la case à cocher */
+
+
+/* Style de la case à cocher */
 input[type="checkbox"] {
+    margin: 0 10px 0 0; /* Supprime la marge par défaut de la case à cocher */
     box-shadow: none; /* Retire toute ombre portée */
-    margin-left: -100px; /* S'assure qu'il n'y a pas de marge supplémentaire à gauche */
+    width: 20px; /* Ajuste la taille de la case si nécessaire */
+    height: 20px; /* Ajuste la hauteur */
 }
 
+/* Texte à côté de la case à cocher */
 p {
-    margin: 0 50% 0 -10%; /* Définit les marges */
-}
-
-.button-container {
-    display: flex; /* Utilisation de Flexbox si nécessaire */
-    margin-left: 15%;
+    margin: 0; /* Marges correctement spécifiées */
 }
 
 
+.button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
 
 /* Pour les téléphones */
 
@@ -281,47 +284,46 @@ p {
         margin: 0 auto; /* Centre le formulaire */
         width: 90%; /* Largeur relative pour s'adapter à l'écran */
     }
-
+    
+    
     /* Bouton dropdown */
     .dropdown-btn {
-        width: 100%; /* Largeur complète sur mobile */
-        padding: 10px 15px; /* Espacement réduit pour éviter l'effet "zoomer" */
-        font-size: 14px; /* Taille ajustée */
+        width: 110%;
+        padding: 18px; /* Espacement réduit */
     }
 
-    /*  */
-    .dropdown-menu {
-        width: 100%; /* S'étend à la largeur du bouton */
+    .ContenaireTelephone {
+        margin-top: 15px;
     }
-
-
-
+    
     /* Conteneur principal téléphone */
     .phone-input-container {
-        width: 105%; /* S'étend à la largeur de l'écran */
-        margin-bottom: 10px; /* Ajoute de l'espace entre les champs */
+        width: 100% ;
+        margin-top: -10px;
+        height: 35px; /* Spécifiez la hauteur souhaitée */
     }
 
-    .country-code-select {
-        padding: 5px 0 0 5px;
+
+    .separator {
+        height: 100%; /* Hauteur de la ligne (ajustable) */
+        position: relative; /* Assurez-vous qu'il ait une position définie */
+        background-color: black; /* Assurez-vous que le fond est visible */
     }
 
-    .phone-input-container .separator {
-        width: 1px; /* Largeur de la ligne */
-        height: 30px; /* Hauteur de la ligne (ajustable) */
-    }
-
-    /* Champ de saisie téléphone */
-    .phone-number-input {
-        width: 30%; /* Largeur complète */
-        padding: 1px; /* Espacement réduit pour éviter de paraître trop grand */
-    }
 
     /* Menu déroulant du code pays */
     .country-code-select {
-        font-size: 12px; /* Réduction de la taille du texte */
+        font-size: 14px; /* Taille lisible pour mobile */
+        padding: 5px 8px; /* Réduction de l'espace intérieur */
+        margin: 0; /* Supprimez toute marge inutile */
     }
+    
+    .phone-number-input{
+        width: 100%;
+        height: 6px; /* Spécifiez la hauteur souhaitée */
 
+    }
+    
     /* Champs d'entrée généraux */
     input[type="mail"],
     input[type="password"],
@@ -330,23 +332,31 @@ p {
     #nom,
     #prenom,
     select {
-        width: calc(100% - 20px); /* Ajustement dynamique pour inclure des marges */
+        border: None;
+        width: calc(100% - 30px); /* Ajustement dynamique pour inclure des marges */
         padding: 8px 18px; /* Espacement réduit */
         font-size: 14px; /* Texte ajusté pour éviter un effet trop zoomé */
-        margin-bottom: 10px; /* Ajoute de l'espace entre les champs */
+        
+    }
+    
+    #nom,
+    select{
+        margin-bottom: 25px; /* Ajoute de l'espace entre les champs */
     }
 
+    #prenom{
+        margin-bottom: -25px;
+    }
+    
+    
     /* Réduction de la taille des icônes */
     .input-group .icon {
         width: 5px; /* Réduisez la largeur des icônes */
-        top: 40%;
+        top: 50%;
     }
 
-    /* Ajustement pour l'icône de l'œil */
-    .input-group #eye-toggle {
-        left: 250px; /* Ajustez la position pour s'adapter à la nouvelle taille */
-        width: 15px; /* Même réduction que les autres icônes */
-        height: auto; /* Maintient le ratio d'aspect */
+    .input-group #eye-toggle{
+        left: 95%;
     }
 
     /* Ajustement pour le cadenas et les autres icônes */
@@ -364,7 +374,6 @@ p {
     .button-container {
         flex-direction: column; /* Les boutons s'empilent verticalement */
         align-items: center;
-        margin: 10px 0; /* Réduction des marges */
     }
     /* Cases à cocher */
     input[type="checkbox"] {
