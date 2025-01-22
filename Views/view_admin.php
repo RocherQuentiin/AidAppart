@@ -87,7 +87,7 @@ require_once('Layout/view_header.php');?>
                 echo '<th>Actions</th>';
                 echo '</tr>';
                 foreach ($data['allLogements'] as $logement) {
-                    echo "<tr onclick=\"window.location.href='?controller=annonces&action=annonces&id={$logement['id']}'\" style='cursor:pointer;'>";
+                    echo "<tr style='cursor:pointer;' onclick=\"if(event.target.tagName !== 'BUTTON' && event.target.tagName !== 'IMG') { window.location.href='?controller=annonces&action=annonces&id={$logement['id']}'; }\">";
                     echo "<td>{$logement['id']}</td>";
                     echo "<td>{$logement['description']}</td>";
                     echo "<td>{$logement['creer_a']}</td>";
