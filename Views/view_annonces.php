@@ -17,25 +17,39 @@
 
   <div class="container-annonce">
     <div class="image-gallery">
-      <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
-      <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Pool view">
-      <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Lounge area">
-      <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Rooftop area">
-      <button id="show-more" class="show-more">+ Voir plus</button>
-    </div>
+      <?php
+      function imageExists($path) {
+        return file_exists($path);
+      }
 
-    <div id="image-modal" class="modal">
-      <span class="close">&times;</span>
-      <div class="modal-content">
+      $imagePaths = [
+        "Content/Images/Proprio_{$data["annonces"]["proprietaire"]}/Logement_{$data["id_annonces"]}/image_vitrine.png",
+        "Content/Images/Proprio_{$data["annonces"]["proprietaire"]}/Logement_{$data["id_annonces"]}/image_2.png",
+        "Content/Images/Proprio_{$data["annonces"]["proprietaire"]}/Logement_{$data["id_annonces"]}/image_3.png",
+        "Content/Images/Proprio_{$data["annonces"]["proprietaire"]}/Logement_{$data["id_annonces"]}/image_4.png"
+      ];
+
+      foreach ($imagePaths as $path) {
+        $imgSrc = imageExists($path) ? $path : "Content/Images/Proprio_{$data["annonces"]["proprietaire"]}/Logement_{$data["id_annonces"]}/image_vitrine.png";
+        echo "<img src=\"$imgSrc\" alt=\"Image\">";
+      }
+      ?>
+      <button id="show-more" class="show-more">+ Voir plus</button>
+      </div>
+
+      <div id="image-modal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
         <div class="modal-images">
-          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
-          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Room view">
-          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Pool view">
-          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Lounge area">
-          <img src="Content/Images/Proprio_<?php echo $data["id_annonces"]; ?>/Logement_<?php echo $data["id_annonces"]; ?>/image_vitrine.png" alt="Rooftop area">
+          <?php
+          foreach ($imagePaths as $path) {
+            $imgSrc = imageExists($path) ? $path : "Content/Images/Proprio_{$data["annonces"]["proprietaire"]}/Logement_{$data["id_annonces"]}/image_vitrine.png";
+            echo "<img src=\"$imgSrc\" alt=\"Image\">";
+          }
+          ?>
+        </div>
         </div>
       </div>
-    </div>
   </div>
 
   <aside class="details">
