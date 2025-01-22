@@ -19,8 +19,6 @@
         <button class="navbar-toggle" id="navbarToggle" aria-label="Menu">
             ☰
         </button>
-
-        <!-- Navbar Links -->
         <div class="navbar-menu" id="navbarMenu">
             <ul class="navbar-links">
                 <?php
@@ -39,20 +37,37 @@
 
             </ul>
             <div class="navbar-right">
-                <?php 
+                <?php
                 if (!isset($_SESSION)) {
                     session_start();
                 }
-                if (isset($_SESSION['prenom'])): ?>
-                    <a href="?controller=deconnexion&action=deconnexionController" class="btn-account"><button class="button">Déconnexion</button></a>
+                // Si l'utilisateur est un administrateur
+                if (isset($_SESSION['admin'])): ?>
+                    <a href="?controller=deconnexion&action=deconnexionController" class="btn-account">
+                        <button class="button">Déconnexion</button>
+                    </a>
+                    <a href="?controller=admin&action=admin" class="icon-translate">
+                        <img src="Content/Images/Accueil/profile.png" alt="Profil admin" title="Profil admin">
+                    </a>
+                <?php
+                // Si l'utilisateur non administrateur est connecté
+                elseif (isset($_SESSION['prenom'])): ?>
+                    <a href="?controller=deconnexion&action=deconnexionController" class="btn-account">
+                        <button class="button">Déconnexion</button>
+                    </a>
                     <a href="?controller=user&action=userController" class="icon-translate">
-                        <img src="Content/Images/Accueil/profile.png" alt="Traduire" title="Traduire">
-                <?php else: ?>
-                    <a href="?controller=connexion&action=connexionController" class="btn-account"><button class="button">Connexion</button></a>
+                        <img src="Content/Images/Accueil/profile.png" alt="Profil utilisateur" title="Profil utilisateur">
+                    </a>
+                <?php
+                // Si aucun utilisateur n'est connecté
+                else: ?>
+                    <a href="?controller=connexion&action=connexionController" class="btn-account">
+                        <button class="button">Connexion</button>
+                    </a>
                     <a href="?controller=connexion&action=connexionController" class="icon-translate">
-                        <img src="Content/Images/Accueil/profile.png" alt="Traduire" title="Traduire">
+                        <img src="Content/Images/Accueil/profile.png" alt="Connexion" title="Connexion">
+                    </a>
                 <?php endif; ?>
-                </a>
             </div>
         </div>
     </div>
