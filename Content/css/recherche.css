@@ -1,0 +1,90 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh; 
+    background-color: #dfe8c7;
+    color: #23435C;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+
+h1 {
+    color: #23435C;
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+
+ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+.aide{
+    background-color: #f7f9ee;
+    border: 2px solid #23435C;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #23435C;
+    transition: background-color 0.3s ease;
+}
+
+ul li:hover {
+    background-color: #f2f8ff; 
+}
+
+
+p {
+    font-size: 16px;
+    color: #444;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+.eligibility {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+
+input[type="text"], input[type="email"], input[type="password"], textarea, select, .submit-btn,
+input[type="radio"], input[type="checkbox"] {
+    cursor: pointer; 
+    border-radius: 20px; /* Bordures arrondies */
+    padding: 12px; 
+    font-size: 16px; 
+    height: 50px; 
+    width: 500px; 
+}
+
+
+.form-group select {
+    border-radius: 20px; 
+    padding: 12px;
+    font-size: 16px; 
+    height: 50px; 
+    width: 500px; 
+}

@@ -8,7 +8,7 @@ require_once "Models/Model.php";
 require_once "Controllers/Controller.php";
 
 //Liste des contrôleurs -- A RENSEIGNER
-$controllers = ["inscription","connexion","pagelogement","accueil","aide"];
+$controllers = ["admin", "inscription","connexion","deconnexion","pagelogement","accueil","aide","mdp_oublie","changement_mdp", "annonces", "ajoutLogement","recherche", "cgu","mentionslégales","user"];
 //Nom du contrôleur par défaut-- A RENSEIGNER
 $controller_default = "accueil";
 
@@ -33,3 +33,4 @@ if (is_readable($nom_fichier)) {
 } else {
     die("Error 404: not found!");
 }
+

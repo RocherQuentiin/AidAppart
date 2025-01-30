@@ -17,6 +17,7 @@ body {
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: Arial, sans-serif;
 }
 
 .container {
@@ -44,8 +45,8 @@ a:hover {
     text-decoration: underline;
 }
 
-button{
-    /* Rectangle 3 */
+.button{
+    cursor: pointer;
     box-sizing: border-box;
     padding: 25px;
     background: var(--green);
@@ -58,7 +59,7 @@ button{
     font-weight: 700;
 }
 
-button:hover {
+.button:hover {
     background-color: var(--blue);
     color: var(--green);
 }
@@ -93,3 +94,9 @@ input::placeholder{
     gap: 20px;
 }
 
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }

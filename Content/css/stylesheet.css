@@ -62,7 +62,7 @@ body {
     justify-content: end;
     img{
         min-height: 45px;
-        width: auto; /* Par exemple, une largeur plus grande */
+        width: auto;
 
     }
 }
@@ -73,15 +73,35 @@ body {
 }
 
 .btn-account button:hover {
-    background-color: #0056b3;
+    background-color: var(--blue);
+    color: white;
+    border: var(--blue);
 }
 
 .icon-translate img {
     height: 20px;
 }
 
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+  }
+  
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
 /* Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 1054px) {
     .navbar-toggle {
         display: block;
     }
@@ -96,23 +116,26 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Léger effet d'ombre */
     padding: 10px 0;
     border-radius: 5px;
+    z-index: 10; /* Niveau utilie sur la page inscription*/
 }
 
-.navbar-menu.active {
-    display: flex; /* Affiche le menu lorsqu'il est actif */
-}
-
+    .navbar-menu.active {
+        display: flex; /* Affiche le menu lorsqu'il est actif */
+    }
 
     .navbar-links {
         flex-direction: column;
         gap: 10px;
+        align-items: baseline;
+        padding-left: 70%;
     }
 
+    li{
+        text-align: left;
+    }
     .navbar-right {
         flex-direction: column;
         gap: 10px;
         display: flex;
-        align-items: center;
-        justify-content: start;
     }
 }

@@ -1,3 +1,6 @@
+<?php
+require_once('Layout/view_header.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,28 +9,35 @@
     <title>Inscription</title>
     <link rel="stylesheet" type="text/css" href="Content/css/pageinscription.css"/>
     <link rel="stylesheet" type="text/css" href="Content/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="Content/css/stylesheet.css"/>
+    <script src="Content/js/pageinscription_connexion.js" defer></script>
 </head>
 <body>
 <h1>
     Inscription
 </h1>
-<form action="/pageinscription.html" method="post">
+<div class= "formulaire">
+<form action="?controller=inscription&action=sinscrire" method="POST">
     <div class="dropdown">
-        <button class="dropdown-btn">Statue <span class="arrow">▼</span></button>
-        <ul class="dropdown-menu">
-            <li>Option 1</li>
-            <li>Option 2</li>
-            <li>Option 3</li>
+        <button type="button" class="dropdown-btn" id="dropdownBtn">
+            <?= isset($data['status']) ? htmlspecialchars($data['status']) : 'Status' ?> <span class="arrow"></span>
+        </button>
+        <ul class="dropdown-menu" id="dropdownMenu">
+            <li data-value="Etudiant" <?= (isset($data['status']) && $data['status'] === "Etudiant") ? 'class="active"' : '' ?>>Étudiant</li>
+            <li data-value="Particuliers" <?= (isset($data['status']) && $data['status'] === "Particuliers") ? 'class="active"' : '' ?>>Particuliers</li>
         </ul>
+        <!-- Champ caché pour transmettre la valeur sélectionnée -->
+        <input type="hidden" id="status" name="status" value="<?= isset($data['status']) ? htmlspecialchars($data['status']) : '' ?>">
     </div>
+
     <br><br>
-    <input type="text" id="nom" name="nom" placeholder="Nom">
-    <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+    <input type="text" id="nom" name="nom" placeholder="Nom" value="<?= isset($data['nom']) ? htmlspecialchars($data['nom']) : '' ?>" required>
+    <input type="text" id="prenom" name="prenom" placeholder="Prénom" value="<?= isset($data['prenom']) ? htmlspecialchars($data['prenom']) : '' ?>" required>
     <br><br>
-    <div class="form-section">
+    <div class="ContenaireTelephone">
         <label for="pays-code"></label>
         <div class="phone-input-container" id="phone-input-container">
-            <select id="pays-code" name="pays-code" class="country-code-select">
+            <select id="pays-code" name="pays-code" class="country-code-select"  >
                 <option value="+33">+33</option>
                 <option value="+1">+1</option>
                 <option value="+44">+44</option>
@@ -39,35 +49,54 @@
                 <option value="+34">+34</option>
             </select>
             <div class="separator"></div><!-- Séparateur -->
-            <input type="tel" id="phone" name="phone" class="phone-number-input" placeholder="Numéro de téléphone">
+            <input type="tel" id="phone" name="phone" class="phone-number-input" placeholder="Numéro de téléphone" value="<?= isset($data['telephone']) ? htmlspecialchars($data['telephone']) : '' ?>" required>
         </div>
     </div>
     <br>
-    <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant">
-    <br><br>
-    <i class = "fas fa-envelope"></i>
-    <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe">
-    <i class="eye-icon fas fa-eye" onclick="togglePassword()"></i>
-    <br><br>
-    <input type="password" id="mdp_confirmation" name="mdp_confirmation" placeholder="Confirmation">
-    <br><br>
+    <div class="input-group">
+        <img src="Content/Images/email.png" alt="Email Icon" id="icon-mail" class="icon">
+        <input type="mail" id="mail" name="mail" placeholder="Votre adresse mail étudiant" value="<?= isset($data['email']) ? htmlspecialchars($data['email']) : '' ?>">
+    </div>
+    <br>
+    <div class="input-group">
+        <img src="Content/Images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
+        <input type="password" id="password1" name="mdp" placeholder="Votre mot de passe" >
+        <img src="Content/Images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password1')">
+    </div>
+    <br>
+    <div class="input-group">
+        <img src="Content/Images/cadenas.png" alt="Lock Icon" class="icon" id="icon-lock">
+        <input type="password" id="password2" name="mdp_confirmation" placeholder="Confirmation">
+        <img src="Content/Images/eye_icon.png" alt="Eye Icon" class="icon" id="eye-toggle" onclick="togglePassword('password2')">
+    </div>
+
+    <br>
 
     <label>
         <div class="Donnee">
-            <input type="checkbox" id="accorddonnees" name="accorddonnees" required><p>En m'inscrivant, j'accepte que AidAppart recueille et traite mes données personnelles</p>
+            <input type="checkbox" id="accorddonnees" name="accorddonnees"  required>
+            <p>En m'inscrivant, j'accepte que AidAppart recueille et traite mes données personnelles</p>
         </div>
     </label>
     <label>
         <br>
         <div class="Condition">
-            <input type="checkbox" id="accordCGU" name="accordCDU" required><p>J’accepte sans réserve les Conditions Générales d’Utilisation des services AidAppart</p>
+            <input type="checkbox" id="accordCGU" name="accordCDU" required>
+            <p>J’accepte sans réserve les Conditions Générales d’Utilisation des services AidAppart</p>
         </div>
     </label>
     <br>
-    <div class="button-container">
-        <button type="submit">Je m'inscris</button>
-    </div>
+    <p>Cliquez <a href="https://www.dossierfacile.logement.gouv.fr" target="_blank">ici</a> pour constituer votre dossier locatif</p>
+    <br>
+    <button class="button" type="submit">Je m'inscris</button>
 
 </form>
+</div>
 </body>
 </html>
+<?php 
+require_once('Layout/footer.php');
+if (isset($message)) {
+    afficherPopup($message);
+} 
+?>

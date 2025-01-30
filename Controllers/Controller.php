@@ -29,10 +29,9 @@ abstract class Controller
      * Affiche la vue
      * @param string $vue nom de la vue
      * @param array $data tableau contenant les données à passer à la vue
-     * @return aucun
+     * @return 
      */
-    protected function render($vue, $data = [])
-    {
+    protected function render($vue, $data = []){
 
         //On extrait les données à afficher
         extract($data);
@@ -53,7 +52,7 @@ abstract class Controller
     /**
      * Méthode affichant une page d'erreur
      * @param string $message Message d'erreur à afficher
-     * @return aucun
+     * @return 
      */
     protected function action_error($message = '')
     {
@@ -62,5 +61,24 @@ abstract class Controller
             'message' => $message,
         ];
         $this->render("message", $data);
+    }
+
+    public function get_logements_adresse($logements) {
+        $model = Model::getModel();
+        $logementsWithAdresse = [];
+        foreach ($logements as $logement) {
+            $adresse = $model->getdataById('Adresse', $logement['adresse']);
+            $logement['adresse'] = $adresse["numero"] . ' ' . $adresse['rue'] . ', ' . $adresse['code_postal'] . ' ' . $adresse['ville'];
+            $logement['signale'] = $this->est_signale($logement['id']);
+            $logementsWithAdresse[] = $logement;
+        }
+        return $logementsWithAdresse;
+    }
+
+    public function est_signale($id_logement) {
+        $model = Model::getModel();
+        $logements_signale = $model->getReportedLogements();
+        $logements_signale_ids = array_column($logements_signale, 'id_logement');
+        return in_array($id_logement, $logements_signale_ids);
     }
 }
